@@ -30,7 +30,8 @@
 
 - [3.查找 Searching](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/3%20Searching)
   - [3.1 符号表 Elementary Symbol Tables](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/3%20Searching/3.1)
-  - [3.2 二叉搜索树 BinarySearch Trees](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/3%20Searching/3.2)
+  - [3.2 二叉搜索树 Binary Search Trees](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/3%20Searching/3.2)
+  - [3.3 平衡查找树 Balanced Search Trees](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/3%20Searching/3.3)
 
 ## 使用方法 & 开发环境
 
