@@ -83,9 +83,9 @@
 
    - 应用程序模板
 
-     通常，一个项目不会使用多个应用程序模板（例如 System.Windows.Forms 和 System.Web.UI）。
+     通常，一个项目不会使用多个应用程序模板（例如 `System.Windows.Forms` 和 `System.Web.UI`）。
 
-     不要在同一个应用程序模板下添加多个同名类。（例如 System.Web.UI 下有一个 Page 类，此时不应该在 System.Web.UI.Adapters 下再添加 Page 类）
+     不要在同一个应用程序模板下添加多个同名类。（例如 `System.Web.UI` 下有一个 `Page` 类，此时不应该在 `System.Web.UI.Adapters` 下再添加 `Page` 类）
 
    - 基础命名空间
 
@@ -128,15 +128,15 @@
 
 |                          基类/接口                           |                      派生/实现命名规则                       |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|                       System.Attribute                       |                 派生类添加 "Attribute" 后缀                  |
-|                       System.Delegate                        | 派生类添加 "EventHandler"或 "Callback" 后缀，不要直接使用 "Delegate" 作为后缀。 |
-|                       System.EventArgs                       |                    派生类添加 "EventArgs"                    |
-|                         System.Enum                          | 不要直接从这个类派生，使用关键字 "enum"；不要添加 "Enum" 或 "Flag" 后缀。 |
-|                       System.Exception                       |                 派生类添加后缀 "Exception"。                 |
-|            IDictionary/IDictionary<TKey, TValue>             |             实现接口的类添加后缀 "Dictionary"。              |
-| IEnumerable, ICollection, IList, IEnumerable\<T\>, ICollection\<T\>, IList\<T\> |             实现接口的类添加后缀 "Collection"。              |
-|                       System.IO.Stream                       |                  派生类添加后缀 "Stream"。                   |
-|               CodeAccessPermission/IPermission               |                   添加后缀 "Permission"。                    |
+|                      `System.Attribute`                      |                 派生类添加 "Attribute" 后缀                  |
+|                      `System.Delegate`                       | 派生类添加 "EventHandler"或 "Callback" 后缀，不要直接使用 "Delegate" 作为后缀。 |
+|                      `System.EventArgs`                      |                    派生类添加 "EventArgs"                    |
+|                        `System.Enum`                         | 不要直接从这个类派生，使用关键字 "enum"；不要添加 "Enum" 或 "Flag" 后缀。 |
+|                      `System.Exception`                      |                 派生类添加后缀 "Exception"。                 |
+|           `IDictionary/IDictionary<TKey, TValue>`            |             实现接口的类添加后缀 "Dictionary"。              |
+| `IEnumerable`, `ICollection`, `IList`, `IEnumerable<T>`, `ICollection<T>`, `IList<T>` |             实现接口的类添加后缀 "Collection"。              |
+|                      `System.IO.Stream`                      |                  派生类添加后缀 "Stream"。                   |
+|             `CodeAccessPermission`/`IPermission`             |                   添加后缀 "Permission"。                    |
 
 #### 枚举类型的命名
 
@@ -162,7 +162,7 @@
 
 3. 数组类型的属性应以复数形式单词命名，不要使用单数形式单词加上 "List" 或 "Collection" 后缀的形式。
 
-4. 布尔属性的属性都使用肯定形式，例如，使用 CanSeek 而不是 CantSeek。
+4. 布尔属性的属性都使用肯定形式，例如，使用 `CanSeek` 而不是 `CantSeek`。
 
 5. 考虑使用类型名命名属性，参考下面这个例子：
 
@@ -225,7 +225,7 @@
 5. 作为参数传递时，引用类型传入的是引用的拷贝，值类型则是值的拷贝。对于引用类型的修改会影响所有该引用类型的复制；对值类型的修改则不会影响其他值类型的复制。因此，作为参数传递时，不应修改值类型的参数。
 6. 当一个类型同时具有空间小、生命周期短和内嵌于其他类中的特点时，考虑使用结构体。
 7. 除非满足以下条件，否则不要使用结构体：
-   - 逻辑上代表一个单一的值，类似于 int, double 等。
+   - 逻辑上代表一个单一的值，类似于 `int`, `double` 等。
    - 实例大小小于 16 bytes。
    - 实例是只读的。
    - 不必频繁装箱。
@@ -261,9 +261,9 @@
 
 1. 不要为结构体添加默认构造器。
 2. 结构体类型的实例应该是只读的。
-3. 确保结构体中的所有字段/属性的默认值（false, 0, null 等）是有效的。
-4. 为所有结构体实现 IEquatable<T> 接口，这会避免比较时的装箱。
-5. 不要直接从 ValueType 类派生，使用关键字 struct。
+3. 确保结构体中的所有字段/属性的默认值（`false`, `0`, `null` 等）是有效的。
+4. 为所有结构体实现 `IEquatable<T>` 接口，这会避免比较时的装箱。
+5. 不要直接从 `ValueType` 类派生，使用关键字 `struct`。
 
 ### 枚举
 
