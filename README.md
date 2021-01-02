@@ -1,10 +1,10 @@
 # Algorithms-4th-Edition in C#
 
-| dev                                                          | master                                                       |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| dev                                                                                                                                                                                                                                                                 | master                                                                                                                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [![Build Status](https://dev.azure.com/ikesnowy/Algorithms%204th%20Solutions/_apis/build/status/ikesnowy.Algorithms-4th-Edition-in-Csharp?branchName=dev)](https://dev.azure.com/ikesnowy/Algorithms%204th%20Solutions/_build/latest?definitionId=2&branchName=dev) | [![Build Status](https://dev.azure.com/ikesnowy/Algorithms%204th%20Solutions/_apis/build/status/ikesnowy.Algorithms-4th-Edition-in-Csharp?branchName=master)](https://dev.azure.com/ikesnowy/Algorithms%204th%20Solutions/_build/latest?definitionId=2&branchName=master) |
 
-算法（第4版）习题题解 C# 版，勘误感谢名单：[THANKS.md](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/master/THANKS.md)
+算法（第 4 版）习题题解 C# 版，勘误感谢名单：[THANKS.md](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/blob/master/THANKS.md)
 
 当前已经完成到 3.2。
 
@@ -15,6 +15,7 @@
 ## 目录
 
 - [1.基础 Fundamental](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental)
+
   - [1.1 基础编程模型 Programming Model](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.1)
   - [1.2 数据抽象 Data Abstraction](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.2)
   - [1.3 背包、队列和栈 Bags, Queues, and Stacks](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.3)
@@ -22,6 +23,7 @@
   - [1.5 案例研究：union-find 算法 CaseStudy: UnionFind](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/1%20Fundamental/1.5)
 
 - [2.排序 Sorting](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting)
+
   - [2.1 初级排序算法 Elementary Sorts](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.1)
   - [2.2 归并排序 Mergesort](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.2)
   - [2.3 快速排序 Quicksort](https://github.com/ikesnowy/Algorithms-4th-Edition-in-Csharp/tree/master/2%20Sorting/2.3)
@@ -49,17 +51,17 @@
 
 #### 控制台应用程序  
 
-Program.cs 是程序的运行代码。 
+Program.cs 是程序的运行代码。
 
-需要实现的类会位于其他源文件中，例如实现有理数类的代码就会在同项目下的 Rational.cs 文件中。  
+需要实现的类会位于其他源文件中，例如实现有理数类的代码就会在同项目下的 Rational.cs 文件中。
 
 #### Windows 窗体应用程序
 
-题目说明位于 Program.cs 文件中，绘图和逻辑部分代码可能在窗体文件，也可能在 Program.cs 中。  
+题目说明位于 Program.cs 文件中，绘图和逻辑部分代码可能在窗体文件，也可能在 Program.cs 中。
 
 ### 运行/开发环境：
 
-Visual Studio 2019 + .NET Core 3.1
+Visual Studio 2019 + .NET Core 5.0
 
 需要绘图的部分只能在 Windows 上运行。
 
@@ -77,9 +79,9 @@ Visual Studio 2019 + .NET Core 3.1
 
 3. 不要使用三目运算符 `?:` 这会增加理解难度。
 
-## 相关资料  
+## 相关资料
 
-官方 MOOC 课程： 
+官方 MOOC 课程：
 
 Part1 https://www.coursera.org/learn/algorithms-part1
 
