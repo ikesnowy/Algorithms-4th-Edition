@@ -15,7 +15,7 @@ namespace _2._3._19
             const int trialTimes = 4;                       // 每次实验的重复次数。
             const int trialLevel = 6;                       // 双倍递增的次数。
 
-            Console.WriteLine("n\tmedian5\tmedian3\tnormal\tmedian5/normal\t\tmedian5/median3");
+            Console.WriteLine(@"n	median5	median3	normal	median5/normal		median5/median3");
             for (var i = 0; i < trialLevel; i++)
             {
                 double timeMedian3 = 0;

@@ -18,7 +18,7 @@ namespace _2._5._23
             Shuffle(a);
 
             var sw = new Stopwatch();
-            Console.WriteLine("Normal:");
+            Console.WriteLine(@"Normal:");
             for (var i = 0; i < repeatTime; i++)
             {
                 sw.Start();
@@ -29,7 +29,7 @@ namespace _2._5._23
             }
             Console.WriteLine(sw.ElapsedMilliseconds / repeatTime);
 
-            Console.WriteLine("Sampled:");
+            Console.WriteLine(@"Sampled:");
             sw.Reset();
             for (var i = 0; i < repeatTime; i++)
             {

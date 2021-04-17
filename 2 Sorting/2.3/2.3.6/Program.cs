@@ -7,7 +7,7 @@ namespace _2._3._6
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("N\t准确值\t估计值\t比值");
+            Console.WriteLine(@"N	准确值	估计值	比值");
             var sort = new QuickSortAnalyze();
             var N = 100;
             var trialTime = 500;

@@ -15,7 +15,7 @@ for (var i = 0; i < n; i++)
 }
 
 // 输出前5个数字
-Console.WriteLine("Before Swap");
+Console.WriteLine(@"Before Swap");
 Console.Write("a:");
 for (var i = 0; i < 5; i++)
 {
@@ -37,7 +37,7 @@ a = b;
 b = t;
 
 // 再次输出
-Console.WriteLine("After Swap");
+Console.WriteLine(@"After Swap");
 Console.Write("a:");
 for (var i = 0; i < 5; i++)
 {

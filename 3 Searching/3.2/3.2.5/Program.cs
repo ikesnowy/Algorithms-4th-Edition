@@ -6,7 +6,7 @@ namespace _3._2._5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine(@"Hello World!");
         }
     }
 }

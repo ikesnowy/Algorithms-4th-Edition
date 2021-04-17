@@ -13,9 +13,9 @@ for (var i = 0; i < M; i++)
     }
 }
 
-Console.WriteLine("Origin");
+Console.WriteLine(@"Origin");
 PrintArray2D(array, M, N);
-Console.WriteLine("Transposed");
+Console.WriteLine(@"Transposed");
 PrintArrayTranspose2D(array, M, N);
 
 // 转置输出

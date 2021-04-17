@@ -13,5 +13,5 @@ foreach (var n in s)
         Console.WriteLine(queue.Dequeue());
 }
 
-Console.WriteLine($"({queue.Size()}) left on queue");
+Console.WriteLine($@"({queue.Size()}) left on queue");
 Console.WriteLine(queue);

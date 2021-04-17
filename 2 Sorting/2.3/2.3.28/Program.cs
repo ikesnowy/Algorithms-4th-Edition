@@ -7,7 +7,7 @@ namespace _2._3._28
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("M\tN\tDepth");
+            Console.WriteLine(@"M	N	Depth");
             Trial(10);
             Trial(20);
             Trial(50);

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using Geometry;
 // ReSharper disable AssignNullToNotNullAttribute
 
-Console.WriteLine("Type the value of N:");
+Console.WriteLine(@"Type the value of N:");
 var n = int.Parse(Console.ReadLine());
 var pointList = new List<Point2D>();
 var random = new Random();
 
 if (n <= 2)
 {
-    Console.WriteLine("Make sure there are 2 points at least");
+    Console.WriteLine(@"Make sure there are 2 points at least");
     return;
 }
 
@@ -28,7 +28,7 @@ for (var i = 0; i < n; i++)
     for (var j = i + 1; j < n; j++)
     {
         var temp = pointList[i].DistanceTo(pointList[j]);
-        Console.WriteLine($"Checking Distance({i}, {j}): {temp}");
+        Console.WriteLine($@"Checking Distance({i}, {j}): {temp}");
         if (temp < min)
         {
             min = temp;
@@ -36,4 +36,5 @@ for (var i = 0; i < n; i++)
     }
 }
 
-Console.WriteLine($"\nThe minimal distance is {min}");
+Console.WriteLine($@"
+The minimal distance is {min}");

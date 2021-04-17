@@ -18,7 +18,7 @@ namespace _2._4._27
             pq.DelMax();
             pq.DelMax();
             if (pq.Min() == null)
-                Console.WriteLine("null");
+                Console.WriteLine(@"null");
         }
     }
 }

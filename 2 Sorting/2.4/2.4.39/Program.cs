@@ -9,7 +9,7 @@ namespace _2._4._39
 
         static void Main(string[] args)
         {
-            Console.WriteLine("n\tBuild\tSort\tRatio");
+            Console.WriteLine(@"n	Build	Sort	Ratio");
 
             var n = 1000;     // 当数据量到达 10^9 时会需要 2G 左右的内存
             var multiTen = 7;

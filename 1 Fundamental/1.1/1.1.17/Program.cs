@@ -1,6 +1,6 @@
 ﻿using System;
 
-Console.WriteLine($"{ExR2(6)}"); // 抛出 StackOverflow Exception
+Console.WriteLine($@"{ExR2(6)}"); // 抛出 StackOverflow Exception
 
 static string ExR2(int n)
 {

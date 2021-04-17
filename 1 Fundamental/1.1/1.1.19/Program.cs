@@ -20,10 +20,10 @@ for (var n = 0; n < 100; n++)
 
     // 利用已知结果加速
     // 全部计算完毕耗时 84ms
-    Console.WriteLine($"{n} {BetterF(n)}");
+    Console.WriteLine($@"{n} {BetterF(n)}");
 }
 
-Console.WriteLine($"{timer.ElapsedMilliseconds} ms");
+Console.WriteLine($@"{timer.ElapsedMilliseconds} ms");
 
 // 书中提供的代码
 // ReSharper disable once UnusedLocalFunction

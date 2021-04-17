@@ -13,10 +13,10 @@ for (var i = 0; i < largeW.Length; i++)
 
 var timer = Stopwatch.StartNew();
 BruteForceSearch(111111, largeW);
-Console.WriteLine($"BruteForceSearch: {timer.ElapsedMilliseconds} ms");
+Console.WriteLine($@"BruteForceSearch: {timer.ElapsedMilliseconds} ms");
 timer.Restart();
 Rank(111111, largeW);
-Console.WriteLine($"BinarySearch: {timer.ElapsedMilliseconds} ms");
+Console.WriteLine($@"BinarySearch: {timer.ElapsedMilliseconds} ms");
 var largeTString = File.ReadAllLines("largeT.txt");
 var largeT = new int[largeTString.Length];
 for (var i = 0; i < largeW.Length; i++)
@@ -26,10 +26,10 @@ for (var i = 0; i < largeW.Length; i++)
 
 timer.Restart();
 BruteForceSearch(111111, largeT);
-Console.WriteLine($"BruteForceSearch: {timer.ElapsedMilliseconds} ms");
+Console.WriteLine($@"BruteForceSearch: {timer.ElapsedMilliseconds} ms");
 timer.Restart();
 Rank(111111, largeT);
-Console.WriteLine($"BinarySearch: {timer.ElapsedMilliseconds} ms");
+Console.WriteLine($@"BinarySearch: {timer.ElapsedMilliseconds} ms");
 
 static int BruteForceSearch(int key, int[] a)
 {

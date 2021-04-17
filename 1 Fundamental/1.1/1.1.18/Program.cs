@@ -1,10 +1,10 @@
 ﻿using System;
 
-Console.WriteLine($"Mystery(2, 25): {Mystery(2, 25)}");
-Console.WriteLine($"Mystery(3, 11): {Mystery(3, 11)}");
+Console.WriteLine($@"Mystery(2, 25): {Mystery(2, 25)}");
+Console.WriteLine($@"Mystery(3, 11): {Mystery(3, 11)}");
 
-Console.WriteLine($"mysteryChanged(2, 8): {MysteryChanged(2, 8)}");
-Console.WriteLine($"mysteryChanged(3, 2): {MysteryChanged(3, 2)}");
+Console.WriteLine($@"mysteryChanged(2, 8): {MysteryChanged(2, 8)}");
+Console.WriteLine($@"mysteryChanged(3, 2): {MysteryChanged(3, 2)}");
 
 // Mystery(a, b) = a * b
 // 利用等式：a * b = 2a * b/2 = (2a * (b-1) / 2) + a

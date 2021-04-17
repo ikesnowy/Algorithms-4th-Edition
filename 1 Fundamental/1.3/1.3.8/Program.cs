@@ -18,4 +18,5 @@ foreach (var s in stack)
     Console.Write(s + ' ');
 }
 
-Console.WriteLine($"\nStack Size: {stack.Size()}");
+Console.WriteLine($@"
+Stack Size: {stack.Size()}");

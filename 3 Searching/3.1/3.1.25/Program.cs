@@ -15,8 +15,8 @@ namespace _3._1._25
 
             var repeatTimes = 1;
 
-            Console.WriteLine("BinarySearchST");
-            Console.WriteLine("Origin\tCached\tRatio");
+            Console.WriteLine(@"BinarySearchST");
+            Console.WriteLine(@"Origin	Cached	Ratio");
             long bstTimes = 0, bstcTimes = 0;
 
             var bst = new BinarySearchST<string, int>();
@@ -26,8 +26,8 @@ namespace _3._1._25
             bstcTimes += SearchCompare.Time(bstc, data);
             Console.WriteLine(bstTimes / repeatTimes + "\t" + bstcTimes / repeatTimes + "\t" + (double)bstTimes / bstcTimes);
 
-            Console.WriteLine("SequentialSearchST");
-            Console.WriteLine("Origin\tCached\tRatio");
+            Console.WriteLine(@"SequentialSearchST");
+            Console.WriteLine(@"Origin	Cached	Ratio");
             long sstTimes = 0, sstcTimes = 0;
 
             var sst = new SequentialSearchST<string, int>();

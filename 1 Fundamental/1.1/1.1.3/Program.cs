@@ -18,9 +18,9 @@ var c = int.Parse(input.Split(' ')[2]);
 
 if (a == b && b == c)
 {
-    Console.WriteLine("equal");
+    Console.WriteLine(@"equal");
 }
 else
 {
-    Console.WriteLine("not equal");
+    Console.WriteLine(@"not equal");
 }

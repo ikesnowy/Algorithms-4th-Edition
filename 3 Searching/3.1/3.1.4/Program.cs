@@ -69,7 +69,7 @@ namespace _3._1._4
 
             Console.WriteLine("Select(7)=" + st.Select(7));
 
-            Console.WriteLine("Keys(09:15:00, 09:25:00)");
+            Console.WriteLine(@"Keys(09:15:00, 09:25:00)");
             foreach (var t in 
                 st.Keys(new Time() { Hour = 9, Minute = 15, Second = 0}, 
                     new Time() { Hour = 9, Minute = 25, Second = 0}))

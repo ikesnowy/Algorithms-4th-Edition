@@ -25,7 +25,7 @@ namespace _2._1._31
                 var arrayBak = new int[N];
                 array.CopyTo(arrayBak, 0);
 
-                Console.WriteLine("\tInsertion Sort");
+                Console.WriteLine(@"	Insertion Sort");
                 var now = SortCompare.Time(insertion, array);
                 Console.WriteLine("\t\tActual Time(ms):" + now);
                 if (i != 0)
@@ -37,7 +37,7 @@ namespace _2._1._31
 
                 arrayBak.CopyTo(array, 0);
 
-                Console.WriteLine("\tSelection Sort");
+                Console.WriteLine(@"	Selection Sort");
                 now = SortCompare.Time(selection, array);
                 Console.WriteLine("\t\tActual Time(ms):" + now);
                 if (i != 0)
@@ -49,7 +49,7 @@ namespace _2._1._31
 
                 arrayBak.CopyTo(array, 0);
 
-                Console.WriteLine("\tShell Sort");
+                Console.WriteLine(@"	Shell Sort");
                 now = SortCompare.Time(shell, array);
                 Console.WriteLine("\t\tActual Time(ms):" + now);
                 if (i != 0)

@@ -12,7 +12,7 @@ namespace _1._5._25
             var t = 4;
 
             // quick-find
-            Console.WriteLine("Quick-Find");
+            Console.WriteLine(@"Quick-Find");
             long last = 0;
             long now = 0;
             for (var i = 0; i < t; i++, n *= 2)
@@ -35,7 +35,7 @@ namespace _1._5._25
             }
 
             // quick-union
-            Console.WriteLine("Quick-Union");
+            Console.WriteLine(@"Quick-Union");
             n = 40;
             for (var i = 0; i < t; i++, n *= 2)
             {
@@ -57,7 +57,7 @@ namespace _1._5._25
             }
 
             // 加权 quick-union
-            Console.WriteLine("Weighted Quick-Union");
+            Console.WriteLine(@"Weighted Quick-Union");
             n = 40;
             for (var i = 0; i < t; i++, n *= 2)
             {

@@ -47,8 +47,9 @@ static void MinAndMax(int[] input)
         }
     }
 
-    Console.WriteLine("Min and Max:");
-    Console.WriteLine($"Min: {min}\nMax: {max}");
+    Console.WriteLine(@"Min and Max:");
+    Console.WriteLine($@"Min: {min}
+Max: {max}");
 }
 
 static int MidNumber(int[] input)
@@ -56,7 +57,7 @@ static int MidNumber(int[] input)
     // 需要对输入值进行去重 & 排序，故需要保存
     var distinctNumbers = new List<int>(input.Distinct());
     distinctNumbers.Sort();
-    Console.WriteLine("MidNumber:");
+    Console.WriteLine(@"MidNumber:");
     Console.WriteLine(distinctNumbers[distinctNumbers.Count / 2]);
 
     return distinctNumbers[distinctNumbers.Count / 2];
@@ -80,8 +81,8 @@ static int NumberK(int k, int[] input)
         }
     }
 
-    Console.WriteLine("NumberK");
-    Console.WriteLine($"No.k: {temp[k - 1]}");
+    Console.WriteLine(@"NumberK");
+    Console.WriteLine($@"No.k: {temp[k - 1]}");
 
     return temp[k - 1];
 }
@@ -95,7 +96,7 @@ static long SquareSum(int[] input)
         sum += input[i] * input[i];
     }
 
-    Console.WriteLine("Sum Of Square:");
+    Console.WriteLine(@"Sum Of Square:");
     Console.WriteLine(sum);
 
     return sum;
@@ -113,7 +114,7 @@ static double Average(int[] input)
 
     var ave = sum / (double)input.Length;
 
-    Console.WriteLine("Average:");
+    Console.WriteLine(@"Average:");
     Console.WriteLine(ave);
 
     return ave;
@@ -133,8 +134,8 @@ static double AboveAverage(int[] input)
         }
     }
 
-    Console.WriteLine("AboveAverage:");
-    Console.WriteLine($"{(count / input.Length) * 100}%");
+    Console.WriteLine(@"AboveAverage:");
+    Console.WriteLine($@"{(count / input.Length) * 100}%");
 
     return count;
 }
@@ -143,7 +144,7 @@ static void Ascending(int[] input)
 {
     Array.Sort(input);
 
-    Console.WriteLine("Ascending:");
+    Console.WriteLine(@"Ascending:");
     for (var i = 0; i < input.Length; i++)
     {
         Console.Write($" {input[i]}");
@@ -158,7 +159,7 @@ static void Shuffle(int[] input)
     var all = new List<int>(input);
     var n = input.Length;
 
-    Console.WriteLine("Shuffle:");
+    Console.WriteLine(@"Shuffle:");
     for (var i = 0; i < n; i++)
     {
         var temp = random.Next(0, all.Count - 1);

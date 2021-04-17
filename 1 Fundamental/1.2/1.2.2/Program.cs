@@ -4,18 +4,19 @@ using Geometry;
 // ReSharper disable AssignNullToNotNullAttribute
 // ReSharper disable PossibleNullReferenceException
 
-Console.WriteLine("Type the value of N:");
+Console.WriteLine(@"Type the value of N:");
 var n = int.Parse(Console.ReadLine());
 var intervalList = new List<Interval1D>();
 
 if (n < 2)
 {
-    Console.WriteLine("Make sure there are at least 2 Intervals");
+    Console.WriteLine(@"Make sure there are at least 2 Intervals");
     return;
 }
 
 // 读取并建立间隔数组
-Console.WriteLine("Type the data, make sure there is a space between two numbers.\nExample: 0.5 1");
+Console.WriteLine(@"Type the data, make sure there is a space between two numbers.
+Example: 0.5 1");
 for (var i = 0; i < n; i++)
 {
     var temp = Console.ReadLine();
@@ -39,7 +40,7 @@ for (var i = 0; i < n; i++)
     {
         if (intervalList[i].Intersect(intervalList[j]))
         {
-            Console.WriteLine($"{intervalList[i]} {intervalList[j]}");
+            Console.WriteLine($@"{intervalList[i]} {intervalList[j]}");
         }
     }
 }

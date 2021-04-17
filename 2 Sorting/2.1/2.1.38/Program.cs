@@ -10,19 +10,19 @@ namespace _2._1._38
             var n = 10000;
 
             var results = TestA(n);
-            Console.WriteLine("string + double");
+            Console.WriteLine(@"string + double");
             Console.WriteLine("Insertion Sort:" + results[0]);
             Console.WriteLine("Selection Sort:" + results[1]);
             Console.WriteLine("Shell Sort:" + results[2]);
 
             results = TestB(n);
-            Console.WriteLine("double + 10 string");
+            Console.WriteLine(@"double + 10 string");
             Console.WriteLine("Insertion Sort:" + results[0]);
             Console.WriteLine("Selection Sort:" + results[1]);
             Console.WriteLine("Shell Sort:" + results[2]);
 
             results = TestC(n);
-            Console.WriteLine("int + int[]");
+            Console.WriteLine(@"int + int[]");
             Console.WriteLine("Insertion Sort:" + results[0]);
             Console.WriteLine("Selection Sort:" + results[1]);
             Console.WriteLine("Shell Sort:" + results[2]);

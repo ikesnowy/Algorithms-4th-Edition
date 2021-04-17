@@ -11,7 +11,7 @@ namespace _3._2._9
         {
             for (var n = 2; n <= 6; n++)
             {
-                Console.WriteLine($"n={n}");
+                Console.WriteLine($@"n={n}");
                 var list = new List<int>();
                 for (var i = 0; i < n; i++)
                 {

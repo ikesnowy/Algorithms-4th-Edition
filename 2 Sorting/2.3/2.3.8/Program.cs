@@ -10,7 +10,7 @@ namespace _2._3._8
             // 约为 NlogN 次
             var sort = new QuickSortAnalyze();
             var N = 100;
-            Console.WriteLine("N\tCompare\tNlogN");
+            Console.WriteLine(@"N	Compare	NlogN");
             for (var i = 0; i < 4; i++)
             {
                 var a = new int[N];

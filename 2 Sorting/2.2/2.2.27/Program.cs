@@ -15,7 +15,7 @@ namespace _2._2._27
                 sort.Sort(data);
             }
 
-            Console.WriteLine("n\trest\ttimes");
+            Console.WriteLine(@"n	rest	times");
             for (var i = 0; i < sort.NArraySize.Length; i++)
             {
                 if (sort.NArraySize[i] != 0)

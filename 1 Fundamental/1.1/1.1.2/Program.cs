@@ -10,8 +10,8 @@ var d = 1 + 2 + "3";
 // Console.WriteLine 向控制台输出一行
 // 变量名.GetType() 返回变量类型
 
-Console.WriteLine("\tName\tType     \tValue");
-Console.WriteLine($"\ta\t{a.GetType()}\t{a}");
-Console.WriteLine($"\tb\t{b.GetType()}\t{b}");
-Console.WriteLine($"\tc\t{c.GetType()}\t{c}");
-Console.WriteLine($"\td\t{d.GetType()}\t{d}");
+Console.WriteLine(@"	Name	Type     	Value");
+Console.WriteLine($@"	a	{a.GetType()}	{a}");
+Console.WriteLine($@"	b	{b.GetType()}	{b}");
+Console.WriteLine($@"	c	{c.GetType()}	{c}");
+Console.WriteLine($@"	d	{d.GetType()}	{d}");

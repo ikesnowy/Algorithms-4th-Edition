@@ -12,37 +12,37 @@ namespace _2._1._34
             var shellSort = new ShellSort();
 
             // 逆序
-            Console.WriteLine("逆序");
+            Console.WriteLine(@"逆序");
             Console.WriteLine("Insertion Sort Time: " + ReverseSortTest(insertionSort));
             Console.WriteLine("Selection Sort Time: " + ReverseSortTest(selectionSort));
             Console.WriteLine("Shell Sort Time: " + ReverseSortTest(shellSort));
 
             // 顺序
-            Console.WriteLine("顺序");
+            Console.WriteLine(@"顺序");
             Console.WriteLine("Insertion Sort Time: " + SortedSortTest(insertionSort));
             Console.WriteLine("Selection Sort Time: " + SortedSortTest(selectionSort));
             Console.WriteLine("Shell Sort Time: " + SortedSortTest(shellSort));
 
             // 主键相同
-            Console.WriteLine("主键相同");
+            Console.WriteLine(@"主键相同");
             Console.WriteLine("Insertion Sort Time: " + EqualSortTest(insertionSort));
             Console.WriteLine("Selection Sort Time: " + EqualSortTest(selectionSort));
             Console.WriteLine("Shell Sort Time: " + EqualSortTest(shellSort));
 
             // 二元数组
-            Console.WriteLine("二元数组");
+            Console.WriteLine(@"二元数组");
             Console.WriteLine("Insertion Sort Time: " + BinarySortTest(insertionSort));
             Console.WriteLine("Selection Sort Time: " + BinarySortTest(selectionSort));
             Console.WriteLine("Shell Sort Time: " + BinarySortTest(shellSort));
 
             // 空数组
-            Console.WriteLine("空数组");
+            Console.WriteLine(@"空数组");
             Console.WriteLine("Insertion Sort Time: " + ZeroArraySizeSort(insertionSort));
             Console.WriteLine("Selection Sort Time: " + ZeroArraySizeSort(selectionSort));
             Console.WriteLine("Shell Sort Time: " + ZeroArraySizeSort(shellSort));
 
             // 只有一个元素的数组
-            Console.WriteLine("只有一个元素的数组");
+            Console.WriteLine(@"只有一个元素的数组");
             Console.WriteLine("Insertion Sort Time: " + OneArraySizeSort(insertionSort));
             Console.WriteLine("Selection Sort Time: " + OneArraySizeSort(selectionSort));
             Console.WriteLine("Shell Sort Time: " + OneArraySizeSort(shellSort));

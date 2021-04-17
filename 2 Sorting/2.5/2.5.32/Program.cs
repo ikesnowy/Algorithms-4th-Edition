@@ -146,17 +146,17 @@ namespace _2._5._32
                 Steps = 0
             };
 
-            Console.WriteLine("Missing Tiles");
+            Console.WriteLine(@"Missing Tiles");
             var path = tiles.GetPath(start, goal);
             foreach (var s in path)
                 PrintMatrix(s.Status);
 
-            Console.WriteLine("Manhattan");
+            Console.WriteLine(@"Manhattan");
             path = manhattan.GetPath(start, goal);
             foreach (var s in path)
                 PrintMatrix(s.Status);
 
-            Console.WriteLine("Square Manhattan");
+            Console.WriteLine(@"Square Manhattan");
             path = manhattanSquare.GetPath(start, goal);
             foreach (var s in path)
                 PrintMatrix(s.Status);

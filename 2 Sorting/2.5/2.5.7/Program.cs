@@ -25,7 +25,7 @@ namespace _2._5._7
             var multiBy10 = 5;
             var repeatTime = 100;
             var n = 10000;
-            Console.WriteLine("n\tAverage Compare");
+            Console.WriteLine(@"n	Average Compare");
             for (var i = 0; i < multiBy10; i++)
             {
                 long totalCompare = 0;

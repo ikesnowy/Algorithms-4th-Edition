@@ -2,7 +2,7 @@
 
 static void A()
 {
-    Console.WriteLine("a");
+    Console.WriteLine(@"a");
     var t = 9.0;
     while (Math.Abs(t - 9.0 / t) > .001)
     {
@@ -14,7 +14,8 @@ static void A()
 
 static void B()
 {
-    Console.WriteLine("\nb");
+    Console.WriteLine(@"
+b");
     var sum = 0;
     for (var i = 1; i < 1000; i++)
     {
@@ -29,7 +30,8 @@ static void B()
 
 static void C()
 {
-    Console.WriteLine("\nc");
+    Console.WriteLine(@"
+c");
     var sum = 0;
     for (var i = 1; i < 1000; i *= 2)
     {

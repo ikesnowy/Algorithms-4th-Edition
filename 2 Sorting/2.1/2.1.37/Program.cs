@@ -21,7 +21,7 @@ namespace _2._1._37
             var shellArray = new int[n];
 
             // 完全随机的对照
-            Console.WriteLine("totally random");
+            Console.WriteLine(@"totally random");
             Console.WriteLine("Selection Sort:" + SortCompare.TimeRandomInput(selectionSort, n, 1));
             Console.WriteLine("Insertion Sort:" + SortCompare.TimeRandomInput(insertionSort, n, 1));
             Console.WriteLine("Shell Sort:" + SortCompare.TimeRandomInput(shellSort, n, 1));
@@ -31,7 +31,7 @@ namespace _2._1._37
             selectionArray.CopyTo(insertionArray, 0);
             selectionArray.CopyTo(shellArray, 0);
 
-            Console.WriteLine("95% sorted + 5% random");
+            Console.WriteLine(@"95% sorted + 5% random");
             Console.WriteLine("Selection Sort:" + SortCompare.Time(selectionSort, selectionArray));
             Console.WriteLine("Insertion Sort:" + SortCompare.Time(insertionSort, insertionArray));
             Console.WriteLine("Shell Sort:" + SortCompare.Time(shellSort, shellArray));
@@ -41,7 +41,7 @@ namespace _2._1._37
             selectionArray.CopyTo(insertionArray, 0);
             selectionArray.CopyTo(shellArray, 0);
 
-            Console.WriteLine("a sorted array that left shift 6 times");
+            Console.WriteLine(@"a sorted array that left shift 6 times");
             Console.WriteLine("Selection Sort:" + SortCompare.Time(selectionSort, selectionArray));
             Console.WriteLine("Insertion Sort:" + SortCompare.Time(insertionSort, insertionArray));
             Console.WriteLine("Shell Sort:" + SortCompare.Time(shellSort, shellArray));
@@ -51,7 +51,7 @@ namespace _2._1._37
             selectionArray.CopyTo(insertionArray, 0);
             selectionArray.CopyTo(shellArray, 0);
 
-            Console.WriteLine("95% elements is sorted while 5% elements are placed randomly");
+            Console.WriteLine(@"95% elements is sorted while 5% elements are placed randomly");
             Console.WriteLine("Selection Sort:" + SortCompare.Time(selectionSort, selectionArray));
             Console.WriteLine("Insertion Sort:" + SortCompare.Time(insertionSort, insertionArray));
             Console.WriteLine("Shell Sort:" + SortCompare.Time(shellSort, shellArray));

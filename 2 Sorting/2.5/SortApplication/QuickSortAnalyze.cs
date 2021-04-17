@@ -86,7 +86,7 @@ namespace SortApplication
                 {
                     Console.Write("  ");
                 }
-                Console.WriteLine("\tlo\tj\thi");
+                Console.WriteLine(@"	lo	j	hi");
             }
             Sort(a, 0, a.Length - 1);
             Debug.Assert(IsSorted(a));

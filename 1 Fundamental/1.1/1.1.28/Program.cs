@@ -15,7 +15,7 @@ for (var i = 0; i < strings.Length; i++)
 }
 
 Array.Sort(whiteList);
-Console.WriteLine("Type the numbers you want to query: ");
+Console.WriteLine(@"Type the numbers you want to query: ");
 // 输入样例：5 824524 478510 387221
 var input = Console.ReadLine();
 var query = new int[input.Split(' ').Length];
@@ -24,7 +24,7 @@ for (var i = 0; i < query.Length; i++)
     query[i] = int.Parse(input.Split(' ')[i]);
 }
 
-Console.WriteLine("Irrelevant:");
+Console.WriteLine(@"Irrelevant:");
 foreach (var n in query)
 {
     if (Rank(n, whiteList) == -1)

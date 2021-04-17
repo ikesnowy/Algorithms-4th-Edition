@@ -1,6 +1,6 @@
 ﻿using System;
 
-Console.WriteLine($"{ExR1(6)}");
+Console.WriteLine($@"{ExR1(6)}");
 
 // ExR1(6) = 
 // ExR1(3) + 6 + ExR1(4) + 6

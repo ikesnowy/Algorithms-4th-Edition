@@ -26,34 +26,34 @@ namespace BinarySearchTree
             Console.WriteLine("max = " + st.Max());
             Console.WriteLine();
 
-            Console.WriteLine("Testing keys()");
-            Console.WriteLine("---------------------------");
+            Console.WriteLine(@"Testing keys()");
+            Console.WriteLine(@"---------------------------");
             foreach (var key in st.Keys())
             {
                 Console.WriteLine(key + " " + st.Get(key));
             }
             Console.WriteLine();
 
-            Console.WriteLine("Testing select");
-            Console.WriteLine("---------------------------");
+            Console.WriteLine(@"Testing select");
+            Console.WriteLine(@"---------------------------");
             for (var i = 0; i < st.Size(); i++)
             {
                 Console.WriteLine(i + " " + st.Select(i));
             }
             Console.WriteLine();
 
-            Console.WriteLine("key rank floor ceil");
-            Console.WriteLine("---------------------------");
+            Console.WriteLine(@"key rank floor ceil");
+            Console.WriteLine(@"---------------------------");
             for (var i = 'A'; i <= 'Z'; i++)
             {
                 var s = i + "";
-                Console.WriteLine($"{s} {st.Rank(s)} {st.Floor(s)} {st.Ceiling(s)}");
+                Console.WriteLine($@"{s} {st.Rank(s)} {st.Floor(s)} {st.Ceiling(s)}");
             }
 
             var from = new[] { "A", "Z", "X", "0", "B", "C" };
             var to = new[] { "Z", "A", "X", "Z", "G", "L" };
-            Console.WriteLine("range search");
-            Console.WriteLine("---------------------------");
+            Console.WriteLine(@"range search");
+            Console.WriteLine(@"---------------------------");
             for (var i = 0; i < from.Length; i++)
             {
                 Console.Write($"{from[i]}-{to[i]} ({st.Size(from[i], to[i])})");
@@ -68,7 +68,7 @@ namespace BinarySearchTree
                 st.DeleteMin();
             }
             Console.WriteLine("After deleting the smallest " + st.Size() / 2 + " keys");
-            Console.WriteLine("---------------------------");
+            Console.WriteLine(@"---------------------------");
             foreach (var key in st.Keys())
             {
                 Console.WriteLine(key + " " + st.Get(key));
@@ -79,8 +79,8 @@ namespace BinarySearchTree
             {
                 st.Delete(st.Select(st.Size() / 2));
             }
-            Console.WriteLine("After deleting the remaining keys");
-            Console.WriteLine("---------------------------");
+            Console.WriteLine(@"After deleting the remaining keys");
+            Console.WriteLine(@"---------------------------");
             foreach (var s in st.Keys())
             {
                 Console.WriteLine(s + " " + st.Get(s));
@@ -91,8 +91,8 @@ namespace BinarySearchTree
             {
                 st.Put(keys[i], i);
             }
-            Console.WriteLine("After adding back the keys");
-            Console.WriteLine("---------------------------");
+            Console.WriteLine(@"After adding back the keys");
+            Console.WriteLine(@"---------------------------");
             foreach (var key in st.Keys())
             {
                 Console.WriteLine(key + " " + st.Get(key));

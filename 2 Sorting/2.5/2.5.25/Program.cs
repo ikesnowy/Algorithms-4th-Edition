@@ -14,24 +14,24 @@ namespace _2._5._25
                 points[i] = new Point2D(i, points.Length - i);
             }
 
-            Console.WriteLine("X-Order");
+            Console.WriteLine(@"X-Order");
             Array.Sort(points, Point2D.X_Order);
             PrintArray(points);
 
-            Console.WriteLine("Y-Order");
+            Console.WriteLine(@"Y-Order");
             Array.Sort(points, Point2D.Y_Order);
             PrintArray(points);
 
-            Console.WriteLine("R-Order");
+            Console.WriteLine(@"R-Order");
             Array.Sort(points, Point2D.R_Order);
             PrintArray(points);
 
             var origin = new Point2D(0, 0);
-            Console.WriteLine("Distance to Origin");
+            Console.WriteLine(@"Distance to Origin");
             Array.Sort(points, origin.DistanceTo_Order());
             PrintArray(points);
 
-            Console.WriteLine("Polor angle to Origin");
+            Console.WriteLine(@"Polor angle to Origin");
             Array.Sort(points, origin.Polor_Order());
             PrintArray(points);
         }

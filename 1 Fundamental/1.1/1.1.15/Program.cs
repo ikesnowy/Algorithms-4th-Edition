@@ -10,8 +10,8 @@ for (var i = 0; i < 10; i++)
 
 var result = Histogram(a, m);
 
-Console.WriteLine($"a.length: {a.Length}");
-Console.WriteLine($"sum of result array: {result.Sum()}");
+Console.WriteLine($@"a.length: {a.Length}");
+Console.WriteLine($@"sum of result array: {result.Sum()}");
 
 static int[] Histogram(int[] a, int m)
 {

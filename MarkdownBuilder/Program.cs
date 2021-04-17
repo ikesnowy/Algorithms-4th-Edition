@@ -8,9 +8,9 @@ namespace MarkdownBuilder
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("当前节：");
+            Console.WriteLine(@"当前节：");
             string section = Console.ReadLine();
-            Console.WriteLine("题目总数：");
+            Console.WriteLine(@"题目总数：");
             int questionNum = int.Parse(Console.ReadLine());
 
             StringBuilder sb = new StringBuilder();

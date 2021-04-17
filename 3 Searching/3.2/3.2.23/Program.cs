@@ -10,12 +10,12 @@ namespace _3._2._23
             var bst1 = BuildBst();
             Console.WriteLine(bst1);
 
-            Console.WriteLine("Delete 5 then delete 3");
+            Console.WriteLine(@"Delete 5 then delete 3");
             bst1.Delete(5);
             bst1.Delete(3);
             Console.WriteLine(bst1);
 
-            Console.WriteLine("Delete 3 then delete 5");
+            Console.WriteLine(@"Delete 3 then delete 5");
             var bst2 = BuildBst();
             bst2.Delete(3);
             bst2.Delete(5);

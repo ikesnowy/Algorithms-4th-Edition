@@ -22,7 +22,7 @@ namespace Measurement
                     {
                         if ((long)a[i] + a[j] + a[k] == 0)
                         {
-                            Console.WriteLine($"{a[i]} + {a[j]} + {a[k]}");
+                            Console.WriteLine($@"{a[i]} + {a[j]} + {a[k]}");
                         }
                     }
                 }

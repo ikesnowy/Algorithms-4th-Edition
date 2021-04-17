@@ -3,7 +3,7 @@
 
 var whiteList = new[] { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6 };
 Array.Sort(whiteList);
-Console.WriteLine("Type the numbers you want to query: ");
+Console.WriteLine(@"Type the numbers you want to query: ");
 var input = Console.ReadLine();
 var query = new int[input.Split(' ').Length];
 for (var i = 0; i < query.Length; i++)
@@ -11,12 +11,12 @@ for (var i = 0; i < query.Length; i++)
     query[i] = int.Parse(input.Split(' ')[i]);
 }
 
-Console.WriteLine("Result:");
+Console.WriteLine(@"Result:");
 foreach (var n in query)
 {
     var less = Rank(n, whiteList);
     var equal = Count(n, whiteList);
-    Console.WriteLine($"Less: {less} Equal: {equal}");
+    Console.WriteLine($@"Less: {less} Equal: {equal}");
 }
 
 static int Count(int key, int[] a)

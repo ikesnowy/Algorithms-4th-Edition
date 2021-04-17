@@ -33,7 +33,7 @@ namespace _2._5._31
             for (var i = 0; i < nMultipleBy10; i++)
             {
                 Console.WriteLine("n=" + n);
-                Console.WriteLine("\tm\temprical\ttheoretical");
+                Console.WriteLine(@"	m	emprical	theoretical");
                 var m = n / 2;
                 for (var j = 0; j < mMultipleBy2; j++)
                 {

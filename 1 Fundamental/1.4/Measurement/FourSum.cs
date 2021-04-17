@@ -24,7 +24,7 @@ namespace Measurement
                         {
                             if (a[i] + a[j] + a[k] + a[l] == 0)
                             {
-                                Console.WriteLine($"{a[i]} + {a[j]} + {a[k]} + {a[l]} = 0");
+                                Console.WriteLine($@"{a[i]} + {a[j]} + {a[k]} + {a[l]} = 0");
                             }
                         }
                     }

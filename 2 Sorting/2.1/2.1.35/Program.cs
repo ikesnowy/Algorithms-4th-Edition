@@ -20,7 +20,7 @@ namespace _2._1._35
             arrayInsertion.CopyTo(arraySelection, 0);
             arrayInsertion.CopyTo(arrayShell, 0);
 
-            Console.WriteLine("Normal Distribution:");
+            Console.WriteLine(@"Normal Distribution:");
             Console.WriteLine("Insertion: " + SortCompare.Time(insertionSort, arrayInsertion));
             Console.WriteLine("Selection: " + SortCompare.Time(selectionSort, arraySelection));
             Console.WriteLine("Shell: " + SortCompare.Time(shellSort, arrayShell));
@@ -30,7 +30,7 @@ namespace _2._1._35
             arrayInsertion.CopyTo(arraySelection, 0);
             arrayInsertion.CopyTo(arrayShell, 0);
 
-            Console.WriteLine("Poission Distribution:");
+            Console.WriteLine(@"Poission Distribution:");
             Console.WriteLine("Insertion: " + SortCompare.Time(insertionSort, arrayInsertion));
             Console.WriteLine("Selection: " + SortCompare.Time(selectionSort, arraySelection));
             Console.WriteLine("Shell: " + SortCompare.Time(shellSort, arrayShell));
@@ -40,7 +40,7 @@ namespace _2._1._35
             arrayInsertion.CopyTo(arraySelection, 0);
             arrayInsertion.CopyTo(arrayShell, 0);
 
-            Console.WriteLine("Geometric Distribution:");
+            Console.WriteLine(@"Geometric Distribution:");
             Console.WriteLine("Insertion: " + SortCompare.Time(insertionSort, arrayInsertion));
             Console.WriteLine("Selection: " + SortCompare.Time(selectionSort, arraySelection));
             Console.WriteLine("Shell: " + SortCompare.Time(shellSort, arrayShell));
@@ -50,7 +50,7 @@ namespace _2._1._35
             arrayInsertion.CopyTo(arraySelection, 0);
             arrayInsertion.CopyTo(arrayShell, 0);
 
-            Console.WriteLine("Discret Distribution:");
+            Console.WriteLine(@"Discret Distribution:");
             Console.WriteLine("Insertion: " + SortCompare.Time(insertionSort, arrayInsertion));
             Console.WriteLine("Selection: " + SortCompare.Time(selectionSort, arraySelection));
             Console.WriteLine("Shell: " + SortCompare.Time(shellSort, arrayShell));

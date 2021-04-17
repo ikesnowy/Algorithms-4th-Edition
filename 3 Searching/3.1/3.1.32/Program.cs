@@ -18,10 +18,10 @@ namespace _3._1._32
                 bst[i] = new BinarySearchST<string, int>();
                 sst[i] = new SequentialSearchST<string, int>();
             }
-            Console.WriteLine("BinarySearch");
+            Console.WriteLine(@"BinarySearch");
             Test(bst, n);
             Console.WriteLine();
-            Console.WriteLine("SequentialSearch");
+            Console.WriteLine(@"SequentialSearch");
             Test(sst, n);
         }
 

@@ -6,7 +6,7 @@ Gcd(111111, 1234567);
 
 static int Gcd(int a, int b)
 {
-    Console.WriteLine($"{a} {b}");
+    Console.WriteLine($@"{a} {b}");
     if (b == 0)
     {
         return a;

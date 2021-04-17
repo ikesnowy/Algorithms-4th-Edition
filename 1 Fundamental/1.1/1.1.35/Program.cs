@@ -28,10 +28,14 @@ while (isAccepted == false)
     n++;
 }
 
-Console.WriteLine($"times:{n}\n");
+Console.WriteLine($@"times:{n}
+");
 for (var i = 0; i < dist.Length; i++)
 {
-    Console.WriteLine($"{i}:\n Standerd:{dist[i]}\nSimulated:{distTemp[i]}\nOffset:{Math.Abs(distTemp[i] - dist[i])}");
+    Console.WriteLine($@"{i}:
+ Standerd:{dist[i]}
+Simulated:{distTemp[i]}
+Offset:{Math.Abs(distTemp[i] - dist[i])}");
 }
 
 static double[] PlayDice(int times)

@@ -13,7 +13,7 @@ namespace _3._1._35
             var multiplyBy2 = 5;
             var repeatTimes = 5;
             double lastTime = -1;
-            Console.WriteLine("n\ttime\tratio");
+            Console.WriteLine(@"n	time	ratio");
             for (var i = 0; i < multiplyBy2; i++)
             {
                 Console.Write(n + "\t");
@@ -29,7 +29,7 @@ namespace _3._1._35
                 timeSum /= repeatTimes;
                 Console.Write(timeSum + "\t");
                 if (lastTime < 0)
-                    Console.WriteLine("--");
+                    Console.WriteLine(@"--");
                 else
                     Console.WriteLine(timeSum / lastTime);
                 lastTime = timeSum;

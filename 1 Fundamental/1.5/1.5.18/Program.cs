@@ -10,7 +10,7 @@ namespace _1._5._18
             var result = RandomGrid.Generate(5);
             foreach (var i in result)
             {
-                Console.WriteLine($"({i.P}, {i.Q})");
+                Console.WriteLine($@"({i.P}, {i.Q})");
             }
         }
     }

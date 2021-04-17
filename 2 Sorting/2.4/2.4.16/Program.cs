@@ -18,7 +18,7 @@ namespace _2._4._16
             for (var i = 0; i < size; i++)
                 bestCase[i] = 1;
 
-            Console.WriteLine("Best Input");
+            Console.WriteLine(@"Best Input");
             for (var i = 0; i < size; i++)
                 Console.Write(bestCase[i] + " ");
             Console.WriteLine();
@@ -29,7 +29,7 @@ namespace _2._4._16
 
             var pq = new MaxPQWorstCase(size);
             var worstCase = pq.MakeWorst(size);
-            Console.WriteLine("Worst Input");
+            Console.WriteLine(@"Worst Input");
             for (var i = 0; i < worstCase.Length; i++)
                 Console.Write(worstCase[i] + " ");
             Console.WriteLine();

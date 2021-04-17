@@ -31,7 +31,7 @@ namespace Generics_Test
                     Console.WriteLine(stack.Pop());
             }
 
-            Console.WriteLine($"({stack.Size()}) left on stack");
+            Console.WriteLine($@"({stack.Size()}) left on stack");
             Console.WriteLine(stack);
             Console.WriteLine();
 
@@ -45,7 +45,7 @@ namespace Generics_Test
                     Console.WriteLine(queue.Dequeue());
             }
 
-            Console.WriteLine($"({queue.Size()}) left on queue");
+            Console.WriteLine($@"({queue.Size()}) left on queue");
             Console.WriteLine(queue);
 
             var link = new LinkedList<string>();

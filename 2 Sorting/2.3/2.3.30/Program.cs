@@ -18,7 +18,7 @@ namespace _2._3._30
 
             arrayInsertion.CopyTo(arraySelection, 0);
 
-            Console.WriteLine("Normal Distribution:");
+            Console.WriteLine(@"Normal Distribution:");
             Console.WriteLine("Insertion: " + SortCompare.Time(insertionSort, arrayInsertion));
             Console.WriteLine("Random Pivot: " + SortCompare.Time(randomSort, arraySelection));
             Console.WriteLine();
@@ -27,7 +27,7 @@ namespace _2._3._30
             arrayInsertion = SortCompare.GetPossionDistributionArray(n);
             arrayInsertion.CopyTo(arraySelection, 0);
 
-            Console.WriteLine("Poission Distribution:");
+            Console.WriteLine(@"Poission Distribution:");
             Console.WriteLine("Insertion: " + SortCompare.Time(insertionSort, arrayInsertion));
             Console.WriteLine("Random Pivot: " + SortCompare.Time(randomSort, arraySelection));
             Console.WriteLine();
@@ -36,7 +36,7 @@ namespace _2._3._30
             arrayInsertion = SortCompare.GetGeometricDistributionArray(n, 0.3);
             arrayInsertion.CopyTo(arraySelection, 0);
 
-            Console.WriteLine("Geometric Distribution:");
+            Console.WriteLine(@"Geometric Distribution:");
             Console.WriteLine("Insertion: " + SortCompare.Time(insertionSort, arrayInsertion));
             Console.WriteLine("Random Pivot: " + SortCompare.Time(randomSort, arraySelection));
             Console.WriteLine();
@@ -45,7 +45,7 @@ namespace _2._3._30
             arrayInsertion = SortCompare.GetDiscretDistributionArray(n, new double[] { 0.1, 0.2, 0.3, 0.1, 0.1, 0.1, 0.1 });
             arrayInsertion.CopyTo(arraySelection, 0);
 
-            Console.WriteLine("Discret Distribution:");
+            Console.WriteLine(@"Discret Distribution:");
             Console.WriteLine("Insertion: " + SortCompare.Time(insertionSort, arrayInsertion));
             Console.WriteLine("Random Pivot: " + SortCompare.Time(randomSort, arraySelection));
             Console.WriteLine();
@@ -55,7 +55,7 @@ namespace _2._3._30
             var arrayRandomPivot = new int[n];
             arrayNormalInsertion.CopyTo(arrayRandomPivot, 0);
 
-            Console.WriteLine("half 0 and half 1");
+            Console.WriteLine(@"half 0 and half 1");
             Console.WriteLine("Insertion:" + SortCompare.Time(insertionSort, arrayNormalInsertion));
             Console.WriteLine("Random Pivot:" + SortCompare.Time(randomSort, arrayRandomPivot));
             Console.WriteLine();
@@ -64,7 +64,7 @@ namespace _2._3._30
             arrayNormalInsertion = HalfAndHalf(n);
             arrayNormalInsertion.CopyTo(arrayRandomPivot, 0);
 
-            Console.WriteLine("half and half and half ...");
+            Console.WriteLine(@"half and half and half ...");
             Console.WriteLine("Insertion Sort:" + SortCompare.Time(insertionSort, arrayNormalInsertion));
             Console.WriteLine("Random Pivot:" + SortCompare.Time(randomSort, arrayRandomPivot));
             Console.WriteLine();
@@ -73,7 +73,7 @@ namespace _2._3._30
             arrayNormalInsertion = HalfZeroHalfRandom(n);
             arrayNormalInsertion.CopyTo(arrayRandomPivot, 0);
 
-            Console.WriteLine("half 0 half random");
+            Console.WriteLine(@"half 0 half random");
             Console.WriteLine("Insertion Sort:" + SortCompare.Time(insertionSort, arrayNormalInsertion));
             Console.WriteLine("Random Pivot:" + SortCompare.Time(randomSort, arrayRandomPivot));
         }

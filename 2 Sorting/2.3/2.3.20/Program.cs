@@ -13,7 +13,7 @@ namespace _2._3._20
             const int trialTimes = 4;                       // 每次实验的重复次数。
             const int trialLevel = 5;                       // 双倍递增的次数。
 
-            Console.WriteLine("n\tnon-recursive\tnormal\tratio");
+            Console.WriteLine(@"n	non-recursive	normal	ratio");
             for (var i = 0; i < trialLevel; i++)
             {
                 double timeRecursive = 0;

@@ -14,7 +14,7 @@ namespace _2._3._24
             const int trialTimes = 1;                       // 每次实验的重复次数。
             const int trialLevel = 2;                       // 双倍递增的次数。
 
-            Console.WriteLine("k\tn\t\tsample\tnormal\tratio");
+            Console.WriteLine(@"k	n		sample	normal	ratio");
             for (var i = 0; i < kSteps; i++)
             {
                 var array = arraySize;

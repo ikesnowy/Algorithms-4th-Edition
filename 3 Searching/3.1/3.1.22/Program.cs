@@ -16,7 +16,7 @@ namespace _3._1._22
                 Console.WriteLine(s);
 
             st.Get("beta");
-            Console.WriteLine("Get(\"beta\")");
+            Console.WriteLine(@"Get(""beta"")");
 
             foreach (var s in st.Keys())
                 Console.WriteLine(s);

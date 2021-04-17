@@ -15,7 +15,7 @@ namespace _2._3._27
             const int trialTimes = 4;                       // 每次实验的重复次数。
             const int trialLevel = 10;                      // 双倍递增的次数。
 
-            Console.WriteLine("M\tn\t\tignore\tinsert\tratio");
+            Console.WriteLine(@"M	n		ignore	insert	ratio");
             for (var i = 0; i < mSteps; i++)
             {
                 var array = arraySize;

@@ -23,26 +23,26 @@ namespace _2._1._22
 
             var insertionSort = new InsertionSort();
 
-            Console.WriteLine("Unsorted");
+            Console.WriteLine(@"Unsorted");
             for (var i = 0; i < a.Length; i++)
             {
                 Console.WriteLine(a[i]);
             }
             Console.WriteLine();
 
-            Console.WriteLine("Sort by date");
+            Console.WriteLine(@"Sort by date");
             insertionSort.Sort(a, new Transaction.WhenOrder());
             for (var i = 0; i < a.Length; i++)
                 Console.WriteLine(a[i]);
             Console.WriteLine();
 
-            Console.WriteLine("Sort by customer");
+            Console.WriteLine(@"Sort by customer");
             insertionSort.Sort(a, new Transaction.WhoOrder());
             for (var i = 0; i < a.Length; i++)
                 Console.WriteLine(a[i]);
             Console.WriteLine();
 
-            Console.WriteLine("Sort by amount");
+            Console.WriteLine(@"Sort by amount");
             insertionSort.Sort(a, new Transaction.HowMuchOrder());
             for (var i = 0; i < a.Length; i++)
                 Console.WriteLine(a[i]);

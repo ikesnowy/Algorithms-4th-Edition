@@ -8,7 +8,7 @@ namespace _2._3._29
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("M\tN\tshuffle\trandom\tshuffle/random");
+            Console.WriteLine(@"M	N	shuffle	random	shuffle/random");
             Trial(10);
             Trial(20);
             Trial(50);

@@ -31,7 +31,7 @@ namespace _3._2._42
 
                 var avePathHibbardBefore = bstHibbard.AverageInternalPathLength();
                 var avePathNonHibbardBefore = bstNonHibbard.AverageInternalPathLength();
-                Console.WriteLine("stage\tHibbard\tNonHibbard");
+                Console.WriteLine(@"stage	Hibbard	NonHibbard");
                 Console.WriteLine("before\t" + avePathHibbardBefore + "\t" + avePathNonHibbardBefore);
 
                 // test

@@ -20,7 +20,7 @@ namespace _3._1._41
             // 2lg(lgN)) = lgN, N = 4
             // 10lg(lgN)) = lgN, N = 58
 
-            Console.WriteLine("n\tist(compare/time)\tbst(compare/time)\tratio(compare/time)");
+            Console.WriteLine(@"n	ist(compare/time)	bst(compare/time)	ratio(compare/time)");
             Test(1, 10000000);
             Test(4, 10000000);
             Test(58, 10000000);

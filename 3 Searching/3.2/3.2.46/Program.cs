@@ -21,7 +21,7 @@ namespace _3._2._46
             // 100 倍：139(N-1)lg(N-1) = N(N-1)/4, N = 7115
             // 1000 倍：1390(N-1)lg(N-1) = N(N-1)/4, N = 91651
 
-            Console.WriteLine("N\tArray\tTree\tRatio");
+            Console.WriteLine(@"N	Array	Tree	Ratio");
             Test(499);
             Test(7115);
             Test(91651);

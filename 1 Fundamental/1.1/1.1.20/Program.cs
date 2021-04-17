@@ -1,7 +1,7 @@
 ﻿using System;
 
 const int n = 4;
-Console.WriteLine($"{FactorialLn(n)}");
+Console.WriteLine($@"{FactorialLn(n)}");
 
 // ln(N!) =
 // ln(N * (N - 1) * ... * 1) =

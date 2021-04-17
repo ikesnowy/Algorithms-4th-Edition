@@ -1,49 +1,36 @@
 ﻿using System;
 
-namespace _1._4._44
+var random = new Random();
+const int n = 10000;
+var a = new int[n];
+var dupNum = 0;
+int times;
+for (times = 0; times < 500; times++)
 {
-    class Program
+    for (var i = 0; i < n; i++)
     {
-        static void Main(string[] args)
+        a[i] = random.Next(n);
+        if (IsDuplicated(a, i))
         {
-            var random = new Random();
-            var N = 10000;
-            var a = new int[N];
-            var dupNum = 0;
-            var times = 0;
-            for (times = 0; times < 500; times++)
-            {
-                for (var i = 0; i < N; i++)
-                {
-                    a[i] = random.Next(N);
-                    if (IsDuplicated(a, i))
-                    {
-                        dupNum += i;
-                        Console.WriteLine($"生成{i + 1}个数字后发生重复");
-                        break;
-                    }
-                }
-            }
-            Console.WriteLine($"√(πN/2)={Math.Sqrt(Math.PI * N / 2.0)}，平均生成{dupNum / times}个数字后出现重复");
+            dupNum += i;
+            Console.WriteLine($@"生成{i + 1}个数字后发生重复");
+            break;
         }
-
-        /// <summary>
-        /// 检查是否有重复的数字出现。
-        /// </summary>
-        /// <param name="a">需要检查的数组。</param>
-        /// <param name="i">当前加入数组元素的下标。</param>
-        /// <returns>有重复则返回 true，否则返回 false。</returns>
-        static bool IsDuplicated(int[] a, int i)
-        {
-            for (var j = 0; j < i; j++)
-            {
-                if (a[j] == a[i])
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
     }
+}
+
+Console.WriteLine($@"√(πN/2)={Math.Sqrt(Math.PI * n / 2.0)}，平均生成{dupNum / times}个数字后出现重复");
+
+// 检查是否有重复的数字出现。
+static bool IsDuplicated(int[] a, int i)
+{
+    for (var j = 0; j < i; j++)
+    {
+        if (a[j] == a[i])
+        {
+            return true;
+        }
+    }
+
+    return false;
 }

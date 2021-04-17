@@ -15,9 +15,9 @@ namespace _3._2._41
                 var bst = new BST<int, int>();
                 var bstArray = new BSTArray<int, int>(n);
 
-                Console.WriteLine("BST");
+                Console.WriteLine(@"BST");
                 Test(n, bst);
-                Console.WriteLine("BST Array");
+                Console.WriteLine(@"BST Array");
                 Test(n, bstArray);
 
                 n *= 10;

@@ -29,19 +29,19 @@ namespace _2._5._11
         static void Main(string[] args)
         {
             // 插入排序
-            Console.WriteLine("Insertion Sort");
+            Console.WriteLine(@"Insertion Sort");
             Test(new InsertionSort(), 7, 1);
             // 选择排序
-            Console.WriteLine("Selection Sort");
+            Console.WriteLine(@"Selection Sort");
             Test(new SelectionSort(), 7, 1);
             // 希尔排序
-            Console.WriteLine("Shell Sort");
+            Console.WriteLine(@"Shell Sort");
             Test(new ShellSort(), 7, 1);
             // 归并排序
-            Console.WriteLine("Merge Sort");
+            Console.WriteLine(@"Merge Sort");
             Test(new MergeSort(), 7, 1);
             // 快速排序
-            Console.WriteLine("Quick Sort");
+            Console.WriteLine(@"Quick Sort");
             var quick = new QuickSortAnalyze
             {
                 NeedShuffle = false,
@@ -49,7 +49,7 @@ namespace _2._5._11
             };
             Test(quick, 7, 1);
             // 堆排序
-            Console.WriteLine("Heap Sort");
+            Console.WriteLine(@"Heap Sort");
             var array = new Item<int>[7];
             for (var i = 0; i < 7; i++)
                 array[i] = new Item<int>(i, 1);

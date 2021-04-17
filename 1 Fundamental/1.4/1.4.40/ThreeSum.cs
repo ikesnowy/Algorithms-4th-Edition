@@ -16,7 +16,7 @@ namespace _1._4._40
             var n = a.Length;
             for (var i = 0; i < n; i++)
             {
-                Console.WriteLine($"for number \"{a[i]}\"");
+                Console.WriteLine($@"for number ""{a[i]}""");
                 var count = 0;
                 for (var j = i + 1; j < n; j++)
                 {
@@ -24,12 +24,12 @@ namespace _1._4._40
                     {
                         if ((long)a[i] + a[j] + a[k] == 0)
                         {
-                            Console.WriteLine($"{a[i]} + {a[j]} + {a[k]}");
+                            Console.WriteLine($@"{a[i]} + {a[j]} + {a[k]}");
                             count++;
                         }
                     }
                 }
-                Console.WriteLine($"Count:{count}");
+                Console.WriteLine($@"Count:{count}");
             }
         }
 

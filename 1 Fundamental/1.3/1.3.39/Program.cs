@@ -12,7 +12,7 @@ try
 }
 catch (OutOfMemoryException)
 {
-    Console.WriteLine("缓冲区已满");
+    Console.WriteLine(@"缓冲区已满");
 }
 
 while (!buffer.IsEmpty())

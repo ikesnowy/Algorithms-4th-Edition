@@ -15,7 +15,7 @@ namespace _1._5._20
             {
                 if (uf.NewSite() != i)
                 {
-                    Console.WriteLine("标识符不一致！");
+                    Console.WriteLine(@"标识符不一致！");
                     return;
                 }
             }

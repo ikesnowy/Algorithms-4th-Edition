@@ -13,7 +13,7 @@ namespace _3._1._27
                 data[i] = i;
             Shuffle(data);
 
-            Console.WriteLine("\t比较\t交换\t总和");
+            Console.WriteLine(@"	比较	交换	总和");
             Console.Write("Put()\t");
             var bst = new BinarySearchST<int, int>(n);
             for (var i = 0; i < n; i++)

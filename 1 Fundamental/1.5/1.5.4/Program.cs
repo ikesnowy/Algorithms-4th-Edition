@@ -13,7 +13,7 @@ namespace _1._5._4
             var inputWorst = TestCase.Properties.Resources.worstUF.Split(split, StringSplitOptions.RemoveEmptyEntries);
 
             RunTest(inputReference);
-            Console.WriteLine("-------------------------------------");
+            Console.WriteLine(@"-------------------------------------");
             RunTest(inputWorst);
         }
 
@@ -30,7 +30,7 @@ namespace _1._5._4
                 var p = int.Parse(unit[0]);
                 var q = int.Parse(unit[1]);
 
-                Console.WriteLine($"{p} {q}");
+                Console.WriteLine($@"{p} {q}");
                 weightedQuickUnion.Union(p, q);
 
                 Console.Write("index:\t");

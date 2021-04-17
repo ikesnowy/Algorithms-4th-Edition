@@ -14,4 +14,4 @@ foreach (var n in s)
         Console.Write(stack.Pop() + " ");
 }
 
-Console.WriteLine($"({stack.Size()} left on stack)");
+Console.WriteLine($@"({stack.Size()} left on stack)");

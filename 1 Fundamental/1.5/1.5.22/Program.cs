@@ -21,7 +21,7 @@ namespace _1._5._22
                 var weightedQuickUnionUF = new WeightedQuickUnionUF(n);
 
                 // quick-find
-                Console.WriteLine("quick-find");
+                Console.WriteLine(@"quick-find");
                 nowTime = RunTest(quickFindUF);
                 if (lastTimeQuickFind == 0)
                 {
@@ -37,7 +37,7 @@ namespace _1._5._22
                 Console.WriteLine();
 
                 // quick-union
-                Console.WriteLine("quick-union");
+                Console.WriteLine(@"quick-union");
                 nowTime = RunTest(quickUnionUF);
                 if (lastTimeQuickUnion == 0)
                 {
@@ -53,7 +53,7 @@ namespace _1._5._22
                 Console.WriteLine();
 
                 // weighted-quick-union
-                Console.WriteLine("weighted-quick-union");
+                Console.WriteLine(@"weighted-quick-union");
                 nowTime = RunTest(weightedQuickUnionUF);
                 if (lastTimeWeightedQuickUnion == 0)
                 {

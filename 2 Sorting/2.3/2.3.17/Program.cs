@@ -17,7 +17,7 @@ namespace _2._3._17
 
             var time1 = SortCompare.Time(quick, a);
             var time2 = SortCompare.Time(quickSortX, b);
-            Console.WriteLine("QSort\tQSort with Sentinels\t");
+            Console.WriteLine(@"QSort	QSort with Sentinels	");
             Console.WriteLine(time1 + "\t" + time2 + "\t");
         }
     }

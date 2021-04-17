@@ -25,7 +25,7 @@ namespace _2._1._36
             arrayInsertion.CopyTo(arraySelection, 0);
             arrayInsertion.CopyTo(arrayShell, 0);
 
-            Console.WriteLine("totally random");
+            Console.WriteLine(@"totally random");
             Console.WriteLine("Insertion Sort:" + SortCompare.TimeRandomInput(insertionSort, n, 1));
             Console.WriteLine("Selection Sort:" + SortCompare.TimeRandomInput(selectionSort, n, 1));
             Console.WriteLine("Shell Sort:" + SortCompare.TimeRandomInput(shellSort, n, 1));
@@ -36,7 +36,7 @@ namespace _2._1._36
             arrayInsertion.CopyTo(arraySelection, 0);
             arrayInsertion.CopyTo(arrayShell, 0);
 
-            Console.WriteLine("half 0 and half 1");
+            Console.WriteLine(@"half 0 and half 1");
             Console.WriteLine("Insertion Sort:" + SortCompare.Time(insertionSort, arrayInsertion));
             Console.WriteLine("Selection Sort:" + SortCompare.Time(selectionSort, arraySelection));
             Console.WriteLine("Shell Sort:" + SortCompare.Time(shellSort, arrayShell));
@@ -47,7 +47,7 @@ namespace _2._1._36
             arrayInsertion.CopyTo(arraySelection, 0);
             arrayShell.CopyTo(arrayShell, 0);
 
-            Console.WriteLine("half and half and half ...");
+            Console.WriteLine(@"half and half and half ...");
             Console.WriteLine("Insertion Sort:" + SortCompare.Time(insertionSort, arrayInsertion));
             Console.WriteLine("Selection Sort:" + SortCompare.Time(selectionSort, arraySelection));
             Console.WriteLine("Shell Sort:" + SortCompare.Time(shellSort, arrayShell));
@@ -58,7 +58,7 @@ namespace _2._1._36
             arrayInsertion.CopyTo(arraySelection, 0);
             arrayShell.CopyTo(arrayShell, 0);
 
-            Console.WriteLine("half 0 half random");
+            Console.WriteLine(@"half 0 half random");
             Console.WriteLine("Insertion Sort:" + SortCompare.Time(insertionSort, arrayInsertion));
             Console.WriteLine("Selection Sort:" + SortCompare.Time(selectionSort, arraySelection));
             Console.WriteLine("Shell Sort:" + SortCompare.Time(shellSort, arrayShell));

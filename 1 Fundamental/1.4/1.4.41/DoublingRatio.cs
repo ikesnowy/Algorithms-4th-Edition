@@ -49,13 +49,13 @@ namespace _1._4._41
             // 1K
             var a = ReadAllInts(TestCase.Properties.Resources._1Kints);
             var prevTime = TimeTrial(Count, a);
-            Console.WriteLine("数据量\t耗时\t比值");
-            Console.WriteLine($"1000\t{prevTime / 1000}\t");
+            Console.WriteLine(@"数据量	耗时	比值");
+            Console.WriteLine($@"1000	{prevTime / 1000}	");
 
             // 2K
             a = ReadAllInts(TestCase.Properties.Resources._2Kints);
             var time = TimeTrial(Count, a);
-            Console.WriteLine($"2000\t{time / 1000}\t{time / prevTime}");
+            Console.WriteLine($@"2000	{time / 1000}	{time / prevTime}");
             if (prevTime != 0)
             {
                 ratio += time / prevTime;
@@ -69,7 +69,7 @@ namespace _1._4._41
             // 4K
             a = ReadAllInts(TestCase.Properties.Resources._4Kints);
             time = TimeTrial(Count, a);
-            Console.WriteLine($"4000\t{time / 1000}\t{time / prevTime}");
+            Console.WriteLine($@"4000	{time / 1000}	{time / prevTime}");
             if (prevTime != 0)
             {
                 ratio += time / prevTime;
@@ -83,7 +83,7 @@ namespace _1._4._41
             // 8K
             a = ReadAllInts(TestCase.Properties.Resources._8Kints);
             time = TimeTrial(Count, a);
-            Console.WriteLine($"8000\t{time / 1000}\t{time / prevTime}");
+            Console.WriteLine($@"8000	{time / 1000}	{time / prevTime}");
             if (prevTime != 0)
             {
                 ratio += time / prevTime;
@@ -110,13 +110,13 @@ namespace _1._4._41
             // 8K
             var a = ReadAllInts(TestCase.Properties.Resources._8Kints);
             var prevTime = TimeTrial(Count, a);
-            Console.WriteLine("数据量\t耗时\t比值");
-            Console.WriteLine($"8000\t{prevTime / 1000}\t");
+            Console.WriteLine(@"数据量	耗时	比值");
+            Console.WriteLine($@"8000	{prevTime / 1000}	");
 
             // 16K
             a = ReadAllInts(TestCase.Properties.Resources._16Kints);
             var time = TimeTrial(Count, a);
-            Console.WriteLine($"16000\t{time / 1000}\t{time / prevTime}");
+            Console.WriteLine($@"16000	{time / 1000}	{time / prevTime}");
             if (prevTime != 0)
             {
                 ratio += time / prevTime;
@@ -130,7 +130,7 @@ namespace _1._4._41
             // 32K
             a = ReadAllInts(TestCase.Properties.Resources._32Kints);
             time = TimeTrial(Count, a);
-            Console.WriteLine($"32000\t{time / 1000}\t{time / prevTime}");
+            Console.WriteLine($@"32000	{time / 1000}	{time / prevTime}");
             if (prevTime != 0)
             {
                 ratio += time / prevTime;

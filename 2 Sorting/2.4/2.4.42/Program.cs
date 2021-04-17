@@ -10,7 +10,7 @@ namespace _2._4._42
 
         static void Main(string[] args)
         {
-            Console.WriteLine("n\torigin\tpre-order\tRatio");
+            Console.WriteLine(@"n	origin	pre-order	Ratio");
 
             var n = 1000;     // 当数据量到达 10^9 时会需要 2G 左右的内存
             var multiTen = 7;
@@ -84,7 +84,7 @@ namespace _2._4._42
 
             if (k == 0)
                 return;
-            Console.WriteLine("Spliting:");
+            Console.WriteLine(@"Spliting:");
 
             Console.Write(data[p] + " | ");
             var left = (int)Math.Pow(2, k - 1) - 1;
