@@ -1,28 +1,20 @@
 ﻿using System;
+// ReSharper disable RedundantAssignment
 
-namespace _1._1._14
+const int n = 9;
+Console.WriteLine($"{Lg(n)}");
+
+// 利用循环逼近 n，得到 log2(n) 的值
+static int Lg(int n)
 {
-    class Program
+    const int baseNumber = 2;
+    var pow = 1;
+    var sum = 2;
+
+    for (pow = 1; sum < n; pow++)
     {
-        static void Main(string[] args)
-        {
-            var N = 9;
-            Console.WriteLine($"{ lg(N)}");
-        }
-
-        // 利用循环逼近 N，得到 log2(N) 的值
-        static int lg(int N)
-        {
-            var baseNumber = 2;
-            var pow = 1;
-            var sum = 2;
-
-            for (pow = 1; sum < N; pow++)
-            {
-                sum *= baseNumber;
-            }
-
-            return pow - 1;
-        }
+        sum *= baseNumber;
     }
+
+    return pow - 1;
 }

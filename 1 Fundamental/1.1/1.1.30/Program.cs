@@ -1,51 +1,38 @@
 ﻿using System;
+// ReSharper disable AssignNullToNotNullAttribute
 
-namespace _1._1._30
+// 互质 = 最大公约数为 1 = gcd(i, j) == 1
+var n = int.Parse(Console.ReadLine());
+
+var a = new bool[n, n];
+
+for (var i = 0; i < n; i++)
 {
-    class Program
+    for (var j = 0; j < n; j++)
     {
-        // 互质 = 最大公约数为 1 = gcd(i, j) == 1
-        static void Main(string[] args)
+        a[i, j] = (Gcd(i, j) == 1);
+    }
+}
+
+PrintArray2D(a, n, n);
+
+static int Gcd(int a, int b)
+{
+    if (b == 0)
+        return a;
+
+    return Gcd(b, a % b);
+}
+
+static void PrintArray2D(bool[,] array, int rows, int columns)
+{
+    for (var i = 0; i < rows; i++)
+    {
+        for (var j = 0; j < columns; j++)
         {
-            var N = int.Parse(Console.ReadLine());
-
-            var a = new bool[N, N];
-
-            for (var i = 0; i < N; i++)
-            {
-                for (var j = 0; j < N; j++)
-                {
-                    a[i, j] = (gcd(i, j) == 1);
-                }
-            }
-
-            PrintArray2D(a, N, N);
+            Console.Write($"\t{array[i, j]}");
         }
 
-        /// <summary>
-        /// 计算两个数之间的最大公约数。
-        /// </summary>
-        /// <param name="a">第一个数。</param>
-        /// <param name="b">第二个数。</param>
-        /// <returns></returns>
-        static int gcd(int a, int b)
-        {
-            if (b == 0)
-                return a;
-
-            return gcd(b, a % b);
-        }
-
-        private static void PrintArray2D(bool[,] array, int rows, int columns)
-        {
-            for (var i = 0; i < rows; i++)
-            {
-                for (var j = 0; j < columns; j++)
-                {
-                    Console.Write($"\t{array[i, j]}");
-                }
-                Console.Write("\n");
-            }
-        }
+        Console.Write("\n");
     }
 }

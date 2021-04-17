@@ -2,220 +2,167 @@
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+// ReSharper disable UnusedLocalFunctionReturnValue
 
-namespace _1._1._34
+var allNumbers = File.ReadAllLines("largeW.txt");
+var n = allNumbers.Length;
+var input = new int[n];
+for (var i = 0; i < n; i++)
 {
-    class Program
+    input[i] = int.Parse(allNumbers[i]);
+}
+
+MinAndMax(input);
+Console.WriteLine();
+MidNumber(input);
+Console.WriteLine();
+NumberK(4, input);
+Console.WriteLine();
+SquareSum(input);
+Console.WriteLine();
+AboveAverage(input);
+Console.WriteLine();
+Ascending(input);
+Console.WriteLine();
+Shuffle(input);
+Console.WriteLine();
+
+static void MinAndMax(int[] input)
+{
+    // 只用到了两个变量
+    var min = input[0];
+    var max = input[0];
+
+    // 只对输入值正向遍历一遍，不需要保存
+    for (var i = 1; i < input.Length; i++)
     {
-        static void Main(string[] args)
+        if (input[i] > max)
         {
-            var AllNumbers = File.ReadAllLines("largeW.txt");
-            var N = AllNumbers.Length;
-            var input = new int[N];
-
-            for (var i = 0; i < N; i++)
-            {
-                input[i] = int.Parse(AllNumbers[i]);
-            }
-
-            MinAndMax(input);
-            Console.WriteLine();
-
-            MidNumber(input);
-            Console.WriteLine();
-
-            NumberK(4, input);
-            Console.WriteLine();
-
-            SquareSum(input);
-            Console.WriteLine();
-
-            AboveAverage(input);
-            Console.WriteLine();
-
-            Ascending(input);
-            Console.WriteLine();
-
-            Shuffle(input);
-            Console.WriteLine();
+            max = input[i];
         }
 
-        /// <summary>
-        /// 获取最大值和最小值。
-        /// </summary>
-        /// <param name="input">输入流。</param>
-        static void MinAndMax(int[] input)
+        if (input[i] < min)
         {
-            // 只用到了两个变量
-            var min = input[0];
-            var max = input[0];
-
-            // 只对输入值正向遍历一遍，不需要保存
-            for (var i = 1; i < input.Length; i++)
-            {
-                if (input[i] > max)
-                {
-                    max = input[i];
-                }
-
-                if (input[i] < min)
-                {
-                    min = input[i];
-                }
-            }
-
-            Console.WriteLine("Min and Max:");
-            Console.WriteLine($"Min: {min}\nMax: {max}");
+            min = input[i];
         }
+    }
 
-        /// <summary>
-        /// 获取中位数。
-        /// </summary>
-        /// <param name="input">输入流。</param>
-        /// <returns></returns>
-        static int MidNumber(int[] input)
+    Console.WriteLine("Min and Max:");
+    Console.WriteLine($"Min: {min}\nMax: {max}");
+}
+
+static int MidNumber(int[] input)
+{
+    // 需要对输入值进行去重 & 排序，故需要保存
+    var distinctNumbers = new List<int>(input.Distinct());
+    distinctNumbers.Sort();
+    Console.WriteLine("MidNumber:");
+    Console.WriteLine(distinctNumbers[distinctNumbers.Count / 2]);
+
+    return distinctNumbers[distinctNumbers.Count / 2];
+}
+
+static int NumberK(int k, int[] input)
+{
+    var temp = new int[101];
+
+    // 只正向遍历一遍，不需要保存
+    for (var i = 0; i < input.Length; i++)
+    {
+        if (i < 100)
         {
-            // 需要对输入值进行去重 & 排序，故需要保存
-            var DistinctNumbers = new List<int>(input.Distinct());
-            DistinctNumbers.Sort();
-            Console.WriteLine("MidNumber:");
-            Console.WriteLine(DistinctNumbers[DistinctNumbers.Count / 2]);
-
-            return DistinctNumbers[DistinctNumbers.Count / 2];
+            temp[i] = input[i];
         }
-
-        /// <summary>
-        /// 获取第 k 小的数。
-        /// </summary>
-        /// <param name="k">需要获取的排名。</param>
-        /// <param name="input">输入流。</param>
-        /// <returns></returns>
-        static int NumberK(int k, int[] input)
+        else
         {
-            var temp = new int[101];
-
-            // 只正向遍历一遍，不需要保存
-            for (var i = 0; i < input.Length; i++)
-            {
-                if (i < 100)
-                {
-                    temp[i] = input[i];
-                }
-                else
-                {
-                    temp[100] = input[i];
-                    Array.Sort(temp);
-                }
-            }
-
-            Console.WriteLine("NumberK");
-            Console.WriteLine($"No.k: {temp[k - 1]}");
-
-            return temp[k - 1];
+            temp[100] = input[i];
+            Array.Sort(temp);
         }
+    }
 
-        /// <summary>
-        /// 计算输入流中所有数的平方和。
-        /// </summary>
-        /// <param name="input">输入流。</param>
-        /// <returns>所有数的平方和。</returns>
-        static long SquareSum(int[] input)
+    Console.WriteLine("NumberK");
+    Console.WriteLine($"No.k: {temp[k - 1]}");
+
+    return temp[k - 1];
+}
+
+static long SquareSum(int[] input)
+{
+    long sum = 0;
+    // 只正向遍历一遍，不需要保存
+    for (var i = 0; i < input.Length; i++)
+    {
+        sum += input[i] * input[i];
+    }
+
+    Console.WriteLine("Sum Of Square:");
+    Console.WriteLine(sum);
+
+    return sum;
+}
+
+static double Average(int[] input)
+{
+    long sum = 0;
+
+    // 只遍历一遍，且不保存整个数组
+    for (var i = 0; i < input.Length; i++)
+    {
+        sum += input[i];
+    }
+
+    var ave = sum / (double)input.Length;
+
+    Console.WriteLine("Average:");
+    Console.WriteLine(ave);
+
+    return ave;
+}
+
+static double AboveAverage(int[] input)
+{
+    var ave = Average(input);
+    Console.WriteLine();
+    double count = 0;
+
+    for (var i = 0; i < input.Length; i++)
+    {
+        if (input[i] > ave)
         {
-            long sum = 0;
-            // 只正向遍历一遍，不需要保存
-            for (var i = 0; i < input.Length; i++)
-            {
-                sum += input[i] * input[i];
-            }
-
-            Console.WriteLine("Sum Of Square:");
-            Console.WriteLine(sum);
-
-            return sum;
+            count++;
         }
+    }
 
-        /// <summary>
-        /// 计算所有输入数据的平均值。
-        /// </summary>
-        /// <param name="input">输入流。</param>
-        /// <returns>所有输入数据的平均值。</returns>
-        static double Average(int[] input)
-        {
-            long sum = 0;
+    Console.WriteLine("AboveAverage:");
+    Console.WriteLine($"{(count / input.Length) * 100}%");
 
-            // 只遍历一遍，且不保存整个数组
-            for (var i = 0; i < input.Length; i++)
-            {
-                sum += input[i];
-            }
+    return count;
+}
 
-            var ave = sum / (double)input.Length;
+static void Ascending(int[] input)
+{
+    Array.Sort(input);
 
-            Console.WriteLine("Average:");
-            Console.WriteLine(ave);
+    Console.WriteLine("Ascending:");
+    for (var i = 0; i < input.Length; i++)
+    {
+        Console.Write($" {input[i]}");
+    }
 
-            return ave;
-        }
+    Console.Write("\n");
+}
 
-        /// <summary>
-        /// 计算大于平均值的元素数量。
-        /// </summary>
-        /// <param name="input">输入流。</param>
-        /// <returns>大于平均值的元素数量。</returns>
-        static double AboveAverage(int[] input)
-        {
-            var ave = Average(input);
-            Console.WriteLine();
-            double count = 0;
+static void Shuffle(int[] input)
+{
+    var random = new Random();
+    var all = new List<int>(input);
+    var n = input.Length;
 
-            for (var i = 0; i < input.Length; i++)
-            {
-                if (input[i] > ave)
-                {
-                    count++;
-                }
-            }
-
-            Console.WriteLine("AboveAverage:");
-            Console.WriteLine($"{(count / input.Length) * 100}%");
-
-            return count;
-        }
-
-        /// <summary>
-        /// 升序打印数组。
-        /// </summary>
-        /// <param name="input">输入流。</param>
-        static void Ascending(int[] input)
-        {
-            Array.Sort(input);
-
-            Console.WriteLine("Ascending:");
-            for (var i = 0; i < input.Length; i++)
-            {
-                Console.Write($" {input[i]}");
-            }
-            Console.Write("\n");
-        }
-
-        /// <summary>
-        /// 随机打印数组。
-        /// </summary>
-        /// <param name="input">输入流。</param>
-        static void Shuffle(int[] input)
-        {
-            var random = new Random();
-            var All = new List<int>(input);
-            var N = input.Length;
-            var temp = 0;
-
-            Console.WriteLine("Shuffle:");
-            for (var i = 0; i < N; i++)
-            {
-                temp = random.Next(0, All.Count - 1);
-                Console.Write($" {All[temp]}");
-                All.RemoveAt(temp);
-            }
-        }
+    Console.WriteLine("Shuffle:");
+    for (var i = 0; i < n; i++)
+    {
+        var temp = random.Next(0, all.Count - 1);
+        Console.Write($" {all[temp]}");
+        all.RemoveAt(temp);
     }
 }

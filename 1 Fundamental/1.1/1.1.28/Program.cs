@@ -1,87 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+// ReSharper disable PossibleNullReferenceException
 
-namespace _1._1._28
+// 从largeW.txt中读取数据
+// 用 HashSet 的不可重复性去除重复
+var hashSet = new HashSet<string>(File.ReadAllLines("largeW.txt"));
+var strings = new string[hashSet.Count];
+hashSet.CopyTo(strings);
+var whiteList = new int[strings.Length];
+for (var i = 0; i < strings.Length; i++)
 {
-    class Program
+    whiteList[i] = int.Parse(strings[i]);
+}
+
+Array.Sort(whiteList);
+Console.WriteLine("Type the numbers you want to query: ");
+// 输入样例：5 824524 478510 387221
+var input = Console.ReadLine();
+var query = new int[input.Split(' ').Length];
+for (var i = 0; i < query.Length; i++)
+{
+    query[i] = int.Parse(input.Split(' ')[i]);
+}
+
+Console.WriteLine("Irrelevant:");
+foreach (var n in query)
+{
+    if (Rank(n, whiteList) == -1)
     {
-        static void Main(string[] args)
-        {
-            // 从largeW.txt中读取数据
-            // 用 HashSet 的不可重复性去除重复
-            var h = new HashSet<string>(File.ReadAllLines("largeW.txt"));
-            var whiteList = new string[h.Count];
-            h.CopyTo(whiteList);
-            var WhiteList = new int[whiteList.Length];
+        Console.WriteLine(n);
+    }
+}
 
-            for (var i = 0; i < whiteList.Length; i++)
-            {
-                WhiteList[i] = int.Parse(whiteList[i]);
-            }
+static int Rank(int key, int[] a)
+{
+    return RankInternal(key, a, 0, a.Length - 1);
+}
 
-            Array.Sort<int>(WhiteList);
+static int RankInternal(int key, int[] a, int lo, int hi)
+{
+    if (lo > hi)
+    {
+        return -1;
+    }
 
-            Console.WriteLine("Type the numbers you want to query: ");
-            // 输入样例：5 824524 478510 387221
-            var input = Console.ReadLine();
-            var Query = new int[input.Split(' ').Length];
-            for (var i = 0; i < Query.Length; i++)
-            {
-                Query[i] = int.Parse(input.Split(' ')[i]);
-            }
+    var mid = lo + (hi - lo) / 2;
 
-            Console.WriteLine("Irrelevant:");
-            foreach (var n in Query)
-            {
-                if (rank(n, WhiteList) == -1)
-                {
-                    Console.WriteLine(n);
-                }
-            }
-        }
-
-        /// <summary>
-        /// 二分查找，默认查找整个数组。
-        /// </summary>
-        /// <param name="key">关键字。</param>
-        /// <param name="a">查找范围。</param>
-        /// <returns></returns>
-        public static int rank(int key, int[] a)
-        {
-            return rank(key, a, 0, a.Length - 1);
-        }
-
-        /// <summary>
-        /// 二分查找。
-        /// </summary>
-        /// <param name="key">关键字。</param>
-        /// <param name="a">查找范围。</param>
-        /// <param name="lo">查找的下界。</param>
-        /// <param name="hi">查找的上界。</param>
-        /// <returns></returns>
-        public static int rank(int key, int[] a, int lo, int hi)
-        {
-
-            if (lo > hi)
-            {
-                return -1;
-            }
-
-            var mid = lo + (hi - lo) / 2;
-
-            if (key < a[mid])
-            {
-                return rank(key, a, lo, mid - 1);
-            }
-            else if (key > a[mid])
-            {
-                return rank(key, a, mid + 1, hi);
-            }
-            else
-            {
-                return mid;
-            }
-        }
+    if (key < a[mid])
+    {
+        return RankInternal(key, a, lo, mid - 1);
+    }
+    else if (key > a[mid])
+    {
+        return RankInternal(key, a, mid + 1, hi);
+    }
+    else
+    {
+        return mid;
     }
 }
