@@ -11,21 +11,21 @@ namespace _2._2._20
 
             var index = mergeSort.IndexSort(a);
 
-            Console.Write("Index \t");
+            Console.Write(@"Index 	");
             for (var i = 0; i < a.Length; i++)
             {
                 Console.Write(i + " ");
             }
             Console.WriteLine();
 
-            Console.Write("Array\t");
+            Console.Write(@"Array	");
             for (var i = 0; i < a.Length; i++)
             {
                 Console.Write(a[i] + " ");
             }
             Console.WriteLine();
 
-            Console.Write("Sorted\t");
+            Console.Write(@"Sorted	");
             for (var i = 0; i < index.Length; i++)
             {
                 Console.Write(index[i] + " ");

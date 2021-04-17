@@ -106,7 +106,7 @@ namespace _2._4._42
             {
                 Console.Write(data[cursor++] + " ");
             }
-            Console.Write("| ");
+            Console.Write(@"| ");
             while (cursor < p + n)
                 Console.Write(data[cursor++] + " ");
             Console.WriteLine();

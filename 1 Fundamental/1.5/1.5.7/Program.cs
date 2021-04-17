@@ -1,15 +1,6 @@
 ﻿using UnionFind;
+// ReSharper disable UnusedVariable
 
-namespace _1._5._7
-{
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // 查看 UnionFound 类库里面的相关类即可。
-            var quickFindUF = new QuickFindUF(100);
-            var quickUnionUF = new QuickUnionUF(100);
-        }
-    }
-}
+// 查看 UnionFound 类库里面的相关类即可。
+var quickFindUf = new QuickFindUF(100);
+var quickUnionUf = new QuickUnionUF(100);

@@ -16,17 +16,17 @@ for (var i = 0; i < n; i++)
 
 // 输出前5个数字
 Console.WriteLine(@"Before Swap");
-Console.Write("a:");
+Console.Write(@"a:");
 for (var i = 0; i < 5; i++)
 {
-    Console.Write($" {a[i]}");
+    Console.Write($@" {a[i]}");
 }
 
 Console.WriteLine();
-Console.Write("b:");
+Console.Write(@"b:");
 for (var i = 0; i < 5; i++)
 {
-    Console.Write($" {b[i]}");
+    Console.Write($@" {b[i]}");
 }
 
 Console.WriteLine();
@@ -38,17 +38,17 @@ b = t;
 
 // 再次输出
 Console.WriteLine(@"After Swap");
-Console.Write("a:");
+Console.Write(@"a:");
 for (var i = 0; i < 5; i++)
 {
-    Console.Write($" {a[i]}");
+    Console.Write($@" {a[i]}");
 }
 
 Console.WriteLine();
-Console.Write("b:");
+Console.Write(@"b:");
 for (var i = 0; i < 5; i++)
 {
-    Console.Write($" {b[i]}");
+    Console.Write($@" {b[i]}");
 }
 
 Console.WriteLine();

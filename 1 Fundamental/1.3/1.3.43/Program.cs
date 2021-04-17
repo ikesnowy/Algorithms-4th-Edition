@@ -20,7 +20,7 @@ static void Search(string path, int tabs)
     {
         for (var i = 0; i < tabs; i++)
         {
-            Console.Write("  ");
+            Console.Write(@"  ");
         }
 
         Console.WriteLine(p.Split('\\').Last());
@@ -31,7 +31,7 @@ static void Search(string path, int tabs)
     {
         for (var i = 0; i < tabs; i++)
         {
-            Console.Write("  ");
+            Console.Write(@"  ");
         }
 
         Console.WriteLine(f.Split('\\').Last());

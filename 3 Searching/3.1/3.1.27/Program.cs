@@ -14,7 +14,7 @@ namespace _3._1._27
             Shuffle(data);
 
             Console.WriteLine(@"	比较	交换	总和");
-            Console.Write("Put()\t");
+            Console.Write(@"Put()	");
             var bst = new BinarySearchST<int, int>(n);
             for (var i = 0; i < n; i++)
             {
@@ -24,7 +24,7 @@ namespace _3._1._27
             bst.Compares = 0;
             bst.Exchanges = 0;
 
-            Console.Write("Get()\t");
+            Console.Write(@"Get()	");
             var s = (int)(n + (n * n - n) / (4 * Math.Log(n, 2)));
             var query = new int[s];
             for (var i = 0; i < s; i++)

@@ -33,7 +33,7 @@ namespace _3._1._32
             Array.Sort(data);
 
             // 有序的数组
-            Console.Write("Sorted Array: ");
+            Console.Write(@"Sorted Array: ");
             sw.Start();
             for (var i = 0; i < n; i++)
             {
@@ -43,7 +43,7 @@ namespace _3._1._32
             Console.WriteLine(sw.ElapsedMilliseconds);
 
             // 逆序的数组
-            Console.Write("Sorted Array Reversed: ");
+            Console.Write(@"Sorted Array Reversed: ");
             sw.Restart();
             for (var i = n - 1; i >= 0; i--)
             {
@@ -53,7 +53,7 @@ namespace _3._1._32
             Console.WriteLine(sw.ElapsedMilliseconds);
 
             // 只有一种键
-            Console.Write("One Distinct Key: ");
+            Console.Write(@"One Distinct Key: ");
             sw.Restart();
             for (var i = 0; i < n; i++)
             {
@@ -63,7 +63,7 @@ namespace _3._1._32
             Console.WriteLine(sw.ElapsedMilliseconds);
 
             // 只有两种值
-            Console.Write("Two Distinct Values: ");
+            Console.Write(@"Two Distinct Values: ");
             sw.Restart();
             for (var i = 0; i < n; i++)
             {

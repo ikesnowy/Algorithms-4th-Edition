@@ -36,13 +36,13 @@ namespace _2._4._35
 
             // 一般测试
             Console.WriteLine("重复次数=" + n);
-            Console.Write("预设概率：");
+            Console.Write(@"预设概率：");
             for (var i = 1; i < sample.P.Length; i++)
             {
                 Console.Write(sample.P[i] + "\t");
             }
             Console.WriteLine();
-            Console.Write("出现次数：");
+            Console.Write(@"出现次数：");
             for (var i = 0; i < testResult.Length; i++)
             {
                 Console.Write(testResult[i] + "\t");

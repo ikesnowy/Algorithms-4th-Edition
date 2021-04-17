@@ -9,7 +9,8 @@ static void A()
         t = (9.0 / t + t) / 2.0;
     }
 
-    Console.Write($"{t:N5}\n"); // :N5代表保留5位小数，同理可使用N1、N2……
+    Console.Write($@"{t:N5}
+"); // :N5代表保留5位小数，同理可使用N1、N2……
 }
 
 static void B()

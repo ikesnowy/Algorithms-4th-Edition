@@ -19,7 +19,7 @@ namespace _2._4._38
                 Console.WriteLine("n=" + n);
                 // 升序数组
                 long totalTime = 0;
-                Console.Write("Ascending:\t");
+                Console.Write(@"Ascending:	");
                 for (var j = 0; j < repeatTimes; j++)
                 {
                     var pq = new MaxPQ<int>(n);
@@ -31,7 +31,7 @@ namespace _2._4._38
                 Console.WriteLine("Average:" + totalTime / repeatTimes);
                 // 降序数组
                 totalTime = 0;
-                Console.Write("Descending:\t");
+                Console.Write(@"Descending:	");
                 for (var j = 0; j < repeatTimes; j++)
                 {
                     var pq = new MaxPQ<int>(n);
@@ -43,7 +43,7 @@ namespace _2._4._38
                 Console.WriteLine("Average:" + totalTime / repeatTimes);
                 // 全部元素相同
                 totalTime = 0;
-                Console.Write("All Same:\t");
+                Console.Write(@"All Same:	");
                 for (var j = 0; j < repeatTimes; j++)
                 {
                     var pq = new MaxPQ<int>(n);
@@ -55,7 +55,7 @@ namespace _2._4._38
                 Console.WriteLine("Average:" + totalTime / repeatTimes);
                 // 只有两个值
                 totalTime = 0;
-                Console.Write("Binary Dist.:\t");
+                Console.Write(@"Binary Dist.:	");
                 for (var j = 0; j < repeatTimes; j++)
                 {
                     var pq = new MaxPQ<int>(n);

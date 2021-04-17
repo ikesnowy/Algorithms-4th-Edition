@@ -158,9 +158,10 @@ namespace _1._1._33
             {
                 for (var j = 0; j < a[i].Length; j++)
                 {
-                    Console.Write($"\t{a[i][j]}");
+                    Console.Write($@"	{a[i][j]}");
                 }
-                Console.Write("\n");
+                Console.Write(@"
+");
             }
         }
 
@@ -172,9 +173,10 @@ namespace _1._1._33
         {
             for (var i = 0; i < a.Length; i++)
             {
-                Console.Write($"\t{a[i]}");
+                Console.Write($@"	{a[i]}");
             }
-            Console.Write("\n");
+            Console.Write(@"
+");
         }
     }
 }

@@ -67,7 +67,7 @@ for (var i = 0; i < input.Length; i++)
 {
     while (leftBrackets[i] != 0)
     {
-        Console.Write("( ");
+        Console.Write(@"( ");
         leftBrackets[i]--;
     }
 

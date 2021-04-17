@@ -147,10 +147,11 @@ static void Ascending(int[] input)
     Console.WriteLine(@"Ascending:");
     for (var i = 0; i < input.Length; i++)
     {
-        Console.Write($" {input[i]}");
+        Console.Write($@" {input[i]}");
     }
 
-    Console.Write("\n");
+    Console.Write(@"
+");
 }
 
 static void Shuffle(int[] input)
@@ -163,7 +164,7 @@ static void Shuffle(int[] input)
     for (var i = 0; i < n; i++)
     {
         var temp = random.Next(0, all.Count - 1);
-        Console.Write($" {all[temp]}");
+        Console.Write($@" {all[temp]}");
         all.RemoveAt(temp);
     }
 }

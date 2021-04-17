@@ -22,7 +22,7 @@ namespace _2._4._16
             for (var i = 0; i < size; i++)
                 Console.Write(bestCase[i] + " ");
             Console.WriteLine();
-            Console.Write("Best Compare Times: ");
+            Console.Write(@"Best Compare Times: ");
             Console.WriteLine(HeapAnalysis.Sort(bestCase));
 
             Console.WriteLine();
@@ -33,7 +33,7 @@ namespace _2._4._16
             for (var i = 0; i < worstCase.Length; i++)
                 Console.Write(worstCase[i] + " ");
             Console.WriteLine();
-            Console.Write("Worst Compare Times: ");
+            Console.Write(@"Worst Compare Times: ");
             Console.WriteLine(HeapAnalysis.Sort(worstCase));
         }
     }

@@ -84,7 +84,7 @@ namespace Quick
             {
                 for (var i = 0; i < a.Length; i++)
                 {
-                    Console.Write("  ");
+                    Console.Write(@"  ");
                 }
                 Console.WriteLine(@"	lo	j	hi");
             }

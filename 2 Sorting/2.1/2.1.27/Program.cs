@@ -30,13 +30,13 @@ namespace _2._1._27
 
                 Console.WriteLine("数组大小：" + n);
 
-                Console.Write("Shell Sort:");
+                Console.Write(@"Shell Sort:");
                 var shellNow = SortCompare.Time(new ShellSort(), testShell);
                 Console.WriteLine(shellNow + "\t\tNow/Prev=" + shellNow / shellPrev);
-                Console.Write("Insertion Sort:");
+                Console.Write(@"Insertion Sort:");
                 var insertionNow = SortCompare.Time(new InsertionSort(), testInsertion);
                 Console.WriteLine(insertionNow + "\tNow/Prev=" + insertionNow / insertionPrev);
-                Console.Write("Selection Sort:");
+                Console.Write(@"Selection Sort:");
                 var selectionNow = SortCompare.Time(new SelectionSort(), testSelection);
                 Console.WriteLine(selectionNow + "\tNow/Prev=" + selectionNow / selectionPrev);
                 Console.WriteLine();

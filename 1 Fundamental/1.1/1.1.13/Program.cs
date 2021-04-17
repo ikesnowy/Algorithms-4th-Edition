@@ -26,10 +26,11 @@ static void PrintArrayTranspose2D(int[,] array, int rows, int columns)
     {
         for (var j = 0; j < rows; j++)
         {
-            Console.Write($"\t{array[j, i]}");
+            Console.Write($@"	{array[j, i]}");
         }
 
-        Console.Write("\n");
+        Console.Write(@"
+");
     }
 }
 
@@ -40,9 +41,10 @@ static void PrintArray2D(int[,] array, int rows, int columns)
     {
         for (var j = 0; j < columns; j++)
         {
-            Console.Write($"\t{array[i, j]}");
+            Console.Write($@"	{array[i, j]}");
         }
 
-        Console.Write("\n");
+        Console.Write(@"
+");
     }
 }

@@ -44,13 +44,13 @@ namespace _2._5._18
 
             sort.Sort(items);
 
-            Console.Write("Index:\t");
+            Console.Write(@"Index:	");
             for (var i = 0; i < items.Length; i++)
             {
                 Console.Write(items[i].Index + " ");
             }
             Console.WriteLine();
-            Console.Write("Elem:\t");
+            Console.Write(@"Elem:	");
             for (var i = 0; i < items.Length; i++)
             {
                 Console.Write(items[i].Key + " ");
@@ -78,13 +78,13 @@ namespace _2._5._18
                 index++;
             }
 
-            Console.Write("Index:\t");
+            Console.Write(@"Index:	");
             for (var i = 0; i < items.Length; i++)
             {
                 Console.Write(items[i].Index + " ");
             }
             Console.WriteLine();
-            Console.Write("Elem:\t");
+            Console.Write(@"Elem:	");
             for (var i = 0; i < items.Length; i++)
             {
                 Console.Write(items[i].Key + " ");
