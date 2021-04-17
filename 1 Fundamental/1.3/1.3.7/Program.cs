@@ -1,17 +1,8 @@
 ﻿using System;
 using Generics;
 
-namespace _1._3._7
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var stack = new Stack<string>();
-            stack.Push("first");
-            stack.Push("second");
+var stack = new Stack<string>();
+stack.Push("first");
+stack.Push("second");
 
-            Console.WriteLine(stack.Peek());
-        }
-    }
-}
+Console.WriteLine(stack.Peek());
