@@ -17,7 +17,7 @@ namespace _2._3._29
         /// <summary>
         /// 随机数发生器。
         /// </summary>
-        private readonly Random RandomGenerator = new();
+        private readonly Random _randomGenerator = new();
 
         /// <summary>
         /// 默认构造函数。
@@ -73,7 +73,7 @@ namespace _2._3._29
         private int Partition<T>(T[] a, int lo, int hi) where T : IComparable<T>
         {
             int i = lo, j = hi + 1;
-            var pivot = RandomGenerator.Next(hi - lo) + lo;
+            var pivot = _randomGenerator.Next(hi - lo) + lo;
             Exch(a, pivot, lo);
             var v = a[lo];
             while (true)

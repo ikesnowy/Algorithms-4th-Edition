@@ -18,18 +18,18 @@ namespace _3._2._9
                     list.Add(i);
                 }
 
-                var trees = new List<BST<int, int>>();
+                var trees = new List<Bst<int, int>>();
                 var cases = GetPermutation(list);
                 foreach (var test in cases)
                 {
-                    var tree = new BST<int, int>();
+                    var tree = new Bst<int, int>();
                     foreach (var num in test)
                     {
                         tree.Put(num, num);
                     }
 
                     // 是否存在相同结构的二叉树。
-                    if (trees.Any(t => BST<int, int>.IsStructureEqual(tree, t)))
+                    if (trees.Any(t => Bst<int, int>.IsStructureEqual(tree, t)))
                         continue;
 
                     Console.WriteLine(tree);

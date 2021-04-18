@@ -7,8 +7,8 @@ namespace _2._4._28
     /// </summary>
     class EuclideanDistance3D : IComparable<EuclideanDistance3D>
     {
-        private readonly int x, y, z;
-        private readonly double distance;
+        private readonly int _x, _y, _z;
+        private readonly double _distance;
 
         /// <summary>
         /// 计算点到原点的欧几里得距离。
@@ -18,10 +18,10 @@ namespace _2._4._28
         /// <param name="z">z 轴坐标。</param>
         public EuclideanDistance3D(int x, int y, int z)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-            distance = Math.Sqrt(x * x + y * y + z * z);
+            this._x = x;
+            this._y = y;
+            this._z = z;
+            _distance = Math.Sqrt(x * x + y * y + z * z);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace _2._4._28
         /// <returns></returns>
         public int CompareTo(EuclideanDistance3D other)
         {
-            return distance.CompareTo(other.distance);
+            return _distance.CompareTo(other._distance);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace _2._4._28
         /// <returns></returns>
         public override string ToString()
         {
-            return "(" + x + ", " + y + ", " + z + ")";
+            return "(" + _x + ", " + _y + ", " + _z + ")";
         }
     }
 }

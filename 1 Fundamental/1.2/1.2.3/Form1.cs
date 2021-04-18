@@ -14,8 +14,8 @@ namespace _1._2._3
         {
             try
             {
-                var N = int.Parse(InputN.Text);
-                if (N <= 0)
+                var n = int.Parse(InputN.Text);
+                if (n <= 0)
                 {
                     throw new FormatException();
                 }
@@ -40,7 +40,7 @@ namespace _1._2._3
                     return;
                 }
 
-                Program.StartDrawing(N, min, max);
+                Program.StartDrawing(n, min, max);
             }
             catch (ArgumentNullException)
             {

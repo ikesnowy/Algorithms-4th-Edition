@@ -6,18 +6,18 @@ namespace _1._3._35
     /// 随机队列。
     /// </summary>
     /// <typeparam name="Item">队列中要存放的元素。</typeparam>
-    public class RandomQueue<Item>
+    public class RandomQueue<TItem>
     {
-        private Item[] queue;
-        private int count;
+        private TItem[] _queue;
+        private int _count;
 
         /// <summary>
         /// 新建一个随机队列。
         /// </summary>
         public RandomQueue()
         {
-            queue = new Item[2];
-            count = 0;
+            _queue = new TItem[2];
+            _count = 0;
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace _1._3._35
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return count == 0;
+            return _count == 0;
         }
 
         /// <summary>
@@ -40,35 +40,35 @@ namespace _1._3._35
                 throw new ArgumentException();
             }
 
-            var temp = new Item[capacity];
-            for (var i = 0; i < count; i++)
+            var temp = new TItem[capacity];
+            for (var i = 0; i < _count; i++)
             {
-                temp[i] = queue[i];
+                temp[i] = _queue[i];
             }
 
-            queue = temp;
+            _queue = temp;
         }
 
         /// <summary>
         /// 向队列中添加一个元素。
         /// </summary>
         /// <param name="item">要向队列中添加的元素。</param>
-        public void Enqueue(Item item)
+        public void Enqueue(TItem item)
         {
-            if (queue.Length == count)
+            if (_queue.Length == _count)
             {
-                Resize(count * 2);
+                Resize(_count * 2);
             }
 
-            queue[count] = item;
-            count++;
+            _queue[_count] = item;
+            _count++;
         }
 
         /// <summary>
         /// 从队列中随机删除并返回一个元素。
         /// </summary>
         /// <returns></returns>
-        public Item Dequeue()
+        public TItem Dequeue()
         {
             if (IsEmpty())
             {
@@ -76,17 +76,17 @@ namespace _1._3._35
             }
 
             var random = new Random(DateTime.Now.Millisecond);
-            var index = random.Next(count);
+            var index = random.Next(_count);
 
-            var temp = queue[index];
-            queue[index] = queue[count - 1];
-            queue[count - 1] = temp;
+            var temp = _queue[index];
+            _queue[index] = _queue[_count - 1];
+            _queue[_count - 1] = temp;
 
-            count--;
+            _count--;
 
-            if (count < queue.Length / 4)
+            if (_count < _queue.Length / 4)
             {
-                Resize(queue.Length / 2);
+                Resize(_queue.Length / 2);
             }
 
             return temp;
@@ -96,7 +96,7 @@ namespace _1._3._35
         /// 随机返回一个队列中的元素。
         /// </summary>
         /// <returns></returns>
-        public Item Sample()
+        public TItem Sample()
         {
             if (IsEmpty())
             {
@@ -104,9 +104,9 @@ namespace _1._3._35
             }
 
             var random = new Random();
-            var index = random.Next(count);
+            var index = random.Next(_count);
 
-            return queue[index];
+            return _queue[index];
         }
     }
 }

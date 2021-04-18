@@ -6,8 +6,8 @@ var n = 10000;
 for (var t = 0; t < 5; t++)
 {
     var input = ErdosRenyi.Generate(n);
-    var weightedQuickUnionUf = new WeightedQuickUnionUF(n);
-    var weightedQuickUnionPathCompressionUf = new WeightedQuickUnionPathCompressionUF(n);
+    var weightedQuickUnionUf = new WeightedQuickUnionUf(n);
+    var weightedQuickUnionPathCompressionUf = new WeightedQuickUnionPathCompressionUf(n);
 
     Console.WriteLine("N:" + n);
 
@@ -22,7 +22,7 @@ for (var t = 0; t < 5; t++)
     n *= 2;
 }
 // 进行若干次随机试验，输出平均 union 次数，返回平均耗时。
-static long RunTest(UF uf, Connection[] connections)
+static long RunTest(Uf uf, Connection[] connections)
 {
     var timer = new Stopwatch();
     var repeatTime = 5;

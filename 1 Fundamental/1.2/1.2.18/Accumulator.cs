@@ -4,23 +4,23 @@ namespace _1._2._18
 {
     public class Accumulator
     {
-        private double m;
-        private double s;
-        private int N;
+        private double _m;
+        private double _s;
+        private int _n;
 
         public void AddDataValue(double x)
         {
-            N++;
-            s = s + 1.0 * (N - 1) / N * (x - m) * (x - m);
-            m = m + (x - m) / N;
+            _n++;
+            _s = _s + 1.0 * (_n - 1) / _n * (x - _m) * (x - _m);
+            _m = _m + (x - _m) / _n;
         }
         public double Mean()
         {
-            return m;
+            return _m;
         }
         public double Var()
         {
-            return s / (N - 1);
+            return _s / (_n - 1);
         }
         public double Stddev()
         {
@@ -28,7 +28,7 @@ namespace _1._2._18
         }
         public override string ToString()
         {
-            return "Mean (" + N + " values): " + string.Format("{0, 7:F5}", Mean());
+            return "Mean (" + _n + " values): " + string.Format("{0, 7:F5}", Mean());
         }
     }
 }

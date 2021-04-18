@@ -5,27 +5,27 @@ namespace PriorityQueue
     /// <summary>
     /// 生成最大堆的最坏情况。参考论文：https://arxiv.org/abs/1504.01459
     /// </summary>
-    public class MaxPQWorstCase
+    public class MaxPqWorstCase
     {
         /// <summary>
         /// 保存元素的数组。
         /// </summary>
         /// <value>保存元素的数组。</value>
-        private readonly int[] pq;              
+        private readonly int[] _pq;              
         /// <summary>
         /// 堆中的元素数量。
         /// </summary>
         /// <value>堆中的元素数量。</value>
-        private int n;                 
+        private int _n;                 
 
         /// <summary>
         /// 建立指定容量的最大堆。
         /// </summary>
         /// <param name="capacity">最大堆的容量。</param>
-        public MaxPQWorstCase(int capacity)
+        public MaxPqWorstCase(int capacity)
         {
-            pq = new int[capacity + 1];
-            n = 0;
+            _pq = new int[capacity + 1];
+            _n = 0;
         }
 
         /// <summary>
@@ -41,41 +41,41 @@ namespace PriorityQueue
                 UnRemoveMax(strategy[i]);
             }
 
-            for (var i = 1; i <= this.n / 2; i++)
+            for (var i = 1; i <= this._n / 2; i++)
                 UnFixHeap(i);
 
             var worstCase = new int[n];
             for (var i = 1; i <= n; i++)
-                worstCase[i - 1] = pq[i];
+                worstCase[i - 1] = _pq[i];
             return worstCase;
         }
 
-        private bool Less(int i, int j) => pq[i].CompareTo(pq[j]) < 0;
+        private bool Less(int i, int j) => _pq[i].CompareTo(_pq[j]) < 0;
       
         private int PullDown(int i, int j)
         {
-            var toReturn = pq[j];
+            var toReturn = _pq[j];
             for (var m = j; m / 2 >= i; m /= 2)
             {
-                pq[m] = pq[m / 2];
+                _pq[m] = _pq[m / 2];
             }
             return toReturn;
         }
 
         private void UnFixHeap(int i)
         {
-            var j = (int)(i * Math.Pow(2, Math.Floor(Math.Log10(n / i) / Math.Log10(2))));
-            pq[i] = PullDown(i, j);
+            var j = (int)(i * Math.Pow(2, Math.Floor(Math.Log10(_n / i) / Math.Log10(2))));
+            _pq[i] = PullDown(i, j);
         }
 
         private void UnRemoveMax(int i)
         {
-            var p = (n + 1) / 2;
+            var p = (_n + 1) / 2;
             if (Less(p, i))
                 return;
-            n++;
-            pq[n] = PullDown(1, i);
-            pq[1] = n;
+            _n++;
+            _pq[_n] = PullDown(1, i);
+            _pq[1] = _n;
         }
 
         private int[] Par(int l)

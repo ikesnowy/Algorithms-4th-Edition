@@ -3,20 +3,20 @@
 
 // HN 指的是调和级数
 var random = new Random();
-var N = 10000;
-var a = new bool[N];
+var n = 10000;
+var a = new bool[n];
 var randomSize = 0;
 int times;
 for (times = 0; times < 20; times++)
 {
-    for (var i = 0; i < N; i++)
+    for (var i = 0; i < n; i++)
     {
         a[i] = false;
     }
 
     for (var i = 0; true; i++)
     {
-        var now = random.Next(N);
+        var now = random.Next(n);
         a[now] = true;
         if (IsAllGenerated(a))
         {
@@ -27,7 +27,7 @@ for (times = 0; times < 20; times++)
     }
 }
 
-Console.WriteLine($@"NHN={N * HarmonicSum(N)}，平均生成{randomSize / times}个数字后所有可能都出现");
+Console.WriteLine($@"NHN={n * HarmonicSum(n)}，平均生成{randomSize / times}个数字后所有可能都出现");
 
 // 计算 N 阶调和级数的和。
 static double HarmonicSum(int n)

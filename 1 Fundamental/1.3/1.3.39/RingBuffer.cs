@@ -6,23 +6,23 @@ namespace _1._3._39
     /// 环形缓冲区。
     /// </summary>
     /// <typeparam name="Item">缓冲区包含的元素类型。</typeparam>
-    class RingBuffer<Item>
+    class RingBuffer<TItem>
     {
-        private readonly Item[] buffer;
-        private int count;
-        private int first;  // 读指针
-        private int last;   // 写指针
+        private readonly TItem[] _buffer;
+        private int _count;
+        private int _first;  // 读指针
+        private int _last;   // 写指针
 
         /// <summary>
         /// 建立一个缓冲区。
         /// </summary>
-        /// <param name="N">缓冲区的大小。</param>
-        public RingBuffer(int N)
+        /// <param name="n">缓冲区的大小。</param>
+        public RingBuffer(int n)
         {
-            buffer = new Item[N];
-            count = 0;
-            first = 0;
-            last = 0;
+            _buffer = new TItem[n];
+            _count = 0;
+            _first = 0;
+            _last = 0;
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace _1._3._39
         /// <returns></returns>
         public bool IsFull()
         {
-            return count == buffer.Length;
+            return _count == _buffer.Length;
         }
 
         /// <summary>
@@ -40,39 +40,39 @@ namespace _1._3._39
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return count == 0;
+            return _count == 0;
         }
 
         /// <summary>
         /// 向缓冲区写入数据。
         /// </summary>
         /// <param name="item">要写入的数据。</param>
-        public void Write(Item item)
+        public void Write(TItem item)
         {
             if (IsFull())
             {
                 throw new OutOfMemoryException("buffer is full");
             }
 
-            buffer[last] = item;
-            last = (last + 1) % buffer.Length;
-            count++;
+            _buffer[_last] = item;
+            _last = (_last + 1) % _buffer.Length;
+            _count++;
         }
 
         /// <summary>
         /// 从缓冲区读取一个数据。
         /// </summary>
         /// <returns></returns>
-        public Item Read()
+        public TItem Read()
         {
             if (IsEmpty())
             {
                 throw new InvalidOperationException();
             }
 
-            var temp = buffer[first];
-            first = (first + 1) % buffer.Length;
-            count--;
+            var temp = _buffer[_first];
+            _first = (_first + 1) % _buffer.Length;
+            _count--;
             return temp;
         }
     }

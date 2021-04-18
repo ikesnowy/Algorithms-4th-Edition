@@ -4,18 +4,18 @@ namespace _2._1._38
 {
     class Pair<TKey, TValue> : IComparable<Pair<TKey, TValue>> where TKey : IComparable<TKey>
     {
-        TKey key;
-        TValue value;
+        TKey _key;
+        TValue _value;
 
         public Pair(TKey key, TValue value)
         {
-            this.key = key;
-            this.value = value;
+            this._key = key;
+            this._value = value;
         }
 
         public int CompareTo(Pair<TKey, TValue> other)
         {
-            return key.CompareTo(other.key);
+            return _key.CompareTo(other._key);
         }
     }
 }

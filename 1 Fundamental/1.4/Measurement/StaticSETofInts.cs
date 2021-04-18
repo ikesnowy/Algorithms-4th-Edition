@@ -5,22 +5,22 @@ namespace Measurement
     /// <summary>
     /// 有序数组，能够快速查找并自动维护其中的顺序。
     /// </summary>
-    public class StaticSETofInts
+    public class StaticSeTofInts
     {
-        private readonly int[] a;
+        private readonly int[] _a;
 
         /// <summary>
         /// 用一个数组初始化有序数组。
         /// </summary>
         /// <param name="keys">源数组。</param>
-        public StaticSETofInts(int[] keys)
+        public StaticSeTofInts(int[] keys)
         {
-            a = new int[keys.Length];
+            _a = new int[keys.Length];
             for (var i = 0; i < keys.Length; i++)
             {
-                a[i] = keys[i];
+                _a[i] = keys[i];
             }
-            Array.Sort(a);
+            Array.Sort(_a);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Measurement
         /// <returns>存在则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
         public bool Contains(int key)
         {
-            return Rank(key, 0, a.Length - 1) != -1;
+            return Rank(key, 0, _a.Length - 1) != -1;
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Measurement
         /// <returns><paramref name="key"/> 在数组中存在的数量。</returns>
         public int HowMany(int key)
         {
-            var hi = a.Length - 1;
+            var hi = _a.Length - 1;
             var lo = 0;
             
             return HowMany(key, lo, hi);
@@ -76,9 +76,9 @@ namespace Measurement
             while (lo <= hi)
             {
                 var mid = (hi - lo) / 2 + lo;
-                if (key < a[mid])
+                if (key < _a[mid])
                     hi = mid - 1;
-                else if (key > a[mid])
+                else if (key > _a[mid])
                     lo = mid + 1;
                 else
                     return mid;

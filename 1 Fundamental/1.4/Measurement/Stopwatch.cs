@@ -7,14 +7,14 @@ namespace Measurement
     /// </summary>
     public class Stopwatch
     {
-        private DateTime start;
+        private DateTime _start;
 
         /// <summary>
         /// 新建并开始一个计时器。
         /// </summary>
         public Stopwatch()
         {
-            start = DateTime.Now;
+            _start = DateTime.Now;
         }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Measurement
         /// </summary>
         public void Restart()
         {
-            start = DateTime.Now;
+            _start = DateTime.Now;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Measurement
         public double ElapsedTime()
         {
             var now = DateTime.Now;
-            return (now - start).TotalMilliseconds / 1000.0;
+            return (now - _start).TotalMilliseconds / 1000.0;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Measurement
         public double ElapsedTimeMillionSeconds()
         {
             var now = DateTime.Now;
-            return (now - start).TotalMilliseconds;
+            return (now - _start).TotalMilliseconds;
         }
     }
 }

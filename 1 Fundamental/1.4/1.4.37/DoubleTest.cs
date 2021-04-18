@@ -8,7 +8,7 @@ namespace _1._4._37
     /// </summary>
     public static class DoubleTest
     {
-        private static readonly int MAXIMUM_INTEGER = 1000000;
+        private static readonly int MaximumInteger = 1000000;
 
         /// <summary>
         /// 返回对 n 个随机整数的栈进行 n 次 push 和 n 次 pop 所需的时间。
@@ -22,7 +22,7 @@ namespace _1._4._37
             var random = new Random(DateTime.Now.Millisecond);
             for (var i = 0; i < n; i++)
             {
-                a[i] = random.Next(-MAXIMUM_INTEGER, MAXIMUM_INTEGER);
+                a[i] = random.Next(-MaximumInteger, MaximumInteger);
             }
             var timer = new Stopwatch();
             for (var i = 0; i < n; i++)
@@ -48,7 +48,7 @@ namespace _1._4._37
             var random = new Random(DateTime.Now.Millisecond);
             for (var i = 0; i < n; i++)
             {
-                a[i] = random.Next(-MAXIMUM_INTEGER, MAXIMUM_INTEGER);
+                a[i] = random.Next(-MaximumInteger, MaximumInteger);
             }
             var timer = new Stopwatch();
             for (var i = 0; i < n; i++)

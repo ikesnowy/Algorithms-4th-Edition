@@ -27,7 +27,7 @@ using PriorityQueue;
 // 
 // E
 
-var pq = new MaxPQ<char>();
+var pq = new MaxPq<char>();
 var input = "P R I O * R * * I * T * Y * * * Q U E * * * U * E";
 foreach (var c in input)
 {

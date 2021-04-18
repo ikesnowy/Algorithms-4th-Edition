@@ -2,7 +2,7 @@
 
 namespace BinarySearchTree
 {
-    public class BSTNonHibbard<TKey, TValue> : BST<TKey, TValue> where TKey : IComparable<TKey>
+    public class BstNonHibbard<TKey, TValue> : Bst<TKey, TValue> where TKey : IComparable<TKey>
     {
         private readonly Random _random = new();
 

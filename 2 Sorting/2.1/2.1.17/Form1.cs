@@ -14,8 +14,8 @@ namespace _2._1._17
         {
             try
             {
-                var N = int.Parse(InputN.Text);
-                var selection = new Form2(N);
+                var n = int.Parse(InputN.Text);
+                var selection = new Form2(n);
                 selection.Show();
             }
             catch (ArgumentNullException)
@@ -36,8 +36,8 @@ namespace _2._1._17
         {
             try
             {
-                var N = int.Parse(InputN.Text);
-                var insertion = new Form3(N);
+                var n = int.Parse(InputN.Text);
+                var insertion = new Form3(n);
                 insertion.Show();
             }
             catch (ArgumentNullException)

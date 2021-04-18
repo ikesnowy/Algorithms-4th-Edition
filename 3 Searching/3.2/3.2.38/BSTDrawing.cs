@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace _3._2._38
 {
-    public class BSTDrawing<TKey, TValue> where TKey : IComparable<TKey>
+    public class BstDrawing<TKey, TValue> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 二叉查找树的根结点。

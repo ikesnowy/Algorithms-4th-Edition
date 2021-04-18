@@ -7,18 +7,18 @@ namespace _2._1._18
 {
     public partial class Form2 : Form
     {
-        readonly double[] randomDoubles;
-        int sortI;
-        int sortJ;
-        int sortMin;
-        public Form2(int N)
+        readonly double[] _randomDoubles;
+        int _sortI;
+        int _sortJ;
+        int _sortMin;
+        public Form2(int n)
         {
             InitializeComponent();
-            randomDoubles = new double[N];
+            _randomDoubles = new double[n];
             var random = new Random();
-            for (var i = 0; i < N; i++)
+            for (var i = 0; i < n; i++)
             {
-                randomDoubles[i] = random.NextDouble() * 0.8 + 0.2;
+                _randomDoubles[i] = random.NextDouble() * 0.8 + 0.2;
             }
         }
 
@@ -27,20 +27,20 @@ namespace _2._1._18
         /// </summary>
         private void SelectionSort()
         {
-            for (sortI = 0; sortI < randomDoubles.Length; sortI++)
+            for (_sortI = 0; _sortI < _randomDoubles.Length; _sortI++)
             {
-                sortMin = sortI;
-                for (sortJ = sortI; sortJ < randomDoubles.Length; sortJ++)
+                _sortMin = _sortI;
+                for (_sortJ = _sortI; _sortJ < _randomDoubles.Length; _sortJ++)
                 {
-                    if (randomDoubles[sortMin] > randomDoubles[sortJ])
+                    if (_randomDoubles[_sortMin] > _randomDoubles[_sortJ])
                     {
-                        sortMin = sortJ;
+                        _sortMin = _sortJ;
                     }
                 }
-                drawPanel();
-                var temp = randomDoubles[sortI];
-                randomDoubles[sortI] = randomDoubles[sortMin];
-                randomDoubles[sortMin] = temp;
+                DrawPanel();
+                var temp = _randomDoubles[_sortI];
+                _randomDoubles[_sortI] = _randomDoubles[_sortMin];
+                _randomDoubles[_sortMin] = temp;
                 Thread.Sleep(1000);
             }
         }
@@ -48,7 +48,7 @@ namespace _2._1._18
         /// <summary>
         /// 绘制柱形图。
         /// </summary>
-        private void drawPanel()
+        private void DrawPanel()
         {
             var graphics = CreateGraphics();
             graphics.Clear(BackColor);
@@ -57,30 +57,30 @@ namespace _2._1._18
             var clientRect = ClientRectangle;
             var drawRect = new Rectangle(clientRect.X + 10, clientRect.Y + 10, clientRect.Width - 10, clientRect.Height - 10);
 
-            var barX = new PointF[randomDoubles.Length];
-            var unitX = (float)drawRect.Width / randomDoubles.Length;
+            var barX = new PointF[_randomDoubles.Length];
+            var unitX = (float)drawRect.Width / _randomDoubles.Length;
             unitX -= 4;
 
             barX[0] = new PointF(4, drawRect.Top);
-            for (var i = 1; i < randomDoubles.Length; i++)
+            for (var i = 1; i < _randomDoubles.Length; i++)
             {
                 barX[i] = new PointF(2 + unitX + barX[i - 1].X, drawRect.Top);
             }
 
-            var bars = new RectangleF[randomDoubles.Length];
-            for (var i = 0; i < randomDoubles.Length; i++)
+            var bars = new RectangleF[_randomDoubles.Length];
+            for (var i = 0; i < _randomDoubles.Length; i++)
             {
-                var size = new SizeF(unitX, (float)randomDoubles[i] * drawRect.Height);
+                var size = new SizeF(unitX, (float)_randomDoubles[i] * drawRect.Height);
                 bars[i] = new RectangleF(barX[i], size);
             }
 
             for (var i = 0; i < bars.Length; i++)
             {
-                if (i == sortMin)
+                if (i == _sortMin)
                 {
                     graphics.FillRectangle(Brushes.Red, bars[i]);
                 }
-                else if (i < sortI)
+                else if (i < _sortI)
                 {
                     graphics.FillRectangle(Brushes.Gray, bars[i]);
                 }

@@ -9,7 +9,7 @@ namespace _3._1._5
         {
             // 官方实现见：https://algs4.cs.princeton.edu/31elementary/SequentialSearchST.java.html
             var input = "S E A R C H E X A M P L E".Split(' ');
-            var st = new SequentialSearchST<string, int>();
+            var st = new SequentialSearchSt<string, int>();
 
             for (var i = 0; i < input.Length; i++)
                 st.Put(input[i], i);

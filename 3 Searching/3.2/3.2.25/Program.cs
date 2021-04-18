@@ -17,7 +17,7 @@ namespace _3._2._25
                 new KeyValuePair<int, int>(1, 1),
                 new KeyValuePair<int, int>(7, 7)
             };
-            var bst = new BSTBalanced<int, int>(data);
+            var bst = new BstBalanced<int, int>(data);
             Console.WriteLine(bst);
         }
     }

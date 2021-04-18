@@ -3,7 +3,7 @@ using Merge;
 
 var n = 1000;
 var topBottomMergeSort = new MergeSort();
-var bottomUpMergeSort = new MergeSortBU();
+var bottomUpMergeSort = new MergeSortBu();
 var trialTimes = 100;
 for (var i = 0; i < 4; i++)
 {

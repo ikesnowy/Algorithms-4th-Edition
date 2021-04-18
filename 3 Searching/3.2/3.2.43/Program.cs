@@ -13,7 +13,7 @@ namespace _3._2._43
             for (var j = 0; j < trials; j++)
             {
                 var random = new Random();
-                var bst = new BSTTimer<int, int>();
+                var bst = new BstTimer<int, int>();
                 var data = new int[1000000];
                 for (var i = 0; i < data.Length; i++)
                 {

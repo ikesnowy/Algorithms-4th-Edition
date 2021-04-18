@@ -13,23 +13,23 @@ namespace _1._1._31
         private void button1_Click(object sender, EventArgs e)
         {
             ErrorLabel.Text = "";
-            int N;
+            int n;
             double p;
             try
             {
-                N = int.Parse(InputN.Text);
+                n = int.Parse(InputN.Text);
                 p = double.Parse(InputP.Text);
                 if (p > 1)
                 {
                     ErrorLabel.Text = "p 的值不能大于 1";
                     return;
                 }
-                if (p < 0 || N < 0)
+                if (p < 0 || n < 0)
                 {
                     ErrorLabel.Text = "不能输入负值";
                     return;
                 }
-                Program.StartDrawing(N, p);
+                Program.StartDrawing(n, p);
             }
             catch (ArgumentNullException)
             {

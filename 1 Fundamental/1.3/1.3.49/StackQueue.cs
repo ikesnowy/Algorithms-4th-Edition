@@ -5,35 +5,35 @@ namespace _1._3._49
     /// <summary>
     /// 用六个栈模拟的队列。
     /// </summary>
-    /// <typeparam name="Item">队列中保存的元素。</typeparam>
-    class StackQueue<Item>
+    /// <typeparam name="TItem">队列中保存的元素。</typeparam>
+    internal class StackQueue<TItem>
     {
-        Stack<Item> H;
-        Stack<Item> T;
-        Stack<Item> h;
-        Stack<Item> HH;
-        Stack<Item> TT;
-        Stack<Item> Hr;
+        Stack<TItem> H;
+        Stack<TItem> T;
+        Stack<TItem> h;
+        Stack<TItem> HH;
+        Stack<TItem> TT;
+        Stack<TItem> Hr;
 
-        bool isRecopying;
-        int nowcopying;
+        private bool _isRecopying;
+        private int _nowCopying;
 
         public StackQueue()
         {
-            isRecopying = false;
-            nowcopying = 0;
+            _isRecopying = false;
+            _nowCopying = 0;
 
-            H = new Stack<Item>();
-            T = new Stack<Item>();
-            h = new Stack<Item>();
-            HH = new Stack<Item>();
-            TT = new Stack<Item>();
-            Hr = new Stack<Item>();
+            H = new Stack<TItem>();
+            T = new Stack<TItem>();
+            h = new Stack<TItem>();
+            HH = new Stack<TItem>();
+            TT = new Stack<TItem>();
+            Hr = new Stack<TItem>();
         }
 
-        public Item Peek()
+        public TItem Peek()
         {
-            if (isRecopying)
+            if (_isRecopying)
             {
                 return h.Peek();
             }
@@ -43,21 +43,21 @@ namespace _1._3._49
             }
         }
 
-        public void Enqueue(Item item)
+        public void Enqueue(TItem item)
         {
-            if (!isRecopying && Lendiff() > 0)
+            if (!_isRecopying && Lendiff() > 0)
             {
-                nowcopying = 0;
+                _nowCopying = 0;
                 T.Push(item);
             }
-            else if (!isRecopying && Lendiff() == 0)
+            else if (!_isRecopying && Lendiff() == 0)
             {
                 T.Push(item);
-                isRecopying = true;
+                _isRecopying = true;
                 h = H.Copy();
                 OneStep(OneStep(this));
             }
-            else if (isRecopying)
+            else if (_isRecopying)
             {
                 TT.Push(item);
                 OneStep(OneStep(this));
@@ -69,69 +69,69 @@ namespace _1._3._49
             return H.Size() - T.Size();
         }
 
-        public Item Dequeue()
+        public TItem Dequeue()
         {
-            if (!isRecopying && Lendiff() > 0)
+            if (!_isRecopying && Lendiff() > 0)
             {
                 return H.Pop();
             }
-            else if (!isRecopying && Lendiff() == 0)
+            else if (!_isRecopying && Lendiff() == 0)
             {
                 var temp = H.Pop();
                 h = H.Copy();
-                isRecopying = true;
+                _isRecopying = true;
                 OneStep(OneStep(this));
                 return temp;
             }
             else
             {
                 var temp = h.Pop();
-                nowcopying--;
+                _nowCopying--;
                 OneStep(OneStep(this));
                 return temp;
             }
         }
 
-        private static StackQueue<Item> OneStep(StackQueue<Item> q)
+        private static StackQueue<TItem> OneStep(StackQueue<TItem> q)
         {
-            if (q.isRecopying && !q.H.IsEmpty() && !q.T.IsEmpty())
+            if (q._isRecopying && !q.H.IsEmpty() && !q.T.IsEmpty())
             {
-                q.nowcopying++;
+                q._nowCopying++;
                 q.HH.Push(q.T.Pop());
                 q.Hr.Push(q.H.Pop());
             }
-            else if (q.isRecopying && q.H.IsEmpty() && !q.T.IsEmpty())
+            else if (q._isRecopying && q.H.IsEmpty() && !q.T.IsEmpty())
             {
-                q.isRecopying = true;
+                q._isRecopying = true;
                 q.HH.Push(q.T.Pop());
             }
-            else if (q.isRecopying && q.H.IsEmpty() && q.T.IsEmpty() && q.nowcopying > 1)
+            else if (q._isRecopying && q.H.IsEmpty() && q.T.IsEmpty() && q._nowCopying > 1)
             {
-                q.isRecopying = true;
-                q.nowcopying--;
+                q._isRecopying = true;
+                q._nowCopying--;
                 q.HH.Push(q.Hr.Pop());
             }
-            else if (q.isRecopying && q.H.IsEmpty() && q.T.IsEmpty() && q.nowcopying == 1)
+            else if (q._isRecopying && q.H.IsEmpty() && q.T.IsEmpty() && q._nowCopying == 1)
             {
-                q.isRecopying = false;
-                q.nowcopying--;
+                q._isRecopying = false;
+                q._nowCopying--;
                 q.HH.Push(q.Hr.Pop());
                 q.H = q.HH;
                 q.T = q.TT;
-                q.HH = new Stack<Item>();
-                q.TT = new Stack<Item>();
-                q.Hr = new Stack<Item>();
-                q.h = new Stack<Item>();
+                q.HH = new Stack<TItem>();
+                q.TT = new Stack<TItem>();
+                q.Hr = new Stack<TItem>();
+                q.h = new Stack<TItem>();
             }
-            else if (q.isRecopying && q.H.IsEmpty() && q.T.IsEmpty() && q.nowcopying == 0)
+            else if (q._isRecopying && q.H.IsEmpty() && q.T.IsEmpty() && q._nowCopying == 0)
             {
-                q.isRecopying = false;
+                q._isRecopying = false;
                 q.H = q.HH;
                 q.T = q.TT;
-                q.HH = new Stack<Item>();
-                q.TT = new Stack<Item>();
-                q.Hr = new Stack<Item>();
-                q.h = new Stack<Item>();
+                q.HH = new Stack<TItem>();
+                q.TT = new Stack<TItem>();
+                q.Hr = new Stack<TItem>();
+                q.h = new Stack<TItem>();
             }
             return q;
         }

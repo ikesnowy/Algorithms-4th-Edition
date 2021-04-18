@@ -7,7 +7,7 @@ var repeatTime = 1000000;
 double totalTime = 0;
 for (var i = 0; i < repeatTime; i++)
 {
-    var pq = new MaxPQ<char>();
+    var pq = new MaxPq<char>();
     totalTime += Test(pq);
 }
 
@@ -16,13 +16,13 @@ Console.WriteLine("Normal MaxPQ: " + totalTime);
 totalTime = 0;
 for (var i = 0; i < repeatTime; i++)
 {
-    var pqNoExch = new MaxPQNoExch<char>();
+    var pqNoExch = new MaxPqNoExch<char>();
     totalTime += Test(pqNoExch);
 }
 
 Console.WriteLine("MaxPQ without Exch: " + totalTime);
 
-static long Test(IMaxPQ<char> pq)
+static long Test(IMaxPq<char> pq)
 {
     var sw = new Stopwatch();
     sw.Restart();

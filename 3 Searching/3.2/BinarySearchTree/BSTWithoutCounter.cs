@@ -9,13 +9,13 @@ namespace BinarySearchTree
     /// </summary>
     /// <typeparam name="TKey">键类型。</typeparam>
     /// <typeparam name="TValue">值类型。</typeparam>
-    public class BSTWithoutCounter<TKey, TValue> : IST<TKey, TValue>, IOrderedST<TKey, TValue>
+    public class BstWithoutCounter<TKey, TValue> : ISt<TKey, TValue>, IOrderedSt<TKey, TValue>
         where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 二叉树根结点。
         /// </summary>
-        private Node root;
+        private Node _root;
 
         /// <summary>
         /// 二叉树结点类型。
@@ -74,7 +74,7 @@ namespace BinarySearchTree
                 return;
             }
 
-            root = Put(root, key, value);
+            _root = Put(_root, key, value);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace BinarySearchTree
         {
             if (key == null)
                 throw new ArgumentNullException(nameof(key));
-            return Get(root, key);
+            return Get(_root, key);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace BinarySearchTree
         {
             if (key == null)
                 throw new ArgumentNullException(nameof(key));
-            root = Delete(root, key);
+            _root = Delete(_root, key);
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace BinarySearchTree
         /// <returns>为空则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
         public bool IsEmpty()
         {
-            return Size(root) == 0;
+            return Size(_root) == 0;
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace BinarySearchTree
         /// <returns>二叉查找树的结点数量。</returns>
         public int Size()
         {
-            return Size(root);
+            return Size(_root);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace BinarySearchTree
                 throw new ArgumentNullException(nameof(hi));
 
             var queue = new Queue<TKey>();
-            Keys(root, queue, lo, hi);
+            Keys(_root, queue, lo, hi);
             return queue;
         }
 
@@ -289,7 +289,7 @@ namespace BinarySearchTree
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Symbol Table Underflow");
-            return Min(root).Key;
+            return Min(_root).Key;
         }
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace BinarySearchTree
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Symbol Table Underflow");
-            return Max(root).Key;
+            return Max(_root).Key;
         }
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace BinarySearchTree
                 throw new ArgumentNullException("argument to floor is null");
             if (IsEmpty())
                 throw new InvalidOperationException("calls floor with empty symbol table");
-            var x = Floor(root, key);
+            var x = Floor(_root, key);
             if (x == null)
                 return default;
             else
@@ -378,7 +378,7 @@ namespace BinarySearchTree
                 throw new ArgumentNullException("argument to ceiling is null");
             if (IsEmpty())
                 throw new InvalidOperationException("calls ceiling with empty symbol table");
-            var x = Ceiling(root, key);
+            var x = Ceiling(_root, key);
             if (x == null)
                 return default;
             return x.Key;
@@ -416,7 +416,7 @@ namespace BinarySearchTree
         {
             if (key == null)
                 throw new ArgumentNullException("argument to rank() is null");
-            return Rank(root, key);
+            return Rank(_root, key);
         }
 
         /// <summary>
@@ -447,7 +447,7 @@ namespace BinarySearchTree
         {
             if (k < 0 || k >= Size())
                 throw new ArgumentException("argument to select() is invaild: " + k);
-            var x = Select(root, k);
+            var x = Select(_root, k);
             return x.Key;
         }
 
@@ -478,7 +478,7 @@ namespace BinarySearchTree
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Symbol table underflow");
-            root = DeleteMin(root);
+            _root = DeleteMin(_root);
         }
 
         /// <summary>
@@ -502,7 +502,7 @@ namespace BinarySearchTree
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Symbol Table Underflow");
-            root = DeleteMax(root);
+            _root = DeleteMax(_root);
         }
 
         /// <summary>
@@ -527,14 +527,14 @@ namespace BinarySearchTree
             if (IsEmpty())
                 return string.Empty;
 
-            var maxDepth = Depth(root);
+            var maxDepth = Depth(_root);
             int layer = 0, bottomLine = (int)Math.Pow(2, maxDepth) * 2;
 
             //BST
             var lines = new List<string>();
             var nowLayer = new Queue<Node>();
             var nextLayer = new Queue<Node>();
-            nextLayer.Enqueue(root);
+            nextLayer.Enqueue(_root);
 
             while (layer != maxDepth)
             {
@@ -638,7 +638,7 @@ namespace BinarySearchTree
             // 层序遍历。
             var queue = new Queue<Node>();
             var index = 0;
-            queue.Enqueue(root);
+            queue.Enqueue(_root);
             while (queue.Count != 0 && index < size)
             {
                 var x = queue.Dequeue();
@@ -669,7 +669,7 @@ namespace BinarySearchTree
             // 层序遍历。
             var queue = new Queue<Node>();
             var index = 0;
-            queue.Enqueue(root);
+            queue.Enqueue(_root);
             while (queue.Count != 0 && index < size)
             {
                 var x = queue.Dequeue();
@@ -700,7 +700,7 @@ namespace BinarySearchTree
             // 层序遍历。
             var queue = new Queue<Node>();
             var index = 0;
-            queue.Enqueue(root);
+            queue.Enqueue(_root);
             while (queue.Count != 0 && index < size)
             {
                 var x = queue.Dequeue();
@@ -737,7 +737,7 @@ namespace BinarySearchTree
         /// <param name="a">要比较的第一棵二叉树。</param>
         /// <param name="b">要比较的第二棵二叉树。</param>
         /// <returns>相同返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public static bool IsStructureEqual<TKeyA, TValueA, TKeyB, TValueB>(BSTWithoutCounter<TKeyA, TValueA> a, BSTWithoutCounter<TKeyB, TValueB> b)
+        public static bool IsStructureEqual<TKeyA, TValueA, TKeyB, TValueB>(BstWithoutCounter<TKeyA, TValueA> a, BstWithoutCounter<TKeyB, TValueB> b)
             where TKeyA : IComparable<TKeyA>
             where TKeyB : IComparable<TKeyB>
         {

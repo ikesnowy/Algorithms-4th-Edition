@@ -9,13 +9,13 @@ namespace _1._5._19
     
     static class Program
     {
-        static RandomBag<Connection> bag;
-        static Graphics graphics;
-        static TextBox logBox;
-        static PointF[] points;
-        static Timer timer;
-        static List<Connection> connections;
-        static int count;
+        static RandomBag<Connection> _bag;
+        static Graphics _graphics;
+        static TextBox _logBox;
+        static PointF[] _points;
+        static Timer _timer;
+        static List<Connection> _connections;
+        static int _count;
 
         /// <summary>
         /// 应用程序的主入口点。
@@ -32,23 +32,23 @@ namespace _1._5._19
         /// 绘制连接图像。
         /// </summary>
         /// <param name="n">矩阵边长。</param>
-        public static void Draw(int n, TextBox log, Log WinBox)
+        public static void Draw(int n, TextBox log, Log winBox)
         {
-            logBox = log;
+            _logBox = log;
 
             // 生成路径。
             log.AppendText("\r\n开始生成连接……");
-            bag = RandomGrid.Generate(n);
+            _bag = RandomGrid.Generate(n);
             log.AppendText("\r\n生成连接完成");
 
             // 新建画布窗口。
             log.AppendText("\r\n启动画布……");
             var matrix = new Form2();
             matrix.StartPosition = FormStartPosition.Manual;
-            matrix.Location = new Point(WinBox.Left - matrix.ClientRectangle.Width, WinBox.Top);
+            matrix.Location = new Point(winBox.Left - matrix.ClientRectangle.Width, winBox.Top);
             matrix.Show();
             log.AppendText("\r\n画布已启动，开始绘图……");
-            graphics = matrix.CreateGraphics();
+            _graphics = matrix.CreateGraphics();
 
             // 获取绘图区域。
             RectangleF rect = matrix.ClientRectangle;
@@ -57,43 +57,43 @@ namespace _1._5._19
 
             // 绘制点。
             log.AppendText("\r\n绘制点……");
-            points = new PointF[n * n];
+            _points = new PointF[n * n];
             for (var row = 0; row < n; row++)
             {
                 for (var col = 0; col < n; col++)
                 {
-                    points[row * n + col] = new PointF(unitX * (col + 1), unitY * (row + 1));
-                    graphics.FillEllipse(Brushes.Black, unitX * (col + 1), unitY * (row + 1), 5, 5);
+                    _points[row * n + col] = new PointF(unitX * (col + 1), unitY * (row + 1));
+                    _graphics.FillEllipse(Brushes.Black, unitX * (col + 1), unitY * (row + 1), 5, 5);
                 }
             }
             log.AppendText("\r\n绘制点完成");
 
             // 绘制连接。
             log.AppendText("\r\n开始绘制连接……");
-            connections = new List<Connection>();
-            foreach (var c in bag)
+            _connections = new List<Connection>();
+            foreach (var c in _bag)
             {
-                connections.Add(c);
+                _connections.Add(c);
             }
-            timer = new Timer
+            _timer = new Timer
             {
                 Interval = 500
             };
-            timer.Tick += DrawOneLine;
-            timer.Start();              
+            _timer.Tick += DrawOneLine;
+            _timer.Start();              
         }
 
         private static void DrawOneLine(object sender, EventArgs e)
         {
-            var c = connections[count];
-            count++;
-            graphics.DrawLine(Pens.Black, points[c.P], points[c.Q]);
-            logBox.AppendText("\r\n绘制" + "(" + c.P + ", " + c.Q + ")");
-            if (count == bag.Size())
+            var c = _connections[_count];
+            _count++;
+            _graphics.DrawLine(Pens.Black, _points[c.P], _points[c.Q]);
+            _logBox.AppendText("\r\n绘制" + "(" + c.P + ", " + c.Q + ")");
+            if (_count == _bag.Size())
             {
-                timer.Stop();
-                logBox.AppendText("\r\n绘制结束");
-                count = 0;
+                _timer.Stop();
+                _logBox.AppendText("\r\n绘制结束");
+                _count = 0;
             }
         }
     }

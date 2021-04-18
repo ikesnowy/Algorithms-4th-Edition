@@ -6,7 +6,7 @@ namespace _3._2._12
     {
         static void Main(string[] args)
         {
-            BSTTester.Test(new BSTWithoutCounter<string, int>());
+            BstTester.Test(new BstWithoutCounter<string, int>());
         }
     }
 }

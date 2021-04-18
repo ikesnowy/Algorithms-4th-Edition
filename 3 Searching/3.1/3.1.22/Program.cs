@@ -7,7 +7,7 @@ namespace _3._1._22
     {
         static void Main(string[] args)
         {
-            var st = new MoveToFrontArrayST<string, string>();
+            var st = new MoveToFrontArraySt<string, string>();
             st.Put("alpha", "α");
             st.Put("beta", "β");
             st.Put("omega", "ω");

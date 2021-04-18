@@ -9,7 +9,7 @@ namespace _1._2._11
         public int Year { get; }    // 年
 
         // 每个月对应的天数，第 0 位空出来
-        private static readonly int[] dayOfMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        private static readonly int[] DayOfMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
         public SmartDate(int m, int d, int y)
         {
@@ -33,7 +33,7 @@ namespace _1._2._11
                 return false;
             if (m == 2 && d > 29 && isLeapYear)
                 return false;
-            if (d > dayOfMonth[m])
+            if (d > DayOfMonth[m])
                 return false;
 
             return true;

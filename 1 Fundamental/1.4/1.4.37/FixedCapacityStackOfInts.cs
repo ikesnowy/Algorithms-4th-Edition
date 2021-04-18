@@ -9,8 +9,8 @@ namespace _1._4._37
     /// </summary>
     class FixedCapacityStackOfInts : IEnumerable<int>
     {
-        private readonly int[] a;
-        private int N;
+        private readonly int[] _a;
+        private int _n;
 
         /// <summary>
         /// 默认构造函数。
@@ -18,8 +18,8 @@ namespace _1._4._37
         /// <param name="capacity">栈的大小。</param>
         public FixedCapacityStackOfInts(int capacity)
         {
-            a = new int[capacity];
-            N = 0;
+            _a = new int[capacity];
+            _n = 0;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace _1._4._37
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return N == 0;
+            return _n == 0;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace _1._4._37
         /// <returns></returns>
         public bool IsFull()
         {
-            return N == a.Length;
+            return _n == _a.Length;
         }
 
         /// <summary>
@@ -46,8 +46,8 @@ namespace _1._4._37
         /// <param name="item">要压入栈中的元素。</param>
         public void Push(int item)
         {
-            a[N] = item;
-            N++;
+            _a[_n] = item;
+            _n++;
         }
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace _1._4._37
         /// <returns></returns>
         public int Pop()
         {
-            N--;
-            return a[N];
+            _n--;
+            return _a[_n];
         }
 
         /// <summary>
@@ -66,12 +66,12 @@ namespace _1._4._37
         /// <returns></returns>
         public int Peek()
         {
-            return a[N - 1];
+            return _a[_n - 1];
         }
 
         public IEnumerator<int> GetEnumerator()
         {
-            return new ReverseEnmerator(a);
+            return new ReverseEnmerator(_a);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -81,36 +81,36 @@ namespace _1._4._37
 
         private class ReverseEnmerator : IEnumerator<int>
         {
-            private int current;
-            private int[] a;
+            private int _current;
+            private int[] _a;
 
             public ReverseEnmerator(int[] a)
             {
-                current = a.Length;
-                this.a = a;
+                _current = a.Length;
+                this._a = a;
             }
 
-            int IEnumerator<int>.Current => a[current];
+            int IEnumerator<int>.Current => _a[_current];
 
-            object IEnumerator.Current => a[current];
+            object IEnumerator.Current => _a[_current];
 
             void IDisposable.Dispose()
             {
-                current = -1;
-                a = null;
+                _current = -1;
+                _a = null;
             }
 
             bool IEnumerator.MoveNext()
             {
-                if (current == 0)
+                if (_current == 0)
                     return false;
-                current--;
+                _current--;
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = a.Length;
+                _current = _a.Length;
             }
         }
     }

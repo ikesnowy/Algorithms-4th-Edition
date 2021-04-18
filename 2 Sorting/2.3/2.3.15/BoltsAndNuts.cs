@@ -61,7 +61,7 @@ namespace _2._3._15
     /// </summary>
     public class BoltsAndNuts
     {
-        private readonly Random random = new();
+        private readonly Random _random = new();
 
         /// <summary>
         /// 对螺丝和螺母排序。
@@ -166,7 +166,7 @@ namespace _2._3._15
         {
             for (var i = 0; i < a.Length; i++)
             {
-                var r = i + random.Next(a.Length - i);
+                var r = i + _random.Next(a.Length - i);
                 var temp = a[i];
                 a[i] = a[r];
                 a[r] = temp;

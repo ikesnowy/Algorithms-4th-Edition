@@ -6,7 +6,7 @@ namespace _1._2._17
     {
         public long Numerator { get; }
         public long Denominator { get; }
-        private readonly bool isNagative;
+        private readonly bool _isNagative;
 
         /// <summary>
         /// 构造一个有理数对象，自动变为最简形式。
@@ -21,20 +21,20 @@ namespace _1._2._17
 
             if (numerator < 0 && denominator < 0)
             {
-                isNagative = false;
+                _isNagative = false;
                 numerator = -numerator;
                 denominator = -denominator;
             }
             else if (numerator < 0 || denominator < 0)
             {
-                isNagative = true;
+                _isNagative = true;
             }
             else
             {
-                isNagative = false;
+                _isNagative = false;
             }
 
-            var gcd = GCD(Math.Abs(numerator), Math.Abs(denominator));
+            var gcd = Gcd(Math.Abs(numerator), Math.Abs(denominator));
             if (gcd != 1)
             {
                 numerator /= gcd;
@@ -106,11 +106,11 @@ namespace _1._2._17
         /// <param name="a">第一个整数。</param>
         /// <param name="b">第二个整数。</param>
         /// <returns></returns>
-        private long GCD(long a, long b)
+        private long Gcd(long a, long b)
         {
             if (b == 0)
                 return a;
-            return GCD(b, a % b);
+            return Gcd(b, a % b);
         }
 
         public override bool Equals(object obj)
@@ -138,7 +138,7 @@ namespace _1._2._17
         public override string ToString()
         {
             var result = "";
-            if (isNagative)
+            if (_isNagative)
                 result += "-";
             result += Math.Abs(Numerator) + "/" + Math.Abs(Denominator);
             return result;

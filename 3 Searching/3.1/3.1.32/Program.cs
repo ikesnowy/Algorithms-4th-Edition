@@ -11,12 +11,12 @@ namespace _3._1._32
             var n = 100000;
 
             Console.WriteLine("n=" + n);
-            var sst = new SequentialSearchST<string, int>[4];
-            var bst = new BinarySearchST<string, int>[4];
+            var sst = new SequentialSearchSt<string, int>[4];
+            var bst = new BinarySearchSt<string, int>[4];
             for (var i = 0; i < 4; i++)
             {
-                bst[i] = new BinarySearchST<string, int>();
-                sst[i] = new SequentialSearchST<string, int>();
+                bst[i] = new BinarySearchSt<string, int>();
+                sst[i] = new SequentialSearchSt<string, int>();
             }
             Console.WriteLine(@"BinarySearch");
             Test(bst, n);
@@ -25,7 +25,7 @@ namespace _3._1._32
             Test(sst, n);
         }
 
-        static void Test(IST<string, int>[] sts, int n)
+        static void Test(ISt<string, int>[] sts, int n)
         {
             var sw = new Stopwatch();
             var data = SearchCompare.GetRandomArrayString(n, 3, 10);

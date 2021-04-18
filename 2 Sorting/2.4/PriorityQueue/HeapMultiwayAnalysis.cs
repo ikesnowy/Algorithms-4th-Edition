@@ -11,7 +11,7 @@ namespace PriorityQueue
         /// <summary>
         /// 堆排序的比较次数。
         /// </summary>
-        private static long compareTimes;
+        private static long _compareTimes;
 
         /// <summary>
         /// 利用堆排序对数组进行排序，返回比较次数。
@@ -20,7 +20,7 @@ namespace PriorityQueue
         /// <param name="d">堆的分叉数。</param>
         public static long Sort<T>(T[] pq, long d) where T : IComparable<T>
         {
-            compareTimes = 0;
+            _compareTimes = 0;
             long n = pq.Length;
             // 建堆
             for (var k = (n - 2) / d + 1; k >= 1; k--)
@@ -33,7 +33,7 @@ namespace PriorityQueue
                 Exch(pq, 1, n--);
                 Sink(pq, 1, n, d);
             }
-            return compareTimes;
+            return _compareTimes;
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace PriorityQueue
         /// <returns>如果下标为 <paramref name="a"/> 的元素较小则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
         private static bool Less<T>(T[] pq, long a, long b) where T : IComparable<T>
         {
-            compareTimes++;
+            _compareTimes++;
             try
             {
                 return pq[a - 1].CompareTo(pq[b - 1]) < 0;

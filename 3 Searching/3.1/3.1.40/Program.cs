@@ -5,10 +5,10 @@ namespace _3._1._40
 {
     class Program
     {
-        static long binarySearchCompare;
-        static long sequentialSearchCompare;
+        static long _binarySearchCompare;
+        static long _sequentialSearchCompare;
 
-        static readonly Random random = new();
+        static readonly Random Random = new();
         class TestNode : IComparable<TestNode>
         {
             public long Value { get; set; }
@@ -34,8 +34,8 @@ namespace _3._1._40
 
         static void Test(int n, int trial)
         {
-            binarySearchCompare = 0;
-            sequentialSearchCompare = 0;
+            _binarySearchCompare = 0;
+            _sequentialSearchCompare = 0;
             Console.Write(n + "\t");
 
             var sw = new Stopwatch();
@@ -66,7 +66,7 @@ namespace _3._1._40
             }
             sw.Stop();
             sstTime = sw.ElapsedMilliseconds;
-            Console.Write(sequentialSearchCompare + "/" + sstTime + "\t\t");
+            Console.Write(_sequentialSearchCompare + "/" + sstTime + "\t\t");
 
             // 测试 bst
             sw.Restart();
@@ -77,17 +77,17 @@ namespace _3._1._40
             sw.Stop();
 
             bstTime = sw.ElapsedMilliseconds;
-            Console.Write(binarySearchCompare + "/" + bstTime + "\t\t");
+            Console.Write(_binarySearchCompare + "/" + bstTime + "\t\t");
 
             // 比例
-            Console.WriteLine((float)sequentialSearchCompare / binarySearchCompare + "/" + (float)sstTime / bstTime);
+            Console.WriteLine((float)_sequentialSearchCompare / _binarySearchCompare + "/" + (float)sstTime / bstTime);
         }
 
         static void Shuffle<T>(T[] array)
         {
             for (var i = 0; i < array.Length; i++)
             {
-                var p = i + random.Next(array.Length - i);
+                var p = i + Random.Next(array.Length - i);
                 var temp = array[p];
                 array[p] = array[i];
                 array[i] = temp;
@@ -99,7 +99,7 @@ namespace _3._1._40
             for (var i = 0; i < a.Length; i++)
             {
                 var compare = a[i].CompareTo(key);
-                sequentialSearchCompare++;
+                _sequentialSearchCompare++;
                 if (compare == 0)
                     return i;
             }
@@ -113,7 +113,7 @@ namespace _3._1._40
             {
                 var mid = (lo + hi) / 2;
                 var compare = a[mid].CompareTo(key);
-                binarySearchCompare++;
+                _binarySearchCompare++;
                 if (compare > 0)
                     hi = mid - 1;
                 else if (compare < 0)

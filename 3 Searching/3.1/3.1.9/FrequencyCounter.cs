@@ -22,7 +22,7 @@ namespace _3._1._9
         /// <param name="minLength">字符串最小长度。</param>
         /// <param name="st">用于计算的符号表。</param>
         /// <returns>文本文档出现频率最高的字符串。</returns>
-        public static string MostFrequentlyWord(string filename, int minLength, IST<string, int> st)
+        public static string MostFrequentlyWord(string filename, int minLength, ISt<string, int> st)
         {
             int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
@@ -70,7 +70,7 @@ namespace _3._1._9
         /// <param name="keys">包含重复元素的数组。</param>
         /// <param name="st">用于计算的符号表。</param>
         /// <returns><paramref name="keys"/> 中的不重复元素数量。</returns>
-        public static int CountDistinct<TKey>(TKey[] keys, IST<TKey, int> st)
+        public static int CountDistinct<TKey>(TKey[] keys, ISt<TKey, int> st)
         {
             var distinct = 0;
             for (var i = 0; i < keys.Length; i++)

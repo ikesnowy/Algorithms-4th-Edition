@@ -9,7 +9,7 @@ namespace _3._2._21
         static void Main(string[] args)
         {
             var testTimes = 1000000;
-            var bst = new BSTRandomKey<int, int>();
+            var bst = new BstRandomKey<int, int>();
             bst.Put(8, 8);
             bst.Put(4, 4);
             bst.Put(7, 7);

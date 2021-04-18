@@ -7,7 +7,7 @@ namespace _3._2._27
     {
         static void Main(string[] args)
         {
-            var bst = new BST<string, int>();
+            var bst = new Bst<string, int>();
             var tale = BinarySearchTree.Properties.Resources.tale.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             var distinctCount = FrequencyCounter.CountDistinct(tale, bst);
             Console.WriteLine("distinctCount: " + distinctCount);

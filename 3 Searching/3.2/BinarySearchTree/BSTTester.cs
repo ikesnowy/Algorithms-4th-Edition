@@ -5,13 +5,13 @@ namespace BinarySearchTree
     /// <summary>
     /// BST 测试类，包含用于测试 BST 的静态方法。
     /// </summary>
-    public static class BSTTester
+    public static class BstTester
     {
         /// <summary>
         /// 对一个 BST 进行测试。
         /// </summary>
         /// <param name="st">用于测试的 BST。</param>
-        public static void Test(IOrderedST<string, int> st)
+        public static void Test(IOrderedSt<string, int> st)
         {
             var test = "S E A R C H E X A M P L E";
             var keys = test.Split(' ');

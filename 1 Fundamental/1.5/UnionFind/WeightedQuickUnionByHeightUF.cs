@@ -3,20 +3,20 @@
     /// <summary>
     /// 按照高度加权的 Quick-Union 并查集。
     /// </summary>
-    public class WeightedQuickUnionByHeightUF : QuickUnionUF
+    public class WeightedQuickUnionByHeightUf : QuickUnionUf
     {
-        private readonly int[] height;
+        private readonly int[] _height;
 
         /// <summary>
         /// 新建一个以高度作为判断依据的加权 quick-union 并查集。
         /// </summary>
         /// <param name="n">新建并查集的大小。</param>
-        public WeightedQuickUnionByHeightUF(int n) : base(n)
+        public WeightedQuickUnionByHeightUf(int n) : base(n)
         {
-            height = new int[n];
+            _height = new int[n];
             for (var i = 0; i < n; i++)
             {
-                height[i] = 0;
+                _height[i] = 0;
             }
         }
 
@@ -35,18 +35,18 @@
                 return;
             }
 
-            if (height[rootP] < height[rootQ])
+            if (_height[rootP] < _height[rootQ])
             {
                 parent[rootP] = rootQ;
             }
-            else if (height[rootP] > height[rootQ])
+            else if (_height[rootP] > _height[rootQ])
             {
                 parent[rootQ] = rootP;
             }
             else
             {
                 parent[rootQ] = rootP;
-                height[rootP]++;
+                _height[rootP]++;
             }
             count--;
         }

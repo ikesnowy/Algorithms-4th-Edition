@@ -3,13 +3,13 @@
     /// <summary>
     /// 使用路径压缩的加权 quick-union 并查集。
     /// </summary>
-    public class WeightedQuickUnionPathCompressionUF : WeightedQuickUnionUF
+    public class WeightedQuickUnionPathCompressionUf : WeightedQuickUnionUf
     {
         /// <summary>
         /// 新建一个大小为 n 的并查集。
         /// </summary>
         /// <param name="n">新建并查集的大小。</param>
-        public WeightedQuickUnionPathCompressionUF(int n) : base(n)
+        public WeightedQuickUnionPathCompressionUf(int n) : base(n)
         {
             size = new int[n];
 

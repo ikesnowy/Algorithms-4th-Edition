@@ -9,7 +9,7 @@ namespace _2._5._33
     /// </summary>
     class TransactionGenerator
     {
-        private static readonly Random random = new();
+        private static readonly Random Random = new();
 
         /// <summary>
         /// 生成 n 条随机交易记录。
@@ -24,7 +24,7 @@ namespace _2._5._33
                 trans[i] = new Transaction
                     (GenerateName(), 
                     GenerateDate(), 
-                    random.NextDouble() * 1000);
+                    Random.NextDouble() * 1000);
             }
             return trans;
         }
@@ -35,12 +35,12 @@ namespace _2._5._33
         /// <returns></returns>
         private static string GenerateName()
         {
-            var nameLength = random.Next(4, 7);
+            var nameLength = Random.Next(4, 7);
             var sb = new StringBuilder();
 
-            sb.Append(random.Next('A', 'Z' + 1));
+            sb.Append(Random.Next('A', 'Z' + 1));
             for (var i = 1; i < nameLength; i++)
-                sb.Append(random.Next('a', 'z' + 1));
+                sb.Append(Random.Next('a', 'z' + 1));
 
             return sb.ToString();
         }
@@ -51,16 +51,16 @@ namespace _2._5._33
         /// <returns></returns>
         private static Date GenerateDate()
         {
-            var year = random.Next(2017, 2019);
-            var month = random.Next(1, 13);
+            var year = Random.Next(2017, 2019);
+            var month = Random.Next(1, 13);
             int day;
             if (month == 2)
-                day = random.Next(1, 29);
+                day = Random.Next(1, 29);
             else if ((month < 8 && month % 2 == 1) ||
                 (month > 7 && month % 2 == 0))
-                day = random.Next(1, 32);
+                day = Random.Next(1, 32);
             else
-                day = random.Next(1, 31);
+                day = Random.Next(1, 31);
 
             var date = new Date(month, day, year);
             return date;

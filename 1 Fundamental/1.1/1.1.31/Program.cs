@@ -21,20 +21,20 @@ namespace _1._1._31
         /// <summary>
         /// 主绘图函数。
         /// </summary>
-        /// <param name="N">点的总数目。</param>
+        /// <param name="n">点的总数目。</param>
         /// <param name="p">每对点之间连接的概率。</param>
-        public static void StartDrawing(int N, double p)
+        public static void StartDrawing(int n, double p)
         {
             var pointSize = 5;// 每个点绘制的大小
             var precious = 1000;// 概率判断的精度
 
             // 新建一个绘图窗口
-            var DrawPad = new Form2();
+            var drawPad = new Form2();
             // 显示绘图窗口
-            DrawPad.Show();
+            drawPad.Show();
 
             // 新建画布
-            var graphics = DrawPad.CreateGraphics();
+            var graphics = drawPad.CreateGraphics();
 
             // 建立绘图区域（矩形）
             var rect = new Rectangle(10, 10, 400, 400);
@@ -43,17 +43,17 @@ namespace _1._1._31
             graphics.DrawEllipse(Pens.Black, rect);
 
             // 计算旋转角度
-            var rotateDgree = 360.0 / N;
+            var rotateDgree = 360.0 / n;
 
             // 计算点的坐标
-            var Center = new Point(rect.Top + rect.Height / 2, rect.Top + rect.Height / 2);
-            var points = new Point[N];
+            var center = new Point(rect.Top + rect.Height / 2, rect.Top + rect.Height / 2);
+            var points = new Point[n];
             points[0].X = rect.Left + rect.Width / 2;
             points[0].Y = rect.Top;
 
-            for (var i = 1; i < N; i++)
+            for (var i = 1; i < n; i++)
             {
-                points[i] = Rotate(Center, points[i - 1], rotateDgree);
+                points[i] = Rotate(center, points[i - 1], rotateDgree);
             }
 
             // 绘制点
@@ -64,9 +64,9 @@ namespace _1._1._31
 
             // 按照概率绘制直线
             var random = new Random();
-            for (var i = 0; i < N; i++)
+            for (var i = 0; i < n; i++)
             {
-                for (var j = i + 1; j < N; j++)
+                for (var j = i + 1; j < n; j++)
                 {
                     // 举例：输入概率为 0.6，精度为 1000
                     // 在 0~1000 范围内等概率取值，如果小于等于 600 则视为事件发生

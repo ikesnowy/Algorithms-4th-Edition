@@ -19,8 +19,8 @@ namespace _3._2._42
 
                 Shuffle(data);
 
-                var bstHibbard = new BST<int, int>();
-                var bstNonHibbard = new BSTNonHibbard<int, int>();
+                var bstHibbard = new Bst<int, int>();
+                var bstNonHibbard = new BstNonHibbard<int, int>();
 
                 // build
                 for (var i = 0; i < n; i++)

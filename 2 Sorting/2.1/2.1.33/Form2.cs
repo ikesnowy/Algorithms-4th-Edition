@@ -9,13 +9,13 @@ namespace _2._1._33
 {
     public partial class Form2 : Form
     {
-        readonly List<double> resultList;
-        readonly List<float> resultYList;
-        readonly Rectangle clientRect;
-        readonly Rectangle drawRect;
+        readonly List<double> _resultList;
+        readonly List<float> _resultYList;
+        readonly Rectangle _clientRect;
+        readonly Rectangle _drawRect;
 
-        readonly BaseSort sort;
-        readonly int n;
+        readonly BaseSort _sort;
+        readonly int _n;
 
         /// <summary>
         /// 构造一个绘制结果窗口。
@@ -25,12 +25,12 @@ namespace _2._1._33
         public Form2(BaseSort sort, int n)
         {
             InitializeComponent();
-            resultList = new List<double>();
-            resultYList = new List<float>();
-            clientRect = ClientRectangle;
-            drawRect = new Rectangle(clientRect.X + 10, clientRect.Y + 10, clientRect.Width - 10, clientRect.Height - 10);
-            this.sort = sort;
-            this.n = n;
+            _resultList = new List<double>();
+            _resultYList = new List<float>();
+            _clientRect = ClientRectangle;
+            _drawRect = new Rectangle(_clientRect.X + 10, _clientRect.Y + 10, _clientRect.Width - 10, _clientRect.Height - 10);
+            this._sort = sort;
+            this._n = n;
             timer1.Interval = 500;
             timer1.Start();
         }
@@ -41,11 +41,11 @@ namespace _2._1._33
         public void Test()
         {
             var random = new Random();
-            var array = SortCompare.GetRandomArrayDouble(n);
-            var time = SortCompare.Time(sort, array);
-            resultList.Add(time);
-            resultYList.Add((float)(random.NextDouble() * drawRect.Height));
-            DrawPanel(resultList.ToArray(), resultYList.ToArray());
+            var array = SortCompare.GetRandomArrayDouble(_n);
+            var time = SortCompare.Time(_sort, array);
+            _resultList.Add(time);
+            _resultYList.Add((float)(random.NextDouble() * _drawRect.Height));
+            DrawPanel(_resultList.ToArray(), _resultYList.ToArray());
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace _2._1._33
             graphics.ScaleTransform(1, -1);
 
             var dataPoints = new PointF[result.Length];
-            var unitX = (float)(drawRect.Width / (result.Max() - result.Min()));
+            var unitX = (float)(_drawRect.Width / (result.Max() - result.Min()));
             var min = result.Min();
             var pointSize = new SizeF(8, 8);
             for (var i = 0; i < result.Length; i++)

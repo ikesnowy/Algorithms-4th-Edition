@@ -5,8 +5,8 @@
     /// </summary>
     class Counter
     {
-        private readonly string name;
-        private int count;
+        private readonly string _name;
+        private int _count;
 
         /// <summary>
         /// 构造函数。
@@ -14,7 +14,7 @@
         /// <param name="id">计数器的名称。</param>
         public Counter(string id)
         {
-            name = id;
+            _name = id;
         }
 
         /// <summary>
@@ -22,7 +22,7 @@
         /// </summary>
         public void Increment()
         {
-            count++;
+            _count++;
         }
 
         /// <summary>
@@ -31,7 +31,7 @@
         /// <returns></returns>
         public int Tally()
         {
-            return count;
+            return _count;
         }
 
         /// <summary>
@@ -40,7 +40,7 @@
         /// <returns></returns>
         public override string ToString()
         {
-            return count + " " + name;
+            return _count + " " + _name;
         }
     }
 }

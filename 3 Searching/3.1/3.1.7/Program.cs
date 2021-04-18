@@ -5,7 +5,7 @@ namespace _3._1._7
 {
     class Program
     {
-        static readonly Random random = new();
+        static readonly Random Random = new();
 
         static void Main(string[] args)
         {
@@ -19,7 +19,7 @@ namespace _3._1._7
                 var distinctSum = 0;
                 for (var j = 0; j < repeatTime; j++)
                 {
-                    var st = new ST<int, int>();
+                    var st = new St<int, int>();
                     var data = RandomArray(arraySize);
                     distinctSum += FrequencyCounter.CountDistinct(data, st);
                 }
@@ -34,7 +34,7 @@ namespace _3._1._7
             var data = new int[n];
             for (var i = 0; i < n; i++)
             {
-                data[i] = random.Next(1000);
+                data[i] = Random.Next(1000);
             }
             return data;
         }

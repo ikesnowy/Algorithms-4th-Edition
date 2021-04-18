@@ -6,8 +6,8 @@ char[] split = { '\n', '\r' };
 var input = TestCase.Properties.Resources.mediumUF.Split(split, StringSplitOptions.RemoveEmptyEntries);
 var size = int.Parse(input[0]);
 
-var quickFind = new QuickFindUF(size);
-var weightedQuickFind = new WeightedQuickFindUF(size);
+var quickFind = new QuickFindUf(size);
+var weightedQuickFind = new WeightedQuickFindUf(size);
 for (var i = 1; i < size; i++)
 {
     var pair = input[i].Split(' ');

@@ -7,7 +7,7 @@ namespace BinarySearchTree
     /// </summary>
     /// <typeparam name="TKey">键类型。</typeparam>
     /// <typeparam name="TValue">值类型。</typeparam>
-    public class BSTCached<TKey, TValue> : BST<TKey, TValue> where TKey : IComparable<TKey>
+    public class BstCached<TKey, TValue> : Bst<TKey, TValue> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 上一次 <see cref="Get"/> 或 <see cref="Put"/> 方法操作的结点。

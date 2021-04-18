@@ -7,7 +7,7 @@ namespace _3._2._36
     {
         static void Main(string[] args)
         {
-            var bst = new BSTNonRecursive<int, int>();
+            var bst = new BstNonRecursive<int, int>();
             bst.Put(10, 10);
             bst.Put(4, 4);
             bst.Put(12, 12);

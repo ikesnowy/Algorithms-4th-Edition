@@ -9,16 +9,16 @@ namespace _1._3._8
     /// </summary>
     class DoublingStackOfStrings : IEnumerable<string>
     {
-        private string[] items;
-        private int count;
+        private string[] _items;
+        private int _count;
 
         /// <summary>
         /// 新建一个字符串栈。
         /// </summary>
         public DoublingStackOfStrings()
         {
-            items = new string[2];
-            count = 0;
+            _items = new string[2];
+            _count = 0;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace _1._3._8
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return count == 0;
+            return _count == 0;
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace _1._3._8
         /// <returns></returns>
         public int Size()
         {
-            return count;
+            return _count;
         }
 
         /// <summary>
@@ -45,10 +45,10 @@ namespace _1._3._8
         /// <param name="s"></param>
         public void Push(string s)
         {
-            if (count == items.Length)
-                Resize(items.Length * 2);
-            items[count] = s;
-            count++;
+            if (_count == _items.Length)
+                Resize(_items.Length * 2);
+            _items[_count] = s;
+            _count++;
         }
 
         /// <summary>
@@ -59,13 +59,13 @@ namespace _1._3._8
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack underflow");
-            count--;
+            _count--;
 
             // 缩小长度
-            if (count > 0 && count <= items.Length / 4)
-                Resize(items.Length / 2);
+            if (_count > 0 && _count <= _items.Length / 4)
+                Resize(_items.Length / 2);
 
-            return items[count];
+            return _items[_count];
 
         }
 
@@ -77,7 +77,7 @@ namespace _1._3._8
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack underflow");
-            return items[count - 1];
+            return _items[_count - 1];
         }
 
         /// <summary>
@@ -88,17 +88,17 @@ namespace _1._3._8
         {
             var temp = new string[capcity];
             
-            for (var i = 0; i < count; i++)
+            for (var i = 0; i < _count; i++)
             {
-                temp[i] = items[i];
+                temp[i] = _items[i];
             }
 
-            items = temp;
+            _items = temp;
         }
 
         public IEnumerator<string> GetEnumerator()
         {
-            return new StackEnumerator(items);
+            return new StackEnumerator(_items);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -108,36 +108,36 @@ namespace _1._3._8
 
         private class StackEnumerator : IEnumerator<string>
         {
-            int current;
-            string[] items;
+            int _current;
+            string[] _items;
 
             public StackEnumerator(string[] items)
             {
-                this.items = items;
-                current = -1;
+                this._items = items;
+                _current = -1;
             }
 
-            string IEnumerator<string>.Current => items[current];
+            string IEnumerator<string>.Current => _items[_current];
 
-            object IEnumerator.Current => items[current];
+            object IEnumerator.Current => _items[_current];
 
             void IDisposable.Dispose()
             {
-                items = null;
-                current = -1;
+                _items = null;
+                _current = -1;
             }
 
             bool IEnumerator.MoveNext()
             {
-                if (current == items.Length - 1)
+                if (_current == _items.Length - 1)
                     return false;
-                current++;
+                _current++;
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = -1;
+                _current = -1;
             }
         }
     }

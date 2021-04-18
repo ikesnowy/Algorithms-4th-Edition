@@ -8,7 +8,7 @@ namespace PriorityQueue
     /// <typeparam name="T">需要排序的元素类型。</typeparam>
     public static class HeapPreorderAnalysis
     {
-        private static long compareTimes;
+        private static long _compareTimes;
 
         /// <summary>
         /// 利用堆排序对数组进行排序。
@@ -16,7 +16,7 @@ namespace PriorityQueue
         /// <param name="pq">需要排序的数组。</param>
         public static long Sort<T>(T[] pq) where T : IComparable<T>
         {
-            compareTimes = 0;
+            _compareTimes = 0;
             var n = pq.Length;
             BuildTree(pq, 0, pq.Length);
             // 排序
@@ -31,7 +31,7 @@ namespace PriorityQueue
                 pq[0] = temp;
                 Sink(pq, 0, n);
             }
-            return compareTimes;
+            return _compareTimes;
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace PriorityQueue
         /// <returns></returns>
         private static bool Less<T>(T[] pq, int a, int b) where T : IComparable<T>
         {
-            compareTimes++;
+            _compareTimes++;
             return pq[a].CompareTo(pq[b]) < 0;
         }
 

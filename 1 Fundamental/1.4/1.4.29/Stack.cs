@@ -9,35 +9,35 @@ namespace _1._4._29
     /// 链栈。
     /// </summary>
     /// <typeparam name="Item">链栈中保存的元素。</typeparam>
-    public class Stack<Item> : IEnumerable<Item>
+    public class Stack<TItem> : IEnumerable<TItem>
     {
-        private Node<Item> first;
-        private int count;
+        private Node<TItem> _first;
+        private int _count;
 
         /// <summary>
         /// 默认构造函数。
         /// </summary>
         public Stack()
         {
-            first = null;
-            count = 0;
+            _first = null;
+            _count = 0;
         }
 
         /// <summary>
         /// 复制构造函数。
         /// </summary>
         /// <param name="s"></param>
-        public Stack(Stack<Item> s)
+        public Stack(Stack<TItem> s)
         {
-            if (s.first != null)
+            if (s._first != null)
             {
-                first = new Node<Item>(s.first);
-                for (var x = first; x.next != null; x = x.next)
+                _first = new Node<TItem>(s._first);
+                for (var x = _first; x.next != null; x = x.next)
                 {
-                    x.next = new Node<Item>(x.next);
+                    x.next = new Node<TItem>(x.next);
                 }
             }
-            count = s.count;
+            _count = s._count;
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace _1._4._29
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return first == null;
+            return _first == null;
         }
 
         /// <summary>
@@ -55,33 +55,33 @@ namespace _1._4._29
         /// <returns></returns>
         public int Size()
         {
-            return count;
+            return _count;
         }
 
         /// <summary>
         /// 将一个元素压入栈中。
         /// </summary>
         /// <param name="item">要压入栈中的元素。</param>
-        public void Push(Item item)
+        public void Push(TItem item)
         {
-            var oldFirst = first;
-            first = new Node<Item>();
-            first.item = item;
-            first.next = oldFirst;
-            count++;
+            var oldFirst = _first;
+            _first = new Node<TItem>();
+            _first.item = item;
+            _first.next = oldFirst;
+            _count++;
         }
 
         /// <summary>
         /// 将一个元素从栈中弹出，返回弹出的元素。
         /// </summary>
         /// <returns></returns>
-        public Item Pop()
+        public TItem Pop()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack Underflow");
-            var item = first.item;
-            first = first.next;
-            count--;
+            var item = _first.item;
+            _first = _first.next;
+            _count--;
             return item;
         }
 
@@ -89,11 +89,11 @@ namespace _1._4._29
         /// 返回栈顶元素（但不弹出它）。
         /// </summary>
         /// <returns></returns>
-        public Item Peek()
+        public TItem Peek()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack Underflow");
-            return first.item;
+            return _first.item;
         }
 
         /// <summary>
@@ -102,22 +102,22 @@ namespace _1._4._29
         /// <param name="s1">第一个栈。</param>
         /// <param name="s2">第二个栈（将被删除）。</param>
         /// <returns></returns>
-        public static Stack<Item> Catenation(Stack<Item> s1, Stack<Item> s2)
+        public static Stack<TItem> Catenation(Stack<TItem> s1, Stack<TItem> s2)
         {
             if (s1.IsEmpty())
             {
-                s1.first = s2.first;
-                s1.count = s2.count;
+                s1._first = s2._first;
+                s1._count = s2._count;
             }
             else
             {
-                var last = s1.first;
+                var last = s1._first;
                 while (last.next != null)
                 {
                     last = last.next;
                 }
-                last.next = s2.first;
-                s1.count += s2.count;
+                last.next = s2._first;
+                s1._count += s2._count;
             }
             s2 = null;
             return s1;
@@ -127,11 +127,11 @@ namespace _1._4._29
         /// 创建栈的浅表副本。
         /// </summary>
         /// <returns></returns>
-        public Stack<Item> Copy()
+        public Stack<TItem> Copy()
         {
-            var temp = new Stack<Item>();
-            temp.first = first;
-            temp.count = count;
+            var temp = new Stack<TItem>();
+            temp._first = _first;
+            temp._count = _count;
             return temp;
         }
 
@@ -146,9 +146,9 @@ namespace _1._4._29
             return s.ToString();
         }
 
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            return new StackEnumerator(first);
+            return new StackEnumerator(_first);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -156,40 +156,40 @@ namespace _1._4._29
             return GetEnumerator();
         }
 
-        private class StackEnumerator : IEnumerator<Item>
+        private class StackEnumerator : IEnumerator<TItem>
         {
-            private Node<Item> current;
-            private Node<Item> first;
+            private Node<TItem> _current;
+            private Node<TItem> _first;
 
-            public StackEnumerator(Node<Item> first)
+            public StackEnumerator(Node<TItem> first)
             {
-                current = new Node<Item>();
-                current.next = first;
-                this.first = current;
+                _current = new Node<TItem>();
+                _current.next = first;
+                this._first = _current;
             }
 
-            Item IEnumerator<Item>.Current => current.item;
+            TItem IEnumerator<TItem>.Current => _current.item;
 
-            object IEnumerator.Current => current.item;
+            object IEnumerator.Current => _current.item;
 
             void IDisposable.Dispose()
             {
-                current = null;
-                first = null;
+                _current = null;
+                _first = null;
             }
 
             bool IEnumerator.MoveNext()
             {
-                if (current.next == null)
+                if (_current.next == null)
                     return false;
 
-                current = current.next;
+                _current = _current.next;
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = first;
+                _current = _first;
             }
         }
     }

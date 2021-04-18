@@ -5,7 +5,7 @@ using PriorityQueue;
 // 这里和官网保持一致，实现最大堆。
 // 官网答案：https://algs4.cs.princeton.edu/24pq/IndexMaxPQ.java.html
 var input = new[] { "it", "was", "the", "best", "of", "times", "it", "was", "the", "worst" };
-var pq = new IndexMaxPQ<string>(input.Length);
+var pq = new IndexMaxPq<string>(input.Length);
 for (var i = 0; i < input.Length; i++)
 {
     pq.Insert(input[i], i);

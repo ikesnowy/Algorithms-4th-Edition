@@ -14,7 +14,7 @@ for (var i = 0; i < t; i++, n *= 2)
     Console.WriteLine("N:" + n * n);
     var connections = RandomGrid.GetConnections(n);
 
-    var quickFind = new QuickFindUF(n * n);
+    var quickFind = new QuickFindUf(n * n);
     now = RunTest(quickFind, connections);
     if (last == 0)
     {
@@ -36,7 +36,7 @@ for (var i = 0; i < t; i++, n *= 2)
     Console.WriteLine("N:" + n * n);
     var connections = RandomGrid.GetConnections(n);
 
-    var quickFind = new QuickUnionUF(n * n);
+    var quickFind = new QuickUnionUf(n * n);
     now = RunTest(quickFind, connections);
     if (last == 0)
     {
@@ -58,7 +58,7 @@ for (var i = 0; i < t; i++, n *= 2)
     Console.WriteLine("N:" + n * n);
     var connections = RandomGrid.GetConnections(n);
 
-    var quickFind = new WeightedQuickUnionUF(n * n);
+    var quickFind = new WeightedQuickUnionUf(n * n);
     now = RunTest(quickFind, connections);
     if (last == 0)
     {
@@ -73,7 +73,7 @@ for (var i = 0; i < t; i++, n *= 2)
 }
 
 // 进行若干次随机试验，输出平均 union 次数，返回平均耗时。
-static long RunTest(UF uf, Connection[] connections)
+static long RunTest(Uf uf, Connection[] connections)
 {
     var timer = new Stopwatch();
     long repeatTime = 3;

@@ -6,7 +6,7 @@ for (var n = 10; n < 10000; n *= 2)
     var total = 0;
     for (var i = 0; i < 100; i++)
     {
-        var uf = new UF(n);
+        var uf = new Uf(n);
         total += ErdosRenyi.Count(uf);
     }
 

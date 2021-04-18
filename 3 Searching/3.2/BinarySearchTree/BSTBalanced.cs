@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace BinarySearchTree
 {
-    public class BSTBalanced<TKey, TValue> : BST<TKey, TValue> where TKey : IComparable<TKey>
+    public class BstBalanced<TKey, TValue> : Bst<TKey, TValue> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 构造一棵平衡的二叉搜索树。
         /// </summary>
         /// <param name="init">初始键值对。</param>
-        public BSTBalanced(KeyValuePair<TKey, TValue>[] init)
+        public BstBalanced(KeyValuePair<TKey, TValue>[] init)
         {
             Array.Sort(init, (left, right) => left.Key.CompareTo(right.Key));
             root = BuildTree(init, 0, init.Length - 1);

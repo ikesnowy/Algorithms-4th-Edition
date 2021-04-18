@@ -6,7 +6,7 @@ namespace _3._1._33
 {
     class Program
     {
-        static readonly Random random = new();
+        static readonly Random Random = new();
 
         static void Main(string[] args)
         {
@@ -16,8 +16,8 @@ namespace _3._1._33
             {
                 Console.WriteLine("n=" + n);
                 // 构造表
-                var bst = new BinarySearchST<string, int>(n);
-                var mst = new MoveToFrontArrayST<string, int>(n);
+                var bst = new BinarySearchSt<string, int>(n);
+                var mst = new MoveToFrontArraySt<string, int>(n);
                 var keys = SearchCompare.GetRandomArrayString(n, 3, 20);
                 for (var j = 0; j < n; j++)
                 {
@@ -67,7 +67,7 @@ namespace _3._1._33
         {
             for (var i = 0; i < data.Length; i++)
             {
-                var r = i + random.Next(data.Length - i);
+                var r = i + Random.Next(data.Length - i);
                 var temp = data[r];
                 data[r] = data[i];
                 data[i] = temp;

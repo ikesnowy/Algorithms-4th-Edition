@@ -13,12 +13,12 @@ namespace _3._2._45
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Test(new SequentialSearchST<string, int>());
-            Test(new BinarySearchST<string, int>());
-            Test(new BST<string, int>());
+            Test(new SequentialSearchSt<string, int>());
+            Test(new BinarySearchSt<string, int>());
+            Test(new Bst<string, int>());
         }
 
-        private void Test(IST<string, int> st)
+        private void Test(ISt<string, int> st)
         {
             FrequencyCounter.MostFrequentlyWordAnalysis("tale.txt", 8, st, out var callIndex, out var timeRecord);
             var panel = new Form2

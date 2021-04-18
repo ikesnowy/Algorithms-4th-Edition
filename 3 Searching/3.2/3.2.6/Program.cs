@@ -6,8 +6,8 @@ namespace _3._2._6
     {
         static void Main(string[] args)
         {
-            var recursiveHeight = new BSTRecursive<int, int>();
-            var constantHeight = new BSTConstant<int, int>();
+            var recursiveHeight = new BstRecursive<int, int>();
+            var constantHeight = new BstConstant<int, int>();
 
             int[] testCase = {5, 6, 2, 3, 9, 1, 0, 7};
 

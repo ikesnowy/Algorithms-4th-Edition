@@ -9,27 +9,27 @@ namespace _2._2._14
     /// 队列类。
     /// </summary>
     /// <typeparam name="Item">队列存放的元素类型。</typeparam>
-    public class Queue<Item> : IEnumerable<Item>
+    public class Queue<TItem> : IEnumerable<TItem>
     {
-        private Node<Item> first;
-        private Node<Item> last;
-        private int count;
+        private Node<TItem> _first;
+        private Node<TItem> _last;
+        private int _count;
 
         /// <summary>
         /// 默认构造函数。
         /// </summary>
         public Queue()
         {
-            first = null;
-            last = null;
-            count = 0;
+            _first = null;
+            _last = null;
+            _count = 0;
         }
 
         /// <summary>
         /// 复制构造函数。
         /// </summary>
         /// <param name="r"></param>
-        public Queue(Queue<Item> r)
+        public Queue(Queue<TItem> r)
         {
             foreach (var i in r)
             {
@@ -43,7 +43,7 @@ namespace _2._2._14
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return first == null;
+            return _first == null;
         }
 
         /// <summary>
@@ -52,50 +52,50 @@ namespace _2._2._14
         /// <returns></returns>
         public int Size()
         {
-            return count;
+            return _count;
         }
 
         /// <summary>
         /// 返回队列中的第一个元素（但不让它出队）。
         /// </summary>
         /// <returns></returns>
-        public Item Peek()
+        public TItem Peek()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Queue underflow");
-            return first.item;
+            return _first.item;
         }
 
         /// <summary>
         /// 将一个新元素加入队列中。
         /// </summary>
         /// <param name="item">要入队的元素。</param>
-        public void Enqueue(Item item)
+        public void Enqueue(TItem item)
         {
-            var oldLast = last;
-            last = new Node<Item>();
-            last.item = item;
-            last.next = null;
+            var oldLast = _last;
+            _last = new Node<TItem>();
+            _last.item = item;
+            _last.next = null;
             if (IsEmpty())
-                first = last;
+                _first = _last;
             else
-                oldLast.next = last;
-            count++;
+                oldLast.next = _last;
+            _count++;
         }
 
         /// <summary>
         /// 将队列中的第一个元素出队并返回它。
         /// </summary>
         /// <returns></returns>
-        public Item Dequeue()
+        public TItem Dequeue()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Queue underflow");
-            var item = first.item;
-            first = first.next;
-            count--;
+            var item = _first.item;
+            _first = _first.next;
+            _count--;
             if (IsEmpty())
-                last = null;
+                _last = null;
             return item;
         }
 
@@ -104,19 +104,19 @@ namespace _2._2._14
         /// </summary>
         /// <param name="q1">需要被附加的队列。</param>
         /// <param name="q2">需要附加的队列（将被删除）。</param>
-        public static Queue<Item> Catenation(Queue<Item> q1, Queue<Item> q2)
+        public static Queue<TItem> Catenation(Queue<TItem> q1, Queue<TItem> q2)
         {
             if (q1.IsEmpty())
             {
-                q1.first = q2.first;
-                q1.last = q2.last;
-                q1.count = q2.count;
+                q1._first = q2._first;
+                q1._last = q2._last;
+                q1._count = q2._count;
             }
             else
             {
-                q1.last.next = q2.first;
-                q1.last = q2.last;
-                q1.count += q2.count;
+                q1._last.next = q2._first;
+                q1._last = q2._last;
+                q1._count += q2._count;
             }
 
             q2 = null;
@@ -134,9 +134,9 @@ namespace _2._2._14
             return s.ToString();
         }
 
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            return new QueueEnumerator(first);
+            return new QueueEnumerator(_first);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -144,39 +144,39 @@ namespace _2._2._14
             return GetEnumerator();
         }
 
-        private class QueueEnumerator : IEnumerator<Item>
+        private class QueueEnumerator : IEnumerator<TItem>
         {
-            private Node<Item> current;
-            private Node<Item> first;
+            private Node<TItem> _current;
+            private Node<TItem> _first;
 
-            public QueueEnumerator(Node<Item> first)
+            public QueueEnumerator(Node<TItem> first)
             {
-                current = new Node<Item>();
-                current.next = first;
-                this.first = current;
+                _current = new Node<TItem>();
+                _current.next = first;
+                this._first = _current;
             }
 
-            Item IEnumerator<Item>.Current => current.item;
+            TItem IEnumerator<TItem>.Current => _current.item;
 
-            object IEnumerator.Current => current.item;
+            object IEnumerator.Current => _current.item;
 
             void IDisposable.Dispose()
             {
-                first = null;
-                current = null;
+                _first = null;
+                _current = null;
             }
 
             bool IEnumerator.MoveNext()
             {
-                if (current.next == null)
+                if (_current.next == null)
                     return false;
-                current = current.next;
+                _current = _current.next;
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = first;
+                _current = _first;
             }
         }
 

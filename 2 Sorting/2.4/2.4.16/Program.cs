@@ -21,7 +21,7 @@ Console.WriteLine(HeapAnalysis.Sort(bestCase));
 
 Console.WriteLine();
 
-var pq = new MaxPQWorstCase(size);
+var pq = new MaxPqWorstCase(size);
 var worstCase = pq.MakeWorst(size);
 Console.WriteLine(@"Worst Input");
 for (var i = 0; i < worstCase.Length; i++)

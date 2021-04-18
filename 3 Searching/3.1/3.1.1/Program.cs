@@ -9,7 +9,7 @@ namespace _3._1._1
         // ST.java：https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/ST.java.html
         static void Main(string[] args)
         {
-            var st = new ST<string, double>();
+            var st = new St<string, double>();
             st.Put("A+", 4.33);
             st.Put("A", 4.00);
             st.Put("A-", 3.67);

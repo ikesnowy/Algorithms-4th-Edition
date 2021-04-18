@@ -14,8 +14,8 @@ namespace _1._5._19
         {
             try
             {
-                var N = int.Parse(InputN.Text);
-                var log = new Log(N);
+                var n = int.Parse(InputN.Text);
+                var log = new Log(n);
                 log.Show();
             }
             catch (ArgumentNullException)

@@ -14,15 +14,15 @@ namespace _1._2._10
         {
             try
             {
-                var N = int.Parse(InputN.Text);
+                var n = int.Parse(InputN.Text);
                 var max = int.Parse(InputMax.Text);
 
-                if (N < 0)
+                if (n < 0)
                 {
                     ErrorLabel.Text = "操作数不可小于 0";
                     return;
                 }
-                var drawPad = new Form2(N, max);
+                var drawPad = new Form2(n, max);
                 drawPad.Show();
             }
             catch (ArgumentNullException)

@@ -11,8 +11,8 @@ namespace _3._1._28
             const int n = 100000;
 
             var sw = new Stopwatch();
-            var bst = new BinarySearchST<int, int>();
-            var bstOrdered = new BinarySearchSTOrderedInsertion<int, int>();
+            var bst = new BinarySearchSt<int, int>();
+            var bstOrdered = new BinarySearchStOrderedInsertion<int, int>();
 
             Console.WriteLine("n = " + n);
             Console.Write(@"Origin: ");

@@ -45,24 +45,24 @@ namespace _1._1._32
                 //打开文件并读取全部数字
                 var stringNums = File.ReadAllLines(InputFilePath.Text);
                 //建立 double 数组
-                var Numbers = new double[stringNums.Length];
+                var numbers = new double[stringNums.Length];
                 //将数字从 string 转换为 double
                 for (var i = 0; i < stringNums.Length; i++)
                 {
-                    Numbers[i] = double.Parse(stringNums[i]);
+                    numbers[i] = double.Parse(stringNums[i]);
                 }
 
                 try
                 {
-                    var N = int.Parse(InputN.Text);
-                    if (N <= 0)
+                    var n = int.Parse(InputN.Text);
+                    if (n <= 0)
                     {
                         ErrorLabel.Text = "N 必须大于 0";
                         return;
                     }
-                    var L = double.Parse(InputL.Text);
-                    var R = double.Parse(InputR.Text);
-                    Program.StartDrawing(Numbers, N, L, R);
+                    var l = double.Parse(InputL.Text);
+                    var r = double.Parse(InputR.Text);
+                    Program.StartDrawing(numbers, n, l, r);
                 }
                 catch (FormatException fex)
                 {

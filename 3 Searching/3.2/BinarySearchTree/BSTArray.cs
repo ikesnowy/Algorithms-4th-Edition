@@ -9,7 +9,7 @@ namespace BinarySearchTree
     /// </summary>
     /// <typeparam name="TKey">键类型。</typeparam>
     /// <typeparam name="TValue">值类型。</typeparam>
-    public class BSTArray<TKey, TValue> : IST<TKey, TValue>, IOrderedST<TKey, TValue> where TKey : IComparable<TKey>
+    public class BstArray<TKey, TValue> : ISt<TKey, TValue>, IOrderedSt<TKey, TValue> where TKey : IComparable<TKey>
     {
         private readonly Node[] _nodes;
         private readonly int[] _left;
@@ -30,7 +30,7 @@ namespace BinarySearchTree
         /// 建立一个以数组为基础的二叉搜索树。
         /// </summary>
         /// <param name="maxSize">二叉搜索树中的结点数。</param>
-        public BSTArray(int maxSize)
+        public BstArray(int maxSize)
         {
             _nodes = new Node[maxSize];
             _left = new int[maxSize];

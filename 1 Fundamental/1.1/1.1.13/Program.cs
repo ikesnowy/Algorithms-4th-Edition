@@ -1,22 +1,22 @@
 ﻿using System;
 
-var M = 2;
-var N = 3;
-var array = new int[M, N];
+var m = 2;
+var n = 3;
+var array = new int[m, n];
 
 // 新建一个二维数组
-for (var i = 0; i < M; i++)
+for (var i = 0; i < m; i++)
 {
-    for (var j = 0; j < N; j++)
+    for (var j = 0; j < n; j++)
     {
         array[i, j] = i + j;
     }
 }
 
 Console.WriteLine(@"Origin");
-PrintArray2D(array, M, N);
+PrintArray2D(array, m, n);
 Console.WriteLine(@"Transposed");
-PrintArrayTranspose2D(array, M, N);
+PrintArrayTranspose2D(array, m, n);
 
 // 转置输出
 static void PrintArrayTranspose2D(int[,] array, int rows, int columns)

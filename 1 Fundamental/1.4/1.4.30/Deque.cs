@@ -4,27 +4,27 @@
     /// 用一个栈和一个 Steque 模拟的双向队列。
     /// </summary>
     /// <typeparam name="Item">双向队列中保存的元素类型。</typeparam>
-    class Deque<Item>
+    class Deque<TItem>
     {
-        readonly Stack<Item> stack;  // 代表队列尾部
-        readonly Steque<Item> steque;// 代表队列头部
+        readonly Stack<TItem> _stack;  // 代表队列尾部
+        readonly Steque<TItem> _steque;// 代表队列头部
 
         /// <summary>
         /// 创建一条空的双向队列。
         /// </summary>
         public Deque()
         {
-            stack = new Stack<Item>();
-            steque = new Steque<Item>();
+            _stack = new Stack<TItem>();
+            _steque = new Steque<TItem>();
         }
 
         /// <summary>
         /// 在左侧插入一个新元素。
         /// </summary>
         /// <param name="item">要插入的元素。</param>
-        public void PushLeft(Item item)
+        public void PushLeft(TItem item)
         {
-            steque.Push(item);
+            _steque.Push(item);
         }
 
         /// <summary>
@@ -32,9 +32,9 @@
         /// </summary>
         private void StackToSteque()
         {
-            while (!stack.IsEmpty())
+            while (!_stack.IsEmpty())
             {
-                steque.Push(stack.Pop());
+                _steque.Push(_stack.Pop());
             }
         }
 
@@ -43,9 +43,9 @@
         /// </summary>
         private void StequeToStack()
         {
-            while (!steque.IsEmpty())
+            while (!_steque.IsEmpty())
             {
-                stack.Push(steque.Pop());
+                _stack.Push(_steque.Pop());
             }
         }
 
@@ -53,28 +53,28 @@
         /// 从双向队列左侧弹出一个元素。
         /// </summary>
         /// <returns></returns>
-        public Item PopLeft()
+        public TItem PopLeft()
         {
-            if (steque.IsEmpty())
+            if (_steque.IsEmpty())
             {
                 StackToSteque();
             }
-            return steque.Pop();
+            return _steque.Pop();
         }
 
         /// <summary>
         /// 向双向队列右侧添加一个元素。
         /// </summary>
         /// <param name="item">要插入的元素。</param>
-        public void PushRight(Item item)
+        public void PushRight(TItem item)
         {
-            if (stack.IsEmpty())
+            if (_stack.IsEmpty())
             {
-                steque.Enqueue(item);
+                _steque.Enqueue(item);
             }
             else
             {
-                stack.Push(item);
+                _stack.Push(item);
             }
         }
 
@@ -82,13 +82,13 @@
         /// 从双向队列右侧弹出一个元素。
         /// </summary>
         /// <returns></returns>
-        public Item PopRight()
+        public TItem PopRight()
         {
-            if (stack.IsEmpty())
+            if (_stack.IsEmpty())
             {
                 StequeToStack();
             }
-            return stack.Pop();
+            return _stack.Pop();
         }
 
         /// <summary>
@@ -97,7 +97,7 @@
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return stack.IsEmpty() && steque.IsEmpty();
+            return _stack.IsEmpty() && _steque.IsEmpty();
         }
 
         /// <summary>
@@ -106,7 +106,7 @@
         /// <returns></returns>
         public int Size()
         {
-            return stack.Size() + steque.Size();
+            return _stack.Size() + _steque.Size();
         }
     }
 }

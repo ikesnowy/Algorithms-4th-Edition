@@ -8,7 +8,7 @@ namespace _1._3._33
     /// 双端队列。
     /// </summary>
     /// <typeparam name="Item">队列中要存放的元素。</typeparam>
-    public class Deque<Item> : IEnumerable<Item>
+    public class Deque<TItem> : IEnumerable<TItem>
     {
         private class DoubleNode<T>
         {
@@ -17,18 +17,18 @@ namespace _1._3._33
             public DoubleNode<T> prev;
         }
 
-        DoubleNode<Item> first;
-        DoubleNode<Item> last;
-        int count;
+        DoubleNode<TItem> _first;
+        DoubleNode<TItem> _last;
+        int _count;
 
         /// <summary>
         /// 默认构造函数，建立一个双端队列。
         /// </summary>
         public Deque()
         {
-            first = null;
-            last = null;
-            count = 0;
+            _first = null;
+            _last = null;
+            _count = 0;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace _1._3._33
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return count == 0;
+            return _count == 0;
         }
 
         /// <summary>
@@ -46,17 +46,17 @@ namespace _1._3._33
         /// <returns></returns>
         public int Size()
         {
-            return count;
+            return _count;
         }
 
         /// <summary>
         /// 向左端添加一个元素。
         /// </summary>
         /// <param name="item">要添加的元素。</param>
-        public void PushLeft(Item item)
+        public void PushLeft(TItem item)
         {
-            var oldFirst = first;
-            first = new DoubleNode<Item>()
+            var oldFirst = _first;
+            _first = new DoubleNode<TItem>()
             {
                 item = item,
                 prev = null,
@@ -64,23 +64,23 @@ namespace _1._3._33
             };
             if (oldFirst == null)
             {
-                last = first;
+                _last = _first;
             }
             else
             {
-                oldFirst.prev = first;
+                oldFirst.prev = _first;
             }
-            count++;
+            _count++;
         }
 
         /// <summary>
         /// 向右端添加一个元素。
         /// </summary>
         /// <param name="item">要添加的元素。</param>
-        public void PushRight(Item item)
+        public void PushRight(TItem item)
         {
-            var oldLast = last;
-            last = new DoubleNode<Item>()
+            var oldLast = _last;
+            _last = new DoubleNode<TItem>()
             {
                 item = item,
                 prev = oldLast,
@@ -89,38 +89,38 @@ namespace _1._3._33
 
             if (oldLast == null)
             {
-                first = last;
+                _first = _last;
             }
             else
             {
-                oldLast.next = last;
+                oldLast.next = _last;
             }
-            count++;
+            _count++;
         }
 
         /// <summary>
         /// 从右端删除并返回一个元素。
         /// </summary>
         /// <returns></returns>
-        public Item PopRight()
+        public TItem PopRight()
         {
             if (IsEmpty())
             {
                 throw new InvalidOperationException();
             }
 
-            var temp = last.item;
-            last = last.prev;
-            count--;
+            var temp = _last.item;
+            _last = _last.prev;
+            _count--;
 
-            if (last == null)
+            if (_last == null)
             {
-                first = null;
+                _first = null;
             }
             else
             {
-                last.next.item = default(Item);
-                last.next = null;
+                _last.next.item = default(TItem);
+                _last.next = null;
             }
             return temp;
         }
@@ -129,33 +129,33 @@ namespace _1._3._33
         /// 从左端删除并返回一个元素。
         /// </summary>
         /// <returns></returns>
-        public Item PopLeft()
+        public TItem PopLeft()
         {
             if (IsEmpty())
             {
                 throw new InvalidOperationException();
             }
 
-            var temp = first.item;
-            first = first.next;
-            count--;
+            var temp = _first.item;
+            _first = _first.next;
+            _count--;
 
-            if (first == null)
+            if (_first == null)
             {
-                last = null;
+                _last = null;
             }
             else
             {
-                first.prev.item = default(Item);
-                first.prev = null;
+                _first.prev.item = default(TItem);
+                _first.prev = null;
             }
 
             return temp;
         }
 
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            return new DequeEnumerator(first);
+            return new DequeEnumerator(_first);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -163,40 +163,40 @@ namespace _1._3._33
             return GetEnumerator();
         }
 
-        private class DequeEnumerator : IEnumerator<Item>
+        private class DequeEnumerator : IEnumerator<TItem>
         {
-            private DoubleNode<Item> current;
-            private DoubleNode<Item> first;
+            private DoubleNode<TItem> _current;
+            private DoubleNode<TItem> _first;
 
-            public DequeEnumerator(DoubleNode<Item> first) 
+            public DequeEnumerator(DoubleNode<TItem> first) 
             {
-                current = new DoubleNode<Item>();
-                current.next = first;
-                current.prev = null;
-                this.first = current;
+                _current = new DoubleNode<TItem>();
+                _current.next = first;
+                _current.prev = null;
+                this._first = _current;
             }
 
-            public Item Current => current.item;
+            public TItem Current => _current.item;
 
-            object IEnumerator.Current => current.item;
+            object IEnumerator.Current => _current.item;
 
             public void Dispose()
             {
-                current = null;
-                first = null;
+                _current = null;
+                _first = null;
             }
 
             public bool MoveNext()
             {
-                if (current.next == null)
+                if (_current.next == null)
                     return false;
-                current = current.next;
+                _current = _current.next;
                 return true;
             }
 
             public void Reset()
             {
-                current = first;
+                _current = _first;
             }
         }
     }

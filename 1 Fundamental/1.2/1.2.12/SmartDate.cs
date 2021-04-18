@@ -9,9 +9,9 @@ namespace _1._2._12
         public int Year { get; }    // 年
 
         // 每个月对应的天数，第 0 位空出来
-        private static readonly int[] dayOfMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        private static readonly int[] DayOfMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
         // 每星期对应的名称。
-        private static readonly string[] dayOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+        private static readonly string[] DayOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
         public SmartDate(int m, int d, int y)
         {
@@ -41,7 +41,7 @@ namespace _1._2._12
             // 使用蔡勒公式计算，参见 http://www.cnblogs.com/mq0036/p/3534314.html
             var w = (d + 2 * m + 3 * (m + 1) / 5 + y + y / 4 - y / 100 + y / 400) % 7;
 
-            return dayOfWeek[w];
+            return DayOfWeek[w];
         }
 
         private bool Vaildation(int m, int d, int y)
@@ -57,7 +57,7 @@ namespace _1._2._12
                 return false;
             if (m == 2 && d > 29 && isLeapYear)
                 return false;
-            if (d > dayOfMonth[m])
+            if (d > DayOfMonth[m])
                 return false;
 
             return true;

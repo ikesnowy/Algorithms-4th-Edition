@@ -7,20 +7,20 @@ binomialCache = new double?[101, 51];
 Console.WriteLine(Binomial(100, 50, 0.25));
 Console.WriteLine(binomialCalled);
 
-double? Binomial(int N, int k, double p)
+double? Binomial(int n, int k, double p)
 {
     binomialCalled++;
-    if (N == 0 && k == 0)
+    if (n == 0 && k == 0)
         return 1.0;
-    if (N < 0 || k < 0)
+    if (n < 0 || k < 0)
         return 0.0;
-    if (binomialCache[N, k] != null)
+    if (binomialCache[n, k] != null)
     {
-        return binomialCache[N, k];
+        return binomialCache[n, k];
     }
     else
     {
-        binomialCache[N, k] = (1.0 - p) * Binomial(N - 1, k, p) + p * Binomial(N - 1, k - 1, p);
-        return binomialCache[N, k];
+        binomialCache[n, k] = (1.0 - p) * Binomial(n - 1, k, p) + p * Binomial(n - 1, k - 1, p);
+        return binomialCache[n, k];
     }
 }

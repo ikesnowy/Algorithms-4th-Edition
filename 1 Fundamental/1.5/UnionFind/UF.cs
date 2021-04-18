@@ -5,7 +5,7 @@ namespace UnionFind
     /// <summary>
     /// 并查集 API。
     /// </summary>
-    public class UF
+    public class Uf
     {
         /// <summary>
         /// 记录各个结点的父级的数组。
@@ -21,23 +21,23 @@ namespace UnionFind
         /// 各结点的深度。
         /// </summary>
         /// <value>各结点的深度。</value>
-        private readonly byte[] rank;
+        private readonly byte[] _rank;
 
         /// <summary>
         /// 新建一个大小为 n 的并查集。
         /// </summary>
         /// <param name="n">并查集的大小。</param>
-        public UF(int n)
+        public Uf(int n)
         {
             if (n < 0)
                 throw new ArgumentException();
             count = n;
             parent = new int[n];
-            rank = new byte[n];
+            _rank = new byte[n];
             for (var i = 0; i < n; i++)
             {
                 parent[i] = i;
-                rank[i] = 0;
+                _rank[i] = 0;
             }
         }
 
@@ -70,14 +70,14 @@ namespace UnionFind
             if (rootP == rootQ)
                 return;
 
-            if (rank[rootP] < rank[rootQ])
+            if (_rank[rootP] < _rank[rootQ])
                 parent[rootP] = rootQ;
-            else if (rank[rootP] > rank[rootQ])
+            else if (_rank[rootP] > _rank[rootQ])
                 parent[rootQ] = rootP;
             else
             {
                 parent[rootQ] = rootP;
-                rank[rootP]++;
+                _rank[rootP]++;
             }
             count--;
         }

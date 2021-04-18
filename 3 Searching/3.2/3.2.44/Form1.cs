@@ -36,7 +36,7 @@ namespace _3._2._44
             }
             Shuffle(testCases);
 
-            var bst = new BSTAnalysis<long, int>();
+            var bst = new BstAnalysis<long, int>();
             for (var i = 0; i < n; i++)
             {
                 bst.CompareTimes = 0;

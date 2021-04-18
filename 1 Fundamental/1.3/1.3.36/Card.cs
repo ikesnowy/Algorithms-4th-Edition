@@ -5,40 +5,40 @@
     /// </summary>
     class Card
     {
-        readonly Suit suit;
-        readonly int number;
+        readonly Suit _suit;
+        readonly int _number;
 
         public Card(Suit suit, int number)
         {
-            this.suit = suit;
-            this.number = number;
+            this._suit = suit;
+            this._number = number;
         }
 
         public override string ToString()
         {
             string num;
-            if (number == 1)
+            if (_number == 1)
             {
                 num = "Ace";
             }
-            else if (number == 11)
+            else if (_number == 11)
             {
                 num = "Jack";
             }
-            else if (number == 12)
+            else if (_number == 12)
             {
                 num = "Queen";
             }
-            else if (number == 13)
+            else if (_number == 13)
             {
                 num = "King";
             }
             else
             {
-                num = number.ToString();
+                num = _number.ToString();
             }
 
-            return num + " of the " + suit.ToString();
+            return num + " of the " + _suit.ToString();
         }
     }
 

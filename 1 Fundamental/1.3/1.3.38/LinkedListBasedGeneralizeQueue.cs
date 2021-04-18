@@ -6,7 +6,7 @@ namespace _1._3._38
     /// 以链表为基础的队列。
     /// </summary>
     /// <typeparam name="Item">队列中要保存的元素。</typeparam>
-    class LinkedListBasedGeneralizeQueue<Item>
+    class LinkedListBasedGeneralizeQueue<TItem>
     {
         private class Node<T>
         {
@@ -15,18 +15,18 @@ namespace _1._3._38
             public bool IsVisited;
         }
 
-        private Node<Item> first;
-        private Node<Item> last;
-        private int count;
+        private Node<TItem> _first;
+        private Node<TItem> _last;
+        private int _count;
 
         /// <summary>
         /// 建立一个队列。
         /// </summary>
         public LinkedListBasedGeneralizeQueue()
         {
-            first = null;
-            last = null;
-            count = 0;
+            _first = null;
+            _last = null;
+            _count = 0;
         }
 
         /// <summary>
@@ -35,17 +35,17 @@ namespace _1._3._38
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return first == null;
+            return _first == null;
         }
 
         /// <summary>
         /// 在队尾插入元素。
         /// </summary>
         /// <param name="item">需要插入的元素。</param>
-        public void Insert(Item item)
+        public void Insert(TItem item)
         {
-            var oldLast = last;
-            last = new Node<Item>()
+            var oldLast = _last;
+            _last = new Node<TItem>()
             {
                 item = item,
                 IsVisited = false,
@@ -54,13 +54,13 @@ namespace _1._3._38
 
             if (oldLast == null)
             {
-                first = last;
+                _first = _last;
             }
             else
             {
-                oldLast.next = last;
+                oldLast.next = _last;
             }
-            count++;
+            _count++;
         }
 
         /// <summary>
@@ -68,9 +68,9 @@ namespace _1._3._38
         /// </summary>
         /// <param name="k">结点序号（从 1 开始）</param>
         /// <returns></returns>
-        public Item Delete(int k)
+        public TItem Delete(int k)
         {
-            if (k > count || k <= 0)
+            if (k > _count || k <= 0)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -78,7 +78,7 @@ namespace _1._3._38
             k--;
 
             // 找到目标结点
-            var current = first;
+            var current = _first;
             for (var i = 0; i < k; i++)
             {
                 current = current.next;

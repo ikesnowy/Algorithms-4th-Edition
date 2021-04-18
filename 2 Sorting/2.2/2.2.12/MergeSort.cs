@@ -23,22 +23,22 @@ namespace _2._2._12
         /// </summary>
         /// <typeparam name="T">待排序的数组内容。</typeparam>
         /// <param name="a">待排序的数组。</param>
-        /// <param name="M">分块大小。</param>
-        public void Sort<T>(T[] a, int M) where T : IComparable<T>
+        /// <param name="m">分块大小。</param>
+        public void Sort<T>(T[] a, int m) where T : IComparable<T>
         {
-            var blockNum = (a.Length + M - 1) / M;
+            var blockNum = (a.Length + m - 1) / m;
             var selection = new SelectionSort();
             // 对块进行选择排序。
             for (var i = 0; i < blockNum; i++)
             {
-                var lo = i * M;
-                var hi = Math.Min((i + 1) * M - 1, a.Length - 1);
+                var lo = i * m;
+                var hi = Math.Min((i + 1) * m - 1, a.Length - 1);
                 selection.Sort(a, lo, hi);
             }
             // 将各个块合并。
             for (var i = 0; i < blockNum - 1; i++)
             {
-                Merge(a, 0, (i + 1) * M - 1, Math.Min((i + 2) * M - 1, a.Length - 1));
+                Merge(a, 0, (i + 1) * m - 1, Math.Min((i + 2) * m - 1, a.Length - 1));
             }
         }
 

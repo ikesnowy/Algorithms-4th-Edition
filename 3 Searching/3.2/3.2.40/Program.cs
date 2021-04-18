@@ -22,7 +22,7 @@ namespace _3._2._40
                 var aveHeight = 0d;
                 for (var j = 0; j < trials; j++)
                 {
-                    var bst = new BST<int, int>();
+                    var bst = new Bst<int, int>();
                     Shuffle(items);
                     foreach (var item in items)
                     {

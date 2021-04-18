@@ -8,7 +8,7 @@ namespace _1._3._48
     /// 双端栈。
     /// </summary>
     /// <typeparam name="Item">栈中所包含的元素。</typeparam>
-    public class DeStack<Item> : IEnumerable<Item>
+    public class DeStack<TItem> : IEnumerable<TItem>
     {
         private class DoubleNode<T>
         {
@@ -17,20 +17,20 @@ namespace _1._3._48
             public DoubleNode<T> prev;
         }
 
-        DoubleNode<Item> first;
-        DoubleNode<Item> last;
-        int leftcount;
-        int rightcount;
+        DoubleNode<TItem> _first;
+        DoubleNode<TItem> _last;
+        int _leftcount;
+        int _rightcount;
 
         /// <summary>
         /// 默认构造函数，建立一个双端栈。
         /// </summary>
         public DeStack()
         {
-            first = null;
-            last = null;
-            leftcount = 0;
-            rightcount = 0;
+            _first = null;
+            _last = null;
+            _leftcount = 0;
+            _rightcount = 0;
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace _1._3._48
         /// <returns></returns>
         public bool IsLeftEmpty()
         {
-            return leftcount == 0;
+            return _leftcount == 0;
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace _1._3._48
         /// <returns></returns>
         public bool IsRightEmpty()
         {
-            return rightcount == 0;
+            return _rightcount == 0;
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace _1._3._48
         /// <returns></returns>
         public int LeftSize()
         {
-            return leftcount;
+            return _leftcount;
         }
 
         /// <summary>
@@ -66,17 +66,17 @@ namespace _1._3._48
         /// <returns></returns>
         public int RightSize()
         {
-            return rightcount;
+            return _rightcount;
         }
 
         /// <summary>
         /// 向左端添加一个元素。
         /// </summary>
         /// <param name="item">要添加的元素。</param>
-        public void PushLeft(Item item)
+        public void PushLeft(TItem item)
         {
-            var oldFirst = first;
-            first = new DoubleNode<Item>()
+            var oldFirst = _first;
+            _first = new DoubleNode<TItem>()
             {
                 item = item,
                 prev = null,
@@ -84,23 +84,23 @@ namespace _1._3._48
             };
             if (oldFirst == null)
             {
-                last = first;
+                _last = _first;
             }
             else
             {
-                oldFirst.prev = first;
+                oldFirst.prev = _first;
             }
-            leftcount++;
+            _leftcount++;
         }
 
         /// <summary>
         /// 向右端添加一个元素。
         /// </summary>
         /// <param name="item">要添加的元素。</param>
-        public void PushRight(Item item)
+        public void PushRight(TItem item)
         {
-            var oldLast = last;
-            last = new DoubleNode<Item>()
+            var oldLast = _last;
+            _last = new DoubleNode<TItem>()
             {
                 item = item,
                 prev = oldLast,
@@ -109,38 +109,38 @@ namespace _1._3._48
 
             if (oldLast == null)
             {
-                first = last;
+                _first = _last;
             }
             else
             {
-                oldLast.next = last;
+                oldLast.next = _last;
             }
-            rightcount++;
+            _rightcount++;
         }
 
         /// <summary>
         /// 从右端删除并返回一个元素。
         /// </summary>
         /// <returns></returns>
-        public Item PopRight()
+        public TItem PopRight()
         {
             if (IsRightEmpty())
             {
                 throw new InvalidOperationException();
             }
 
-            var temp = last.item;
-            last = last.prev;
-            rightcount--;
+            var temp = _last.item;
+            _last = _last.prev;
+            _rightcount--;
 
-            if (last == null)
+            if (_last == null)
             {
-                first = null;
+                _first = null;
             }
             else
             {
-                last.next.item = default(Item);
-                last.next = null;
+                _last.next.item = default(TItem);
+                _last.next = null;
             }
             return temp;
         }
@@ -149,33 +149,33 @@ namespace _1._3._48
         /// 从左端删除并返回一个元素。
         /// </summary>
         /// <returns></returns>
-        public Item PopLeft()
+        public TItem PopLeft()
         {
             if (IsLeftEmpty())
             {
                 throw new InvalidOperationException();
             }
 
-            var temp = first.item;
-            first = first.next;
-            leftcount--;
+            var temp = _first.item;
+            _first = _first.next;
+            _leftcount--;
 
-            if (first == null)
+            if (_first == null)
             {
-                last = null;
+                _last = null;
             }
             else
             {
-                first.prev.item = default(Item);
-                first.prev = null;
+                _first.prev.item = default(TItem);
+                _first.prev = null;
             }
 
             return temp;
         }
 
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            return new DequeEnumerator(first);
+            return new DequeEnumerator(_first);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -183,40 +183,40 @@ namespace _1._3._48
             return GetEnumerator();
         }
 
-        private class DequeEnumerator : IEnumerator<Item>
+        private class DequeEnumerator : IEnumerator<TItem>
         {
-            private DoubleNode<Item> current;
-            private DoubleNode<Item> first;
+            private DoubleNode<TItem> _current;
+            private DoubleNode<TItem> _first;
 
-            public DequeEnumerator(DoubleNode<Item> first) 
+            public DequeEnumerator(DoubleNode<TItem> first) 
             {
-                current = new DoubleNode<Item>();
-                current.next = first;
-                current.prev = null;
-                this.first = current;
+                _current = new DoubleNode<TItem>();
+                _current.next = first;
+                _current.prev = null;
+                this._first = _current;
             }
 
-            public Item Current => current.item;
+            public TItem Current => _current.item;
 
-            object IEnumerator.Current => current.item;
+            object IEnumerator.Current => _current.item;
 
             public void Dispose()
             {
-                current = null;
-                first = null;
+                _current = null;
+                _first = null;
             }
 
             public bool MoveNext()
             {
-                if (current.next == null)
+                if (_current.next == null)
                     return false;
-                current = current.next;
+                _current = _current.next;
                 return true;
             }
 
             public void Reset()
             {
-                current = first;
+                _current = _first;
             }
         }
     }

@@ -3,7 +3,7 @@
     /// <summary>
     /// 用 QuickUnion 算法实现的并查集。
     /// </summary>
-    public class QuickUnionUF : UF
+    public class QuickUnionUf : Uf
     {
         /// <summary>
         /// 数组访问次数的计数器。
@@ -15,7 +15,7 @@
         /// 建立使用 QuickUnion 的并查集。
         /// </summary>
         /// <param name="n">并查集的大小。</param>
-        public QuickUnionUF(int n) : base(n) { }
+        public QuickUnionUf(int n) : base(n) { }
 
         /// <summary>
         /// 重置数组访问计数。

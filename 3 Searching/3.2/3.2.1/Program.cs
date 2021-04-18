@@ -7,7 +7,7 @@ namespace _3._2._1
     {
         static void Main(string[] args)
         {
-            var bst = new BST<string, string>();
+            var bst = new Bst<string, string>();
             var input = "E A S Y Q U E S T I O N".Split(' ', StringSplitOptions.RemoveEmptyEntries);
             foreach (var key in input)
             {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BinarySearchTree
 {
-    public class ThreadedST<TKey, TValue> where TKey : IComparable<TKey>
+    public class ThreadedSt<TKey, TValue> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 二叉查找树的根结点。

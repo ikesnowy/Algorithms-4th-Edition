@@ -13,14 +13,14 @@ namespace Measurement
         /// <param name="a">包含所有元素的数组。</param>
         public static void PrintAll(long[] a)
         {
-            var N = a.Length;
-            for (var i = 0; i < N; i++)
+            var n = a.Length;
+            for (var i = 0; i < n; i++)
             {
-                for (var j = i + 1; j < N; j++)
+                for (var j = i + 1; j < n; j++)
                 {
-                    for (var k = j + 1; k < N; k++)
+                    for (var k = j + 1; k < n; k++)
                     {
-                        for (var l = k + 1; l < N; l++)
+                        for (var l = k + 1; l < n; l++)
                         {
                             if (a[i] + a[j] + a[k] + a[l] == 0)
                             {
@@ -39,16 +39,16 @@ namespace Measurement
         /// <returns>和为零的四元组的数量。</returns>
         public static int Count(long[] a)
         {
-            var N = a.Length;
+            var n = a.Length;
             var cnt = 0;
 
-            for (var i = 0; i < N; i++)
+            for (var i = 0; i < n; i++)
             {
-                for (var j = i + 1; j < N; j++)
+                for (var j = i + 1; j < n; j++)
                 {
-                    for (var k = j + 1; k < N; k++)
+                    for (var k = j + 1; k < n; k++)
                     {
-                        for (var l = k + 1; l < N; l++)
+                        for (var l = k + 1; l < n; l++)
                         {
                             if (a[i] + a[j] + a[k] + a[l] == 0)
                             {

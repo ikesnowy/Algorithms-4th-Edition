@@ -7,17 +7,17 @@ namespace _2._1._17
 {
     public partial class Form3 : Form
     {
-        readonly double[] randomDoubles;
-        public Form3(int N)
+        readonly double[] _randomDoubles;
+        public Form3(int n)
         {
             InitializeComponent();
-            randomDoubles = new double[N];
+            _randomDoubles = new double[n];
             var random = new Random();
-            for (var i = 0; i < N; i++)
+            for (var i = 0; i < n; i++)
             {
-                randomDoubles[i] = random.NextDouble() * 0.8 + 0.2;
+                _randomDoubles[i] = random.NextDouble() * 0.8 + 0.2;
             }
-            drawPanel();
+            DrawPanel();
 
             timer1.Interval = 60;
             timer1.Start();
@@ -32,13 +32,13 @@ namespace _2._1._17
         /// </summary>
         private void InsertionSort()
         {
-            for (var i = 0; i < randomDoubles.Length; i++)
+            for (var i = 0; i < _randomDoubles.Length; i++)
             {
-                for (var j = i; j > 0 && randomDoubles[j] < randomDoubles[j - 1]; j--)
+                for (var j = i; j > 0 && _randomDoubles[j] < _randomDoubles[j - 1]; j--)
                 {
-                    var temp = randomDoubles[j];
-                    randomDoubles[j] = randomDoubles[j - 1];
-                    randomDoubles[j - 1] = temp;
+                    var temp = _randomDoubles[j];
+                    _randomDoubles[j] = _randomDoubles[j - 1];
+                    _randomDoubles[j - 1] = temp;
                     Thread.Sleep(500);
                 }
             }
@@ -47,7 +47,7 @@ namespace _2._1._17
         /// <summary>
         /// 在屏幕上用柱形图绘制数组。
         /// </summary>
-        private void drawPanel()
+        private void DrawPanel()
         {
             var graphics = CreateGraphics();
             graphics.Clear(BackColor);
@@ -56,20 +56,20 @@ namespace _2._1._17
             var clientRect = ClientRectangle;
             var drawRect = new Rectangle(clientRect.X + 10, clientRect.Y + 10, clientRect.Width - 10, clientRect.Height - 10);
 
-            var barX = new PointF[randomDoubles.Length];
-            var unitX = (float)drawRect.Width / randomDoubles.Length;
+            var barX = new PointF[_randomDoubles.Length];
+            var unitX = (float)drawRect.Width / _randomDoubles.Length;
             unitX -= 4;
 
             barX[0] = new PointF(4, drawRect.Top);
-            for (var i = 1; i < randomDoubles.Length; i++)
+            for (var i = 1; i < _randomDoubles.Length; i++)
             {
                 barX[i] = new PointF(2 + unitX + barX[i - 1].X, drawRect.Top);
             }
 
-            var bars = new RectangleF[randomDoubles.Length];
-            for (var i = 0; i < randomDoubles.Length; i++)
+            var bars = new RectangleF[_randomDoubles.Length];
+            for (var i = 0; i < _randomDoubles.Length; i++)
             {
-                var size = new SizeF(unitX, (float)randomDoubles[i] * drawRect.Height);
+                var size = new SizeF(unitX, (float)_randomDoubles[i] * drawRect.Height);
                 bars[i] = new RectangleF(barX[i], size);
             }
 
@@ -79,7 +79,7 @@ namespace _2._1._17
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            drawPanel();
+            DrawPanel();
         }
     }
 }

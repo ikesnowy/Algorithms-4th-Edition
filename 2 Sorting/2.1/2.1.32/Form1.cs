@@ -15,18 +15,18 @@ namespace _2._1._32
         {
             try
             {
-                var N = int.Parse(InputN.Text);
+                var n = int.Parse(InputN.Text);
                 if (selectionSortRadio.Checked)
                 {
-                    new Form2(new SelectionSort(), N).Show();
+                    new Form2(new SelectionSort(), n).Show();
                 }
                 else if (insertionSortRadio.Checked)
                 {
-                    new Form2(new InsertionSort(), N).Show();
+                    new Form2(new InsertionSort(), n).Show();
                 }
                 else if (shellSortRadio.Checked)
                 {
-                    new Form2(new ShellSort(), N).Show();
+                    new Form2(new ShellSort(), n).Show();
                 }
                 else
                 {

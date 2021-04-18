@@ -5,7 +5,7 @@ using PriorityQueue;
 
 var n = 1000000;
 
-var pq = new MinPQ<CubeSum>();
+var pq = new MinPq<CubeSum>();
 Console.WriteLine(@"正在初始化");
 for (var i = 0; i <= n; i++)
 {

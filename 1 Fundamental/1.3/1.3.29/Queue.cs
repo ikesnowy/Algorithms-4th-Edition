@@ -9,18 +9,18 @@ namespace _1._3._29
     /// 队列类。
     /// </summary>
     /// <typeparam name="Item">队列中存放的元素。</typeparam>
-    public class Queue<Item> : IEnumerable<Item>
+    public class Queue<TItem> : IEnumerable<TItem>
     {
-        private Node<Item> last;
-        private int count;
+        private Node<TItem> _last;
+        private int _count;
 
         /// <summary>
         /// 默认构造函数。
         /// </summary>
         public Queue()
         {
-            last = null;
-            count = 0;
+            _last = null;
+            _count = 0;
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace _1._3._29
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return last == null;
+            return _last == null;
         }
 
         /// <summary>
@@ -38,52 +38,52 @@ namespace _1._3._29
         /// <returns></returns>
         public int Size()
         {
-            return count;
+            return _count;
         }
 
         /// <summary>
         /// 返回队列中的第一个元素（但不让它出队）。
         /// </summary>
         /// <returns></returns>
-        public Item Peek()
+        public TItem Peek()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Queue underflow");
-            return last.next.item;
+            return _last.next.item;
         }
 
         /// <summary>
         /// 将一个新元素加入队列中。
         /// </summary>
         /// <param name="item">要入队的元素。</param>
-        public void Enqueue(Item item)
+        public void Enqueue(TItem item)
         {
-            var oldLast = last;
-            last = new Node<Item>();
-            last.item = item;
-            last.next = last;
+            var oldLast = _last;
+            _last = new Node<TItem>();
+            _last.item = item;
+            _last.next = _last;
 
             if (oldLast != null)
             {
-                last.next = oldLast.next;
-                oldLast.next = last;
+                _last.next = oldLast.next;
+                oldLast.next = _last;
             }
-            count++;
+            _count++;
         }
 
         /// <summary>
         /// 将队列中的第一个元素出队并返回它。
         /// </summary>
         /// <returns></returns>
-        public Item Dequeue()
+        public TItem Dequeue()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Queue underflow");
-            Item item = last.next.item;
-            last.next = last.next.next;
-            count--;
+            TItem item = _last.next.item;
+            _last.next = _last.next.next;
+            _count--;
             if (IsEmpty())
-                last = null;
+                _last = null;
             return item;
         }
 
@@ -98,9 +98,9 @@ namespace _1._3._29
             return s.ToString();
         }
 
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            return new QueueEnumerator(last);
+            return new QueueEnumerator(_last);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -108,46 +108,46 @@ namespace _1._3._29
             return GetEnumerator();
         }
 
-        private class QueueEnumerator : IEnumerator<Item>
+        private class QueueEnumerator : IEnumerator<TItem>
         {
-            private Node<Item> current;
-            private Node<Item> first;
+            private Node<TItem> _current;
+            private Node<TItem> _first;
 
-            public QueueEnumerator(Node<Item> last)
+            public QueueEnumerator(Node<TItem> last)
             {
-                current = new Node<Item>();
-                current.next = last.next;
-                first = current;
+                _current = new Node<TItem>();
+                _current.next = last.next;
+                _first = _current;
             }
 
-            Item IEnumerator<Item>.Current => current.item;
+            TItem IEnumerator<TItem>.Current => _current.item;
 
-            object IEnumerator.Current => current.item;
+            object IEnumerator.Current => _current.item;
 
             void IDisposable.Dispose()
             {
-                first = null;
-                current = null;
+                _first = null;
+                _current = null;
             }
 
             bool IEnumerator.MoveNext()
             {
-                if (current.next == first.next)
+                if (_current.next == _first.next)
                     return false;
-                current = current.next;
+                _current = _current.next;
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = first;
+                _current = _first;
             }
         }
     }
 
-    public class Node<Item>
+    public class Node<TItem>
     {
-        public Item item;
-        public Node<Item> next;
+        public TItem item;
+        public Node<TItem> next;
     }
 }

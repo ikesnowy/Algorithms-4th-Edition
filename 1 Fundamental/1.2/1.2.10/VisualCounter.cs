@@ -7,10 +7,10 @@ namespace _1._2._10
     /// </summary>
     class VisualCounter
     {
-        private readonly string name;
-        private int count;
-        private readonly int max;
-        private int operatorTimes;
+        private readonly string _name;
+        private int _count;
+        private readonly int _max;
+        private int _operatorTimes;
 
         /// <summary>
         /// 构造函数。
@@ -20,9 +20,9 @@ namespace _1._2._10
         /// <param name="operatorTimes">计数器的最大操作数。</param>
         public VisualCounter(string id, int max, int operatorTimes)
         {
-            name = id;
-            this.max = max;
-            this.operatorTimes = operatorTimes;
+            _name = id;
+            this._max = max;
+            this._operatorTimes = operatorTimes;
         }
 
         /// <summary>
@@ -30,12 +30,12 @@ namespace _1._2._10
         /// </summary>
         public bool Increment()
         {
-            if (operatorTimes <= 0)
+            if (_operatorTimes <= 0)
                 return false;
-            if (count < max)
+            if (_count < _max)
             {
-                count++;
-                operatorTimes--;
+                _count++;
+                _operatorTimes--;
             }
             return true;
         }
@@ -45,12 +45,12 @@ namespace _1._2._10
         /// </summary>
         public bool Decreasement()
         {
-            if (operatorTimes <= 0)
+            if (_operatorTimes <= 0)
                 return false;
-            if (count > 0)
+            if (_count > 0)
             {
-                count--;
-                operatorTimes--;
+                _count--;
+                _operatorTimes--;
             }
             return true;
         }
@@ -61,7 +61,7 @@ namespace _1._2._10
         /// <returns>返回计数值。</returns>
         public int Tally()
         {
-            return count;
+            return _count;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace _1._2._10
         /// <returns>返回形如 “1 counter” 的字符串。</returns>
         public override string ToString()
         {
-            return count + " " + name;
+            return _count + " " + _name;
         }
 
         /// <summary>
@@ -89,8 +89,8 @@ namespace _1._2._10
             var bodyPart = new Rectangle(0, height / 3, (height * 2) / 3, (height * 2) / 3);
 
             // 绘图
-            g.DrawString($"计数：{count} 剩余操作数：{operatorTimes} 最大值：{max}", font, Brushes.Black, headPart);
-            g.FillPie(Brushes.Blue, bodyPart, 0, 360 * (float)count / max);
+            g.DrawString($"计数：{_count} 剩余操作数：{_operatorTimes} 最大值：{_max}", font, Brushes.Black, headPart);
+            g.FillPie(Brushes.Blue, bodyPart, 0, 360 * (float)_count / _max);
         }
     }
 }

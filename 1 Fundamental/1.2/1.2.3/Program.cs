@@ -21,12 +21,12 @@ namespace _1._2._3
         /// <summary>
         /// 主绘图函数。
         /// </summary>
-        /// <param name="N">2D 间隔的数目。</param>
-        /// <param name="Min">分布范围的下界。（大于 0 且小于 1）</param>
-        /// <param name="Max">分布范围的上界。（大于 0 且小于 1）</param>
-        public static void StartDrawing(int N, double Min, double Max)
+        /// <param name="number">2D 间隔的数目。</param>
+        /// <param name="min">分布范围的下界。（大于 0 且小于 1）</param>
+        /// <param name="max">分布范围的上界。（大于 0 且小于 1）</param>
+        public static void StartDrawing(int number, double min, double max)
         {
-            var list = new Interval2D[N];
+            var list = new Interval2D[number];
             var random = new Random();
 
             // 开始绘图
@@ -35,10 +35,10 @@ namespace _1._2._3
             var graphics = drawPad.CreateGraphics();
 
             // 生成随机二维间隔
-            for (var i = 0; i < N; i++)
+            for (var i = 0; i < number; i++)
             {
-                var x = random.NextDouble() * (Max - Min) + Min;
-                var y = random.NextDouble() * (Max - Min) + Min;
+                var x = random.NextDouble() * (max - min) + min;
+                var y = random.NextDouble() * (max - min) + min;
                 if (x >= y)
                 {
                     var temp = x;
@@ -49,8 +49,8 @@ namespace _1._2._3
                 y *= drawPad.ClientRectangle.Width;
                 var tempx = new Interval1D(x, y);
 
-                x = random.NextDouble() * (Max - Min) + Min;
-                y = random.NextDouble() * (Max - Min) + Min;
+                x = random.NextDouble() * (max - min) + min;
+                y = random.NextDouble() * (max - min) + min;
                 if (x >= y)
                 {
                     var temp = x;
@@ -66,9 +66,9 @@ namespace _1._2._3
 
             // 计算相交和包含的数量
             var intersectNum = 0;
-            for (var i = 0; i < N; i++)
+            for (var i = 0; i < number; i++)
             {
-                for (var j = i + 1; j < N; j++)
+                for (var j = i + 1; j < number; j++)
                 {
                     if (list[i].Intersects(list[j]))
                     {
@@ -78,9 +78,9 @@ namespace _1._2._3
             }
 
             var containsNum = 0;
-            for (var i = 0; i < N; i++)
+            for (var i = 0; i < number; i++)
             {
-                for (var j = 0; j < N; j++)
+                for (var j = 0; j < number; j++)
                 {
                     if (i == j)
                         continue;

@@ -12,8 +12,8 @@ namespace _3._2._41
             
             for (var i = 0; i < 3; i++)
             {
-                var bst = new BST<int, int>();
-                var bstArray = new BSTArray<int, int>(n);
+                var bst = new Bst<int, int>();
+                var bstArray = new BstArray<int, int>(n);
 
                 Console.WriteLine(@"BST");
                 Test(n, bst);
@@ -24,7 +24,7 @@ namespace _3._2._41
             }
         }
 
-        static void Test(int n, IST<int, int> st)
+        static void Test(int n, ISt<int, int> st)
         {
             var data = new int[n];
             for (var i = 0; i < n; i++)

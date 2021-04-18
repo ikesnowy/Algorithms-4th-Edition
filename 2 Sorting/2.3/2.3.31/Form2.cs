@@ -9,14 +9,14 @@ namespace _2._3._31
 {
     public partial class Form2 : Form
     {
-        private readonly int N;
-        private readonly int T;
+        private readonly int _n;
+        private readonly int _;
 
         public Form2(int n, int t)
         {
             InitializeComponent();
-            N = n;
-            T = t;
+            _n = n;
+            _ = t;
         }
 
         /// <summary>
@@ -40,11 +40,11 @@ namespace _2._3._31
             var worker = sender as BackgroundWorker;
             var quick = new QuickSort();
 
-            var percentPerTrial = 100.0 / T;
-            var totalTime = new double[T];
-            for (var i = 0; i < T; i++)
+            var percentPerTrial = 100.0 / _;
+            var totalTime = new double[_];
+            for (var i = 0; i < _; i++)
             {
-                var data = SortCompare.GetRandomArrayDouble(N);
+                var data = SortCompare.GetRandomArrayDouble(_n);
                 totalTime[i] = SortCompare.Time(quick, data);
                 worker.ReportProgress((int)(percentPerTrial * i));
             }

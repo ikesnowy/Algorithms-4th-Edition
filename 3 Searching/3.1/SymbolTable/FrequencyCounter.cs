@@ -23,7 +23,7 @@ namespace SymbolTable
         /// <param name="keys">包含重复元素的数组。</param>
         /// <param name="st">用于计算的符号表。</param>
         /// <returns><paramref name="keys"/> 中的不重复元素数量。</returns>
-        public static int CountDistinct<TKey>(TKey[] keys, IST<TKey, int> st)
+        public static int CountDistinct<TKey>(TKey[] keys, ISt<TKey, int> st)
         {
             var distinct = 0;
             for (var i = 0; i < keys.Length; i++)
@@ -45,7 +45,7 @@ namespace SymbolTable
             // 初始化字典
             var sr = new StreamReader(File.OpenRead(dictionaryFile));
             var words = sr.ReadToEnd().Split(new[] { ' ', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            var dictionary = new BinarySearchST<string, int>();
+            var dictionary = new BinarySearchSt<string, int>();
             for (var i = 0; i < words.Length; i++)
             {
                 if (words[i].Length > minLength)
@@ -58,8 +58,8 @@ namespace SymbolTable
             var inputs = srFile.ReadToEnd().Split(new[] { ' ', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
             srFile.Close();
 
-            var stDictionary = new BinarySearchST<int, string>();
-            var stFrequency = new BinarySearchST<string, int>();
+            var stDictionary = new BinarySearchSt<int, string>();
+            var stFrequency = new BinarySearchSt<string, int>();
             foreach (var s in inputs)
             {
                 if (stFrequency.Contains(s))
@@ -101,7 +101,7 @@ namespace SymbolTable
         /// <param name="st">用于计算的符号表。</param>
         /// <param name="keys">所有的键。</param>
         /// <returns><paramref name="keys"/> 中出现频率最高的键。</returns>
-        public static TKey MostFrequentlyKey<TKey>(IST<TKey, int> st, TKey[] keys)
+        public static TKey MostFrequentlyKey<TKey>(ISt<TKey, int> st, TKey[] keys)
         {
             foreach (var s in keys)
             {
@@ -126,7 +126,7 @@ namespace SymbolTable
         /// <param name="minLength">字符串最小长度。</param>
         /// <param name="st">用于计算的符号表。</param>
         /// <returns>文本文档出现频率最高的字符串。</returns>
-        public static string MostFrequentlyWord(string filename, int minLength, IST<string, int> st)
+        public static string MostFrequentlyWord(string filename, int minLength, ISt<string, int> st)
         {
             int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
@@ -170,7 +170,7 @@ namespace SymbolTable
         /// <param name="minLength">字符串最小长度。</param>
         /// <param name="st">用于计算的符号表。</param>
         /// <returns>文本文档出现频率最高的字符串。</returns>
-        public static string MostFrequentlyWord(string filename, int counts, int minLength, IST<string, int> st)
+        public static string MostFrequentlyWord(string filename, int counts, int minLength, ISt<string, int> st)
         {
             int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
@@ -211,13 +211,13 @@ namespace SymbolTable
 
         /// <summary>
         /// 计算指定文本文档中出现频率最高的字符串，
-        /// 返回每次 <see cref="IST{TKey, TValue}.Put(TKey, TValue)"/> 的代价。
+        /// 返回每次 <see cref="ISt{TKey,TValue}.Put(TKey, TValue)"/> 的代价。
         /// </summary>
         /// <param name="filename">文件名。</param>
         /// <param name="minLength">字符串最小长度。</param>
         /// <param name="st">用于计算的符号表。</param>
         /// <returns>每次 put 的代价。</returns>
-        public static int[] MostFrequentlyWordAnalysis(string filename, int minLength, ISTAnalysis<string, int> st)
+        public static int[] MostFrequentlyWordAnalysis(string filename, int minLength, IStAnalysis<string, int> st)
         {
             int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
@@ -255,8 +255,8 @@ namespace SymbolTable
 
         /// <summary>
         /// 计算指定文本文档中出现频率最高的字符串，
-        /// 保存 <see cref="IST{TKey, TValue}.Get(TKey)"/> 
-        /// 和 <see cref="IST{TKey, TValue}.Put(TKey, TValue)"/>
+        /// 保存 <see cref="ISt{TKey,TValue}.Get(TKey)"/> 
+        /// 和 <see cref="ISt{TKey,TValue}.Put(TKey, TValue)"/>
         /// 的调用次数以及对应的耗时。
         /// </summary>
         /// <param name="filename">文件名。</param>
@@ -264,7 +264,7 @@ namespace SymbolTable
         /// <param name="st">用于计算的符号表。</param>
         /// <param name="callIndex">调用次数。</param>
         /// <param name="timeRecord">对应耗时。</param>
-        public static void MostFrequentlyWordAnalysis(string filename, int minLength, IST<string, int> st, out int[] callIndex, out long[] timeRecord)
+        public static void MostFrequentlyWordAnalysis(string filename, int minLength, ISt<string, int> st, out int[] callIndex, out long[] timeRecord)
         {
             var call = new List<int>();
             var time = new List<long>();
@@ -327,7 +327,7 @@ namespace SymbolTable
         /// <param name="minLength">字符串最小长度。</param>
         /// <param name="st">用于计算的符号表。</param>
         /// <returns>文本文档出现频率最高的字符串数组。</returns>
-        public static string[] MostFrequentlyWords(string filename, int minLength, IST<string, int> st)
+        public static string[] MostFrequentlyWords(string filename, int minLength, ISt<string, int> st)
         {
             int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));

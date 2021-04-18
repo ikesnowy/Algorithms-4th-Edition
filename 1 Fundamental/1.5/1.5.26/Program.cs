@@ -24,9 +24,9 @@ namespace _1._5._26
         static void Compute()
         {
             var size = 200;
-            var quickFind = new QuickFindUF(size);
-            var quickUnion = new QuickUnionUF(size);
-            var weightedQuickUnion = new WeightedQuickUnionUF(size);
+            var quickFind = new QuickFindUf(size);
+            var quickUnion = new QuickUnionUf(size);
+            var weightedQuickUnion = new WeightedQuickUnionUf(size);
             var connections = ErdosRenyi.Generate(size);
 
             var quickFindResult = new int[size];

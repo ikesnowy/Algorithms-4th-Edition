@@ -7,7 +7,7 @@ namespace _3._2._37
     {
         static void Main(string[] args)
         {
-            var bst = new BST<int, int>();
+            var bst = new Bst<int, int>();
             bst.Put(4, 4);
             bst.Put(3, 3);
             bst.Put(9, 9);

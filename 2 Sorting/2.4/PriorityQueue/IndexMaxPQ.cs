@@ -8,39 +8,39 @@ namespace PriorityQueue
     /// 索引优先队列。
     /// </summary>
     /// <typeparam name="Key">优先队列中包含的元素。</typeparam>
-    public class IndexMaxPQ<Key> : IEnumerable<int> where Key : IComparable<Key>
+    public class IndexMaxPq<TKey> : IEnumerable<int> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 优先队列中的元素。
         /// </summary>
-        private int n;
+        private int _n;
         /// <summary>
         /// 索引最大堆。
         /// </summary>
-        private readonly int[] pq;
+        private readonly int[] _pq;
         /// <summary>
         /// pq 的逆索引，pq[qp[i]]=qp[pq[i]]=i
         /// </summary>
-        private readonly int[] qp;
+        private readonly int[] _qp;
         /// <summary>
         /// 实际元素。
         /// </summary>
-        private readonly Key[] keys;
+        private readonly TKey[] _keys;
 
         /// <summary>
         /// 建立指定大小的面向索引的最大堆。
         /// </summary>
         /// <param name="capacity">最大堆的容量。</param>
-        public IndexMaxPQ(int capacity)
+        public IndexMaxPq(int capacity)
         {
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException();
-            n = 0;
-            keys = new Key[capacity + 1];
-            pq = new int[capacity + 1];
-            qp = new int[capacity + 1];
+            _n = 0;
+            _keys = new TKey[capacity + 1];
+            _pq = new int[capacity + 1];
+            _qp = new int[capacity + 1];
             for (var i = 0; i <= capacity; i++)
-                qp[i] = -1;
+                _qp[i] = -1;
         }
 
         /// <summary>
@@ -48,13 +48,13 @@ namespace PriorityQueue
         /// </summary>
         /// <param name="i">要修改关联元素的索引。</param>
         /// <param name="k">用于替换的新元素。</param>
-        public void ChangeKey(int i, Key k)
+        public void ChangeKey(int i, TKey k)
         {
             if (!Contains(i))
                 throw new ArgumentNullException("队列中没有该索引");
-            keys[i] = k;
-            Swim(qp[i]);
-            Sink(qp[i]);
+            _keys[i] = k;
+            Swim(_qp[i]);
+            Sink(_qp[i]);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace PriorityQueue
         /// </summary>
         /// <param name="i">要查询的索引。</param>
         /// <returns>包含则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public bool Contains(int i) => qp[i] != -1;
+        public bool Contains(int i) => _qp[i] != -1;
 
         /// <summary>
         /// 删除索引 <paramref name="i"/> 对应的键值。
@@ -72,12 +72,12 @@ namespace PriorityQueue
         {
             if (!Contains(i))
                 throw new ArgumentOutOfRangeException("index is not in the priority queue");
-            var index = qp[i];
-            Exch(index, n--);
+            var index = _qp[i];
+            Exch(index, _n--);
             Swim(index);
             Sink(index);
-            keys[i] = default(Key);
-            qp[i] = -1;
+            _keys[i] = default(TKey);
+            _qp[i] = -1;
         }
 
         /// <summary>
@@ -86,15 +86,15 @@ namespace PriorityQueue
         /// <returns>最大元素所在的索引。</returns>
         public int DelMax()
         {
-            if (n == 0)
+            if (_n == 0)
                 throw new ArgumentOutOfRangeException("Priority Queue Underflow");
-            var max = pq[1];
-            Exch(1, n--);
+            var max = _pq[1];
+            Exch(1, _n--);
             Sink(1);
 
-            qp[max] = -1;
-            keys[max] = default(Key);
-            pq[n + 1] = -1;
+            _qp[max] = -1;
+            _keys[max] = default(TKey);
+            _pq[_n + 1] = -1;
             return max;
         }
 
@@ -103,15 +103,15 @@ namespace PriorityQueue
         /// </summary>
         /// <param name="i">要修改的索引。</param>
         /// <param name="key">减少后的键值。</param>
-        public void DecreaseKey(int i, Key key)
+        public void DecreaseKey(int i, TKey key)
         {
             if (!Contains(i))
                 throw new ArgumentOutOfRangeException("index is not in the priority queue");
-            if (keys[i].CompareTo(key) <= 0)
+            if (_keys[i].CompareTo(key) <= 0)
                 throw new ArgumentException("Calling IncreaseKey() with given argument would not strictly increase the Key");
 
-            keys[i] = key;
-            Sink(qp[i]);
+            _keys[i] = key;
+            Sink(_qp[i]);
         }
 
         /// <summary>
@@ -119,15 +119,15 @@ namespace PriorityQueue
         /// </summary>
         /// <param name="i">要修改的索引。</param>
         /// <param name="key">增加后的键值。</param>
-        public void IncreaseKey(int i, Key key)
+        public void IncreaseKey(int i, TKey key)
         {
             if (!Contains(i))
                 throw new ArgumentOutOfRangeException("index is not in the priority queue");
-            if (keys[i].CompareTo(key) >= 0)
+            if (_keys[i].CompareTo(key) >= 0)
                 throw new ArgumentException("Calling IncreaseKey() with given argument would not strictly increase the Key");
 
-            keys[i] = key;
-            Swim(qp[i]);
+            _keys[i] = key;
+            Swim(_qp[i]);
         }
 
         /// <summary>
@@ -135,22 +135,22 @@ namespace PriorityQueue
         /// </summary>
         /// <param name="v">待插入元素。</param>
         /// <param name="i">需要关联的索引。</param>
-        public void Insert(Key v, int i)
+        public void Insert(TKey v, int i)
         {
             if (Contains(i))
                 throw new ArgumentException("索引已存在");
-            n++;
-            qp[i] = n;
-            pq[n] = i;
-            keys[i] = v;
-            Swim(n);
+            _n++;
+            _qp[i] = _n;
+            _pq[_n] = i;
+            _keys[i] = v;
+            Swim(_n);
         }
 
         /// <summary>
         /// 堆是否为空。
         /// </summary>
         /// <returns>为空则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public bool IsEmpty() => n == 0;
+        public bool IsEmpty() => _n == 0;
 
         /// <summary>
         /// 获得与索引 <paramref name="i"/> 关联的元素。
@@ -158,11 +158,11 @@ namespace PriorityQueue
         /// <param name="i">索引。</param>
         /// <returns>与索引 <paramref name="i"/> 关联的元素。</returns>
         /// <exception cref="ArgumentNullException">当队列中没有 <paramref name="i"/> 时抛出该异常。</exception>
-        public Key KeyOf(int i)
+        public TKey KeyOf(int i)
         {
             if (!Contains(i))
                 throw new ArgumentNullException("队列中没有该索引");
-            return keys[i];
+            return _keys[i];
         }
 
         /// <summary>
@@ -172,9 +172,9 @@ namespace PriorityQueue
         /// <exception cref="ArgumentOutOfRangeException">当优先队列为空时抛出该异常。</exception>
         public int MaxIndex()
         {
-            if (n == 0)
+            if (_n == 0)
                 throw new ArgumentOutOfRangeException("Priority Queue Underflow");
-            return pq[1];
+            return _pq[1];
         }
 
         /// <summary>
@@ -182,18 +182,18 @@ namespace PriorityQueue
         /// </summary>
         /// <returns>最大的元素。</returns>
         /// <exception cref="ArgumentOutOfRangeException">当优先队列为空时抛出该异常。</exception>
-        public Key MaxKey()
+        public TKey MaxKey()
         {
-            if (n == 0)
+            if (_n == 0)
                 throw new ArgumentOutOfRangeException("Priority Queue Underflow");
-            return keys[pq[1]];
+            return _keys[_pq[1]];
         }
 
         /// <summary>
         /// 返回堆的元素数量。
         /// </summary>
         /// <returns>堆的元素数量。</returns>
-        public int Size() => n;
+        public int Size() => _n;
 
         /// <summary>
         /// 比较第一个元素是否小于第二个元素。
@@ -202,7 +202,7 @@ namespace PriorityQueue
         /// <param name="j">第二个元素。</param>
         /// <returns>如果堆中索引为 <paramref name="i"/> 的元素较小则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
         private bool Less(int i, int j) 
-            => keys[pq[i]].CompareTo(keys[pq[j]]) < 0;
+            => _keys[_pq[i]].CompareTo(_keys[_pq[j]]) < 0;
 
         /// <summary>
         /// 交换两个元素。
@@ -211,11 +211,11 @@ namespace PriorityQueue
         /// <param name="j">要交换的元素下标。</param>
         private void Exch(int i, int j)
         {
-            var swap = pq[i];
-            pq[i] = pq[j];
-            pq[j] = swap;
-            qp[pq[i]] = i;
-            qp[pq[j]] = j;
+            var swap = _pq[i];
+            _pq[i] = _pq[j];
+            _pq[j] = swap;
+            _qp[_pq[i]] = i;
+            _qp[_pq[j]] = j;
         }
 
         /// <summary>
@@ -237,10 +237,10 @@ namespace PriorityQueue
         /// <param name="k">需要下沉的元素。</param>
         private void Sink(int k)
         {
-            while (k * 2 <= n)
+            while (k * 2 <= _n)
             {
                 var j = 2 * k;
-                if (j < n && Less(j, j + 1))
+                if (j < _n && Less(j, j + 1))
                     j++;
                 if (!Less(k, j))
                     break;
@@ -255,9 +255,9 @@ namespace PriorityQueue
         /// <returns>最大堆的迭代器。</returns>
         public IEnumerator<int> GetEnumerator()
         {
-            var copy = new IndexMaxPQ<Key>(n);
-            for (var i = 0; i < n; i++)
-                copy.Insert(keys[pq[i]], pq[i]);
+            var copy = new IndexMaxPq<TKey>(_n);
+            for (var i = 0; i < _n; i++)
+                copy.Insert(_keys[_pq[i]], _pq[i]);
 
             while (!copy.IsEmpty())
                 yield return copy.DelMax();

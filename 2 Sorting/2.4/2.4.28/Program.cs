@@ -29,7 +29,7 @@ for (var i = 0; i < 6; i++)
 // 进行一次测试。
 static long Test(int m, int n)
 {
-    var pq = new MinPQ<EuclideanDistance3D>(m);
+    var pq = new MinPq<EuclideanDistance3D>(m);
     var x = new int[n];
     var y = new int[n];
     var z = new int[n];

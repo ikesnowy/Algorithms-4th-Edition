@@ -6,22 +6,22 @@ namespace _1._3._38
     /// 以一维数组为基础的队列。
     /// </summary>
     /// <typeparam name="Item">队列中要保存的元素。</typeparam>
-    class ArrayBasedGeneralizeQueue<Item>
+    class ArrayBasedGeneralizeQueue<TItem>
     {
-        private Item[] queue;
-        private bool[] IsVisited;
-        private int count;
-        private int last;
+        private TItem[] _queue;
+        private bool[] _isVisited;
+        private int _count;
+        private int _last;
 
         /// <summary>
         /// 建立一个队列。
         /// </summary>
         public ArrayBasedGeneralizeQueue()
         {
-            queue = new Item[2];
-            IsVisited = new bool[2];
-            last = 0;
-            count = 0;
+            _queue = new TItem[2];
+            _isVisited = new bool[2];
+            _last = 0;
+            _count = 0;
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace _1._3._38
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return count == 0;
+            return _count == 0;
         }
 
         /// <summary>
@@ -39,36 +39,36 @@ namespace _1._3._38
         /// <param name="capacity"></param>
         private void Resize(int capacity)
         {
-            var temp = new Item[capacity];
-            for (var i = 0; i < count; i++)
+            var temp = new TItem[capacity];
+            for (var i = 0; i < _count; i++)
             {
-                temp[i] = queue[i];
+                temp[i] = _queue[i];
             }
-            queue = temp;
+            _queue = temp;
 
             var t = new bool[capacity];
-            for (var i = 0; i < count; i++)
+            for (var i = 0; i < _count; i++)
             {
-                t[i] = IsVisited[i];
+                t[i] = _isVisited[i];
             }
-            IsVisited = t;
+            _isVisited = t;
         }
 
         /// <summary>
         /// 向队列中插入一个元素。
         /// </summary>
         /// <param name="item">要插入队列的元素。</param>
-        public void Insert(Item item)
+        public void Insert(TItem item)
         {
-            if (count == queue.Length)
+            if (_count == _queue.Length)
             {
-                Resize(queue.Length * 2);
+                Resize(_queue.Length * 2);
             }
 
-            queue[last] = item;
-            IsVisited[last] = false;
-            last++;
-            count++;
+            _queue[_last] = item;
+            _isVisited[_last] = false;
+            _last++;
+            _count++;
         }
 
         /// <summary>
@@ -76,26 +76,26 @@ namespace _1._3._38
         /// </summary>
         /// <param name="k">要删除元素的顺序（从 1 开始）</param>
         /// <returns></returns>
-        public Item Delete(int k)
+        public TItem Delete(int k)
         {
             if (IsEmpty())
             {
                 throw new InvalidOperationException();
             }
 
-            if (k > last || k < 0)
+            if (k > _last || k < 0)
             {
                 throw new ArgumentOutOfRangeException();
             }
 
-            if (IsVisited[k - 1] == true)
+            if (_isVisited[k - 1] == true)
             {
                 throw new ArgumentException("this node had been already deleted");
             }
 
-            var temp = queue[k - 1];
-            IsVisited[k - 1] = true;
-            count--;
+            var temp = _queue[k - 1];
+            _isVisited[k - 1] = true;
+            _count--;
             return temp;
         }
     }

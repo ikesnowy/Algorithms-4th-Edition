@@ -7,16 +7,16 @@ namespace _1._3._44
     /// </summary>
     class Buffer
     {
-        private readonly Stack<char> leftside;
-        private readonly Stack<char> rightside;
+        private readonly Stack<char> _leftside;
+        private readonly Stack<char> _rightside;
 
         /// <summary>
         /// 建立一个文本缓冲区。
         /// </summary>
         public Buffer()
         {
-            leftside = new Stack<char>();
-            rightside = new Stack<char>();
+            _leftside = new Stack<char>();
+            _rightside = new Stack<char>();
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace _1._3._44
         /// <param name="c">要插入的字符。</param>
         public void Insert(char c)
         {
-            leftside.Push(c);
+            _leftside.Push(c);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace _1._3._44
         /// <returns></returns>
         public char Delete()
         {
-            return leftside.Pop();
+            return _leftside.Pop();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace _1._3._44
         {
             for (var i = 0; i < k; i++)
             {
-                rightside.Push(leftside.Pop());
+                _rightside.Push(_leftside.Pop());
             }
         }
 
@@ -57,7 +57,7 @@ namespace _1._3._44
         {
             for (var i = 0; i < k; i++)
             {
-                leftside.Push(rightside.Pop());
+                _leftside.Push(_rightside.Pop());
             }
         }
 
@@ -67,7 +67,7 @@ namespace _1._3._44
         /// <returns></returns>
         public int Size()
         {
-            return leftside.Size() + rightside.Size();
+            return _leftside.Size() + _rightside.Size();
         }
 
         /// <summary>
@@ -76,12 +76,12 @@ namespace _1._3._44
         /// <returns></returns>
         public string Getstring()
         {
-            while (!leftside.IsEmpty())
+            while (!_leftside.IsEmpty())
             {
-                rightside.Push(leftside.Pop());
+                _rightside.Push(_leftside.Pop());
             }
 
-            return rightside.ToString();
+            return _rightside.ToString();
         }
     }
 }

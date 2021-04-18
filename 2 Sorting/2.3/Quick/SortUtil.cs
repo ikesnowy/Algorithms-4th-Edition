@@ -82,7 +82,7 @@ namespace Quick
                 throw new ArgumentNullException("Argument array is null");
             }
 
-            var EPSION = 1E-14;
+            var epsion = 1E-14;
             double sum = 0;
             for (var i = 0; i < probabilities.Length; i++)
             {
@@ -94,7 +94,7 @@ namespace Quick
                 sum += probabilities[i];
             }
 
-            if (sum > 1.0 + EPSION || sum < 1.0 - EPSION)
+            if (sum > 1.0 + epsion || sum < 1.0 - epsion)
             {
                 throw new ArgumentException("sum of array entries does not equal 1.0:" + sum);
             }

@@ -9,44 +9,44 @@ namespace _3._2._45
     /// </summary>
     /// <typeparam name="TKey">键类型。</typeparam>
     /// <typeparam name="TValue">值类型。</typeparam>
-    public class BinarySearchST<TKey, TValue> : IST<TKey, TValue>, IOrderedST<TKey, TValue>
+    public class BinarySearchSt<TKey, TValue> : ISt<TKey, TValue>, IOrderedSt<TKey, TValue>
         where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 符号表的默认长度。
         /// </summary>
         /// <value>符号表的默认长度。</value>
-        private static readonly int INIT_CAPACITY = 2;
+        private static readonly int InitCapacity = 2;
         /// <summary>
         /// 保存符号表键的数组。
         /// </summary>
         /// <value>保存符号表键的数组。</value>
-        private TKey[] keys;
+        private TKey[] _keys;
         /// <summary>
         /// 保存符号表值的数组。
         /// </summary>
         /// <value>保存符号表值的数组。</value>
-        private TValue[] values;
+        private TValue[] _values;
         /// <summary>
         /// 符号表中的键值对数量。
         /// </summary>
         /// <value>符号表中的键值对数量。</value>
-        private int n;
+        private int _n;
 
         /// <summary>
         /// 构造一个空的符号表。
         /// </summary>
-        public BinarySearchST() : this(INIT_CAPACITY) { }
+        public BinarySearchSt() : this(InitCapacity) { }
 
         /// <summary>
         /// 构造一个指定容量的符号表。
         /// </summary>
         /// <param name="capacity">符号表初始容量。</param>
-        public BinarySearchST(int capacity)
+        public BinarySearchSt(int capacity)
         {
-            keys = new TKey[capacity];
-            values = new TValue[capacity];
-            n = 0;
+            _keys = new TKey[capacity];
+            _values = new TValue[capacity];
+            _n = 0;
         }
 
         /// <summary>
@@ -60,10 +60,10 @@ namespace _3._2._45
             if (key == null)
                 throw new ArgumentNullException("argument to Ceiling is null");
             var i = Rank(key);
-            if (i == n)
+            if (i == _n)
                 return default(TKey);
             else
-                return keys[i];
+                return _keys[i];
         }
 
         /// <summary>
@@ -92,21 +92,21 @@ namespace _3._2._45
 
             var i = Rank(key);
 
-            if (i == n && keys[i].CompareTo(key) != 0)
+            if (i == _n && _keys[i].CompareTo(key) != 0)
                 return;
 
-            for (var j = i; j < n - 1; j++)
+            for (var j = i; j < _n - 1; j++)
             {
-                keys[j] = keys[j + 1];
-                values[j] = values[j + 1];
+                _keys[j] = _keys[j + 1];
+                _values[j] = _values[j + 1];
             }
 
-            n--;
-            keys[n] = default(TKey);
-            values[n] = default(TValue);
+            _n--;
+            _keys[_n] = default(TKey);
+            _values[_n] = default(TValue);
 
-            if (n > 0 && n == keys.Length / 4)
-                Resize(keys.Length / 2);
+            if (_n > 0 && _n == _keys.Length / 4)
+                Resize(_keys.Length / 2);
 
             // Debug.Assert(Check());
         }
@@ -132,12 +132,12 @@ namespace _3._2._45
             if (key == null)
                 throw new ArgumentNullException("argument to Floor() is null");
             var i = Rank(key);
-            if (i < n && keys[i].CompareTo(key) == 0)
-                return keys[i];
+            if (i < _n && _keys[i].CompareTo(key) == 0)
+                return _keys[i];
             if (i == 0)
                 return default(TKey);
             else
-                return keys[i - 1];
+                return _keys[i - 1];
         }
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace _3._2._45
             if (IsEmpty())
                 return default(TValue);
             var rank = Rank(key);
-            if (rank < n && keys[rank].Equals(key))
-                return values[rank];
+            if (rank < _n && _keys[rank].Equals(key))
+                return _values[rank];
             return default(TValue);
         }
 
@@ -162,7 +162,7 @@ namespace _3._2._45
         /// 符号表是否为空。
         /// </summary>
         /// <returns>如果符号表为空则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public bool IsEmpty() => n == 0;
+        public bool IsEmpty() => _n == 0;
 
         /// <summary>
         /// 获得全部键的集合。
@@ -187,9 +187,9 @@ namespace _3._2._45
             if (lo.CompareTo(hi) > 0)
                 return list;
             for (var i = Rank(lo); i < Rank(hi); i++)
-                list.Add(keys[i]);
+                list.Add(_keys[i]);
             if (Contains(hi))
-                list.Add(keys[Rank(hi)]);
+                list.Add(_keys[Rank(hi)]);
             return list;
         }
 
@@ -202,7 +202,7 @@ namespace _3._2._45
         {
             if (IsEmpty())
                 throw new InvalidOperationException("called Max() with empty table");
-            return keys[n - 1];
+            return _keys[_n - 1];
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace _3._2._45
         {
             if (IsEmpty())
                 throw new InvalidOperationException("called Min() with empty table");
-            return keys[0];
+            return _keys[0];
         }
 
         /// <summary>
@@ -235,23 +235,23 @@ namespace _3._2._45
 
             var i = Rank(key);
 
-            if (i < n && keys[i].CompareTo(key) == 0)
+            if (i < _n && _keys[i].CompareTo(key) == 0)
             {
-                values[i] = value;
+                _values[i] = value;
                 return;
             }
 
-            if (n == keys.Length)
-                Resize(n * 2);
+            if (_n == _keys.Length)
+                Resize(_n * 2);
 
-            for (var j = n; j > i; j--)
+            for (var j = _n; j > i; j--)
             {
-                keys[j] = keys[j - 1];
-                values[j] = values[j - 1];
+                _keys[j] = _keys[j - 1];
+                _values[j] = _values[j - 1];
             }
-            keys[i] = key;
-            values[i] = value;
-            n++;
+            _keys[i] = key;
+            _values[i] = value;
+            _n++;
 
             // Debug.Assert(Check());
         }
@@ -266,11 +266,11 @@ namespace _3._2._45
         {
             if (key == null)
                 throw new ArgumentNullException("argument to Rank() is null");
-            int lo = 0, hi = n - 1;
+            int lo = 0, hi = _n - 1;
             while (lo <= hi)
             {
                 var mid = lo + (hi - lo) / 2;
-                var compare = keys[mid].CompareTo(key);
+                var compare = _keys[mid].CompareTo(key);
                 if (compare > 0)
                     hi = mid - 1;
                 else if (compare < 0)
@@ -288,16 +288,16 @@ namespace _3._2._45
         /// <returns>第 <paramref name="k"/> 小的键。</returns>
         public TKey Select(int k)
         {
-            if (k < 0 || k >= n)
+            if (k < 0 || k >= _n)
                 throw new ArgumentOutOfRangeException("called Select() with invaild k: " + k);
-            return keys[k];
+            return _keys[k];
         }
 
         /// <summary>
         /// 符号表中的键值对数量。
         /// </summary>
         /// <returns>符号表中的键值对数量。</returns>
-        public int Size() => n;
+        public int Size() => _n;
 
         /// <summary>
         /// 获得区间 [<paramref name="lo"/>, <paramref name="hi"/>] 之间的键的数量。
@@ -325,20 +325,20 @@ namespace _3._2._45
         /// 为符号表重新分配空间。
         /// </summary>
         /// <param name="capacity">重新分配的大小。</param>
-        /// <exception cref="ArgumentOutOfRangeException">当 <paramref name="capacity"/> < <see cref="n"/> 时抛出该异常。</exception>
+        /// <exception cref="ArgumentOutOfRangeException">当 <paramref name="capacity"/> < <see cref="_n"/> 时抛出该异常。</exception>
         private void Resize(int capacity)
         {
-            if (capacity < n)
+            if (capacity < _n)
                 throw new ArgumentOutOfRangeException("分配容量不能小于表中元素数量。");
             var tempKeys = new TKey[capacity];
             var tempValues = new TValue[capacity];
-            for (var i = 0; i < n; i++)
+            for (var i = 0; i < _n; i++)
             {
-                tempKeys[i] = keys[i];
-                tempValues[i] = values[i];
+                tempKeys[i] = _keys[i];
+                tempValues[i] = _values[i];
             }
-            keys = tempKeys;
-            values = tempValues;
+            _keys = tempKeys;
+            _values = tempValues;
         }
 
         /// <summary>
@@ -348,13 +348,13 @@ namespace _3._2._45
         private bool Check() => IsSorted() && RankCheck();
 
         /// <summary>
-        /// 检查 <see cref="keys"/> 数组是否有序。
+        /// 检查 <see cref="_keys"/> 数组是否有序。
         /// </summary>
-        /// <returns>如果 <see cref="keys"/> 有序则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
+        /// <returns>如果 <see cref="_keys"/> 有序则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
         private bool IsSorted()
         {
             for (var i = 1; i < Size(); i++)
-                if (keys[i].CompareTo(keys[i - 1]) < 0)
+                if (_keys[i].CompareTo(_keys[i - 1]) < 0)
                     return false;
             return true;
         }
@@ -369,7 +369,7 @@ namespace _3._2._45
                 if (i != Rank(Select(i)))
                     return false;
             for (var i = 0; i < Size(); i++)
-                if (keys[i].CompareTo(Select(Rank(keys[i]))) != 0)
+                if (_keys[i].CompareTo(Select(Rank(_keys[i]))) != 0)
                     return false;
             return true;
         }

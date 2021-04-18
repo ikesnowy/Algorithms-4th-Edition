@@ -19,8 +19,8 @@ namespace _3._1._24
 
                 for (var j = 0; j < repeatTimes; j++)
                 {
-                    var bst = new BinarySearchST<double, int>();
-                    var ist = new InterpolationSearchST();
+                    var bst = new BinarySearchSt<double, int>();
+                    var ist = new InterpolationSearchSt();
                     var data = SearchCompare.GetRandomArrayDouble(n);
 
                     bstTimes += SearchCompare.Time(bst, data);

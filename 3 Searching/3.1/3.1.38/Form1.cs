@@ -13,14 +13,14 @@ namespace _3._1._38
 
         static void Test()
         {
-            var bst = new BinarySearchSTAnalysis<string, int>();
+            var bst = new BinarySearchStAnalysis<string, int>();
             var dataBinary = FrequencyCounter.MostFrequentlyWordAnalysis("tale.txt", 8, bst);
             var resultBinary = new Form2();
             resultBinary.Text = "BinarySearch";
             resultBinary.Show();
             resultBinary.Draw(dataBinary);
 
-            var sst = new SequentialSearchSTAnalysis<string, int>();
+            var sst = new SequentialSearchStAnalysis<string, int>();
             var dataSequential = FrequencyCounter.MostFrequentlyWordAnalysis("tale.txt", 8, sst);
             var resultSequential = new Form2();
             resultSequential.Text = "Sequential";

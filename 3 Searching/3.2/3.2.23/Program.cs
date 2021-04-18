@@ -22,9 +22,9 @@ namespace _3._2._23
             Console.WriteLine(bst2);
         }
 
-        static BST<int, int> BuildBst()
+        static Bst<int, int> BuildBst()
         {
-            var bst = new BST<int, int>();
+            var bst = new Bst<int, int>();
             bst.Put(10, 10);
             bst.Put(5, 5);
             bst.Put(8, 8);

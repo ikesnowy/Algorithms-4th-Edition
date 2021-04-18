@@ -11,7 +11,7 @@ RunTest(inputWorst);
 
 static void RunTest(string[] input)
 {
-    var weightedQuickUnion = new WeightedQuickUnionUF(10);
+    var weightedQuickUnion = new WeightedQuickUnionUf(10);
     var parent = weightedQuickUnion.GetParent();
     var size = weightedQuickUnion.GetSize();
 

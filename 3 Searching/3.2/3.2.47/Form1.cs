@@ -74,7 +74,7 @@ namespace _3._2._47
         private int Test(int n)
         {
             var data = GetRandomInt(n);
-            var bst = new BST<int, int>();
+            var bst = new Bst<int, int>();
             foreach (var d in data)
             {
                 bst.Put(d, d);

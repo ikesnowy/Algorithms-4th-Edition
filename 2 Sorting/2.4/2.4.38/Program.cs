@@ -15,7 +15,7 @@ for (var i = 0; i < doubleTimes; i++)
     Console.Write(@"Ascending:	");
     for (var j = 0; j < repeatTimes; j++)
     {
-        var pq = new MaxPQ<int>(n);
+        var pq = new MaxPq<int>(n);
         var data = GetAscending(n);
         var time = Test(pq, data);
         Console.Write(time + "\t");
@@ -28,7 +28,7 @@ for (var i = 0; i < doubleTimes; i++)
     Console.Write(@"Descending:	");
     for (var j = 0; j < repeatTimes; j++)
     {
-        var pq = new MaxPQ<int>(n);
+        var pq = new MaxPq<int>(n);
         var data = GetDescending(n);
         var time = Test(pq, data);
         Console.Write(time + "\t");
@@ -41,7 +41,7 @@ for (var i = 0; i < doubleTimes; i++)
     Console.Write(@"All Same:	");
     for (var j = 0; j < repeatTimes; j++)
     {
-        var pq = new MaxPQ<int>(n);
+        var pq = new MaxPq<int>(n);
         var data = GetSame(n, 17763);
         var time = Test(pq, data);
         Console.Write(time + "\t");
@@ -54,7 +54,7 @@ for (var i = 0; i < doubleTimes; i++)
     Console.Write(@"Binary Dist.:	");
     for (var j = 0; j < repeatTimes; j++)
     {
-        var pq = new MaxPQ<int>(n);
+        var pq = new MaxPq<int>(n);
         var data = GetBinary(n, 15254, 17763);
         var time = Test(pq, data);
         Console.Write(time + "\t");
@@ -65,7 +65,7 @@ for (var i = 0; i < doubleTimes; i++)
     n *= 2;
 }
 
-long Test(MaxPQ<int> pq, int[] data)
+long Test(MaxPq<int> pq, int[] data)
 {
     var sw = new Stopwatch();
     sw.Start();

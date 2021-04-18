@@ -23,9 +23,9 @@ namespace _2._2._6
         static void Compute()
         {
             var mergeSort = new MergeSort();
-            var mergeSortBU = new MergeSortBU();
+            var mergeSortBu = new MergeSortBu();
             var mergeResult = new int[10];
-            var mergeResultBU = new int[10];
+            var mergeResultBu = new int[10];
             var upperBound = new int[10];
 
             // 进行计算
@@ -33,16 +33,16 @@ namespace _2._2._6
             for (var i = 0; i < 10; i++)
             {
                 var dataMerge = SortCompare.GetRandomArrayInt(dataSize);
-                var dataMergeBU = new int[dataSize];
-                dataMerge.CopyTo(dataMergeBU, 0);
+                var dataMergeBu = new int[dataSize];
+                dataMerge.CopyTo(dataMergeBu, 0);
 
                 mergeSort.ClearArrayVisitCount();
-                mergeSortBU.ClearArrayVisitCount();
+                mergeSortBu.ClearArrayVisitCount();
                 mergeSort.Sort(dataMerge);
-                mergeSortBU.Sort(dataMergeBU);
+                mergeSortBu.Sort(dataMergeBu);
 
                 mergeResult[i] = mergeSort.GetArrayVisitCount();
-                mergeResultBU[i] = mergeSortBU.GetArrayVisitCount();
+                mergeResultBu[i] = mergeSortBu.GetArrayVisitCount();
                 upperBound[i] = (int)(6 * dataSize * Math.Log(dataSize, 2));
 
                 dataSize *= 2;
@@ -81,7 +81,7 @@ namespace _2._2._6
             {
                 grayPoints[i] = new PointF(center.Left + unitX * (i + 1), center.Bottom - (upperBound[i] * unitY) - 10);
                 redPoints[i] = new PointF(center.Left + unitX * (i + 1), center.Bottom - (mergeResult[i] * unitY) - 10);
-                bluePoints[i] = new PointF(center.Left + unitX * (i + 1), center.Bottom - (mergeResultBU[i] * unitY) - 10);
+                bluePoints[i] = new PointF(center.Left + unitX * (i + 1), center.Bottom - (mergeResultBu[i] * unitY) - 10);
             }
 
             // 绘制点。

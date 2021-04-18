@@ -9,7 +9,7 @@ namespace BalancedSearchTree
     /// </summary>
     /// <typeparam name="TKey">键类型。</typeparam>
     /// <typeparam name="TValue">值类型。</typeparam>
-    public class BST<TKey, TValue> : IST<TKey, TValue>, IOrderedST<TKey, TValue>
+    public class Bst<TKey, TValue> : ISt<TKey, TValue>, IOrderedSt<TKey, TValue>
         where TKey : IComparable<TKey> 
     {
         /// <summary>
@@ -852,7 +852,7 @@ namespace BalancedSearchTree
         /// <param name="a">要比较的第一棵二叉树。</param>
         /// <param name="b">要比较的第二棵二叉树。</param>
         /// <returns>相同返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public static bool IsStructureEqual<TKeyA, TValueA, TKeyB, TValueB>(BST<TKeyA, TValueA> a, BST<TKeyB, TValueB> b) 
+        public static bool IsStructureEqual<TKeyA, TValueA, TKeyB, TValueB>(Bst<TKeyA, TValueA> a, Bst<TKeyB, TValueB> b) 
             where TKeyA : IComparable<TKeyA> 
             where TKeyB : IComparable<TKeyB>
         {
@@ -878,7 +878,7 @@ namespace BalancedSearchTree
         /// </summary>
         /// <param name="bst">输入的二叉搜索树。</param>
         /// <returns>如果是二叉树则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public static bool IsBinaryTree(BST<TKey, TValue> bst)
+        public static bool IsBinaryTree(Bst<TKey, TValue> bst)
         {
             return IsBinaryTree(bst.root);
         }
@@ -916,7 +916,7 @@ namespace BalancedSearchTree
         /// </summary>
         /// <param name="bst">输入的二叉搜索树。</param>
         /// <returns>如果有序则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public static bool IsOrdered(BST<TKey, TValue> bst)
+        public static bool IsOrdered(Bst<TKey, TValue> bst)
         {
             return IsOrdered(bst.root, bst.Min(), bst.Max());
         }
@@ -948,7 +948,7 @@ namespace BalancedSearchTree
         /// </summary>
         /// <param name="bst">输入的二叉搜索树。</param>
         /// <returns>如果不包含则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public static bool HasNoDuplicates(BST<TKey, TValue> bst)
+        public static bool HasNoDuplicates(Bst<TKey, TValue> bst)
         {
             return HasNoDuplicates(bst.root);
         }
@@ -988,7 +988,7 @@ namespace BalancedSearchTree
         /// </summary>
         /// <param name="bst">输入的二叉树。</param>
         /// <returns>如果是二叉树，则返回<c>true</c>，否则返回 <c>false</c>。</returns>
-        public static bool IsBST(BST<TKey, TValue> bst)
+        public static bool IsBst(Bst<TKey, TValue> bst)
         {
             return IsBinaryTree(bst) &&
                    IsOrdered(bst) &&
@@ -1000,7 +1000,7 @@ namespace BalancedSearchTree
         /// </summary>
         /// <param name="bst">需要验证的二叉树。</param>
         /// <returns>如果一致则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public static bool IsRankConsistent(BST<TKey, TValue> bst)
+        public static bool IsRankConsistent(Bst<TKey, TValue> bst)
         {
             for (var i = 0; i < bst.Size(); i++)
             {

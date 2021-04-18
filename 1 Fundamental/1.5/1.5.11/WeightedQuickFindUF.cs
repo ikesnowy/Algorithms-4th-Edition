@@ -5,11 +5,11 @@ namespace _1._5._11
     /// <summary>
     /// 用加权 QuickFind 算法实现的并查集。
     /// </summary>
-    public class WeightedQuickFindUF
+    public class WeightedQuickFindUf
     {
-        private readonly int[] size; // 记录每个连通分量的大小。
-        private readonly int[] id; // 记录每个结点的连通分量。
-        private int count;// 连通分量总数。
+        private readonly int[] _size; // 记录每个连通分量的大小。
+        private readonly int[] _id; // 记录每个结点的连通分量。
+        private int _count;// 连通分量总数。
 
         public int ArrayVisitCount { get; private set; } //记录数组访问的次数。
 
@@ -17,15 +17,15 @@ namespace _1._5._11
         /// 新建一个使用加权 quick-find 实现的并查集。
         /// </summary>
         /// <param name="n">并查集的大小。</param>
-        public WeightedQuickFindUF(int n)
+        public WeightedQuickFindUf(int n)
         {
-            count = n;
-            id = new int[n];
-            size = new int[n];
+            _count = n;
+            _id = new int[n];
+            _size = new int[n];
             for (var i = 0; i < n; i++)
             {
-                id[i] = i;
-                size[i] = 1;
+                _id[i] = i;
+                _size[i] = 1;
             }
         }
 
@@ -43,7 +43,7 @@ namespace _1._5._11
         /// <returns>返回并查集中连通分量的数量。</returns>
         public int Count()
         {
-            return count;
+            return _count;
         }
         
         /// <summary>
@@ -55,7 +55,7 @@ namespace _1._5._11
         {
             Validate(p);
             ArrayVisitCount++;
-            return id[p];
+            return _id[p];
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace _1._5._11
             Validate(p);
             Validate(q);
             ArrayVisitCount += 2;
-            return id[p] == id[q];
+            return _id[p] == _id[q];
         }
 
         /// <summary>
@@ -81,12 +81,12 @@ namespace _1._5._11
         {
             Validate(p);
             Validate(q);
-            var pID = id[p];
-            var qID = id[q];
+            var pId = _id[p];
+            var qId = _id[q];
             ArrayVisitCount += 2;
 
             // 如果两个结点同属于一个连通分量，那么什么也不做。
-            if (pID == qID)
+            if (pId == qId)
             {
                 return;
             }
@@ -94,32 +94,32 @@ namespace _1._5._11
             // 判断较大的连通分量和较小的连通分量。
             var larger = 0;
             var smaller = 0;
-            if (size[pID] > size[qID])
+            if (_size[pId] > _size[qId])
             {
-                larger = pID;
-                smaller = qID;
-                size[pID] += size[qID];
+                larger = pId;
+                smaller = qId;
+                _size[pId] += _size[qId];
             }
             else
             {
-                larger = qID;
-                smaller = pID;
-                size[qID] += size[pID];
+                larger = qId;
+                smaller = pId;
+                _size[qId] += _size[pId];
             }
 
             // 将较小的连通分量连接到较大的连通分量上，
             // 这会减少赋值语句的执行次数，略微减少数组访问。
-            for (var i = 0; i < id.Length; i++)
+            for (var i = 0; i < _id.Length; i++)
             {
-                if (id[i] == smaller)
+                if (_id[i] == smaller)
                 {
-                    id[i] = larger;
+                    _id[i] = larger;
                     ArrayVisitCount++;
                 }
             }
 
-            ArrayVisitCount += id.Length;
-            count--;
+            ArrayVisitCount += _id.Length;
+            _count--;
             return;
         }
 
@@ -127,9 +127,9 @@ namespace _1._5._11
         /// 获得 id 数组。
         /// </summary>
         /// <returns>id 数组。</returns>
-        public int[] GetID()
+        public int[] GetId()
         {
-            return id;
+            return _id;
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace _1._5._11
         /// <exception cref="ArgumentException">输入的 p 值无效。</exception>
         private void Validate(int p)
         {
-            var n = id.Length;
+            var n = _id.Length;
             if (p < 0 || p > n)
             {
                 throw new ArgumentException("index " + p + " is not between 0 and " + (n - 1));

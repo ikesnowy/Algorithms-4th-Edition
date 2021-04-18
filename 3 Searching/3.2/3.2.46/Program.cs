@@ -37,8 +37,8 @@ namespace _3._2._46
                 data[i] = random.NextDouble() * n;
             }
 
-            var bst = new BSTAnalysis<double, int>();
-            var binarySearch = new BinarySearchSTAnalysis<double, int>();
+            var bst = new BstAnalysis<double, int>();
+            var binarySearch = new BinarySearchStAnalysis<double, int>();
             foreach (var d in data)
             {
                 binarySearch.Put(d, 1);

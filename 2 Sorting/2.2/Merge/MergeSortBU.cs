@@ -5,7 +5,7 @@ namespace Merge
     /// <summary>
     /// 自底向上的归并排序法。
     /// </summary>
-    public class MergeSortBU : BaseSort
+    public class MergeSortBu : BaseSort
     {
         /// <summary>
         /// 利用归并排序将数组按升序排序。

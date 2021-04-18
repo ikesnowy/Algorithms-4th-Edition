@@ -7,7 +7,7 @@ namespace Measurement
     /// </summary>
     public static class DoubleTest
     {
-        private static readonly int MAXIMUM_INTEGER = 1000000;
+        private static readonly int MaximumInteger = 1000000;
 
         /// <summary>
         /// 返回对 n 个随机整数的数组进行一次 ThreeSum 所需的时间。
@@ -20,7 +20,7 @@ namespace Measurement
             var random = new Random(DateTime.Now.Millisecond);
             for (var i = 0; i < n; i++)
             {
-                a[i] = random.Next(-MAXIMUM_INTEGER, MAXIMUM_INTEGER);
+                a[i] = random.Next(-MaximumInteger, MaximumInteger);
             }
             var timer = new Stopwatch();
             ThreeSum.Count(a);

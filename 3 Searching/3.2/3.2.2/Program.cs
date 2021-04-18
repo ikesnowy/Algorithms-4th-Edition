@@ -20,7 +20,7 @@ namespace _3._2._2
             foreach (var worst in worstInput)
             {
                 var keys = worst.Split(' ');
-                var bst = new BST<string, string>();
+                var bst = new Bst<string, string>();
                 foreach (var key in keys)
                 {
                     bst.Put(key, key);

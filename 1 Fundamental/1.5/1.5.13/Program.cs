@@ -1,7 +1,7 @@
 ﻿using System;
 using UnionFind;
 
-var uf = new WeightedQuickUnionPathCompressionUF(10);
+var uf = new WeightedQuickUnionPathCompressionUf(10);
 
 // 见中文版 P146 或英文版 P229 中加权 quick-union 的最坏输入。
 uf.Union(0, 1);

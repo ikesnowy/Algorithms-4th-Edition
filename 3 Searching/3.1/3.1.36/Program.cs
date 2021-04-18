@@ -20,7 +20,7 @@ namespace _3._1._36
                 long timeSum = 0;
                 for (var j = 0; j < repeatTimes; j++)
                 {
-                    var st = new BinarySearchST<string, int>();
+                    var st = new BinarySearchSt<string, int>();
                     var sw = Stopwatch.StartNew();
                     FrequencyCounter.MostFrequentlyWord("tale.txt", n, 0, st);
                     sw.Stop();

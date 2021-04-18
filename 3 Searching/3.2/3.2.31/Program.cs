@@ -7,11 +7,11 @@ namespace _3._2._31
     {
         static void Main(string[] args)
         {
-            var bst = new BST<int, int>();
+            var bst = new Bst<int, int>();
             bst.Put(4, 4);
             bst.Put(6, 6);
             bst.Put(10, 10);
-            Console.WriteLine(BST<int, int>.HasNoDuplicates(bst));
+            Console.WriteLine(Bst<int, int>.HasNoDuplicates(bst));
         }
     }
 }

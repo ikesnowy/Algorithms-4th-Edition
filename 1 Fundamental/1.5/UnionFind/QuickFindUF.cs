@@ -3,7 +3,7 @@
     /// <summary>
     /// 用 QuickFind 算法实现的并查集。
     /// </summary>
-    public class QuickFindUF : UF
+    public class QuickFindUf : Uf
     {
         /// <summary>
         /// 记录数组访问次数的计数器。
@@ -15,7 +15,7 @@
         /// 新建一个使用 quick-find 实现的并查集。
         /// </summary>
         /// <param name="n">并查集的大小。</param>
-        public QuickFindUF(int n) : base(n) { }
+        public QuickFindUf(int n) : base(n) { }
 
         /// <summary>
         /// 重置数组访问计数。
@@ -60,21 +60,21 @@
         {
             Validate(p);
             Validate(q);
-            var pID = parent[p];
-            var qID = parent[q];
+            var pId = parent[p];
+            var qId = parent[q];
             ArrayVisitCount += 2;
 
             // 如果两个结点同属于一个连通分量，那么什么也不做。
-            if (pID == qID)
+            if (pId == qId)
             {
                 return;
             }
 
             for (var i = 0; i < parent.Length; i++)
             {
-                if (parent[i] == pID)
+                if (parent[i] == pId)
                 {
-                    parent[i] = qID;
+                    parent[i] = qId;
                     ArrayVisitCount++;
                 }
             }

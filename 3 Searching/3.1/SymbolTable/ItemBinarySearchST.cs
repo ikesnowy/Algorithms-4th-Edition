@@ -8,52 +8,52 @@ namespace SymbolTable
     /// </summary>
     /// <typeparam name="TKey">键类型。</typeparam>
     /// <typeparam name="TValue">值类型。</typeparam>
-    public class ItemBinarySearchST<TKey, TValue> : IST<TKey, TValue>, IOrderedST<TKey, TValue>
+    public class ItemBinarySearchSt<TKey, TValue> : ISt<TKey, TValue>, IOrderedSt<TKey, TValue>
         where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 符号表的默认长度。
         /// </summary>
         /// <value>符号表的默认长度。</value>
-        private static readonly int INIT_CAPACITY = 2;
+        private static readonly int InitCapacity = 2;
 
         /// <summary>
         /// 符号表键值对数组。
         /// </summary>
-        private Item<TKey, TValue>[] items;
+        private Item<TKey, TValue>[] _items;
 
         /// <summary>
         /// 符号表中的键值对数量。
         /// </summary>
         /// <value>符号表中的键值对数量。</value>
-        private int n;
+        private int _n;
 
         /// <summary>
         /// 构造一个空的符号表。
         /// </summary>
-        public ItemBinarySearchST() : this(INIT_CAPACITY) { }
+        public ItemBinarySearchSt() : this(InitCapacity) { }
 
         /// <summary>
         /// 构造一个指定容量的符号表。
         /// </summary>
         /// <param name="capacity">符号表初始容量。</param>
-        public ItemBinarySearchST(int capacity)
+        public ItemBinarySearchSt(int capacity)
         {
-            items = new Item<TKey, TValue>[capacity];
-            n = 0;
+            _items = new Item<TKey, TValue>[capacity];
+            _n = 0;
         }
 
         /// <summary>
         /// 根据已有的键值对构造一个符号表。
         /// </summary>
         /// <param name="items">已有的键值对。</param>
-        public ItemBinarySearchST(Item<TKey, TValue>[] items)
+        public ItemBinarySearchSt(Item<TKey, TValue>[] items)
         {
-            this.items = new Item<TKey, TValue>[items.Length];
-            Array.Copy(items, this.items, items.Length);
-            n = items.Length;
+            this._items = new Item<TKey, TValue>[items.Length];
+            Array.Copy(items, this._items, items.Length);
+            _n = items.Length;
             var merge = new MergeSort();
-            merge.Sort(this.items);
+            merge.Sort(this._items);
         }
 
         /// <summary>
@@ -67,10 +67,10 @@ namespace SymbolTable
             if (key == null)
                 throw new ArgumentNullException("argument to Ceiling is null");
             var i = Rank(key);
-            if (i == n)
+            if (i == _n)
                 return default(TKey);
             else
-                return items[i].Key;
+                return _items[i].Key;
         }
 
         /// <summary>
@@ -99,20 +99,20 @@ namespace SymbolTable
 
             var i = Rank(key);
 
-            if (i == n && items[i].Key.CompareTo(key) != 0)
+            if (i == _n && _items[i].Key.CompareTo(key) != 0)
                 return;
 
-            for (var j = i; j < n - 1; j++)
+            for (var j = i; j < _n - 1; j++)
             {
-                items[j] = items[j + 1];
+                _items[j] = _items[j + 1];
             }
 
-            n--;
-            items[n].Key = default(TKey);
-            items[n].Value = default(TValue);
+            _n--;
+            _items[_n].Key = default(TKey);
+            _items[_n].Value = default(TValue);
 
-            if (n > 0 && n == items.Length / 4)
-                Resize(n / 2);
+            if (_n > 0 && _n == _items.Length / 4)
+                Resize(_n / 2);
         }
 
         /// <summary>
@@ -136,12 +136,12 @@ namespace SymbolTable
             if (key == null)
                 throw new ArgumentNullException("argument to Floor() is null");
             var i = Rank(key);
-            if (i < n && items[i].Key.CompareTo(key) == 0)
-                return items[i].Key;
+            if (i < _n && _items[i].Key.CompareTo(key) == 0)
+                return _items[i].Key;
             if (i == 0)
                 return default(TKey);
             else
-                return items[i - 1].Key;
+                return _items[i - 1].Key;
         }
 
         /// <summary>
@@ -157,8 +157,8 @@ namespace SymbolTable
             if (IsEmpty())
                 return default(TValue);
             var rank = Rank(key);
-            if (rank < n && items[rank].Key.Equals(key))
-                return items[rank].Value;
+            if (rank < _n && _items[rank].Key.Equals(key))
+                return _items[rank].Value;
             return default(TValue);
         }
 
@@ -166,7 +166,7 @@ namespace SymbolTable
         /// 符号表是否为空。
         /// </summary>
         /// <returns>如果符号表为空则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public bool IsEmpty() => n == 0;
+        public bool IsEmpty() => _n == 0;
 
         /// <summary>
         /// 获得全部键的集合。
@@ -191,9 +191,9 @@ namespace SymbolTable
             if (lo.CompareTo(hi) > 0)
                 return list;
             for (var i = Rank(lo); i < Rank(hi); i++)
-                list.Add(items[i].Key);
+                list.Add(_items[i].Key);
             if (Contains(hi))
-                list.Add(items[Rank(hi)].Key);
+                list.Add(_items[Rank(hi)].Key);
             return list;
         }
 
@@ -206,7 +206,7 @@ namespace SymbolTable
         {
             if (IsEmpty())
                 throw new InvalidOperationException("called Max() with empty table");
-            return items[n - 1].Key;
+            return _items[_n - 1].Key;
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace SymbolTable
         {
             if (IsEmpty())
                 throw new InvalidOperationException("called Min() with empty table");
-            return items[0].Key;
+            return _items[0].Key;
         }
 
         /// <summary>
@@ -239,21 +239,21 @@ namespace SymbolTable
 
             var i = Rank(key);
 
-            if (i < n && items[i].Key.CompareTo(key) == 0)
+            if (i < _n && _items[i].Key.CompareTo(key) == 0)
             {
-                items[i].Value = value;
+                _items[i].Value = value;
                 return;
             }
 
-            if (n == items.Length)
-                Resize(n * 2);
+            if (_n == _items.Length)
+                Resize(_n * 2);
 
-            for (var j = n; j > i; j--)
+            for (var j = _n; j > i; j--)
             {
-                items[j] = items[j - 1];
+                _items[j] = _items[j - 1];
             }
-            items[i] = new Item<TKey, TValue> { Key = key, Value = value };
-            n++;
+            _items[i] = new Item<TKey, TValue> { Key = key, Value = value };
+            _n++;
         }
 
         /// <summary>
@@ -266,11 +266,11 @@ namespace SymbolTable
         {
             if (key == null)
                 throw new ArgumentNullException("argument to Rank() is null");
-            int lo = 0, hi = n - 1;
+            int lo = 0, hi = _n - 1;
             while (lo <= hi)
             {
                 var mid = lo + (hi - lo) / 2;
-                var compare = items[mid].Key.CompareTo(key);
+                var compare = _items[mid].Key.CompareTo(key);
                 if (compare > 0)
                     hi = mid - 1;
                 else if (compare < 0)
@@ -288,16 +288,16 @@ namespace SymbolTable
         /// <returns>第 <paramref name="k"/> 小的键。</returns>
         public TKey Select(int k)
         {
-            if (k < 0 || k >= n)
+            if (k < 0 || k >= _n)
                 throw new ArgumentOutOfRangeException("called Select() with invaild k: " + k);
-            return items[k].Key;
+            return _items[k].Key;
         }
 
         /// <summary>
         /// 符号表中的键值对数量。
         /// </summary>
         /// <returns>符号表中的键值对数量。</returns>
-        public int Size() => n;
+        public int Size() => _n;
 
         /// <summary>
         /// 获得区间 [<paramref name="lo"/>, <paramref name="hi"/>] 之间的键的数量。
@@ -325,17 +325,17 @@ namespace SymbolTable
         /// 为符号表重新分配空间。
         /// </summary>
         /// <param name="capacity">重新分配的大小。</param>
-        /// <exception cref="ArgumentOutOfRangeException">当 <paramref name="capacity"/> < <see cref="n"/> 时抛出该异常。</exception>
+        /// <exception cref="ArgumentOutOfRangeException">当 <paramref name="capacity"/> < <see cref="_n"/> 时抛出该异常。</exception>
         private void Resize(int capacity)
         {
-            if (capacity < n)
+            if (capacity < _n)
                 throw new ArgumentOutOfRangeException("分配容量不能小于表中元素数量。");
             var temp = new Item<TKey, TValue>[capacity];
-            for (var i = 0; i < n; i++)
+            for (var i = 0; i < _n; i++)
             {
-                temp[i] = items[i];
+                temp[i] = _items[i];
             }
-            items = temp;
+            _items = temp;
         }
     }
 }

@@ -8,86 +8,86 @@ namespace _1._3._14
     /// 可变长度的队列。
     /// </summary>
     /// <typeparam name="Item">队列中要存放的元素。</typeparam>
-    class ResizingArrayQueueOfStrings<Item> : IEnumerable<Item>
+    class ResizingArrayQueueOfStrings<TItem> : IEnumerable<TItem>
     {
-        private Item[] q;
-        private int count;
-        private int first;
-        private int last;
+        private TItem[] _q;
+        private int _count;
+        private int _first;
+        private int _last;
 
         public ResizingArrayQueueOfStrings()
         {
-            q = new Item[2];
-            count = 0;
-            first = 0;
+            _q = new TItem[2];
+            _count = 0;
+            _first = 0;
 
         }
 
         public bool IsEmpty()
         {
-            return count == 0;
+            return _count == 0;
         }
 
         public int Size()
         {
-            return count;
+            return _count;
         }
 
         private void Resize(int capacity)
         {
             if (capacity < 0)
                 throw new ArgumentException("capacity should be above zero");
-            var temp = new Item[capacity];
-            for (var i = 0; i < count; i++)
+            var temp = new TItem[capacity];
+            for (var i = 0; i < _count; i++)
             {
-                temp[i] = q[(first + i) % q.Length];
+                temp[i] = _q[(_first + i) % _q.Length];
             }
 
-            q = temp;
-            first = 0;
-            last = count;
+            _q = temp;
+            _first = 0;
+            _last = _count;
         }
 
-        public void Enqueue(Item item)
+        public void Enqueue(TItem item)
         {
-            if (count == q.Length)
+            if (_count == _q.Length)
             {
-                Resize(count * 2);
+                Resize(_count * 2);
             }
 
-            q[last] = item;
-            last++;
-            if (last == q.Length)
-                last = 0;
-            count++;
+            _q[_last] = item;
+            _last++;
+            if (_last == _q.Length)
+                _last = 0;
+            _count++;
         }
 
-        public Item Dequeue()
+        public TItem Dequeue()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Queue underflow");
-            var item = q[first];
-            q[first] = default(Item);
-            count--;
-            first++;
-            if (first == q.Length)
-                first = 0;
+            var item = _q[_first];
+            _q[_first] = default(TItem);
+            _count--;
+            _first++;
+            if (_first == _q.Length)
+                _first = 0;
 
-            if (count > 0 && count <= q.Length / 4)
-                Resize(q.Length / 2);
+            if (_count > 0 && _count <= _q.Length / 4)
+                Resize(_q.Length / 2);
             return item;
         }
 
-        public Item Peek()
+        public TItem Peek()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Queue underflow");
-            return q[first];
+            return _q[_first];
         }
 
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            return new QueueEnumerator(q, first, last);
+            return new QueueEnumerator(_q, _first, _last);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -95,24 +95,24 @@ namespace _1._3._14
             return GetEnumerator();
         }
 
-        private class QueueEnumerator : IEnumerator<Item>
+        private class QueueEnumerator : IEnumerator<TItem>
         {
-            int current;
-            readonly int first;
-            readonly int last;
-            readonly Item[] q;
+            int _current;
+            readonly int _first;
+            readonly int _last;
+            readonly TItem[] _q;
 
-            public QueueEnumerator(Item[] q, int first, int last)
+            public QueueEnumerator(TItem[] q, int first, int last)
             {
-                current = first - 1;
-                this.first = first;
-                this.last = last;
-                this.q = q;
+                _current = first - 1;
+                this._first = first;
+                this._last = last;
+                this._q = q;
             }
 
-            Item IEnumerator<Item>.Current => q[current];
+            TItem IEnumerator<TItem>.Current => _q[_current];
 
-            object IEnumerator.Current => q[current];
+            object IEnumerator.Current => _q[_current];
 
             void IDisposable.Dispose()
             {
@@ -121,15 +121,15 @@ namespace _1._3._14
 
             bool IEnumerator.MoveNext()
             {
-                if (current == last - 1)
+                if (_current == _last - 1)
                     return false;
-                current++;
+                _current++;
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = first - 1;
+                _current = _first - 1;
             }
         }
     }

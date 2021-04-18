@@ -6,11 +6,11 @@ var r = new Random();
 var baseNum = 10;
 var powNum = 3;
 var T = 10;
-var M = 4;
+var m = 4;
 
-var matrix = new double[M, 2];
+var matrix = new double[m, 2];
 
-for (var i = 0; i < M; i++)
+for (var i = 0; i < m; i++)
 {
     var n = (int)Math.Pow(baseNum, powNum + i);
     double sum = 0;

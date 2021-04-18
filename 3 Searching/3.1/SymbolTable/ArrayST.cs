@@ -8,37 +8,37 @@ namespace SymbolTable
     /// </summary>
     /// <typeparam name="TKey">键类型。</typeparam>
     /// <typeparam name="TValue">值类型。</typeparam>
-    public class ArrayST<TKey, TValue> : IST<TKey, TValue> 
+    public class ArraySt<TKey, TValue> : ISt<TKey, TValue> 
     {
         /// <summary>
         /// 键数组。
         /// </summary>
         /// <value>键数组。</value>
-        private TKey[] keys;
+        private TKey[] _keys;
         /// <summary>
         /// 值数组。
         /// </summary>
         /// <value>值数组。</value>
-        private TValue[] values;
+        private TValue[] _values;
         /// <summary>
         /// 键值对数目。
         /// </summary>
         /// <value>键值对数目。</value>
-        private int n;
+        private int _n;
 
         /// <summary>
         /// 建立基于数组实现的符号表。
         /// </summary>
-        public ArrayST() : this(8) { }
+        public ArraySt() : this(8) { }
 
         /// <summary>
         /// 建立基于数组实现的符号表。
         /// </summary>
         /// <param name="initCapacity">初始大小。</param>
-        public ArrayST(int initCapacity)
+        public ArraySt(int initCapacity)
         {
-            keys = new TKey[initCapacity];
-            values = new TValue[initCapacity];
+            _keys = new TKey[initCapacity];
+            _values = new TValue[initCapacity];
         }
 
         /// <summary>
@@ -54,17 +54,17 @@ namespace SymbolTable
         /// <param name="key">需要删除的键。</param>
         public void Delete(TKey key)
         {
-            for (var i = 0; i < n; i++)
+            for (var i = 0; i < _n; i++)
             {
-                if (key.Equals(keys[i]))
+                if (key.Equals(_keys[i]))
                 {
-                    keys[i] = keys[n - 1];
-                    values[i] = values[n - 1];
-                    keys[n - 1] = default(TKey);
-                    values[n - 1] = default(TValue);
-                    n--;
-                    if (n > 0 && n == keys.Length / 4)
-                        Resize(keys.Length / 2);
+                    _keys[i] = _keys[_n - 1];
+                    _values[i] = _values[_n - 1];
+                    _keys[_n - 1] = default(TKey);
+                    _values[_n - 1] = default(TValue);
+                    _n--;
+                    if (_n > 0 && _n == _keys.Length / 4)
+                        Resize(_keys.Length / 2);
                     return;
                 }
             }
@@ -77,9 +77,9 @@ namespace SymbolTable
         /// <returns>找到的值，不存在则返回 <c>default(Value)</c></returns>
         public TValue Get(TKey key)
         {
-            for (var i = 0; i < n; i++)
-                if (keys[i].Equals(key))
-                    return values[i];
+            for (var i = 0; i < _n; i++)
+                if (_keys[i].Equals(key))
+                    return _values[i];
             return default(TValue);
         }
 
@@ -87,7 +87,7 @@ namespace SymbolTable
         /// 检查符号表是否为空。
         /// </summary>
         /// <returns>为空则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public bool IsEmpty() => n == 0;
+        public bool IsEmpty() => _n == 0;
 
         /// <summary>
         /// 获得包含全部键的集合。
@@ -95,8 +95,8 @@ namespace SymbolTable
         /// <returns>全部键的集合。</returns>
         public IEnumerable<TKey> Keys()
         {
-            var result = new TKey[n];
-            Array.Copy(keys, result, n);
+            var result = new TKey[_n];
+            Array.Copy(_keys, result, _n);
             return result;
         }
 
@@ -109,19 +109,19 @@ namespace SymbolTable
         {
             Delete(key);
 
-            if (n >= values.Length)
-                Resize(n * 2);
+            if (_n >= _values.Length)
+                Resize(_n * 2);
 
-            keys[n] = key;
-            values[n] = value;
-            n++;
+            _keys[_n] = key;
+            _values[_n] = value;
+            _n++;
         }
 
         /// <summary>
         /// 返回符号表中键值对的数量。
         /// </summary>
         /// <returns>键值对数量。</returns>
-        public int Size() => n;
+        public int Size() => _n;
 
         /// <summary>
         /// 为符号表重新分配空间。
@@ -132,13 +132,13 @@ namespace SymbolTable
             var tempKey = new TKey[capacity];
             var tempValue = new TValue[capacity];
 
-            for (var i = 0; i < n; i++)
-                tempKey[i] = keys[i];
-            for (var i = 0; i < n; i++)
-                tempValue[i] = values[i];
+            for (var i = 0; i < _n; i++)
+                tempKey[i] = _keys[i];
+            for (var i = 0; i < _n; i++)
+                tempValue[i] = _values[i];
 
-            keys = tempKey;
-            values = tempValue;
+            _keys = tempKey;
+            _values = tempValue;
         }
     }
 }

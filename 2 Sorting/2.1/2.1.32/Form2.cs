@@ -8,9 +8,9 @@ namespace _2._1._32
 {
     public partial class Form2 : Form
     {
-        readonly BaseSort sort;
-        int n;
-        readonly double[] result;
+        readonly BaseSort _sort;
+        int _n;
+        readonly double[] _result;
 
         /// <summary>
         /// 构造一个绘图结果窗口。
@@ -20,9 +20,9 @@ namespace _2._1._32
         public Form2(BaseSort sort, int n)
         {
             InitializeComponent();
-            this.sort = sort;
-            this.n = n;
-            result = Test(n);
+            this._sort = sort;
+            this._n = n;
+            _result = Test(n);
             timer1.Interval = 1000;
             timer1.Start();
         }
@@ -37,7 +37,7 @@ namespace _2._1._32
             var result = new double[8];
             for (var i = 0; i < result.Length; i++)
             {
-                result[i] = SortCompare.TimeRandomInput(sort, n, 3);
+                result[i] = SortCompare.TimeRandomInput(_sort, n, 3);
                 n *= 2;
             }
             return result;
@@ -69,7 +69,7 @@ namespace _2._1._32
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DrawPanel(result);
+            DrawPanel(_result);
             timer1.Stop();
         }
     }

@@ -3,7 +3,7 @@
     /// <summary>
     /// 使用加权 quick-union 算法的并查集。
     /// </summary>
-    public class WeightedQuickUnionUF : QuickUnionUF
+    public class WeightedQuickUnionUf : QuickUnionUf
     {
         /// <summary>
         /// 记录各个树大小的数组。
@@ -26,7 +26,7 @@
         /// 建立使用加权 quick-union 的并查集。
         /// </summary>
         /// <param name="n">并查集的大小。</param>
-        public WeightedQuickUnionUF(int n) : base(n)
+        public WeightedQuickUnionUf(int n) : base(n)
         {
             size = new int[n];
             for (var i = 0; i < n; i++)

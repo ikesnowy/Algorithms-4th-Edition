@@ -6,7 +6,7 @@ namespace _3._2._13
     {
         static void Main(string[] args)
         {
-            BSTTester.Test(new BSTNonRecursive<string, int>());
+            BstTester.Test(new BstNonRecursive<string, int>());
         }
     }
 }

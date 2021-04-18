@@ -8,9 +8,9 @@ long lastTimeWeightedQuickUnion = 0;
 for (var n = 2000; n < 100000; n *= 2)
 {
     Console.WriteLine("N:" + n);
-    var quickFindUf = new QuickFindUF(n);
-    var quickUnionUf = new QuickUnionUF(n);
-    var weightedQuickUnionUf = new WeightedQuickUnionUF(n);
+    var quickFindUf = new QuickFindUf(n);
+    var quickUnionUf = new QuickUnionUf(n);
+    var weightedQuickUnionUf = new WeightedQuickUnionUf(n);
 
     // quick-find
     Console.WriteLine(@"quick-find");
@@ -64,7 +64,7 @@ for (var n = 2000; n < 100000; n *= 2)
 }
 
 // 进行若干次随机试验，输出平均 union 次数，返回平均耗时。
-static long RunTest(UF uf)
+static long RunTest(Uf uf)
 {
     var timer = new Stopwatch();
     var total = 0;

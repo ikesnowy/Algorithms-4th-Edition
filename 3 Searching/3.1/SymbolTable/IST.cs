@@ -7,7 +7,7 @@ namespace SymbolTable
     /// </summary>
     /// <typeparam name="TKey">键类型。</typeparam>
     /// <typeparam name="TValue">值类型。</typeparam>
-    public interface IST<TKey, TValue>
+    public interface ISt<TKey, TValue>
     {
         /// <summary>
         /// 向符号表插入键值对。

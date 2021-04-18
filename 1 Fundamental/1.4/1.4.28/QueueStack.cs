@@ -4,30 +4,30 @@
     /// 用一条队列模拟的栈。
     /// </summary>
     /// <typeparam name="Item">栈中保存的元素。</typeparam>
-    class QueueStack<Item>
+    class QueueStack<TItem>
     {
-        readonly Queue<Item> queue;
+        readonly Queue<TItem> _queue;
 
         /// <summary>
         /// 初始化一个栈。
         /// </summary>
         public QueueStack()
         {
-            queue = new Queue<Item>();
+            _queue = new Queue<TItem>();
         }
 
         /// <summary>
         /// 向栈中添加一个元素。
         /// </summary>
         /// <param name="item"></param>
-        public void Push(Item item)
+        public void Push(TItem item)
         {
-            queue.Enqueue(item);
-            var size = queue.Size();
+            _queue.Enqueue(item);
+            var size = _queue.Size();
             // 倒转队列
             for (var i = 0; i < size - 1; i++)
             {
-                queue.Enqueue(queue.Dequeue());
+                _queue.Enqueue(_queue.Dequeue());
             }
         }
 
@@ -35,9 +35,9 @@
         /// 从栈中弹出一个元素。
         /// </summary>
         /// <returns></returns>
-        public Item Pop()
+        public TItem Pop()
         {
-            return queue.Dequeue();
+            return _queue.Dequeue();
         }
 
         /// <summary>
@@ -46,7 +46,7 @@
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return queue.IsEmpty();
+            return _queue.IsEmpty();
         }
     }
 }

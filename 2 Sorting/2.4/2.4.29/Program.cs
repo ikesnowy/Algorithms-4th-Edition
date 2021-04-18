@@ -8,7 +8,7 @@ using PriorityQueue;
 // 删除结点时需要去另一个堆删除对应的孪生结点。
 // 方法是令待删除结点与最后一个结点交换，然后删除最后一个结点
 // 随后对交换后的结点做一次 Swim 和 Sink，维持堆的状态。
-var pq = new MinMaxPQ<int>();
+var pq = new MinMaxPq<int>();
 pq.Insert(1);
 pq.Insert(2);
 pq.Insert(3);

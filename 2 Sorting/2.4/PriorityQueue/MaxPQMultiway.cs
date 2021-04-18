@@ -8,18 +8,18 @@ namespace PriorityQueue
     /// <summary>
     /// d 叉堆实现的优先队列。
     /// </summary>
-    public class MaxPQMultiway<Key> : IMaxPQ<Key>, IEnumerable<Key> where Key : IComparable<Key>
+    public class MaxPqMultiway<TKey> : IMaxPq<TKey>, IEnumerable<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 堆的分叉数。
         /// </summary>
         /// <value>分叉数。</value>
-        private readonly int d;
+        private readonly int _d;
         /// <summary>
         /// 保存元素的数组。
         /// </summary>
         /// <value>保存元素的数组。</value>
-        protected Key[] pq;
+        protected TKey[] pq;
         /// <summary>
         /// 堆中的元素数量。
         /// </summary>
@@ -30,17 +30,17 @@ namespace PriorityQueue
         /// 默认构造函数。
         /// </summary>
         /// <param name="d">堆的分叉数。</param>
-        public MaxPQMultiway(int d) : this(d, 1) { }
+        public MaxPqMultiway(int d) : this(d, 1) { }
 
         /// <summary>
         /// 建立指定容量的最大堆。
         /// </summary>
         /// <param name="d">堆的分叉数。</param>
         /// <param name="capacity">最大堆的容量。</param>
-        public MaxPQMultiway(int d, int capacity)
+        public MaxPqMultiway(int d, int capacity)
         {
-            this.d = d;
-            pq = new Key[capacity + 1];
+            this._d = d;
+            pq = new TKey[capacity + 1];
             n = 0;
         }
 
@@ -49,14 +49,14 @@ namespace PriorityQueue
         /// </summary>
         /// <param name="keys">已有元素。</param>
         /// <param name="d">堆的分叉数。</param>
-        public MaxPQMultiway(int d, Key[] keys)
+        public MaxPqMultiway(int d, TKey[] keys)
         {
-            this.d = d;
+            this._d = d;
             n = keys.Length;
-            pq = new Key[keys.Length + 1];
+            pq = new TKey[keys.Length + 1];
             for (var i = 0; i < keys.Length; i++)
                 pq[i + 1] = keys[i];
-            for (var i = (n - 2) / this.d + 1; i >= 1; i--)
+            for (var i = (n - 2) / this._d + 1; i >= 1; i--)
                 Sink(i);
             Debug.Assert(IsMaxHeap());
         }
@@ -67,7 +67,7 @@ namespace PriorityQueue
         /// <returns>堆中的最大元素。</returns>
         /// <exception cref="ArgumentOutOfRangeException">如果堆为空则抛出该异常。</exception>
         /// <remarks>如果希望获得最大元素而不删除它，请使用 <see cref="Max"/>。</remarks>
-        public Key DelMax()
+        public TKey DelMax()
         {
             if (IsEmpty())
                 throw new ArgumentOutOfRangeException("Priority Queue Underflow");
@@ -75,7 +75,7 @@ namespace PriorityQueue
             var max = pq[1];
             Exch(1, n--);
             Sink(1);
-            pq[n + 1] = default(Key);
+            pq[n + 1] = default(TKey);
             if ((n > 0) && (n == pq.Length / 4))
                 Resize(pq.Length / 2);
 
@@ -87,7 +87,7 @@ namespace PriorityQueue
         /// 向堆中插入一个元素。
         /// </summary>
         /// <param name="v">需要插入的元素。</param>
-        public void Insert(Key v)
+        public void Insert(TKey v)
         {
             if (n == pq.Length - 1)
                 Resize(2 * pq.Length);
@@ -105,17 +105,17 @@ namespace PriorityQueue
         {
             if (k == n)
             {
-                pq[n--] = default(Key);
+                pq[n--] = default(TKey);
                 return;
             }
             else if (n <= 2)
             {
                 Exch(1, k);
-                pq[n--] = default(Key);
+                pq[n--] = default(TKey);
                 return;
             }
             Exch(k, n--);
-            pq[n + 1] = default(Key);
+            pq[n + 1] = default(TKey);
             Swim(k);
             Sink(k);
         }
@@ -131,7 +131,7 @@ namespace PriorityQueue
         /// </summary>
         /// <returns>堆中最大的元素。</returns>
         /// <remarks>如果希望删除并返回最大元素，请使用 <see cref="DelMax"/>。</remarks>
-        public Key Max() => pq[1];
+        public TKey Max() => pq[1];
 
         /// <summary>
         /// 获得堆中元素的数量。
@@ -143,9 +143,9 @@ namespace PriorityQueue
         /// 获取堆的迭代器，元素以降序排列。
         /// </summary>
         /// <returns>最大堆的迭代器。</returns>
-        public IEnumerator<Key> GetEnumerator()
+        public IEnumerator<TKey> GetEnumerator()
         {
-            var copy = new MaxPQ<Key>(n);
+            var copy = new MaxPq<TKey>(n);
             for (var i = 1; i <= n; i++)
                 copy.Insert(pq[i]);
 
@@ -169,10 +169,10 @@ namespace PriorityQueue
         /// <param name="k">需要上浮的元素。</param>
         private void Swim(int k)
         {
-            while (k > 1 && Less((k - 2) / d + 1, k))
+            while (k > 1 && Less((k - 2) / _d + 1, k))
             {
-                Exch(k, (k - 2) / d + 1);
-                k = (k - 2) / d + 1;
+                Exch(k, (k - 2) / _d + 1);
+                k = (k - 2) / _d + 1;
             }
         }
 
@@ -182,10 +182,10 @@ namespace PriorityQueue
         /// <param name="k">需要下沉的元素。</param>
         private void Sink(int k)
         {
-            while ((k - 1) * d + 2 <= n)
+            while ((k - 1) * _d + 2 <= n)
             {
-                var j = d * (k - 1) + 2;
-                for (int i = 0, q = j; i < d; i++)
+                var j = _d * (k - 1) + 2;
+                for (int i = 0, q = j; i < _d; i++)
                 {
                     if (q + i <= n && Less(j, q + i))
                         j = q + i;
@@ -203,7 +203,7 @@ namespace PriorityQueue
         /// <param name="capacity">调整后的堆大小。</param>
         private void Resize(int capacity)
         {
-            var temp = new Key[capacity];
+            var temp = new TKey[capacity];
             for (var i = 1; i <= n; i++)
             {
                 temp[i] = pq[i];
@@ -248,8 +248,8 @@ namespace PriorityQueue
             if (k > n)
                 return true;
 
-            var j = (k - 1) * d + 2;
-            for (var i = 0; i < d; i++)
+            var j = (k - 1) * _d + 2;
+            for (var i = 0; i < _d; i++)
             {
                 if (!IsMaxHeap(j + i))
                     return false;

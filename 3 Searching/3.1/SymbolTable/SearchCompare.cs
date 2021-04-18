@@ -9,7 +9,7 @@ namespace SymbolTable
     /// </summary>
     public static class SearchCompare
     {
-        private static readonly Random random = new();
+        private static readonly Random Random = new();
 
         /// <summary>
         /// 用指定的数据测试符号表，返回 <see cref="FrequencyCounter"/> 用去的时间。
@@ -17,7 +17,7 @@ namespace SymbolTable
         /// <param name="st">用于测试的空符号表。</param>
         /// <param name="keys">键数组。</param>
         /// <returns>计算一次最常出现单词的时间。（毫秒）</returns>
-        public static long Time<TKey>(IST<TKey, int> st, TKey[] keys)
+        public static long Time<TKey>(ISt<TKey, int> st, TKey[] keys)
         {
             var sw = new Stopwatch();
             sw.Start();
@@ -27,8 +27,8 @@ namespace SymbolTable
         }
 
         /// <summary>
-        /// 对符号表进行性能测试，先 <see cref="IST{TKey, TValue}.Put(TKey, TValue)"/> <paramref name="n"/> 个字符串，
-        /// 再进行若干次 <see cref="IST{TKey, TValue}.Get(TKey)"/>，
+        /// 对符号表进行性能测试，先 <see cref="ISt{TKey,TValue}.Put(TKey, TValue)"/> <paramref name="n"/> 个字符串，
+        /// 再进行若干次 <see cref="ISt{TKey,TValue}.Get(TKey)"/>，
         /// 使得每个元素被平均访问 <paramref name="averageHit"/> 次，
         /// 以及同样多的未命中访问。
         /// </summary>
@@ -36,7 +36,7 @@ namespace SymbolTable
         /// <param name="n">需要插入符号表中的字符串数量。</param>
         /// <param name="averageHit">平均每个元素被查询的次数。</param>
         /// <returns>测试耗时，单位为毫秒。</returns>
-        public static long Performance(IST<string, int> st, int n, int averageHit)
+        public static long Performance(ISt<string, int> st, int n, int averageHit)
         {
             var keys = GetRandomArrayString(n, 2, 50);
             var keyNotExist = GetRandomString(51, 52);
@@ -69,7 +69,7 @@ namespace SymbolTable
         {
             var result = new long[n];
             for (var i = 0; i < n; i++)
-                result[i] = min + (long)(random.NextDouble() * (max - min));
+                result[i] = min + (long)(Random.NextDouble() * (max - min));
             return result;
         }
 
@@ -83,7 +83,7 @@ namespace SymbolTable
             var data = new double[n];
             for (var i = 0; i < n; i++)
             {
-                data[i] = double.MaxValue * random.NextDouble();
+                data[i] = double.MaxValue * Random.NextDouble();
             }
             return data;
         }
@@ -113,17 +113,17 @@ namespace SymbolTable
         /// <returns>一个随机字符串。</returns>
         public static string GetRandomString(int minLength, int maxLength)
         {
-            var length = random.Next(minLength, maxLength);
+            var length = Random.Next(minLength, maxLength);
             var sb = new StringBuilder();
             for (var i = 0; i < length; i++)
             {
-                var choice = random.NextDouble();
+                var choice = Random.NextDouble();
                 if (choice < 0.333)
-                    sb.Append((char)random.Next('A', 'Z'));
+                    sb.Append((char)Random.Next('A', 'Z'));
                 else if (choice < 0.666)
-                    sb.Append((char)random.Next('a', 'z'));
+                    sb.Append((char)Random.Next('a', 'z'));
                 else
-                    sb.Append((char)random.Next('0', '9'));
+                    sb.Append((char)Random.Next('0', '9'));
             }
             return sb.ToString();
         }

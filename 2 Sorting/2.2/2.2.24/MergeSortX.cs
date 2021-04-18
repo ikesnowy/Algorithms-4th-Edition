@@ -11,29 +11,29 @@ namespace _2._2._24
         /// <summary>
         /// 对小于 CUTOFF 的数组使用插入排序。
         /// </summary>
-        private static int CUTOFF = 7;
+        private static int _cutoff = 7;
 
         /// <summary>
         /// a[mid] ≤ a[mid + 1] 语句的命中次数
         /// </summary>
-        private int hitTimes;
+        private int _hitTimes;
 
         /// <summary>
         /// 设置启用插入排序的阈值，小于该阈值的数组将采用插入排序。
         /// </summary>
         /// <param name="cutoff">新的阈值。</param>
-        public void SetCutOff(int cutoff) => CUTOFF = cutoff;
+        public void SetCutOff(int cutoff) => _cutoff = cutoff;
 
         /// <summary>
         /// 重置语句命中次数。
         /// </summary>
-        public void ResetHitTime() => hitTimes = 0;
+        public void ResetHitTime() => _hitTimes = 0;
 
         /// <summary>
         /// 获取语句命中次数。
         /// </summary>
         /// <returns></returns>
-        public int GetHitTime() => hitTimes;
+        public int GetHitTime() => _hitTimes;
 
         /// <summary>
         /// 将指定范围内的元素归并。
@@ -71,7 +71,7 @@ namespace _2._2._24
         private void Sort<T>(T[] src, T[] dst, int lo, int hi) where T : IComparable<T>
         {
             // 小于 CUTOFF 的数组调用插入排序
-            if (hi <= lo + CUTOFF)
+            if (hi <= lo + _cutoff)
             {
                 var insertion = new InsertionSort();
                 insertion.Sort(dst, lo, hi);
@@ -84,7 +84,7 @@ namespace _2._2._24
             // 已排序的数组直接合并
             if (!Less(src[mid + 1], src[mid]))
             {
-                hitTimes++; // 累加命中次数
+                _hitTimes++; // 累加命中次数
                 Array.Copy(src, lo, dst, lo, hi - lo + 1);
                 return;
             }

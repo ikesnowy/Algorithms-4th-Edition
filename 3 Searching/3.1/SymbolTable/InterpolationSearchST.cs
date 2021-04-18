@@ -6,43 +6,43 @@ namespace SymbolTable
     /// <summary>
     /// 符号表，基于有序表，利用插值法实现搜索。
     /// </summary>
-    public class InterpolationSearchST : IST<double, int>, IOrderedST<double, int>
+    public class InterpolationSearchSt : ISt<double, int>, IOrderedSt<double, int>
     {
         /// <summary>
         /// 符号表的默认长度。
         /// </summary>
         /// <value>符号表的默认长度。</value>
-        private static readonly int INIT_CAPACITY = 2;
+        private static readonly int InitCapacity = 2;
         /// <summary>
         /// 保存符号表键的数组。
         /// </summary>
         /// <value>保存符号表键的数组。</value>
-        private double[] keys;
+        private double[] _keys;
         /// <summary>
         /// 保存符号表值的数组。
         /// </summary>
         /// <value>保存符号表值的数组。</value>
-        private int[] values;
+        private int[] _values;
         /// <summary>
         /// 符号表中的键值对数量。
         /// </summary>
         /// <value>符号表中的键值对数量。</value>
-        private int n;
+        private int _n;
 
         /// <summary>
         /// 构造一个空的符号表。
         /// </summary>
-        public InterpolationSearchST() : this(INIT_CAPACITY) { }
+        public InterpolationSearchSt() : this(InitCapacity) { }
 
         /// <summary>
         /// 构造一个指定容量的符号表。
         /// </summary>
         /// <param name="capacity">符号表初始容量。</param>
-        public InterpolationSearchST(int capacity)
+        public InterpolationSearchSt(int capacity)
         {
-            keys = new double[capacity];
-            values = new int[capacity];
-            n = 0;
+            _keys = new double[capacity];
+            _values = new int[capacity];
+            _n = 0;
         }
 
         /// <summary>
@@ -53,10 +53,10 @@ namespace SymbolTable
         public double Ceiling(double key)
         {
             var i = Rank(key);
-            if (i == n)
+            if (i == _n)
                 return default(double);
             else
-                return keys[i];
+                return _keys[i];
         }
 
         /// <summary>
@@ -80,21 +80,21 @@ namespace SymbolTable
 
             var i = Rank(key);
 
-            if (i == n && keys[i].CompareTo(key) != 0)
+            if (i == _n && _keys[i].CompareTo(key) != 0)
                 return;
 
-            for (var j = i; j < n - 1; j++)
+            for (var j = i; j < _n - 1; j++)
             {
-                keys[j] = keys[j + 1];
-                values[j] = values[j + 1];
+                _keys[j] = _keys[j + 1];
+                _values[j] = _values[j + 1];
             }
 
-            n--;
-            keys[n] = default(double);
-            values[n] = default(int);
+            _n--;
+            _keys[_n] = default(double);
+            _values[_n] = default(int);
 
-            if (n > 0 && n == keys.Length / 4)
-                Resize(n / 2);
+            if (_n > 0 && _n == _keys.Length / 4)
+                Resize(_n / 2);
         }
 
         /// <summary>
@@ -115,12 +115,12 @@ namespace SymbolTable
         public double Floor(double key)
         {
             var i = Rank(key);
-            if (i < n && keys[i].CompareTo(key) == 0)
-                return keys[i];
+            if (i < _n && _keys[i].CompareTo(key) == 0)
+                return _keys[i];
             if (i == 0)
                 return default(double);
             else
-                return keys[i - 1];
+                return _keys[i - 1];
         }
 
         /// <summary>
@@ -133,8 +133,8 @@ namespace SymbolTable
             if (IsEmpty())
                 return default(int);
             var rank = Rank(key);
-            if (rank < n && keys[rank].Equals(key))
-                return values[rank];
+            if (rank < _n && _keys[rank].Equals(key))
+                return _values[rank];
             return default(int);
         }
 
@@ -142,7 +142,7 @@ namespace SymbolTable
         /// 符号表是否为空。
         /// </summary>
         /// <returns>如果符号表为空则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public bool IsEmpty() => n == 0;
+        public bool IsEmpty() => _n == 0;
 
         /// <summary>
         /// 获得全部键的集合。
@@ -162,9 +162,9 @@ namespace SymbolTable
             if (lo.CompareTo(hi) > 0)
                 return list;
             for (var i = Rank(lo); i < Rank(hi); i++)
-                list.Add(keys[i]);
+                list.Add(_keys[i]);
             if (Contains(hi))
-                list.Add(keys[Rank(hi)]);
+                list.Add(_keys[Rank(hi)]);
             return list;
         }
 
@@ -176,7 +176,7 @@ namespace SymbolTable
         {
             if (IsEmpty())
                 throw new InvalidOperationException("called Max() with empty table");
-            return keys[n - 1];
+            return _keys[_n - 1];
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace SymbolTable
         {
             if (IsEmpty())
                 throw new InvalidOperationException("called Min() with empty table");
-            return keys[0];
+            return _keys[0];
         }
 
         /// <summary>
@@ -200,23 +200,23 @@ namespace SymbolTable
         {
             var i = Rank(key);
 
-            if (i < n && keys[i].CompareTo(key) == 0)
+            if (i < _n && _keys[i].CompareTo(key) == 0)
             {
-                values[i] = value;
+                _values[i] = value;
                 return;
             }
 
-            if (n == keys.Length)
-                Resize(n * 2);
+            if (_n == _keys.Length)
+                Resize(_n * 2);
 
-            for (var j = n; j > i; j--)
+            for (var j = _n; j > i; j--)
             {
-                keys[j] = keys[j - 1];
-                values[j] = values[j - 1];
+                _keys[j] = _keys[j - 1];
+                _values[j] = _values[j - 1];
             }
-            keys[i] = key;
-            values[i] = value;
-            n++;
+            _keys[i] = key;
+            _values[i] = value;
+            _n++;
         }
 
         /// <summary>
@@ -226,17 +226,17 @@ namespace SymbolTable
         /// <returns>小于 <paramref name="key"/> 的键的个数。</returns>
         public int Rank(double key)
         {
-            int lo = 0, hi = n - 1;
+            int lo = 0, hi = _n - 1;
             while (lo <= hi)
             {
-                var percent = (key - keys[lo]) / (keys[hi] - keys[lo]);
+                var percent = (key - _keys[lo]) / (_keys[hi] - _keys[lo]);
                 var index = lo + (int)Math.Floor((hi - lo) * percent);
                 if (percent < 0)
                     index = lo;
                 if (percent > 1)
                     index = hi;
 
-                var compare = keys[index].CompareTo(key);
+                var compare = _keys[index].CompareTo(key);
                 if (compare > 0)
                     hi = index - 1;
                 else if (compare < 0)
@@ -255,16 +255,16 @@ namespace SymbolTable
         /// <exception cref="ArgumentOutOfRangeException">当 <paramref name="k"/> 超出数组范围时抛出此异常。</exception>
         public double Select(int k)
         {
-            if (k < 0 || k >= n)
+            if (k < 0 || k >= _n)
                 throw new ArgumentOutOfRangeException("called Select() with invaild k: " + k);
-            return keys[k];
+            return _keys[k];
         }
 
         /// <summary>
         /// 符号表中的键值对数量。
         /// </summary>
         /// <returns>符号表中的键值对数量。</returns>
-        public int Size() => n;
+        public int Size() => _n;
 
         /// <summary>
         /// 获得区间 [<paramref name="lo"/>, <paramref name="hi"/>] 之间的键的数量。
@@ -286,20 +286,20 @@ namespace SymbolTable
         /// 为符号表重新分配空间。
         /// </summary>
         /// <param name="capacity">重新分配的大小。</param>
-        /// <exception cref="ArgumentOutOfRangeException">当 <paramref name="capacity"/> < <see cref="n"/> 时抛出该异常。</exception>
+        /// <exception cref="ArgumentOutOfRangeException">当 <paramref name="capacity"/> < <see cref="_n"/> 时抛出该异常。</exception>
         private void Resize(int capacity)
         {
-            if (capacity < n)
+            if (capacity < _n)
                 throw new ArgumentOutOfRangeException("分配容量不能小于表中元素数量。");
             var tempKeys = new double[capacity];
             var tempValues = new int[capacity];
-            for (var i = 0; i < n; i++)
+            for (var i = 0; i < _n; i++)
             {
-                tempKeys[i] = keys[i];
-                tempValues[i] = values[i];
+                tempKeys[i] = _keys[i];
+                tempValues[i] = _values[i];
             }
-            keys = tempKeys;
-            values = tempValues;
+            _keys = tempKeys;
+            _values = tempValues;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace _3._2._39
             {
                 var odds = new int[n];
                 var evens = new int[n];
-                var bst = new BSTAnalysis<int, int>();
+                var bst = new BstAnalysis<int, int>();
                 for (var j = 100; j < n; j++)
                 {
                     evens[j] = j;
@@ -38,7 +38,7 @@ namespace _3._2._39
             }
         }
 
-        static void Test(BSTAnalysis<int, int> bst, int[] testCases, int trials, string label)
+        static void Test(BstAnalysis<int, int> bst, int[] testCases, int trials, string label)
         {
             var testRecords = new long[trials];
             for (var j = 0; j < trials; j++)

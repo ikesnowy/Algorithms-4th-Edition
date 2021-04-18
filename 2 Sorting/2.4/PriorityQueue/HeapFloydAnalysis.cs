@@ -8,7 +8,7 @@ namespace PriorityQueue
     /// <typeparam name="T">需要排序的元素类型。</typeparam>
     public static class HeapFloydAnalysis
     {
-        private static long compareCount;
+        private static long _compareCount;
 
         /// <summary>
         /// 利用堆排序对数组进行排序。返回比较次数。
@@ -16,7 +16,7 @@ namespace PriorityQueue
         /// <param name="pq">需要排序的数组。</param>
         public static long Sort<T>(T[] pq) where T : IComparable<T>
         {
-            compareCount = 0;
+            _compareCount = 0;
             var n = pq.Length;
             // 建堆
             for (var k = n / 2; k >= 1; k--)
@@ -29,7 +29,7 @@ namespace PriorityQueue
                 Exch(pq, 1, n--);
                 SinkThenSwim(pq, 1, n);
             }
-            return compareCount;
+            return _compareCount;
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace PriorityQueue
         /// <returns>如果下标为 <paramref name="a"/> 的元素较小则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
         private static bool Less<T>(T[] pq, int a, int b) where T : IComparable<T>
         {
-            compareCount++;
+            _compareCount++;
             return pq[a - 1].CompareTo(pq[b - 1]) < 0;
         }
 

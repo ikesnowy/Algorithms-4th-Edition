@@ -12,7 +12,7 @@ for (var i = 0; i < doubleTime; i++)
     Console.WriteLine("n=" + n);
     for (var j = 0; j < repeatTime; j++)
     {
-        var pq = new MaxPQ<int>(n);
+        var pq = new MaxPq<int>(n);
         var delCount = Test(n, pq);
         totalDelCount += delCount;
         Console.Write(delCount + "\t");
@@ -23,7 +23,7 @@ for (var i = 0; i < doubleTime; i++)
 }
 
 
-int Test(int n, MaxPQ<int> pq)
+int Test(int n, MaxPq<int> pq)
 {
     var random = new Random();
     var timer = new Timer(1000);

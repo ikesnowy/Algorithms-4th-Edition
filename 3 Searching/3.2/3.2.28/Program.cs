@@ -8,8 +8,8 @@ namespace _3._2._28
     {
         static void Main(string[] args)
         {
-            var bst = BuildTree<BST<int, int>>();
-            var bstCached = BuildTree<BSTCached<int, int>>();
+            var bst = BuildTree<Bst<int, int>>();
+            var bstCached = BuildTree<BstCached<int, int>>();
 
             var watch = Stopwatch.StartNew();
             for (var i = 0; i < 1000000; i++)
@@ -28,7 +28,7 @@ namespace _3._2._28
             Console.WriteLine("bst:" + watch.ElapsedMilliseconds + " ms");
         }
 
-        static T BuildTree<T>() where T : BST<int, int>, new()
+        static T BuildTree<T>() where T : Bst<int, int>, new()
         {
             var bst = new T();
             bst.Put(4, 4);

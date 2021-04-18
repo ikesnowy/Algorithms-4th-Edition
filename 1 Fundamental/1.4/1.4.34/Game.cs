@@ -25,12 +25,12 @@ namespace _1._4._34
         /// <summary>
         /// 构造函数，新开一局游戏。
         /// </summary>
-        /// <param name="N">目标值的最大范围。</param>
-        public Game(int N)
+        /// <param name="n">目标值的最大范围。</param>
+        public Game(int n)
         {
             var random = new Random();
-            this.N = N;
-            SecretNumber = random.Next(N - 1) + 1;
+            this.N = n;
+            SecretNumber = random.Next(n - 1) + 1;
             LastGuess = -1;
         }
 

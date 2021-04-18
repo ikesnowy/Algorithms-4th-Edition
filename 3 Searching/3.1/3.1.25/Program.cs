@@ -19,8 +19,8 @@ namespace _3._1._25
             Console.WriteLine(@"Origin	Cached	Ratio");
             long bstTimes = 0, bstcTimes = 0;
 
-            var bst = new BinarySearchST<string, int>();
-            var bstc = new BinarySearchSTCached<string, int>();
+            var bst = new BinarySearchSt<string, int>();
+            var bstc = new BinarySearchStCached<string, int>();
 
             bstTimes += SearchCompare.Time(bst, data);
             bstcTimes += SearchCompare.Time(bstc, data);
@@ -30,8 +30,8 @@ namespace _3._1._25
             Console.WriteLine(@"Origin	Cached	Ratio");
             long sstTimes = 0, sstcTimes = 0;
 
-            var sst = new SequentialSearchST<string, int>();
-            var sstc = new SequentialSearchSTCached<string, int>();
+            var sst = new SequentialSearchSt<string, int>();
+            var sstc = new SequentialSearchStCached<string, int>();
 
             sstTimes += SearchCompare.Time(sst, data);
             sstcTimes += SearchCompare.Time(sstc, data);

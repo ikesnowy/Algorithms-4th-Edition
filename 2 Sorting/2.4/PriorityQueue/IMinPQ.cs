@@ -6,25 +6,25 @@ namespace PriorityQueue
     /// 实现优先队列 API 的接口。（最小堆）
     /// </summary>
     /// <typeparam name="Key">优先队列容纳的元素。</typeparam>
-    public interface IMinPQ<Key> where Key : IComparable<Key>
+    public interface IMinPq<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 向优先队列中插入一个元素。
         /// </summary>
         /// <param name="v">插入元素的类型。</param>
-        void Insert(Key v);
+        void Insert(TKey v);
 
         /// <summary>
         /// 返回最小元素。
         /// </summary>
         /// <returns>最小的元素。</returns>
-        Key Min();
+        TKey Min();
 
         /// <summary>
         /// 删除并返回最小元素。
         /// </summary>
         /// <returns>最小的元素。</returns>
-        Key DelMin();
+        TKey DelMin();
 
         /// <summary>
         /// 返回队列是否为空。

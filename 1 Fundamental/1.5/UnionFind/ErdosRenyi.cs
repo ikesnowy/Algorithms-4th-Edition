@@ -17,7 +17,7 @@ namespace UnionFind
         {
             var random = new Random();
             var connections = new List<Connection>();
-            var uf = new WeightedQuickUnionPathCompressionUF(n);
+            var uf = new WeightedQuickUnionPathCompressionUf(n);
 
             while (uf.Count() > 1)
             {
@@ -35,7 +35,7 @@ namespace UnionFind
         /// </summary>
         /// <param name="uf">用于测试的并查集。</param>
         /// <returns>需要的连接总数。</returns>
-        public static int Count(UF uf)
+        public static int Count(Uf uf)
         {
             var random = new Random();
             var size = uf.Count();
@@ -56,7 +56,7 @@ namespace UnionFind
         /// </summary>
         /// <param name="uf">需要测试的并查集。</param>
         /// <param name="connections">用于输入的连接集合。</param>
-        public static void Count(UF uf, Connection[] connections)
+        public static void Count(Uf uf, Connection[] connections)
         {
             foreach (var c in connections)
             {

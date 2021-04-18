@@ -22,8 +22,8 @@ namespace _1._5._16
             char[] split = { '\n', '\r' };
             var input = TestCase.Properties.Resources.mediumUF.Split(split, StringSplitOptions.RemoveEmptyEntries);
             var size = int.Parse(input[0]);
-            var quickFind = new QuickFindUF(size);
-            var quickUnion = new QuickUnionUF(size);
+            var quickFind = new QuickFindUf(size);
+            var quickUnion = new QuickUnionUf(size);
 
             string[] pair;
             int p, q;

@@ -12,7 +12,7 @@ for (var i = 0; i < doubleTime; i++)
     Console.WriteLine("n=" + n);
     for (var j = 0; j < repeatTime; j++)
     {
-        var pq = new MaxPQ<int>(n);
+        var pq = new MaxPq<int>(n);
         var time = Test(pq, n);
         Console.Write(time + "\t");
         totalTime += time;
@@ -22,7 +22,7 @@ for (var i = 0; i < doubleTime; i++)
     n *= 2;
 }
 
-long Test(MaxPQ<int> pq, int n)
+long Test(MaxPq<int> pq, int n)
 {
     var random = new Random();
     // 生成数据

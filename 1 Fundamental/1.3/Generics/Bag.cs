@@ -8,18 +8,18 @@ namespace Generics
     /// 背包类。
     /// </summary>
     /// <typeparam name="Item">背包中存放的元素类型。</typeparam>
-    public class Bag<Item> : IEnumerable<Item>
+    public class Bag<TItem> : IEnumerable<TItem>
     {
-        private Node<Item> first;
-        private int count;
+        private Node<TItem> _first;
+        private int _count;
 
         /// <summary>
         /// 默认构造函数。
         /// </summary>
         public Bag()
         {
-            first = null;
-            count = 0;
+            _first = null;
+            _count = 0;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Generics
         /// <returns>为空则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
         public bool IsEmpty()
         {
-            return first == null;
+            return _first == null;
         }
 
         /// <summary>
@@ -37,29 +37,29 @@ namespace Generics
         /// <returns>背包中元素的数量。</returns>
         public int Size()
         {
-            return count;
+            return _count;
         }
 
         /// <summary>
         /// 向背包中添加一个元素。
         /// </summary>
         /// <param name="item">要添加的元素。</param>
-        public void Add(Item item)
+        public void Add(TItem item)
         {
-            var oldFirst = first;
-            first = new Node<Item>();
-            first.item = item;
-            first.next = oldFirst;
-            count++;
+            var oldFirst = _first;
+            _first = new Node<TItem>();
+            _first.item = item;
+            _first.next = oldFirst;
+            _count++;
         }
 
         /// <summary>
         /// 获得枚举器。
         /// </summary>
         /// <returns>返回枚举器对象。</returns>
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            return new BagEnumerator(first);
+            return new BagEnumerator(_first);
         }
 
         /// <summary>
@@ -75,45 +75,45 @@ namespace Generics
         /// <summary>
         /// 背包枚举器类。
         /// </summary>
-        private class BagEnumerator : IEnumerator<Item>
+        private class BagEnumerator : IEnumerator<TItem>
         {
-            private Node<Item> current;
-            private Node<Item> first;
+            private Node<TItem> _current;
+            private Node<TItem> _first;
 
-            Item IEnumerator<Item>.Current => current.item;
+            TItem IEnumerator<TItem>.Current => _current.item;
 
-            object IEnumerator.Current => current.item;
+            object IEnumerator.Current => _current.item;
 
             /// <summary>
             /// 构造一个背包枚举器。
             /// </summary>
             /// <param name="first">背包的第一个结点。</param>
-            public BagEnumerator(Node<Item> first)
+            public BagEnumerator(Node<TItem> first)
             {
-                current = new Node<Item>();
-                current.next = first;
-                this.first = current;
+                _current = new Node<TItem>();
+                _current.next = first;
+                this._first = _current;
             }
 
             void IDisposable.Dispose()
             {
-                current = null;
-                first = null;
+                _current = null;
+                _first = null;
                 return;
             }
 
             bool IEnumerator.MoveNext()
             {
-                if (current.next == null)
+                if (_current.next == null)
                     return false;
 
-                current = current.next;
+                _current = _current.next;
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = first;
+                _current = _first;
             }
         }
     }

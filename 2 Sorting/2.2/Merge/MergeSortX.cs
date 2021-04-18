@@ -10,13 +10,13 @@ namespace Merge
         /// <summary>
         /// 对小于 CUTOFF 的数组使用插入排序。
         /// </summary>
-        private static int CUTOFF = 7;
+        private static int _cutoff = 7;
 
         /// <summary>
         /// 设置启用插入排序的阈值，小于该阈值的数组将采用插入排序。
         /// </summary>
         /// <param name="cutoff">新的阈值。</param>
-        public void SetCutOff(int cutoff) => CUTOFF = cutoff;
+        public void SetCutOff(int cutoff) => _cutoff = cutoff;
 
         /// <summary>
         /// 将指定范围内的元素归并。
@@ -54,7 +54,7 @@ namespace Merge
         private void Sort<T>(T[] src, T[] dst, int lo, int hi) where T : IComparable<T>
         {
             // 小于 CUTOFF 的数组调用插入排序
-            if (hi <= lo + CUTOFF)
+            if (hi <= lo + _cutoff)
             {
                 var insertion = new InsertionSort();
                 insertion.Sort(dst, lo, hi);

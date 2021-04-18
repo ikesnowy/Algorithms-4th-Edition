@@ -15,7 +15,7 @@ namespace _3._1._27
 
             Console.WriteLine(@"	比较	交换	总和");
             Console.Write(@"Put()	");
-            var bst = new BinarySearchST<int, int>(n);
+            var bst = new BinarySearchSt<int, int>(n);
             for (var i = 0; i < n; i++)
             {
                 bst.Put(data[i], i);

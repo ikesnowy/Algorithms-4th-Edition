@@ -7,10 +7,10 @@ namespace _1._4._37
     /// <summary>
     /// 固定大小的栈。
     /// </summary>
-    class FixedCapacityStack<Item> : IEnumerable<Item>
+    class FixedCapacityStack<TItem> : IEnumerable<TItem>
     {
-        private readonly Item[] a;
-        private int N;
+        private readonly TItem[] _a;
+        private int _n;
 
         /// <summary>
         /// 默认构造函数。
@@ -18,8 +18,8 @@ namespace _1._4._37
         /// <param name="capacity">栈的大小。</param>
         public FixedCapacityStack(int capacity)
         {
-            a = new Item[capacity];
-            N = 0;
+            _a = new TItem[capacity];
+            _n = 0;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace _1._4._37
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return N == 0;
+            return _n == 0;
         }
 
         /// <summary>
@@ -37,41 +37,41 @@ namespace _1._4._37
         /// <returns></returns>
         public bool IsFull()
         {
-            return N == a.Length;
+            return _n == _a.Length;
         }
 
         /// <summary>
         /// 将一个元素压入栈中。
         /// </summary>
         /// <param name="item">要压入栈中的元素。</param>
-        public void Push(Item item)
+        public void Push(TItem item)
         {
-            a[N] = item;
-            N++;
+            _a[_n] = item;
+            _n++;
         }
 
         /// <summary>
         /// 从栈中弹出一个元素，返回被弹出的元素。
         /// </summary>
         /// <returns></returns>
-        public Item Pop()
+        public TItem Pop()
         {
-            N--;
-            return a[N];
+            _n--;
+            return _a[_n];
         }
 
         /// <summary>
         /// 返回栈顶元素（但不弹出它）。
         /// </summary>
         /// <returns></returns>
-        public Item Peek()
+        public TItem Peek()
         {
-            return a[N - 1];
+            return _a[_n - 1];
         }
 
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            return new ReverseEnmerator(a);
+            return new ReverseEnmerator(_a);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -79,38 +79,38 @@ namespace _1._4._37
             return GetEnumerator();
         }
 
-        private class ReverseEnmerator : IEnumerator<Item>
+        private class ReverseEnmerator : IEnumerator<TItem>
         {
-            private int current;
-            private Item[] a;
+            private int _current;
+            private TItem[] _a;
 
-            public ReverseEnmerator(Item[] a)
+            public ReverseEnmerator(TItem[] a)
             {
-                current = a.Length;
-                this.a = a;
+                _current = a.Length;
+                this._a = a;
             }
 
-            Item IEnumerator<Item>.Current => a[current];
+            TItem IEnumerator<TItem>.Current => _a[_current];
 
-            object IEnumerator.Current => a[current];
+            object IEnumerator.Current => _a[_current];
 
             void IDisposable.Dispose()
             {
-                current = -1;
-                a = null;
+                _current = -1;
+                _a = null;
             }
 
             bool IEnumerator.MoveNext()
             {
-                if (current == 0)
+                if (_current == 0)
                     return false;
-                current--;
+                _current--;
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = a.Length;
+                _current = _a.Length;
             }
         }
     }

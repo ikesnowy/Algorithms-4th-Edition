@@ -18,8 +18,8 @@ namespace _3._1._31
                 long sumSequential = 0, sumBinary = 0;
                 for (var j = 0; j < repeatTime; j++)
                 {
-                    sumBinary += SearchCompare.Performance(new BinarySearchST<string, int>(), n, averageHit);
-                    sumSequential += SearchCompare.Performance(new SequentialSearchST<string, int>(), n, averageHit);
+                    sumBinary += SearchCompare.Performance(new BinarySearchSt<string, int>(), n, averageHit);
+                    sumSequential += SearchCompare.Performance(new SequentialSearchSt<string, int>(), n, averageHit);
                 }
                 Console.WriteLine("BinarySearchST: " + sumBinary / repeatTime);
                 Console.WriteLine("SequentialSearchST: " + sumSequential / repeatTime);

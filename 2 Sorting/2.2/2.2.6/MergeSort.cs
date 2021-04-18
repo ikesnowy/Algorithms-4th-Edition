@@ -11,7 +11,7 @@ namespace _2._2._6
         /// <summary>
         /// 数组访问计数。
         /// </summary>
-        private int arrayVisitCount;
+        private int _arrayVisitCount;
 
         /// <summary>
         /// 获取数组访问计数。
@@ -19,7 +19,7 @@ namespace _2._2._6
         /// <returns>数组访问计数值。</returns>
         public int GetArrayVisitCount()
         {
-            return arrayVisitCount;
+            return _arrayVisitCount;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace _2._2._6
         /// </summary>
         public void ClearArrayVisitCount()
         {
-            arrayVisitCount = 0;
+            _arrayVisitCount = 0;
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace _2._2._6
             for (var k = lo; k <= hi; k++)
             {
                 aux[k] = a[k];
-                arrayVisitCount++;
+                _arrayVisitCount++;
             }
 
             int i = lo, j = mid + 1;
@@ -99,7 +99,7 @@ namespace _2._2._6
                     a[k] = aux[i];
                     i++;
                 }
-                arrayVisitCount++;
+                _arrayVisitCount++;
             }
         }
     }

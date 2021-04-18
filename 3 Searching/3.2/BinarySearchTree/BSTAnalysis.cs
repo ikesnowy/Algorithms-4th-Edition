@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BinarySearchTree
 {
-    public class BSTAnalysis<TKey, TValue> : IST<TKey, TValue>, IOrderedST<TKey, TValue> 
+    public class BstAnalysis<TKey, TValue> : ISt<TKey, TValue>, IOrderedSt<TKey, TValue> 
         where TKey : IComparable<TKey>
     {
         /// <summary>

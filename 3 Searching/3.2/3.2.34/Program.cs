@@ -7,7 +7,7 @@ namespace _3._2._34
     {
         static void Main(string[] args)
         {
-            var bst = new ThreadedST<int, int>();
+            var bst = new ThreadedSt<int, int>();
             bst.Put(10, 10);
             bst.Put(4, 4);
             bst.Put(12, 12);

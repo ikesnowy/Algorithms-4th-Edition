@@ -9,14 +9,14 @@ namespace _2._3._26
 {
     public partial class Form2 : Form
     {
-        private readonly int M;
-        private readonly int N;
+        private readonly int _m;
+        private readonly int _n;
 
         public Form2(int m, int n)
         {
             InitializeComponent();
-            M = m;
-            N = n;
+            _m = m;
+            _n = n;
         }
 
         /// <summary>
@@ -40,9 +40,9 @@ namespace _2._3._26
             var worker = sender as BackgroundWorker;
             var quickSortInsertion = new QuickSortInsertion
             {
-                M = M
+                M = _m
             };
-            var data = SortCompare.GetRandomArrayInt(N);
+            var data = SortCompare.GetRandomArrayInt(_n);
             worker.ReportProgress(50);
             quickSortInsertion.Sort(data);
             e.Result = quickSortInsertion.Counts;

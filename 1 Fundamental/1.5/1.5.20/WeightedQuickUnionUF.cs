@@ -5,7 +5,7 @@ namespace _1._5._20
     /// <summary>
     /// 使用加权 quick-union 算法的并查集。
     /// </summary>
-    public class WeightedQuickUnionUF
+    public class WeightedQuickUnionUf
     {
         protected LinkedList<int> parent;       // 记录各个结点的父级。
         protected LinkedList<int> size;         // 记录各个树的大小。
@@ -15,7 +15,7 @@ namespace _1._5._20
         /// 建立使用加权 quick-union 的并查集。
         /// </summary>
         /// <param name="n">并查集的大小。</param>
-        public WeightedQuickUnionUF()
+        public WeightedQuickUnionUf()
         {
             parent = new LinkedList<int>();
             size = new LinkedList<int>();

@@ -19,11 +19,11 @@ namespace _1._3._47
     /// Steque。
     /// </summary>
     /// <typeparam name="Item">Steque 中要包含的元素。</typeparam>
-    public class Steque<Item> : IEnumerable<Item>
+    public class Steque<TItem> : IEnumerable<TItem>
     {
-        private Node<Item> first;
-        private Node<Item> last;
-        private int count;
+        private Node<TItem> _first;
+        private Node<TItem> _last;
+        private int _count;
 
         private class Node<T>
         {
@@ -36,8 +36,8 @@ namespace _1._3._47
         /// </summary>
         public Steque()
         {
-            first = null;
-            count = 0;
+            _first = null;
+            _count = 0;
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace _1._3._47
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return count == 0;
+            return _count == 0;
         }
 
         /// <summary>
@@ -55,41 +55,41 @@ namespace _1._3._47
         /// <returns></returns>
         public int Size()
         {
-            return count;
+            return _count;
         }
 
         /// <summary>
         /// 将一个元素压入栈中。
         /// </summary>
         /// <param name="item">要压入栈中的元素。</param>
-        public void Push(Item item)
+        public void Push(TItem item)
         {
-            var oldFirst = first;
-            first = new Node<Item>();
-            first.item = item;
-            first.next = oldFirst;
+            var oldFirst = _first;
+            _first = new Node<TItem>();
+            _first.item = item;
+            _first.next = oldFirst;
 
             if (oldFirst == null)
             {
-                last = first;
+                _last = _first;
             }
-            count++;
+            _count++;
         }
 
         /// <summary>
         /// 将一个元素从栈中弹出，返回弹出的元素。
         /// </summary>
         /// <returns></returns>
-        public Item Pop()
+        public TItem Pop()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack Underflow");
-            var item = first.item;
-            first = first.next;
-            count--;
-            if (count == 0)
+            var item = _first.item;
+            _first = _first.next;
+            _count--;
+            if (_count == 0)
             {
-                last = null;
+                _last = null;
             }
             return item;
         }
@@ -98,28 +98,28 @@ namespace _1._3._47
         /// 将一个元素加入队列中。
         /// </summary>
         /// <param name="item">要入队的元素。</param>
-        public void Enqueue(Item item)
+        public void Enqueue(TItem item)
         {
-            var oldLast = last;
-            last = new Node<Item>();
-            last.item = item;
-            last.next = null;
+            var oldLast = _last;
+            _last = new Node<TItem>();
+            _last.item = item;
+            _last.next = null;
             if (IsEmpty())
-                first = last;
+                _first = _last;
             else
-                oldLast.next = last;
-            count++;
+                oldLast.next = _last;
+            _count++;
         }
 
         /// <summary>
         /// 返回栈顶元素（但不弹出它）。
         /// </summary>
         /// <returns></returns>
-        public Item Peek()
+        public TItem Peek()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack Underflow");
-            return first.item;
+            return _first.item;
         }
 
         /// <summary>
@@ -128,18 +128,18 @@ namespace _1._3._47
         /// <param name="s1">第一个 Steque </param>
         /// <param name="s2">第二个 Steque （将被删除）</param>
         /// <returns></returns>
-        public static Steque<Item> Catenation(Steque<Item> s1, Steque<Item> s2)
+        public static Steque<TItem> Catenation(Steque<TItem> s1, Steque<TItem> s2)
         {
             if (s1.IsEmpty())
             {
-                s1.first = s2.first;
-                s1.last = s2.last;
-                s1.count = s2.count;
+                s1._first = s2._first;
+                s1._last = s2._last;
+                s1._count = s2._count;
             }
             else
             {
-                s1.last.next = s2.first;
-                s1.count += s2.count;
+                s1._last.next = s2._first;
+                s1._count += s2._count;
             }
             s2 = null;
             return s1;
@@ -156,9 +156,9 @@ namespace _1._3._47
             return s.ToString();
         }
 
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            return new StackEnumerator(first);
+            return new StackEnumerator(_first);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -166,40 +166,40 @@ namespace _1._3._47
             return GetEnumerator();
         }
 
-        private class StackEnumerator : IEnumerator<Item>
+        private class StackEnumerator : IEnumerator<TItem>
         {
-            private Node<Item> current;
-            private Node<Item> first;
+            private Node<TItem> _current;
+            private Node<TItem> _first;
 
-            public StackEnumerator(Node<Item> first)
+            public StackEnumerator(Node<TItem> first)
             {
-                current = new Node<Item>();
-                current.next = first;
-                this.first = current;
+                _current = new Node<TItem>();
+                _current.next = first;
+                this._first = _current;
             }
 
-            Item IEnumerator<Item>.Current => current.item;
+            TItem IEnumerator<TItem>.Current => _current.item;
 
-            object IEnumerator.Current => current.item;
+            object IEnumerator.Current => _current.item;
 
             void IDisposable.Dispose()
             {
-                current = null;
-                first = null;
+                _current = null;
+                _first = null;
             }
 
             bool IEnumerator.MoveNext()
             {
-                if (current.next == null)
+                if (_current.next == null)
                     return false;
 
-                current = current.next;
+                _current = _current.next;
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = first;
+                _current = _first;
             }
         }
     }

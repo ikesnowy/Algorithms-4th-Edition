@@ -8,22 +8,22 @@ namespace _1._3._33
     /// 可自动扩容的双端队列。
     /// </summary>
     /// <typeparam name="Item">队列中要存放的元素。</typeparam>
-    public class ResizingArrayDeque<Item> : IEnumerable<Item>
+    public class ResizingArrayDeque<TItem> : IEnumerable<TItem>
     {
-        private Item[] deque;
-        private int first;
-        private int last;
-        private int count;
+        private TItem[] _deque;
+        private int _first;
+        private int _last;
+        private int _count;
 
         /// <summary>
         /// 默认构造函数，建立一个双向队列。
         /// </summary>
         public ResizingArrayDeque()
         {
-            deque = new Item[2];
-            first = 0;
-            last = 0;
-            count = 0;
+            _deque = new TItem[2];
+            _first = 0;
+            _last = 0;
+            _count = 0;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace _1._3._33
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return count == 0;
+            return _count == 0;
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace _1._3._33
         /// <returns></returns>
         public int Size()
         {
-            return count;
+            return _count;
         }
 
         /// <summary>
@@ -53,14 +53,14 @@ namespace _1._3._33
             if (capacity <= 0)
                 throw new ArgumentException();
 
-            var temp = new Item[capacity];
-            for (var i = 0; i < count; i++)
+            var temp = new TItem[capacity];
+            for (var i = 0; i < _count; i++)
             {
-                temp[i] = deque[(first + i) % deque.Length];
+                temp[i] = _deque[(_first + i) % _deque.Length];
             }
-            deque = temp;
-            first = 0;
-            last = count;
+            _deque = temp;
+            _first = 0;
+            _last = _count;
         }
 
 
@@ -68,71 +68,71 @@ namespace _1._3._33
         /// 在队列左侧添加一个元素。
         /// </summary>
         /// <param name="item">要添加的元素</param>
-        public void PushLeft(Item item)
+        public void PushLeft(TItem item)
         {
-            if (count == deque.Length)
+            if (_count == _deque.Length)
             {
-                Resize(2 * count);
+                Resize(2 * _count);
             }
 
-            first--;
-            if (first < 0)
+            _first--;
+            if (_first < 0)
             {
-                first += deque.Length;
+                _first += _deque.Length;
             }
-            deque[first] = item;
-            count++;
+            _deque[_first] = item;
+            _count++;
         }
 
-        public void PushRight (Item item)
+        public void PushRight (TItem item)
         {
-            if (count == deque.Length)
+            if (_count == _deque.Length)
             {
-                Resize(2 * count);
+                Resize(2 * _count);
             }
 
-            deque[last] = item;
-            last = (last + 1) % deque.Length;
-            count++;
+            _deque[_last] = item;
+            _last = (_last + 1) % _deque.Length;
+            _count++;
         }
 
-        public Item PopRight()
+        public TItem PopRight()
         {
             if (IsEmpty())
             {
                 throw new InvalidOperationException();
             }
 
-            last--;
-            if (last < 0)
+            _last--;
+            if (_last < 0)
             {
-                last += deque.Length;
+                _last += _deque.Length;
             }
-            var temp = deque[last];
-            count--;
-            if (count > 0 && count == deque.Length / 4)
-                Resize(deque.Length / 2);
+            var temp = _deque[_last];
+            _count--;
+            if (_count > 0 && _count == _deque.Length / 4)
+                Resize(_deque.Length / 2);
             return temp;
         }
 
-        public Item PopLeft()
+        public TItem PopLeft()
         {
             if (IsEmpty())
                 throw new ArgumentException();
 
-            var temp = deque[first];
-            first = (first + 1) % deque.Length;
-            count--;
-            if (count > 0 && count == deque.Length / 4)
+            var temp = _deque[_first];
+            _first = (_first + 1) % _deque.Length;
+            _count--;
+            if (_count > 0 && _count == _deque.Length / 4)
             {
-                Resize(deque.Length / 2);
+                Resize(_deque.Length / 2);
             }
             return temp;
         }
 
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            return new ResizingDequeEnumerator(deque, first, count);
+            return new ResizingDequeEnumerator(_deque, _first, _count);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -140,45 +140,45 @@ namespace _1._3._33
             return GetEnumerator();
         }
 
-        private class ResizingDequeEnumerator : IEnumerator<Item>
+        private class ResizingDequeEnumerator : IEnumerator<TItem>
         {
-            private Item[] deque;
-            private int current;
-            private readonly int first;
-            private readonly int count;
+            private TItem[] _deque;
+            private int _current;
+            private readonly int _first;
+            private readonly int _count;
 
-            public ResizingDequeEnumerator(Item[] deque, int first, int count)
+            public ResizingDequeEnumerator(TItem[] deque, int first, int count)
             {
-                this.deque = deque;
-                this.first = first;
-                this.count = count;
-                current = -1;
+                this._deque = deque;
+                this._first = first;
+                this._count = count;
+                _current = -1;
             }
 
-            Item IEnumerator<Item>.Current => deque[(first + current) % deque.Length];
+            TItem IEnumerator<TItem>.Current => _deque[(_first + _current) % _deque.Length];
 
-            object IEnumerator.Current => deque[(first + current) % deque.Length];
+            object IEnumerator.Current => _deque[(_first + _current) % _deque.Length];
 
             void IDisposable.Dispose()
             {
-                deque = null;
-                current = -1;
+                _deque = null;
+                _current = -1;
             }
 
             bool IEnumerator.MoveNext()
             {
-                if (current == count - 1)
+                if (_current == _count - 1)
                 {
                     return false;
                 }
 
-                current++;
+                _current++;
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = -1;
+                _current = -1;
             }
         }
     }

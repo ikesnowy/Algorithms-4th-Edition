@@ -8,18 +8,18 @@ namespace SymbolTable
     /// </summary>
     /// <typeparam name="TKey">键类型。</typeparam>
     /// <typeparam name="TValue">值类型。</typeparam>
-    public class SequentialSearchSTAnalysis<TKey, TValue> : IST<TKey, TValue>, ISTAnalysis<TKey, TValue>
+    public class SequentialSearchStAnalysis<TKey, TValue> : ISt<TKey, TValue>, IStAnalysis<TKey, TValue>
     {
         /// <summary>
         /// 符号表中的元素个数。
         /// </summary>
         /// <value>符号表中的元素个数。</value>
-        private int n;
+        private int _n;
         /// <summary>
         /// 链表头结点。
         /// </summary>
         /// <value>链表头结点。</value>
-        private Node first;
+        private Node _first;
 
         /// <summary>
         /// 上一次 <see cref="Put(TKey, TValue)"/> 的数组访问次数。
@@ -53,7 +53,7 @@ namespace SymbolTable
         {
             if (key == null)
                 throw new ArgumentNullException("argument to contains() can't be null!");
-            for (var pointer = first; pointer != null; pointer = pointer.Next)
+            for (var pointer = _first; pointer != null; pointer = pointer.Next)
                 if (pointer.Key.Equals(key))
                     return true;
             return false;
@@ -67,7 +67,7 @@ namespace SymbolTable
         {
             if (key == null)
                 throw new ArgumentNullException("key can't be null");
-            Node before = null, target = first;
+            Node before = null, target = _first;
             while (target != null && !target.Key.Equals(key))
             {
                 before = target;
@@ -89,10 +89,10 @@ namespace SymbolTable
                 throw new ArgumentNullException("target can't be null");
 
             if (before == null)
-                first = target.Next;
+                _first = target.Next;
             else
                 before.Next = target.Next;
-            n--;
+            _n--;
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace SymbolTable
         {
             if (key == null)
                 throw new ArgumentNullException("key can't be null");
-            for (var pointer = first; pointer != null; pointer = pointer.Next)
+            for (var pointer = _first; pointer != null; pointer = pointer.Next)
                 if (pointer.Key.Equals(key))
                     return pointer.Value;
             return default(TValue);
@@ -114,7 +114,7 @@ namespace SymbolTable
         /// 符号表是否为空。
         /// </summary>
         /// <returns>为空则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public bool IsEmpty() => n == 0;
+        public bool IsEmpty() => _n == 0;
 
         /// <summary>
         /// 获得所有的键。
@@ -122,9 +122,9 @@ namespace SymbolTable
         /// <returns>包含所有键的集合。</returns>
         public IEnumerable<TKey> Keys()
         {
-            var keys = new TKey[n];
-            var pointer = first;
-            for (var i = 0; i < n; i++)
+            var keys = new TKey[_n];
+            var pointer = _first;
+            for (var i = 0; i < _n; i++)
             {
                 keys[i] = pointer.Key;
                 pointer = pointer.Next;
@@ -148,7 +148,7 @@ namespace SymbolTable
                 Delete(key);
                 return;
             }
-            for (var pointer = first; pointer != null; pointer = pointer.Next)
+            for (var pointer = _first; pointer != null; pointer = pointer.Next)
             {
                 ArrayVisit++;
                 if (pointer.Key.Equals(key))
@@ -158,14 +158,14 @@ namespace SymbolTable
                 }
             }
 
-            first = new Node(key, value, first);
-            n++;
+            _first = new Node(key, value, _first);
+            _n++;
         }
 
         /// <summary>
         /// 获取符号表中的键值对数量。
         /// </summary>
         /// <returns>当前符号表中的键值对数量。</returns>
-        public int Size() => n;
+        public int Size() => _n;
     }
 }

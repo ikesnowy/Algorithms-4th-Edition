@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace BinarySearchTree
 {
-    public class BSTTimer<TKey, TValue> : BST<TKey, TValue> where TKey : IComparable<TKey>
+    public class BstTimer<TKey, TValue> : Bst<TKey, TValue> where TKey : IComparable<TKey>
     {
         public long PutTime { get; set; }
         public long SetTime { get; set; }

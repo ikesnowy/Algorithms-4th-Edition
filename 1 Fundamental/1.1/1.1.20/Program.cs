@@ -6,12 +6,12 @@ Console.WriteLine($@"{FactorialLn(n)}");
 // ln(N!) =
 // ln(N * (N - 1) * ... * 1) =
 // ln(N) + ln((N - 1)!)
-static double FactorialLn(int N)
+static double FactorialLn(int n)
 {
-    if (N == 1)
+    if (n == 1)
     {
         return 0;
     }
 
-    return Math.Log(N) + FactorialLn(N - 1);
+    return Math.Log(n) + FactorialLn(n - 1);
 }

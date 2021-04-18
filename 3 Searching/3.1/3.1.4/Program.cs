@@ -7,7 +7,7 @@ namespace _3._1._4
     {
         static void Main(string[] args)
         {
-            var st = new OrderedSequentialSearchST<Time, Event>();
+            var st = new OrderedSequentialSearchSt<Time, Event>();
             Time[] times =
             {
                 new() { Hour = 9, Minute = 0, Second = 0},

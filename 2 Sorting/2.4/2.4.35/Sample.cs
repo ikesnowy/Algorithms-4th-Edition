@@ -10,8 +10,8 @@ namespace _2._4._35
         public double[] P;
         public double[] SumP;
 
-        private readonly double T;
-        private readonly Random random = new();
+        private readonly double _;
+        private readonly Random _random = new();
 
         /// <summary>
         /// 构造一个离散取样类。
@@ -24,7 +24,7 @@ namespace _2._4._35
             for (var i = 1; i <= data.Length; i++)
             {
                 P[i] = data[i - 1];
-                T += data[i - 1];
+                _ += data[i - 1];
             }
 
             // 记录子树权重之和
@@ -41,7 +41,7 @@ namespace _2._4._35
         /// <returns></returns>
         public int Random()
         {
-            var parcentage = random.NextDouble() * T;
+            var parcentage = _random.NextDouble() * _;
             var index = 1;
             while (index * 2 <= P.Length)
             {

@@ -6,7 +6,7 @@ namespace _3._2._10
     {
         static void Main(string[] args)
         {
-            BSTTester.Test(new BST<string, int>());
+            BstTester.Test(new Bst<string, int>());
         }
     }
 }

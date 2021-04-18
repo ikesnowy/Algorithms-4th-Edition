@@ -2,7 +2,7 @@
 
 namespace BinarySearchTree
 {
-    public class BSTRandomKey<TKey, TValue> : BST<TKey, TValue> where TKey : IComparable<TKey>
+    public class BstRandomKey<TKey, TValue> : Bst<TKey, TValue> where TKey : IComparable<TKey>
     {
         private static readonly Random Random = new();
 

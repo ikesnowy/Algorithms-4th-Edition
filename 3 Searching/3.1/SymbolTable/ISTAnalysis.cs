@@ -7,7 +7,7 @@ namespace SymbolTable
     /// </summary>
     /// <typeparam name="TKey">键类型。</typeparam>
     /// <typeparam name="TValue">值类型。</typeparam>
-    public interface ISTAnalysis<TKey, TValue>
+    public interface IStAnalysis<TKey, TValue>
     {
         /// <summary>
         /// 当前的数组访问次数。

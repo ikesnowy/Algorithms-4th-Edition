@@ -2,7 +2,7 @@
 using UnionFind;
 
 var input = "9-0 3-4 5-8 7-2 2-1 5-7 0-3 4-2".Split(' ');
-var quickUnion = new QuickUnionUF(10);
+var quickUnion = new QuickUnionUf(10);
 
 foreach (var s in input)
 {

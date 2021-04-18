@@ -5,7 +5,7 @@ using PriorityQueue;
 // 官方实现：https://algs4.cs.princeton.edu/24pq/IndexMaxPQ.java.html
 // 2.4.33 中已经实现这些操作
 var input = new[] { "it", "was", "the", "best", "of", "times", "it", "was", "the", "worst" };
-var pq = new IndexMaxPQ<string>(input.Length);
+var pq = new IndexMaxPq<string>(input.Length);
 for (var i = 0; i < input.Length; i++)
 {
     pq.Insert(input[i], i);

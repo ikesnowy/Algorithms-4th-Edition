@@ -8,13 +8,13 @@ namespace PriorityQueue
     /// <summary>
     /// 用二分查找优化的最小堆。（数组实现）
     /// </summary>
-    public class MinPQX<Key> : IMinPQ<Key>, IEnumerable<Key> where Key : IComparable<Key>
+    public class MinPqx<TKey> : IMinPq<TKey>, IEnumerable<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 保存元素的数组。
         /// </summary>
         /// <value>保存元素的数组。</value>
-        protected Key[] pq;
+        protected TKey[] pq;
         /// <summary>
         /// 堆中元素的数量。
         /// </summary>
@@ -24,15 +24,15 @@ namespace PriorityQueue
         /// <summary>
         /// 默认构造函数。
         /// </summary>
-        public MinPQX() : this(1) { }
+        public MinPqx() : this(1) { }
 
         /// <summary>
         /// 建立指定容量的最小堆。
         /// </summary>
         /// <param name="capacity">最小堆的容量。</param>
-        public MinPQX(int capacity)
+        public MinPqx(int capacity)
         {
-            pq = new Key[capacity + 1];
+            pq = new TKey[capacity + 1];
             n = 0;
         }
 
@@ -40,10 +40,10 @@ namespace PriorityQueue
         /// 从已有元素建立一个最小堆。（O(n)）
         /// </summary>
         /// <param name="keys">已有元素。</param>
-        public MinPQX(Key[] keys)
+        public MinPqx(TKey[] keys)
         {
             n = keys.Length;
-            pq = new Key[keys.Length + 1];
+            pq = new TKey[keys.Length + 1];
             for (var i = 0; i < keys.Length; i++)
                 pq[i + 1] = keys[i];
             for (var k = n / 2; k >= 1; k--)
@@ -55,7 +55,7 @@ namespace PriorityQueue
         /// 删除并返回最小元素。
         /// </summary>
         /// <returns></returns>
-        public Key DelMin()
+        public TKey DelMin()
         {
             if (IsEmpty())
                 throw new ArgumentOutOfRangeException("Priority Queue Underflow");
@@ -63,7 +63,7 @@ namespace PriorityQueue
             var min = pq[1];
             Exch(1, n--);
             Sink(1);
-            pq[n + 1] = default(Key);
+            pq[n + 1] = default(TKey);
             if ((n > 0) && (n == pq.Length / 4))
                 Resize(pq.Length / 2);
 
@@ -79,17 +79,17 @@ namespace PriorityQueue
         {
             if (k == n)
             {
-                pq[n--] = default(Key);
+                pq[n--] = default(TKey);
                 return;
             }
             else if (n <= 2)
             {
                 Exch(1, k);
-                pq[n--] = default(Key);
+                pq[n--] = default(TKey);
                 return;
             }
             Exch(k, n--);
-            pq[n + 1] = default(Key);
+            pq[n + 1] = default(TKey);
             Swim(k);
             Sink(k);
         }
@@ -98,7 +98,7 @@ namespace PriorityQueue
         /// 向堆中插入一个元素。
         /// </summary>
         /// <param name="v">需要插入的元素。</param>
-        public void Insert(Key v)
+        public void Insert(TKey v)
         {
             if (n == pq.Length - 1)
                 Resize(2 * pq.Length);
@@ -118,7 +118,7 @@ namespace PriorityQueue
         /// 获得堆中最小元素。
         /// </summary>
         /// <returns></returns>
-        public Key Min() => pq[1];
+        public TKey Min() => pq[1];
 
         /// <summary>
         /// 获得堆中元素的数量。
@@ -130,9 +130,9 @@ namespace PriorityQueue
         /// 获取堆的迭代器，元素以升序排列。
         /// </summary>
         /// <returns></returns>
-        public IEnumerator<Key> GetEnumerator()
+        public IEnumerator<TKey> GetEnumerator()
         {
-            var copy = new MinPQ<Key>(n);
+            var copy = new MinPq<TKey>(n);
             for (var i = 1; i <= n; i++)
                 copy.Insert(pq[i]);
 
@@ -208,7 +208,7 @@ namespace PriorityQueue
         /// <param name="capacity">调整后的堆大小。</param>
         private void Resize(int capacity)
         {
-            var temp = new Key[capacity];
+            var temp = new TKey[capacity];
             for (var i = 1; i <= n; i++)
             {
                 temp[i] = pq[i];

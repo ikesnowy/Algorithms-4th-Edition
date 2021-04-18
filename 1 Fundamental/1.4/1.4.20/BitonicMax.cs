@@ -10,13 +10,13 @@ namespace _1._4._20
         /// <summary>
         /// 生成双调数组。
         /// </summary>
-        /// <param name="N">数组的大小。</param>
+        /// <param name="n">数组的大小。</param>
         /// <returns></returns>
-        public static int[] Bitonic(int N)
+        public static int[] Bitonic(int n)
         {
             var random = new Random();
-            var mid = random.Next(N);
-            var a = new int[N];
+            var mid = random.Next(n);
+            var a = new int[n];
             for (var i = 1; i < mid; i++)
             {
                 a[i] = a[i - 1] + 1 + random.Next(9);
@@ -27,7 +27,7 @@ namespace _1._4._20
                 a[mid] = a[mid - 1] + random.Next(10) - 5;
             }
 
-            for (var i = mid + 1; i < N; i++)
+            for (var i = mid + 1; i < n; i++)
             {
                 a[i] = a[i - 1] - 1 - random.Next(9);
             }

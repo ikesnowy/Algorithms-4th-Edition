@@ -11,14 +11,14 @@ namespace _2._2._15
         /// 利用队列归并进行自底向上的归并排序。
         /// </summary>
         /// <typeparam name="T">需要排序的元素类型。</typeparam>
-        /// <param name="a">需要排序的数组。</param>
-        public void Sort<T>(T[] a) where T : IComparable<T>
+        /// <param name="array">需要排序的数组。</param>
+        public void Sort<T>(T[] array) where T : IComparable<T>
         {
             var queueList = new Queue<Queue<T>>();
-            for (var i = 0; i < a.Length; i++)
+            for (var i = 0; i < array.Length; i++)
             {
                 var temp = new Queue<T>();
-                temp.Enqueue(a[i]);
+                temp.Enqueue(array[i]);
                 queueList.Enqueue(temp);
             }
 
@@ -27,16 +27,16 @@ namespace _2._2._15
                 var times = queueList.Size() / 2;
                 for (var i = 0; i < times; i++)
                 {
-                    var A = queueList.Dequeue();
-                    var B = queueList.Dequeue();
-                    queueList.Enqueue(Merge(A, B));
+                    var a = queueList.Dequeue();
+                    var b = queueList.Dequeue();
+                    queueList.Enqueue(Merge(a, b));
                 }
             }
 
             var result = queueList.Dequeue();
-            for (var i = 0; i < a.Length; i++)
+            for (var i = 0; i < array.Length; i++)
             {
-                a[i] = result.Dequeue();
+                array[i] = result.Dequeue();
             }
         }
 

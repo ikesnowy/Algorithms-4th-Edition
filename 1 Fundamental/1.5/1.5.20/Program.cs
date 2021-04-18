@@ -1,7 +1,7 @@
 ﻿using System;
 using _1._5._20;
 
-var uf = new WeightedQuickUnionUF();
+var uf = new WeightedQuickUnionUf();
 char[] split = { '\r', '\n' };
 var input = TestCase.Properties.Resources.tinyUF.Split(split, StringSplitOptions.RemoveEmptyEntries);
 var size = int.Parse(input[0]);

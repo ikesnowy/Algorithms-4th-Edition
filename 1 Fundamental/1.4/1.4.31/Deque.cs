@@ -4,38 +4,38 @@
     /// 用三个栈模拟的双向队列。
     /// </summary>
     /// <typeparam name="Item">双向队列中的元素。</typeparam>
-    class Deque<Item>
+    class Deque<TItem>
     {
-        readonly Stack<Item> left;
-        readonly Stack<Item> middle;
-        readonly Stack<Item> right;
+        readonly Stack<TItem> _left;
+        readonly Stack<TItem> _middle;
+        readonly Stack<TItem> _right;
 
         /// <summary>
         /// 构造一条新的双向队列。
         /// </summary>
         public Deque()
         {
-            left = new Stack<Item>();
-            middle = new Stack<Item>();
-            right = new Stack<Item>();
+            _left = new Stack<TItem>();
+            _middle = new Stack<TItem>();
+            _right = new Stack<TItem>();
         }
 
         /// <summary>
         /// 向双向队列左侧插入一个元素。
         /// </summary>
         /// <param name="item">要插入的元素。</param>
-        public void PushLeft(Item item)
+        public void PushLeft(TItem item)
         {
-            left.Push(item);
+            _left.Push(item);
         }
 
         /// <summary>
         /// 向双向队列右侧插入一个元素。
         /// </summary>
         /// <param name="item">要插入的元素。</param>
-        public void PushRight(Item item)
+        public void PushRight(TItem item)
         {
-            right.Push(item);
+            _right.Push(item);
         }
 
         /// <summary>
@@ -43,13 +43,13 @@
         /// </summary>
         /// <param name="source">不为空的栈。</param>
         /// <param name="destination">空栈。</param>
-        private void Move(Stack<Item> source, Stack<Item> destination) 
+        private void Move(Stack<TItem> source, Stack<TItem> destination) 
         {
             var n = source.Size();
             // 将上半部分元素移动到临时栈 middle
             for (var i = 0; i < n / 2; i++)
             {
-                middle.Push(source.Pop());
+                _middle.Push(source.Pop());
             }
             // 将下半部分移动到另一侧栈中
             while (!source.IsEmpty())
@@ -57,9 +57,9 @@
                 destination.Push(source.Pop());
             }
             // 从 middle 取回上半部分元素
-            while (!middle.IsEmpty())
+            while (!_middle.IsEmpty())
             {
-                source.Push(middle.Pop());
+                source.Push(_middle.Pop());
             }
         }
 
@@ -69,35 +69,35 @@
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return right.IsEmpty() && middle.IsEmpty() && left.IsEmpty();
+            return _right.IsEmpty() && _middle.IsEmpty() && _left.IsEmpty();
         }
 
         /// <summary>
         /// 从右侧弹出一个元素。
         /// </summary>
         /// <returns></returns>
-        public Item PopRight()
+        public TItem PopRight()
         {
-            if (right.IsEmpty())
+            if (_right.IsEmpty())
             {
-                Move(left, right);
+                Move(_left, _right);
             }
 
-            return right.Pop();
+            return _right.Pop();
         }
 
         /// <summary>
         /// 从左侧弹出一个元素。
         /// </summary>
         /// <returns></returns>
-        public Item PopLeft()
+        public TItem PopLeft()
         {
-            if (left.IsEmpty())
+            if (_left.IsEmpty())
             {
-                Move(right, left);
+                Move(_right, _left);
             }
 
-            return left.Pop();
+            return _left.Pop();
         }
 
         /// <summary>
@@ -106,7 +106,7 @@
         /// <returns></returns>
         public int Size()
         {
-            return left.Size() + middle.Size() + right.Size();
+            return _left.Size() + _middle.Size() + _right.Size();
         }
     }
 }

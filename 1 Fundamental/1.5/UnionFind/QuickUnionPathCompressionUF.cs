@@ -3,13 +3,13 @@
     /// <summary>
     /// 使用路径压缩的 quick-union 并查集。
     /// </summary>
-    public class QuickUnionPathCompressionUF : QuickFindUF
+    public class QuickUnionPathCompressionUf : QuickFindUf
     {
         /// <summary>
         /// 新建一个大小为 n 的并查集。
         /// </summary>
         /// <param name="n">新建并查集的大小。</param>
-        public QuickUnionPathCompressionUF(int n) : base(n) { }
+        public QuickUnionPathCompressionUf(int n) : base(n) { }
 
         /// <summary>
         /// 寻找结点所属的连通分量。

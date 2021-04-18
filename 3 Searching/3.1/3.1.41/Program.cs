@@ -5,9 +5,9 @@ namespace _3._1._41
 {
     class Program
     {
-        static long binarySearchCompare;
-        static long interpolationSearchCompare;
-        static readonly Random random = new();
+        static long _binarySearchCompare;
+        static long _interpolationSearchCompare;
+        static readonly Random Random = new();
 
         static void Main(string[] args)
         {
@@ -27,8 +27,8 @@ namespace _3._1._41
         }
         static void Test(int n, int trial)
         {
-            binarySearchCompare = 0;
-            interpolationSearchCompare = 0;
+            _binarySearchCompare = 0;
+            _interpolationSearchCompare = 0;
             Console.Write(n + "\t");
 
             var sw = new Stopwatch();
@@ -44,7 +44,7 @@ namespace _3._1._41
             Shuffle(data);
             for (var i = 0; i < trial; i++)
             {
-                dataQuery[i] = random.Next(0, n);
+                dataQuery[i] = Random.Next(0, n);
             }
 
 
@@ -57,7 +57,7 @@ namespace _3._1._41
             }
             sw.Stop();
             istTime = sw.ElapsedMilliseconds;
-            Console.Write(interpolationSearchCompare + "/" + istTime + "\t\t");
+            Console.Write(_interpolationSearchCompare + "/" + istTime + "\t\t");
 
             // 测试 bst
             sw.Restart();
@@ -68,17 +68,17 @@ namespace _3._1._41
             sw.Stop();
 
             bstTime = sw.ElapsedMilliseconds;
-            Console.Write(binarySearchCompare + "/" + bstTime + "\t\t");
+            Console.Write(_binarySearchCompare + "/" + bstTime + "\t\t");
 
             // 比例
-            Console.WriteLine((float)interpolationSearchCompare / binarySearchCompare + "/" + (float)istTime / bstTime);
+            Console.WriteLine((float)_interpolationSearchCompare / _binarySearchCompare + "/" + (float)istTime / bstTime);
         }
 
         static void Shuffle<T>(T[] array)
         {
             for (var i = 0; i < array.Length; i++)
             {
-                var p = i + random.Next(array.Length - i);
+                var p = i + Random.Next(array.Length - i);
                 var temp = array[p];
                 array[p] = array[i];
                 array[i] = temp;
@@ -92,7 +92,7 @@ namespace _3._1._41
             {
                 var mid = (lo + hi) / 2;
                 var compare = a[mid].CompareTo(key);
-                binarySearchCompare++;
+                _binarySearchCompare++;
                 if (compare > 0)
                     hi = mid - 1;
                 else if (compare < 0)
@@ -117,7 +117,7 @@ namespace _3._1._41
                     index = hi;
 
                 var compare = a[index].CompareTo(key);
-                interpolationSearchCompare++;
+                _interpolationSearchCompare++;
                 if (compare > 0)
                     hi = index - 1;
                 else if (compare < 0)

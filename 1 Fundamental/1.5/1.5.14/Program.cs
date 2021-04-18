@@ -1,7 +1,7 @@
 ﻿using UnionFind;
 
 // 具体实现参见 WeightedQuickUnionByHeightUF.cs
-new WeightedQuickUnionByHeightUF(10);
+new WeightedQuickUnionByHeightUf(10);
 
 // 证明：
 // 一次 Union 操作只可能发生如下两种情况。

@@ -6,7 +6,7 @@ namespace PriorityQueue
     /// 最大-最小堆。
     /// </summary>
     /// <typeparam name="Key">最大最小堆中保存的元素。</typeparam>
-    public class MinMaxPQ<Key> : IMaxPQ<Key>, IMinPQ<Key> where Key : IComparable<Key>
+    public class MinMaxPq<TKey> : IMaxPq<TKey>, IMinPq<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 最大-最小堆中的数据结点。
@@ -17,7 +17,7 @@ namespace PriorityQueue
             /// 结点的值。
             /// </summary>
             /// <value>结点的值。</value>
-            public Key Key { get; set; }
+            public TKey Key { get; set; }
             /// <summary>
             /// 结点在当前数组中的下标。
             /// </summary>
@@ -32,7 +32,7 @@ namespace PriorityQueue
             /// <summary>
             /// 这个类不能在外部实例化。
             /// </summary>
-            private MinMaxNode(Key key, int index)
+            private MinMaxNode(TKey key, int index)
             {
                 Key = key;
                 Index = index;
@@ -44,7 +44,7 @@ namespace PriorityQueue
             /// <param name="key">结点中的元素。</param>
             /// <param name="minNode">准备放到最小堆中的结点。</param>
             /// <param name="maxNodeB">准备放到最大堆中的结点。</param>
-            public static void GetNodes(Key key, int index, out MinMaxNode minNode, out MinMaxNode maxNode)
+            public static void GetNodes(TKey key, int index, out MinMaxNode minNode, out MinMaxNode maxNode)
             {
                 minNode = new MinMaxNode(key, index);
                 maxNode = new MinMaxNode(key, index);
@@ -66,22 +66,22 @@ namespace PriorityQueue
         /// <summary>
         /// 对 <see cref="MinMaxNode"/> 偏特化的最大堆。
         /// </summary>
-        private sealed class MaxPQ : MaxPQ<MinMaxNode>
+        private sealed class MaxPq : MaxPq<MinMaxNode>
         {
             /// <summary>
             /// 默认无参构造函数。
             /// </summary>
-            public MaxPQ() : base() { }
+            public MaxPq() : base() { }
             /// <summary>
             /// 建立指定大小的最大堆。
             /// </summary>
             /// <param name="capacity">最大堆的容量。</param>
-            public MaxPQ(int capacity) : base(capacity) { }
+            public MaxPq(int capacity) : base(capacity) { }
             /// <summary>
             /// 利用指定的结点建立最大堆。
             /// </summary>
             /// <param name="nodes">用于建立最大堆的结点。</param>
-            public MaxPQ(MinMaxNode[] nodes) : base(nodes) { }
+            public MaxPq(MinMaxNode[] nodes) : base(nodes) { }
 
             /// <summary>
             /// 重写的 Exch 方法，只交换元素和指针。
@@ -107,22 +107,22 @@ namespace PriorityQueue
         /// <summary>
         /// 对 <see cref="MinMaxNode"/> 偏特化的最小堆。
         /// </summary>
-        private sealed class MinPQ : MinPQ<MinMaxNode>
+        private sealed class MinPq : MinPq<MinMaxNode>
         {
             /// <summary>
             /// 默认无参构造函数。
             /// </summary>
-            public MinPQ() : base() { }
+            public MinPq() : base() { }
             /// <summary>
             /// 建立指定大小的最小堆。
             /// </summary>
             /// <param name="capacity">最小堆的容量。</param>
-            public MinPQ(int capacity) : base(capacity) { }
+            public MinPq(int capacity) : base(capacity) { }
             /// <summary>
             /// 利用指定的结点建立最小堆。
             /// </summary>
             /// <param name="nodes">用于建立最小堆的结点。</param>
-            public MinPQ(MinMaxNode[] nodes) : base(nodes) { }
+            public MinPq(MinMaxNode[] nodes) : base(nodes) { }
 
             /// <summary>
             /// 重写的 Exch 方法，只交换元素和指针。
@@ -135,7 +135,7 @@ namespace PriorityQueue
                 pq[j].Pair.Pair = pq[i];
 
                 MinMaxNode swapNode = pq[i].Pair;
-                Key swapKey = pq[i].Key;
+                TKey swapKey = pq[i].Key;
 
                 pq[i].Key = pq[j].Key;
                 pq[i].Pair = pq[j].Pair;
@@ -149,63 +149,63 @@ namespace PriorityQueue
         /// 最小堆。
         /// </summary>
         /// <value>最小堆。</value>
-        private readonly MinPQ minPQ;
+        private readonly MinPq _minPq;
         /// <summary>
         /// 最大堆。
         /// </summary>
         /// <value>最大堆。</value>
-        private readonly MaxPQ maxPQ;
+        private readonly MaxPq _maxPq;
         /// <summary>
         /// 堆的大小。
         /// </summary>
         /// <value>堆的大小。</value>
-        private int n;
+        private int _n;
 
         /// <summary>
         /// 构造一个最大-最小堆。
         /// </summary>
-        public MinMaxPQ() : this(1) { }
+        public MinMaxPq() : this(1) { }
 
         /// <summary>
         /// 构造一个指定容量的最大-最小堆。
         /// </summary>
         /// <param name="capacity">堆的大小。</param>
-        public MinMaxPQ(int capacity)
+        public MinMaxPq(int capacity)
         {
-            minPQ = new MinPQ(capacity);
-            maxPQ = new MaxPQ(capacity);
-            n = 0;
+            _minPq = new MinPq(capacity);
+            _maxPq = new MaxPq(capacity);
+            _n = 0;
         }
 
         /// <summary>
         /// 根据已有元素建立一个最大-最小堆。（O(n)）
         /// </summary>
         /// <param name="keys">需要建堆的元素。</param>
-        public MinMaxPQ(Key[] keys)
+        public MinMaxPq(TKey[] keys)
         {
-            n = keys.Length;
+            _n = keys.Length;
             var minNodes = new MinMaxNode[keys.Length];
             var maxNodes = new MinMaxNode[keys.Length];
-            for (var i = 0; i < n; i++)
+            for (var i = 0; i < _n; i++)
             {
                 MinMaxNode.GetNodes(keys[i], i + 1, out minNodes[i], out maxNodes[i]);
             }
-            minPQ = new MinPQ(minNodes);
-            maxPQ = new MaxPQ(maxNodes);
+            _minPq = new MinPq(minNodes);
+            _maxPq = new MaxPq(maxNodes);
         }
 
         /// <summary>
         /// 删除并返回最大值。
         /// </summary>
         /// <returns>最大元素。</returns>
-        public Key DelMax()
+        public TKey DelMax()
         {
             // ⬇ 不可以交换操作顺序 ⬇
-            minPQ.Remove(maxPQ.Max().Pair.Index);
-            var key = maxPQ.Max().Key;
-            maxPQ.DelMax();
+            _minPq.Remove(_maxPq.Max().Pair.Index);
+            var key = _maxPq.Max().Key;
+            _maxPq.DelMax();
             // ⬆ 不可以交换操作顺序 ⬆
-            n--;
+            _n--;
             return key;
         }
 
@@ -213,14 +213,14 @@ namespace PriorityQueue
         /// 删除并返回最小值。
         /// </summary>
         /// <returns>最小值。</returns>
-        public Key DelMin()
+        public TKey DelMin()
         {
             // ⬇ 不可以交换操作顺序 ⬇
-            maxPQ.Remove(minPQ.Min().Pair.Index);
-            Key key = minPQ.Min().Key;
-            minPQ.DelMin();
+            _maxPq.Remove(_minPq.Min().Pair.Index);
+            TKey key = _minPq.Min().Key;
+            _minPq.DelMin();
             // ⬆ 不可以交换操作顺序 ⬆
-            n--;
+            _n--;
             return key;
         }
 
@@ -228,36 +228,36 @@ namespace PriorityQueue
         /// 插入一个新的值。
         /// </summary>
         /// <param name="v">待插入的新值。</param>
-        public void Insert(Key v)
+        public void Insert(TKey v)
         {
-            n++;
-            MinMaxNode.GetNodes(v, n, out var minNode, out var maxNode);
-            maxPQ.Insert(maxNode);
-            minPQ.Insert(minNode);
+            _n++;
+            MinMaxNode.GetNodes(v, _n, out var minNode, out var maxNode);
+            _maxPq.Insert(maxNode);
+            _minPq.Insert(minNode);
         }
 
         /// <summary>
         /// 判断堆是否为空。
         /// </summary>
         /// <returns>若堆为空则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public bool IsEmpty() => n == 0;
+        public bool IsEmpty() => _n == 0;
 
         /// <summary>
         /// 获得堆中的最大值。
         /// </summary>
         /// <returns>堆的最大值。</returns>
-        public Key Max() => maxPQ.Max().Key;
+        public TKey Max() => _maxPq.Max().Key;
 
         /// <summary>
         /// 获得堆中的最小值。
         /// </summary>
         /// <returns>堆的最小值。</returns>
-        public Key Min() => minPQ.Min().Key;
+        public TKey Min() => _minPq.Min().Key;
 
         /// <summary>
         /// 获得堆的大小。
         /// </summary>
         /// <returns>堆的大小。</returns>
-        public int Size() => n;
+        public int Size() => _n;
     }
 }

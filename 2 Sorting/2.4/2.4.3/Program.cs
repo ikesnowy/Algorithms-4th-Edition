@@ -7,12 +7,12 @@ using PriorityQueue;
 // | 有序链表 |    N     |     1    |
 // | 无序数组 |    1     |     N    |
 // | 无序链表 |    1     |     N    |
-Test(new OrderedArrayMaxPQ<string>(10));
-Test(new UnorderedArrayMaxPQ<string>(10));
-Test(new OrderedLinkedMaxPQ<string>());
-Test(new UnorderedLinkedMaxPQ<string>());
+Test(new OrderedArrayMaxPq<string>(10));
+Test(new UnorderedArrayMaxPq<string>(10));
+Test(new OrderedLinkedMaxPq<string>());
+Test(new UnorderedLinkedMaxPq<string>());
 
-static void Test(IMaxPQ<string> pq)
+static void Test(IMaxPq<string> pq)
 {
     Console.WriteLine(pq.ToString());
     pq.Insert("this");

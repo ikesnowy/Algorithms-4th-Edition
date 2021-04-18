@@ -7,18 +7,18 @@ namespace _1._4._43
     /// <summary>
     /// 容量自动加倍的栈。
     /// </summary>
-    class DoublingStack<Item> : IEnumerable<Item>
+    class DoublingStack<TItem> : IEnumerable<TItem>
     {
-        private Item[] items;
-        private int count;
+        private TItem[] _items;
+        private int _count;
 
         /// <summary>
         /// 新建一个栈。
         /// </summary>
         public DoublingStack()
         {
-            items = new Item[2];
-            count = 0;
+            _items = new TItem[2];
+            _count = 0;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace _1._4._43
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return count == 0;
+            return _count == 0;
         }
 
         /// <summary>
@@ -36,36 +36,36 @@ namespace _1._4._43
         /// <returns></returns>
         public int Size()
         {
-            return count;
+            return _count;
         }
 
         /// <summary>
         /// 向栈中压入一个元素。
         /// </summary>
         /// <param name="s"></param>
-        public void Push(Item s)
+        public void Push(TItem s)
         {
-            if (count == items.Length)
-                Resize(items.Length * 2);
-            items[count] = s;
-            count++;
+            if (_count == _items.Length)
+                Resize(_items.Length * 2);
+            _items[_count] = s;
+            _count++;
         }
 
         /// <summary>
         /// 从栈中弹出一个元素，返回被弹出的元素。
         /// </summary>
         /// <returns></returns>
-        public Item Pop()
+        public TItem Pop()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack underflow");
-            count--;
+            _count--;
 
             // 缩小长度
-            if (count > 0 && count <= items.Length / 4)
-                Resize(items.Length / 2);
+            if (_count > 0 && _count <= _items.Length / 4)
+                Resize(_items.Length / 2);
 
-            return items[count];
+            return _items[_count];
 
         }
 
@@ -73,11 +73,11 @@ namespace _1._4._43
         /// 返回栈顶元素（但不弹出它）。
         /// </summary>
         /// <returns></returns>
-        public Item Peek()
+        public TItem Peek()
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack underflow");
-            return items[count - 1];
+            return _items[_count - 1];
         }
 
         /// <summary>
@@ -86,19 +86,19 @@ namespace _1._4._43
         /// <param name="capcity">重新分配的空间大小。</param>
         private void Resize(int capcity)
         {
-            var temp = new Item[capcity];
+            var temp = new TItem[capcity];
             
-            for (var i = 0; i < count; i++)
+            for (var i = 0; i < _count; i++)
             {
-                temp[i] = items[i];
+                temp[i] = _items[i];
             }
 
-            items = temp;
+            _items = temp;
         }
 
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<TItem> GetEnumerator()
         {
-            return new StackEnumerator(items);
+            return new StackEnumerator(_items);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -106,38 +106,38 @@ namespace _1._4._43
             return GetEnumerator();
         }
 
-        private class StackEnumerator : IEnumerator<Item>
+        private class StackEnumerator : IEnumerator<TItem>
         {
-            int current;
-            Item[] items;
+            int _current;
+            TItem[] _items;
 
-            public StackEnumerator(Item[] items)
+            public StackEnumerator(TItem[] items)
             {
-                this.items = items;
-                current = -1;
+                this._items = items;
+                _current = -1;
             }
 
-            Item IEnumerator<Item>.Current => items[current];
+            TItem IEnumerator<TItem>.Current => _items[_current];
 
-            object IEnumerator.Current => items[current];
+            object IEnumerator.Current => _items[_current];
 
             void IDisposable.Dispose()
             {
-                items = null;
-                current = -1;
+                _items = null;
+                _current = -1;
             }
 
             bool IEnumerator.MoveNext()
             {
-                if (current == items.Length - 1)
+                if (_current == _items.Length - 1)
                     return false;
-                current++;
+                _current++;
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = -1;
+                _current = -1;
             }
         }
     }

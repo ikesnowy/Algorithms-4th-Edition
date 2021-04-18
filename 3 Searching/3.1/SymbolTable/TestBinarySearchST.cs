@@ -5,13 +5,13 @@ namespace SymbolTable
     /// <summary>
     /// 测试 BinarySearchST 的用例。
     /// </summary>
-    public class TestBinarySearchST
+    public class TestBinarySearchSt
     {
         /// <summary>
         /// 测试方法，测试 BinarySearchST。
         /// </summary>
         /// <param name="st">用于测试的符号表。</param>
-        public static void Test(BinarySearchST<string, int> st)
+        public static void Test(BinarySearchSt<string, int> st)
         {
             var test = "S E A R C H E X A M P L E";
             var keys = test.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
