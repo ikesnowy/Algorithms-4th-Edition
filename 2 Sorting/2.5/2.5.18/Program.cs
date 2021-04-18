@@ -24,7 +24,7 @@ namespace _2._5._18
 
         static void Main(string[] args)
         {
-            var data = new int[] { 5, 7, 3, 4, 7, 3, 6, 3, 3 };
+            var data = new[] { 5, 7, 3, 4, 7, 3, 6, 3, 3 };
             var quick = new QuickSort();
             var shell = new ShellSort();
             Console.WriteLine(@"Quick Sort");

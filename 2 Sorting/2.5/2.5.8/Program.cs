@@ -27,7 +27,7 @@ namespace _2._5._8
             // 官方解答见：https://algs4.cs.princeton.edu/25applications/Frequency.java.html
             var filename = "tale.txt";
             var sr = new StreamReader(File.OpenRead(filename));
-            var a = sr.ReadToEnd().Split(new char[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            var a = sr.ReadToEnd().Split(new[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             Array.Sort(a);
 
             var records = new Record[a.Length];

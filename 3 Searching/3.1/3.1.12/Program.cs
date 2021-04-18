@@ -7,7 +7,7 @@ namespace _3._1._12
     {
         static void Main(string[] args)
         {
-            var items = new Item<string, string>[]
+            var items = new[]
             {
                 new Item<string, string>() { Key="gamma", Value = "γ"},
                 new Item<string, string>() { Key="alpha", Value="α" },

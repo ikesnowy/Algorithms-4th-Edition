@@ -7,7 +7,7 @@ using Sort;
 var insertionSort = new InsertionSort();
 var selectionSort = new SelectionSort();
 var shellSort = new ShellSort();
-var n = 10000;
+var n = 100000;
 var insertionArray = new int[n];
 var shellArray = new int[n];
 

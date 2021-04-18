@@ -36,7 +36,7 @@ Console.WriteLine("Selection: " + SortCompare.Time(selectionSort, arraySelection
 Console.WriteLine("Shell: " + SortCompare.Time(shellSort, arrayShell));
 
 // 离散分布
-arrayInsertion = SortCompare.GetDiscretDistributionArray(n, new double[] { 0.1, 0.2, 0.3, 0.1, 0.1, 0.1, 0.1 });
+arrayInsertion = SortCompare.GetDiscretDistributionArray(n, new[] { 0.1, 0.2, 0.3, 0.1, 0.1, 0.1, 0.1 });
 arrayInsertion.CopyTo(arraySelection, 0);
 arrayInsertion.CopyTo(arrayShell, 0);
 Console.WriteLine(@"Discret Distribution:");

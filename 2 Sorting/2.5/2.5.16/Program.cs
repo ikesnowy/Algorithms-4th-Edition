@@ -33,7 +33,7 @@ namespace _2._5._16
                 sr.ReadToEnd()
                 .ToUpper()
                 .Split
-                (new char[] { '\n', '\r' }, 
+                (new[] { '\n', '\r' }, 
                 StringSplitOptions.RemoveEmptyEntries);
             Array.Sort(names, new CandidateComparer());
             for (var i = 0; i < names.Length; i++)

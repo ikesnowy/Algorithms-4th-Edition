@@ -47,7 +47,7 @@ namespace _1._3._17
         /// <returns></returns>
         public static Transaction[] ReadTransactions()
         {
-            var split = new char[] { '\n' };
+            var split = new[] { '\n' };
             var input = Console.In.ReadToEnd().Split(split, StringSplitOptions.RemoveEmptyEntries);
             var t = new Transaction[input.Length];
 

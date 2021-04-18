@@ -46,7 +46,7 @@ namespace _1._3._16
         /// <returns></returns>
         public static Date[] ReadDates()
         {
-            var split = new char[] { '\n' };
+            var split = new[] { '\n' };
             var input = Console.In.ReadToEnd().Split(split, StringSplitOptions.RemoveEmptyEntries);
             var d = new Date[input.Length];
 

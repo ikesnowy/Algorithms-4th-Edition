@@ -27,7 +27,7 @@ namespace _2._5._24
         {
             var pq = new MinPQStable<Wrapper<string>>();
             var text = "it was the best of times it was the worst of times it was the ";
-            var texts = text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var texts = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             for (var i = 0; i < texts.Length; i++)
                 pq.Insert(new Wrapper<string>(texts[i], i + 1));

@@ -19,7 +19,7 @@ namespace _2._5._9
             var list = new List<DJIA>();
             while (!sr.EndOfStream)
             {
-                var blocks = sr.ReadLine().Trim().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var blocks = sr.ReadLine().Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 list.Add(new DJIA(blocks[0], long.Parse(blocks[1])));
             }
             var array = list.ToArray();

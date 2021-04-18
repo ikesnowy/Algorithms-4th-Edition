@@ -6,7 +6,7 @@ namespace _2._5._4
     {
         static void Main(string[] args)
         {
-            var a = new string[] { "dup", "aba", "dup", "aaaaa", "aba", "cs" };
+            var a = new[] { "dup", "aba", "dup", "aaaaa", "aba", "cs" };
             var distinct = Dedup(a);
             for (var i = 0; i < distinct.Length; i++)
             {

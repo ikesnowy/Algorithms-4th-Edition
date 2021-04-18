@@ -24,7 +24,7 @@ namespace _2._5._17
 
         static void Main(string[] args)
         {
-            var data = new int[] { 7, 7, 4, 8, 8, 5, 1, 7, 7 };
+            var data = new[] { 7, 7, 4, 8, 8, 5, 1, 7, 7 };
             var merge = new MergeSort();
             var insertion = new InsertionSort();
             var shell = new ShellSort();

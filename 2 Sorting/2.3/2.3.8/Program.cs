@@ -1,28 +1,19 @@
 ﻿using System;
 using Quick;
 
-namespace _2._3._8
+// 约为 NlogN 次
+var sort = new QuickSortAnalyze();
+var n = 100;
+Console.WriteLine(@"N	Compare	NlogN");
+for (var i = 0; i < 4; i++)
 {
-    class Program
+    var a = new int[n];
+    for (var j = 0; j < a.Length; j++)
     {
-        static void Main(string[] args)
-        {
-            // 约为 NlogN 次
-            var sort = new QuickSortAnalyze();
-            var N = 100;
-            Console.WriteLine(@"N	Compare	NlogN");
-            for (var i = 0; i < 4; i++)
-            {
-                var a = new int[N];
-                for (var j = 0; j < a.Length; j++)
-                {
-                    a[j] = 1;
-                }
-                sort.Sort(a);
-                Console.WriteLine(N + "\t" + sort.CompareCount + "\t" + N * Math.Log(N) / Math.Log(2));
-                N *= 10;
-            }
-
-        }
+        a[j] = 1;
     }
+
+    sort.Sort(a);
+    Console.WriteLine(n + "\t" + sort.CompareCount + "\t" + n * Math.Log(n) / Math.Log(2));
+    n *= 10;
 }

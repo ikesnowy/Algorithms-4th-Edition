@@ -11,7 +11,7 @@ namespace _3._1._25
             // 事实上指的是最近一次访问的键，而非访问最频繁的。
 
             var sr = new StreamReader(File.OpenRead("tale.txt"));
-            var data = sr.ReadToEnd().Split(new char[] { ' ', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var data = sr.ReadToEnd().Split(new[] { ' ', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
             var repeatTimes = 1;
 

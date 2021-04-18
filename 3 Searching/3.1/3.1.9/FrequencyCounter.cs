@@ -30,7 +30,7 @@ namespace _3._1._9
             var inputs = 
                 sr
                 .ReadToEnd()
-                .Split(new char[] { ' ', '\r', '\n' }, 
+                .Split(new[] { ' ', '\r', '\n' }, 
                 StringSplitOptions.RemoveEmptyEntries);
 
             var lastPut = "";

@@ -69,7 +69,7 @@ namespace BinarySearchTree
             var inputs = 
                 sr
                 .ReadToEnd()
-                .Split(new char[] { ' ', '\r', '\n' }, 
+                .Split(new[] { ' ', '\r', '\n' }, 
                 StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var s in inputs)
@@ -113,7 +113,7 @@ namespace BinarySearchTree
             var inputs =
                 sr
                 .ReadToEnd()
-                .Split(new char[] { ' ', '\r', '\n' },
+                .Split(new[] { ' ', '\r', '\n' },
                 StringSplitOptions.RemoveEmptyEntries);
 
             for (var i = 0; i < counts && i < inputs.Length; i++)
@@ -168,7 +168,7 @@ namespace BinarySearchTree
             var inputs =
                 sr
                 .ReadToEnd()
-                .Split(new char[] { ' ', '\r', '\n' },
+                .Split(new[] { ' ', '\r', '\n' },
                 StringSplitOptions.RemoveEmptyEntries);
 
             for (var i = 0; i < inputs.Length; i++)
@@ -226,7 +226,7 @@ namespace BinarySearchTree
             var inputs =
                 sr
                 .ReadToEnd()
-                .Split(new char[] { ' ', '\r', '\n' },
+                .Split(new[] { ' ', '\r', '\n' },
                 StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var s in inputs)

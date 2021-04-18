@@ -44,7 +44,7 @@ namespace SymbolTable
         {
             // 初始化字典
             var sr = new StreamReader(File.OpenRead(dictionaryFile));
-            var words = sr.ReadToEnd().Split(new char[] { ' ', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var words = sr.ReadToEnd().Split(new[] { ' ', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
             var dictionary = new BinarySearchST<string, int>();
             for (var i = 0; i < words.Length; i++)
             {
@@ -55,7 +55,7 @@ namespace SymbolTable
 
             // 读入单词
             var srFile = new StreamReader(File.OpenRead(filename));
-            var inputs = srFile.ReadToEnd().Split(new char[] { ' ', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var inputs = srFile.ReadToEnd().Split(new[] { ' ', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
             srFile.Close();
 
             var stDictionary = new BinarySearchST<int, string>();
@@ -134,7 +134,7 @@ namespace SymbolTable
             var inputs = 
                 sr
                 .ReadToEnd()
-                .Split(new char[] { ' ', '\r', '\n' }, 
+                .Split(new[] { ' ', '\r', '\n' }, 
                 StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var s in inputs)
@@ -178,7 +178,7 @@ namespace SymbolTable
             var inputs =
                 sr
                 .ReadToEnd()
-                .Split(new char[] { ' ', '\r', '\n' },
+                .Split(new[] { ' ', '\r', '\n' },
                 StringSplitOptions.RemoveEmptyEntries);
 
             for (var i = 0; i < counts && i < inputs.Length; i++)
@@ -225,7 +225,7 @@ namespace SymbolTable
             var inputs =
                 sr
                 .ReadToEnd()
-                .Split(new char[] { ' ', '\r', '\n' },
+                .Split(new[] { ' ', '\r', '\n' },
                 StringSplitOptions.RemoveEmptyEntries);
 
             var compares = new List<int>();
@@ -277,7 +277,7 @@ namespace SymbolTable
             var inputs =
                 sr
                 .ReadToEnd()
-                .Split(new char[] { ' ', '\r', '\n' },
+                .Split(new[] { ' ', '\r', '\n' },
                 StringSplitOptions.RemoveEmptyEntries);
 
             for (var i = 0; i < inputs.Length; i++)
@@ -335,7 +335,7 @@ namespace SymbolTable
             var inputs =
                 sr
                 .ReadToEnd()
-                .Split(new char[] { ' ', '\r', '\n' },
+                .Split(new[] { ' ', '\r', '\n' },
                 StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var s in inputs)

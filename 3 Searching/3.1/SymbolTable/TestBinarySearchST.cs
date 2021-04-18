@@ -14,7 +14,7 @@ namespace SymbolTable
         public static void Test(BinarySearchST<string, int> st)
         {
             var test = "S E A R C H E X A M P L E";
-            var keys = test.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var keys = test.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             var n = keys.Length;
 
             for (var i = 0; i < n; i++)

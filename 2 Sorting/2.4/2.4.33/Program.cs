@@ -10,7 +10,7 @@ namespace _2._4._33
         // 官网答案：https://algs4.cs.princeton.edu/24pq/IndexMaxPQ.java.html
         static void Main(string[] args)
         {
-            var input = new string[] { "it", "was", "the", "best", "of", "times", "it", "was", "the", "worst" };
+            var input = new[] { "it", "was", "the", "best", "of", "times", "it", "was", "the", "worst" };
 
             var pq = new IndexMaxPQ<string>(input.Length);
             for (var i = 0; i < input.Length; i++)

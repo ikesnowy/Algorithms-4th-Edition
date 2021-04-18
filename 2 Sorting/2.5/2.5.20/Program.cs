@@ -36,7 +36,7 @@ namespace _2._5._20
                 jobs[i].IsFinished = false;     // 开始事件
                 jobs[i + 1].IsFinished = true;  // 停止事件
 
-                var record = Console.ReadLine().Split(new char[] { ' ', ':' }, StringSplitOptions.RemoveEmptyEntries);
+                var record = Console.ReadLine().Split(new[] { ' ', ':' }, StringSplitOptions.RemoveEmptyEntries);
                 jobs[i].JobName = record[0];
                 jobs[i + 1].JobName = record[0];
 
