@@ -5,7 +5,7 @@
     /// </summary>
     public class WeightedQuickUnionByHeightUF : QuickUnionUF
     {
-        private int[] height;
+        private readonly int[] height;
 
         /// <summary>
         /// 新建一个以高度作为判断依据的加权 quick-union 并查集。

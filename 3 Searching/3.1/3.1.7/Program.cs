@@ -5,7 +5,7 @@ namespace _3._1._7
 {
     class Program
     {
-        static Random random = new Random();
+        static readonly Random random = new();
 
         static void Main(string[] args)
         {

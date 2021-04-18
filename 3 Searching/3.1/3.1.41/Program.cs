@@ -5,9 +5,9 @@ namespace _3._1._41
 {
     class Program
     {
-        static long binarySearchCompare = 0;
-        static long interpolationSearchCompare = 0;
-        static Random random = new Random();
+        static long binarySearchCompare;
+        static long interpolationSearchCompare;
+        static readonly Random random = new();
 
         static void Main(string[] args)
         {

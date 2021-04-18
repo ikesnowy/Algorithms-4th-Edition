@@ -9,7 +9,7 @@ namespace _1._2._10
     {
         private readonly string name;
         private int count;
-        private int max;
+        private readonly int max;
         private int operatorTimes;
 
         /// <summary>

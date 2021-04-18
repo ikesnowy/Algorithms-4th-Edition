@@ -164,8 +164,8 @@ namespace _1._3._50
         private class StackEnumerator : IEnumerator<Item>
         {
             private Stack<Item> s;
-            private int popcount;
-            private int pushcount;
+            private readonly int popcount;
+            private readonly int pushcount;
             private Node<Item> current;
 
             public StackEnumerator(Stack<Item> s)

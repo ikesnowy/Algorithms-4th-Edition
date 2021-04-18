@@ -7,8 +7,8 @@ namespace _1._5._11
     /// </summary>
     public class WeightedQuickFindUF
     {
-        private int[] size; // 记录每个连通分量的大小。
-        private int[] id; // 记录每个结点的连通分量。
+        private readonly int[] size; // 记录每个连通分量的大小。
+        private readonly int[] id; // 记录每个结点的连通分量。
         private int count;// 连通分量总数。
 
         public int ArrayVisitCount { get; private set; } //记录数组访问的次数。

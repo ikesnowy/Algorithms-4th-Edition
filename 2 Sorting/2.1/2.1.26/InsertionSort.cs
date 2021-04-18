@@ -6,11 +6,6 @@
     public class InsertionSort
     {
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public InsertionSort() { }
-
-        /// <summary>
         /// 利用插入排序将数组按升序排序。
         /// </summary>
         /// <param name="a">需要排序的数组。</param>

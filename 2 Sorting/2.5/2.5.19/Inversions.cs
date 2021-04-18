@@ -8,12 +8,7 @@ namespace _2._5._19
     /// </summary>
     public class Inversions
     {
-        public int Counter = 0;
-
-        /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public Inversions() { }
+        public int Counter;
 
         /// <summary>
         /// 利用归并排序计算逆序对的数量。

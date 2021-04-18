@@ -8,9 +8,9 @@ namespace _2._1._32
 {
     public partial class Form2 : Form
     {
-        BaseSort sort;
+        readonly BaseSort sort;
         int n;
-        double[] result;
+        readonly double[] result;
 
         /// <summary>
         /// 构造一个绘图结果窗口。

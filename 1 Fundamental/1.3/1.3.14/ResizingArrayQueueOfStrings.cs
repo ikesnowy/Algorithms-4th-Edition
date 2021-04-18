@@ -98,9 +98,9 @@ namespace _1._3._14
         private class QueueEnumerator : IEnumerator<Item>
         {
             int current;
-            int first;
-            int last;
-            Item[] q;
+            readonly int first;
+            readonly int last;
+            readonly Item[] q;
 
             public QueueEnumerator(Item[] q, int first, int last)
             {

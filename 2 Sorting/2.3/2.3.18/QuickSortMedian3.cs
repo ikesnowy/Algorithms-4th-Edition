@@ -10,11 +10,6 @@ namespace _2._3._18
     public class QuickSortMedian3 : BaseSort
     {
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public QuickSortMedian3() {}
-
-        /// <summary>
         /// 用快速排序对数组 a 进行升序排序。
         /// </summary>
         /// <typeparam name="T">需要排序的类型。</typeparam>

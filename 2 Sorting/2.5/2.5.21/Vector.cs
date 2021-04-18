@@ -5,12 +5,12 @@ namespace _2._5._21
 {
     class Vector : IComparable<Vector>
     {
-        private int[] data;
+        private readonly int[] _data;
         public int Length { get; set; }
 
         public Vector(int[] data)
         {
-            this.data = data;
+            _data = data;
             Length = data.Length;
         }
 
@@ -19,7 +19,7 @@ namespace _2._5._21
             var maxN = Math.Max(Length, other.Length);
             for (var i = 0; i < maxN; i++)
             {
-                var comp = data[i].CompareTo(other.data[i]);
+                var comp = _data[i].CompareTo(other._data[i]);
                 if (comp != 0)
                     return comp;
             }
@@ -33,7 +33,7 @@ namespace _2._5._21
             {
                 if (i != 0)
                     sb.Append(' ');
-                sb.Append(data[i]);
+                sb.Append(_data[i]);
             }
             return sb.ToString();
         }

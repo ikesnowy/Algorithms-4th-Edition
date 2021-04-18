@@ -8,7 +8,7 @@ namespace _2._4._28
     class EuclideanDistance3D : IComparable<EuclideanDistance3D>
     {
         private readonly int x, y, z;
-        private double distance;
+        private readonly double distance;
 
         /// <summary>
         /// 计算点到原点的欧几里得距离。

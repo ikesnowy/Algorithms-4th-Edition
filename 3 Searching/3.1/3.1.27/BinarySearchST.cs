@@ -33,8 +33,8 @@ namespace _3._1._27
         /// <value>符号表中的键值对数量。</value>
         private int n;
 
-        public int Compares = 0;
-        public int Exchanges = 0;
+        public int Compares;
+        public int Exchanges;
 
         /// <summary>
         /// 构造一个空的符号表。

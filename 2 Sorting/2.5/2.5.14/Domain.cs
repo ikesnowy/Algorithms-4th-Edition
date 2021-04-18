@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+// ReSharper disable StringCompareToIsCultureSpecific
 
 namespace _2._5._14
 {
@@ -8,8 +9,8 @@ namespace _2._5._14
     /// </summary>
     class Domain : IComparable<Domain>
     {
-        private string[] fields;
-        private int n;
+        private readonly string[] _fields;
+        private readonly int _n;
 
         /// <summary>
         /// 构造一个域名。
@@ -17,31 +18,31 @@ namespace _2._5._14
         /// <param name="url">域名的 url。</param>
         public Domain(string url)
         {
-            fields = url.Split('.');
-            n = fields.Length;
+            _fields = url.Split('.');
+            _n = _fields.Length;
         }
 
         public int CompareTo(Domain other)
         {
-            var minLength = Math.Min(n, other.n);
+            var minLength = Math.Min(_n, other._n);
             for (var i = 0; i < minLength; i++)
             {
-                var c = fields[minLength - i - 1].CompareTo(other.fields[minLength - i - 1]);
+                var c = _fields[minLength - i - 1].CompareTo(other._fields[minLength - i - 1]);
                 if (c != 0)
                     return c;
             }
 
-            return n.CompareTo(other.n);
+            return _n.CompareTo(other._n);
         }
 
         public override string ToString()
         {
             var sb = new StringBuilder();
-            for (var i = 0; i < fields.Length; i++)
+            for (var i = 0; i < _fields.Length; i++)
             {
                 if (i != 0)
                     sb.Append('.');
-                sb.Append(fields[i]);
+                sb.Append(_fields[i]);
             }
             return sb.ToString();
         }

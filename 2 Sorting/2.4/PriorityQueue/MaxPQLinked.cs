@@ -11,20 +11,15 @@ namespace PriorityQueue
         /// <summary>
         /// 二叉堆的根结点。
         /// </summary>
-        private TreeNode<Key> root = null;
+        private TreeNode<Key> root;
         /// <summary>
         /// 二叉堆的最后一个结点。
         /// </summary>
-        private TreeNode<Key> last = null;
+        private TreeNode<Key> last;
         /// <summary>
         /// 二叉堆中的结点个数。
         /// </summary>
-        private int nodesCount = 0;
-
-        /// <summary>
-        /// 建立一个链式结构的最大堆。
-        /// </summary>
-        public MaxPQLinked() { }
+        private int nodesCount;
 
         /// <summary>
         /// 删除并返回最大值。

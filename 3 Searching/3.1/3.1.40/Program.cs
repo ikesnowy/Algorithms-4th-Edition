@@ -5,10 +5,10 @@ namespace _3._1._40
 {
     class Program
     {
-        static long binarySearchCompare = 0;
-        static long sequentialSearchCompare = 0;
+        static long binarySearchCompare;
+        static long sequentialSearchCompare;
 
-        static Random random = new Random();
+        static readonly Random random = new();
         class TestNode : IComparable<TestNode>
         {
             public long Value { get; set; }

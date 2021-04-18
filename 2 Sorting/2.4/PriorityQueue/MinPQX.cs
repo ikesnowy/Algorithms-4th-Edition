@@ -159,7 +159,6 @@ namespace PriorityQueue
                 return;
 
             // 获取路径
-            var heapHeight = (int)(Math.Log(n) / Math.Log(2));
             var path = new List<int>();
             var temp = k;
             while (temp >= 1)

@@ -63,11 +63,6 @@ namespace _3._2._6
         }
 
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public BSTRecursive() { }
-
-        /// <summary>
         /// 向二叉查找树中插入一个键值对。
         /// </summary>
         /// <param name="key">要插入的键。</param>

@@ -9,11 +9,6 @@ namespace Sort
     public class SelectionSort : BaseSort
     {
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public SelectionSort() { }
-
-        /// <summary>
         /// 利用选择排序将数组按升序排序。
         /// </summary>
         /// <param name="a">需要排序的数组。</param>

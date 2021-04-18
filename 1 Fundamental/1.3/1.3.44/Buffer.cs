@@ -7,8 +7,8 @@ namespace _1._3._44
     /// </summary>
     class Buffer
     {
-        private Stack<char> leftside;
-        private Stack<char> rightside;
+        private readonly Stack<char> leftside;
+        private readonly Stack<char> rightside;
 
         /// <summary>
         /// 建立一个文本缓冲区。

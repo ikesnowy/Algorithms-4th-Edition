@@ -9,7 +9,7 @@ namespace _1._3._1
     /// </summary>
     class FixedCapacityStackOfStrings : IEnumerable<string>
     {
-        private string[] a;
+        private readonly string[] a;
         private int N;
 
         /// <summary>

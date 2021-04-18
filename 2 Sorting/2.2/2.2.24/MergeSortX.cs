@@ -16,12 +16,7 @@ namespace _2._2._24
         /// <summary>
         /// a[mid] ≤ a[mid + 1] 语句的命中次数
         /// </summary>
-        private int hitTimes = 0;
-
-        /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public MergeSortX() { }
+        private int hitTimes;
 
         /// <summary>
         /// 设置启用插入排序的阈值，小于该阈值的数组将采用插入排序。

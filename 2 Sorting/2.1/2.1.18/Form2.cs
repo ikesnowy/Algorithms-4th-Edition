@@ -7,7 +7,7 @@ namespace _2._1._18
 {
     public partial class Form2 : Form
     {
-        double[] randomDoubles;
+        readonly double[] randomDoubles;
         int sortI;
         int sortJ;
         int sortMin;

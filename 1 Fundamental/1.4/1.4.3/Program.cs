@@ -49,7 +49,6 @@ namespace _1._4._3
             canvas.DrawLine(Pens.Black, center.X, center.Y + center.Height, center.X + center.Width, center.Y + center.Height);
             // 对 X 轴 10 等分，对 Y 轴 10 等分
             var xaxisUnit = center.Width / 10;
-            var yaxisUnit = center.Height / 10;
             // 标记 X 轴坐标值
             for (var i = 1; i <= 8; i += i)
             {
@@ -91,7 +90,6 @@ namespace _1._4._3
             canvas.DrawLine(Pens.Black, center.X, center.Y + center.Height, center.X + center.Width, center.Y + center.Height);
             // 对 X 轴 10 等分，对 Y 轴 10 等分
             var xaxisUnit = center.Width / 10;
-            var yaxisUnit = center.Height / 10;
             // 标记 X 轴坐标值
             for (var i = 1; i <= 8; i += i)
             {

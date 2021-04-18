@@ -9,11 +9,6 @@ namespace Merge
     public class MergeSortThreeWay : BaseSort
     {
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public MergeSortThreeWay() { }
-
-        /// <summary>
         /// 利用三项归并排序将数组按升序排序。
         /// </summary>
         /// <typeparam name="T">数组中的元素类型。</typeparam>

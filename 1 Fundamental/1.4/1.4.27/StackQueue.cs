@@ -6,8 +6,8 @@
     /// <typeparam name="Item">队列中的元素。</typeparam>
     class StackQueue<Item>
     {
-        Stack<Item> H;// 用于保存出队元素
-        Stack<Item> T;// 用于保存入队元素
+        readonly Stack<Item> H;// 用于保存出队元素
+        readonly Stack<Item> T;// 用于保存入队元素
 
         /// <summary>
         /// 构造一个队列。

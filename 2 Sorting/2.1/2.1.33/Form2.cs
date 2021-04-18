@@ -9,13 +9,13 @@ namespace _2._1._33
 {
     public partial class Form2 : Form
     {
-        List<double> resultList;
-        List<float> resultYList;
-        Rectangle clientRect;
-        Rectangle drawRect;
+        readonly List<double> resultList;
+        readonly List<float> resultYList;
+        readonly Rectangle clientRect;
+        readonly Rectangle drawRect;
 
-        BaseSort sort;
-        int n;
+        readonly BaseSort sort;
+        readonly int n;
 
         /// <summary>
         /// 构造一个绘制结果窗口。

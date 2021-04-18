@@ -11,7 +11,7 @@ namespace PriorityQueue
         /// 保存元素的数组。
         /// </summary>
         /// <value>保存元素的数组。</value>
-        private int[] pq;              
+        private readonly int[] pq;              
         /// <summary>
         /// 堆中的元素数量。
         /// </summary>

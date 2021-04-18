@@ -9,9 +9,9 @@ namespace _1._2._12
         public int Year { get; }    // 年
 
         // 每个月对应的天数，第 0 位空出来
-        private static int[] dayOfMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        private static readonly int[] dayOfMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
         // 每星期对应的名称。
-        private static string[] dayOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+        private static readonly string[] dayOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
         public SmartDate(int m, int d, int y)
         {

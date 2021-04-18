@@ -10,11 +10,6 @@ namespace _2._2._17
     public class MergeSortNatural : BaseSort
     {
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public MergeSortNatural() { }
-
-        /// <summary>
         /// 利用自然的归并排序进行自底向上的排序。
         /// </summary>
         /// <typeparam name="T">用于排序的元素类型。</typeparam>

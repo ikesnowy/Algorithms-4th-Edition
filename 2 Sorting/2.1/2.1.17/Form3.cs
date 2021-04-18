@@ -7,7 +7,7 @@ namespace _2._1._17
 {
     public partial class Form3 : Form
     {
-        double[] randomDoubles;
+        readonly double[] randomDoubles;
         public Form3(int N)
         {
             InitializeComponent();

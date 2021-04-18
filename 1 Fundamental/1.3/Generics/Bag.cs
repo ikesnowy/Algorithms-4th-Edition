@@ -107,7 +107,6 @@ namespace Generics
                 if (current.next == null)
                     return false;
 
-                Item item = current.item;
                 current = current.next;
                 return true;
             }

@@ -9,11 +9,6 @@ namespace _2._2._26
     public class AuxInSortMergeSort : BaseSort
     {
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public AuxInSortMergeSort() { }
-
-        /// <summary>
         /// 利用归并排序将数组按升序排序。
         /// </summary>
         /// <typeparam name="T">数组元素类型。</typeparam>

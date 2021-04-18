@@ -8,7 +8,7 @@ namespace PriorityQueue
     /// <typeparam name="T">需要排序的元素类型。</typeparam>
     public static class HeapPreorderAnalysis
     {
-        private static long compareTimes = 0;
+        private static long compareTimes;
 
         /// <summary>
         /// 利用堆排序对数组进行排序。

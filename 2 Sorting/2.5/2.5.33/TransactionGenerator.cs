@@ -9,7 +9,7 @@ namespace _2._5._33
     /// </summary>
     class TransactionGenerator
     {
-        private static Random random = new Random();
+        private static readonly Random random = new();
 
         /// <summary>
         /// 生成 n 条随机交易记录。

@@ -15,7 +15,7 @@ namespace _1._5._19
         static PointF[] points;
         static Timer timer;
         static List<Connection> connections;
-        static int count = 0;
+        static int count;
 
         /// <summary>
         /// 应用程序的主入口点。

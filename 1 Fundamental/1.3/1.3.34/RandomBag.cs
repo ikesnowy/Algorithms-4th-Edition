@@ -86,7 +86,7 @@ namespace _1._3._34
             private Item[] bag;
             private int[] sequence;
             private int current;
-            private int count;
+            private readonly int count;
 
             public RandomBagEnumerator(Item[] bag, int count)
             {

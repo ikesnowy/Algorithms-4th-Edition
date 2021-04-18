@@ -5,7 +5,7 @@ namespace _3._2._38
 {
     public partial class Form2 : Form
     {
-        private readonly BSTDrawing<int, int> _bst = new BSTDrawing<int,int>();
+        private readonly BSTDrawing<int, int> _bst = new();
 
         public Form2()
         {

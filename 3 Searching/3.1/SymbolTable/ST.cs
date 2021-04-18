@@ -10,7 +10,7 @@ namespace SymbolTable
     /// <typeparam name="TValue">值的类型。</typeparam>
     public class ST<TKey, TValue> : IST<TKey, TValue>, IEnumerable<TKey>
     {
-        private Dictionary<TKey, TValue> st;
+        private readonly Dictionary<TKey, TValue> st;
 
         /// <summary>
         /// 新建一个符号表。

@@ -8,7 +8,7 @@ namespace _3._2._47
 {
     public partial class Form1 : Form
     {
-        private readonly Random _random = new Random();
+        private readonly Random _random = new();
 
         public Form1()
         {

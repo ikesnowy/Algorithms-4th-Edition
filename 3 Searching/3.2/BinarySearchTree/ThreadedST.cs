@@ -71,11 +71,6 @@ namespace BinarySearchTree
         }
 
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public ThreadedST() { }
-
-        /// <summary>
         /// 获取键的前驱。
         /// </summary>
         /// <param name="key">输入的键。</param>

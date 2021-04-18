@@ -9,7 +9,7 @@ namespace SymbolTable
     /// </summary>
     public static class SearchCompare
     {
-        private static readonly Random random = new Random();
+        private static readonly Random random = new();
 
         /// <summary>
         /// 用指定的数据测试符号表，返回 <see cref="FrequencyCounter"/> 用去的时间。

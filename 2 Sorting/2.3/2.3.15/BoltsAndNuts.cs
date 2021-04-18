@@ -61,12 +61,7 @@ namespace _2._3._15
     /// </summary>
     public class BoltsAndNuts
     {
-        private readonly Random random = new Random();
-
-        /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public BoltsAndNuts() { }
+        private readonly Random random = new();
 
         /// <summary>
         /// 对螺丝和螺母排序。

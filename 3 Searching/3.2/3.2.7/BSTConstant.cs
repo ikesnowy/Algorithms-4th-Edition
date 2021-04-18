@@ -67,11 +67,6 @@ namespace _3._2._7
             }
         }
 
-        /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public BSTConstant() { }
-
         public int AverageCompares() => root.DepthSum / Size() + 1;
 
         /// <summary>

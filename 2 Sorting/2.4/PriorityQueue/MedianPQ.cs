@@ -11,12 +11,12 @@ namespace PriorityQueue
         /// 最大堆（保存前半段元素）。
         /// </summary>
         /// <value>最大堆（保存前半段元素）。</value>
-        private MaxPQ<Key> maxPQ;
+        private readonly MaxPQ<Key> maxPQ;
         /// <summary>
         /// 最小堆（保存后半段元素）。
         /// </summary>
         /// <value>最小堆（保存后半段元素）。</value>
-        private MinPQ<Key> minPQ;
+        private readonly MinPQ<Key> minPQ;
         /// <summary>
         /// 中位数。
         /// </summary>

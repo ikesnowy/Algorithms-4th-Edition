@@ -11,12 +11,7 @@ namespace _2._2._6
         /// <summary>
         /// 数组访问计数。
         /// </summary>
-        private int arrayVisitCount = 0;
-
-        /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public MergeSort() { }
+        private int arrayVisitCount;
 
         /// <summary>
         /// 获取数组访问计数。

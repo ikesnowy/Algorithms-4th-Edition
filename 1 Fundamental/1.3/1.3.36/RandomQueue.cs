@@ -124,7 +124,7 @@ namespace _1._3._36
         private class RandomQueueEnumerator : IEnumerator<Item>
         {
             private int current;
-            private int count;
+            private readonly int count;
             private Item[] queue;
             private int[] sequence;
 

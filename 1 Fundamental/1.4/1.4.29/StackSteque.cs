@@ -6,8 +6,8 @@
     /// <typeparam name="Item">Steque 中的元素类型。</typeparam>
     class StackSteque<Item>
     {
-        Stack<Item> H;
-        Stack<Item> T;
+        readonly Stack<Item> H;
+        readonly Stack<Item> T;
 
         /// <summary>
         /// 初始化一个 Steque

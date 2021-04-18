@@ -17,7 +17,7 @@ namespace _2._3._30
         /// <summary>
         /// 随机数发生器。
         /// </summary>
-        private readonly Random RandomGenerator = new Random();
+        private readonly Random RandomGenerator = new();
 
         /// <summary>
         /// 默认构造函数。

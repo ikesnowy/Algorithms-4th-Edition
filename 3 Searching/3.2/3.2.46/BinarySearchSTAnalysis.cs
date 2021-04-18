@@ -33,7 +33,7 @@ namespace _3._2._46
         /// <value>符号表中的键值对数量。</value>
         private int n;
 
-        public long CompareAndExchangeTimes = 0;
+        public long CompareAndExchangeTimes;
 
         /// <summary>
         /// 构造一个空的符号表。

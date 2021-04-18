@@ -6,8 +6,8 @@ namespace _1._2._10
 {
     public partial class Form2 : Form
     {
-        VisualCounter counter;
-        Graphics graphics;
+        readonly VisualCounter counter;
+        readonly Graphics graphics;
         public Form2(int N, int max)
         {
             InitializeComponent();

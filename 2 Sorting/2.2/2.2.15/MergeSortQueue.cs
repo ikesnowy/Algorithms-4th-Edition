@@ -8,11 +8,6 @@ namespace _2._2._15
     class MergeSortQueue
     {
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public MergeSortQueue() { }
-
-        /// <summary>
         /// 利用队列归并进行自底向上的归并排序。
         /// </summary>
         /// <typeparam name="T">需要排序的元素类型。</typeparam>

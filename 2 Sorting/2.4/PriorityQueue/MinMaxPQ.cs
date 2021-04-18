@@ -149,12 +149,12 @@ namespace PriorityQueue
         /// 最小堆。
         /// </summary>
         /// <value>最小堆。</value>
-        private MinPQ minPQ;
+        private readonly MinPQ minPQ;
         /// <summary>
         /// 最大堆。
         /// </summary>
         /// <value>最大堆。</value>
-        private MaxPQ maxPQ;
+        private readonly MaxPQ maxPQ;
         /// <summary>
         /// 堆的大小。
         /// </summary>

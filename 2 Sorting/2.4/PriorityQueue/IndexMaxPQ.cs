@@ -17,15 +17,15 @@ namespace PriorityQueue
         /// <summary>
         /// 索引最大堆。
         /// </summary>
-        private int[] pq;
+        private readonly int[] pq;
         /// <summary>
         /// pq 的逆索引，pq[qp[i]]=qp[pq[i]]=i
         /// </summary>
-        private int[] qp;
+        private readonly int[] qp;
         /// <summary>
         /// 实际元素。
         /// </summary>
-        private Key[] keys;
+        private readonly Key[] keys;
 
         /// <summary>
         /// 建立指定大小的面向索引的最大堆。

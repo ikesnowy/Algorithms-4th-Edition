@@ -9,7 +9,7 @@ namespace _1._4._37
     /// </summary>
     class FixedCapacityStackOfInts : IEnumerable<int>
     {
-        private int[] a;
+        private readonly int[] a;
         private int N;
 
         /// <summary>

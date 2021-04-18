@@ -7,36 +7,36 @@ namespace _2._5._10
     /// </summary>
     class Version : IComparable<Version>
     {
-        private int[] versionNumber;
+        private readonly int[] _versionNumber;
 
         public Version(string version)
         {
             var versions = version.Split('.');
-            versionNumber = new int[versions.Length];
+            _versionNumber = new int[versions.Length];
             for (var i = 0; i < versions.Length; i++)
             {
-                versionNumber[i] = int.Parse(versions[i]);
+                _versionNumber[i] = int.Parse(versions[i]);
             }
         }
 
         public int CompareTo(Version other)
         {
-            for (var i = 0; i < versionNumber.Length && i < other.versionNumber.Length; i++)
+            for (var i = 0; i < _versionNumber.Length && i < other._versionNumber.Length; i++)
             {
-                if (versionNumber[i].CompareTo(other.versionNumber[i]) != 0)
-                    return versionNumber[i].CompareTo(other.versionNumber[i]);
+                if (_versionNumber[i].CompareTo(other._versionNumber[i]) != 0)
+                    return _versionNumber[i].CompareTo(other._versionNumber[i]);
             }
-            return versionNumber.Length.CompareTo(other.versionNumber.Length);
+            return _versionNumber.Length.CompareTo(other._versionNumber.Length);
         }
 
         public override string ToString()
         {
             var result = "";
-            for (var i = 0; i < versionNumber.Length - 1; i++)
+            for (var i = 0; i < _versionNumber.Length - 1; i++)
             {
-                result += versionNumber[i] + ".";
+                result += _versionNumber[i] + ".";
             }
-            result += versionNumber[versionNumber.Length - 1].ToString();
+            result += _versionNumber[_versionNumber.Length - 1].ToString();
             return result;
         }
     }

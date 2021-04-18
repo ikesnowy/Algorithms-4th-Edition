@@ -6,7 +6,7 @@
     /// <typeparam name="Item">栈中保存的元素。</typeparam>
     class QueueStack<Item>
     {
-        Queue<Item> queue;
+        readonly Queue<Item> queue;
 
         /// <summary>
         /// 初始化一个栈。

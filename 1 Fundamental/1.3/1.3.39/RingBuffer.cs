@@ -8,7 +8,7 @@ namespace _1._3._39
     /// <typeparam name="Item">缓冲区包含的元素类型。</typeparam>
     class RingBuffer<Item>
     {
-        private Item[] buffer;
+        private readonly Item[] buffer;
         private int count;
         private int first;  // 读指针
         private int last;   // 写指针

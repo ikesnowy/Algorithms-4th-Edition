@@ -9,11 +9,6 @@ namespace Sort
     public class ShellSort : BaseSort
     {
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public ShellSort() { }
-
-        /// <summary>
         /// 利用希尔排序将数组按升序排序。
         /// </summary>
         /// <param name="a">需要排序的数组。</param>

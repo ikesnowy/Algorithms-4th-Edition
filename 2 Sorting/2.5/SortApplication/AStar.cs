@@ -35,7 +35,7 @@ namespace SortApplication
         /// </summary>
         class FScoreComparer : IComparer<T>
         {
-            Dictionary<T, int> fScore;
+            readonly Dictionary<T, int> fScore;
 
             public FScoreComparer(Dictionary<T, int> fScore)
             {

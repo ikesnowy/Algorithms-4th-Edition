@@ -9,8 +9,8 @@ namespace _2._3._26
 {
     public partial class Form2 : Form
     {
-        private int M;
-        private int N;
+        private readonly int M;
+        private readonly int N;
 
         public Form2(int m, int n)
         {

@@ -44,11 +44,6 @@ namespace SymbolTable
         }
 
         /// <summary>
-        /// 构造空的符号表。
-        /// </summary>
-        public SequentialSearchSTAnalysis() { }
-
-        /// <summary>
         /// 检查键 <paramref name="key"/> 是否已被包含在符号表中。
         /// </summary>
         /// <param name="key">需要检查的键。</param>

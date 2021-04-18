@@ -21,7 +21,7 @@ namespace UnionFind
         /// 各结点的深度。
         /// </summary>
         /// <value>各结点的深度。</value>
-        private byte[] rank;
+        private readonly byte[] rank;
 
         /// <summary>
         /// 新建一个大小为 n 的并查集。

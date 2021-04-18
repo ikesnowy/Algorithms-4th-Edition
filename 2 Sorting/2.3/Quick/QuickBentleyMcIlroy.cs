@@ -19,11 +19,6 @@ namespace Quick
         private readonly int MEDIAN_OF_3_CUTOFF = 40;
 
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public QuickBentleyMcIlroy() { }
-
-        /// <summary>
         /// 用快速排序对数组 a 进行升序排序。
         /// </summary>
         /// <typeparam name="T">需要排序的类型。</typeparam>

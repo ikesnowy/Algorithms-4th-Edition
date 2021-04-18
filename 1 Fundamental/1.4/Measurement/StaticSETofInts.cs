@@ -7,7 +7,7 @@ namespace Measurement
     /// </summary>
     public class StaticSETofInts
     {
-        private int[] a;
+        private readonly int[] a;
 
         /// <summary>
         /// 用一个数组初始化有序数组。

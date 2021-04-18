@@ -16,7 +16,7 @@ namespace PriorityQueue
         /// <summary>
         /// 队列中的元素数量。
         /// </summary>
-        private int n = 0;
+        private int n;
 
         /// <summary>
         /// 默认构造函数，建立一条优先队列。

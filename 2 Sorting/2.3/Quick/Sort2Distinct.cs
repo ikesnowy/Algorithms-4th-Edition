@@ -6,11 +6,6 @@
     public class Sort2Distinct : BaseSort
     {
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public Sort2Distinct() { }
-
-        /// <summary>
         /// 对数组 a 进行排序。
         /// </summary>
         /// <typeparam name="T">数组 a 的元素类型。</typeparam>

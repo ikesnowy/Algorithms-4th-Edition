@@ -6,9 +6,9 @@
     /// <typeparam name="Item">双向队列中的元素。</typeparam>
     class Deque<Item>
     {
-        Stack<Item> left;
-        Stack<Item> middle;
-        Stack<Item> right;
+        readonly Stack<Item> left;
+        readonly Stack<Item> middle;
+        readonly Stack<Item> right;
 
         /// <summary>
         /// 构造一条新的双向队列。

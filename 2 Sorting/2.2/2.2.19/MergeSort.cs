@@ -8,12 +8,7 @@ namespace _2._2._19
     /// </summary>
     public class MergeSort : BaseSort
     {
-        public int Counter = 0;
-
-        /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public MergeSort() { }
+        public int Counter;
 
         /// <summary>
         /// 利用归并排序将数组按升序排序。

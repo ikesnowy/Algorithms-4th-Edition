@@ -6,7 +6,7 @@ namespace _1._2._17
     {
         public long Numerator { get; }
         public long Denominator { get; }
-        private bool isNagative;
+        private readonly bool isNagative;
 
         /// <summary>
         /// 构造一个有理数对象，自动变为最简形式。

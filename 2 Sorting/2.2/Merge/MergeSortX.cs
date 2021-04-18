@@ -13,11 +13,6 @@ namespace Merge
         private static int CUTOFF = 7;
 
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public MergeSortX() { }
-
-        /// <summary>
         /// 设置启用插入排序的阈值，小于该阈值的数组将采用插入排序。
         /// </summary>
         /// <param name="cutoff">新的阈值。</param>

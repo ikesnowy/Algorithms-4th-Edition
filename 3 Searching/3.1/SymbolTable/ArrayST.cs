@@ -24,7 +24,7 @@ namespace SymbolTable
         /// 键值对数目。
         /// </summary>
         /// <value>键值对数目。</value>
-        private int n = 0;
+        private int n;
 
         /// <summary>
         /// 建立基于数组实现的符号表。

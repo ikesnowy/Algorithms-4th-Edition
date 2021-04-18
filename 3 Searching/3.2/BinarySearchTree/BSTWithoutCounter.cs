@@ -60,11 +60,6 @@ namespace BinarySearchTree
         }
 
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public BSTWithoutCounter() { }
-
-        /// <summary>
         /// 向二叉查找树中插入一个键值对。
         /// </summary>
         /// <param name="key">要插入的键。</param>

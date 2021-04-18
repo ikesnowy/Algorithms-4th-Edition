@@ -10,8 +10,8 @@ namespace _2._4._35
         public double[] P;
         public double[] SumP;
 
-        private double T = 0;
-        private Random random = new Random();
+        private readonly double T;
+        private readonly Random random = new();
 
         /// <summary>
         /// 构造一个离散取样类。

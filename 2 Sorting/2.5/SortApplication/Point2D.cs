@@ -237,7 +237,7 @@ namespace SortApplication
         /// </summary>
         private class Atan2Order : Comparer<Point2D>
         {
-            private Point2D parent;
+            private readonly Point2D parent;
             public Atan2Order() { }
             public Atan2Order(Point2D parent)
             {
@@ -267,7 +267,7 @@ namespace SortApplication
         /// </summary>
         private class PolorOrder : Comparer<Point2D>
         {
-            private Point2D parent;
+            private readonly Point2D parent;
             public PolorOrder() { }
             public PolorOrder(Point2D parent)
             {
@@ -315,7 +315,7 @@ namespace SortApplication
         /// </summary>
         private class DistanceToOrder : Comparer<Point2D>
         {
-            private Point2D parent;
+            private readonly Point2D parent;
             public DistanceToOrder() { }
             public DistanceToOrder(Point2D parent)
             {

@@ -144,8 +144,8 @@ namespace _1._3._33
         {
             private Item[] deque;
             private int current;
-            private int first;
-            private int count;
+            private readonly int first;
+            private readonly int count;
 
             public ResizingDequeEnumerator(Item[] deque, int first, int count)
             {

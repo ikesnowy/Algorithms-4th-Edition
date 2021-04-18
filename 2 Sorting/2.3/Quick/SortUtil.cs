@@ -11,7 +11,7 @@ namespace Quick
         /// <summary>
         /// 随机数发生器，所有对象共享同一个随机数发生器。
         /// </summary>
-        public static Random UniformGenerator = new Random();
+        public static Random UniformGenerator = new();
 
         /// <summary>
         /// 产生符合正态分布的随机数。

@@ -8,11 +8,6 @@ namespace _2._2._18
     public class MergeShuffle
     {
         /// <summary>
-        /// 默认构造函数。
-        /// </summary>
-        public MergeShuffle() { }
-
-        /// <summary>
         /// 利用分治法打乱链表。
         /// </summary>
         /// <typeparam name="T">链表元素类型。</typeparam>

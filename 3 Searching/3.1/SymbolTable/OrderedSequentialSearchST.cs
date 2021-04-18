@@ -22,14 +22,9 @@ namespace SymbolTable
             public Node Prev { get; set; }      // 前驱。
         }
 
-        private Node first = null;      // 起始结点。
-        private Node tail = null;       // 末尾结点。
-        private int n = 0;              // 键值对数量。
-
-        /// <summary>
-        /// 构造基于有序链表的有序符号表。
-        /// </summary>
-        public OrderedSequentialSearchST() { }
+        private Node first;      // 起始结点。
+        private Node tail;       // 末尾结点。
+        private int n;              // 键值对数量。
 
         /// <summary>
         /// 大于等于 key 的最小值。

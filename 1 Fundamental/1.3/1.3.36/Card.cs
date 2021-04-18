@@ -5,8 +5,8 @@
     /// </summary>
     class Card
     {
-        Suit suit;
-        int number;
+        readonly Suit suit;
+        readonly int number;
 
         public Card(Suit suit, int number)
         {
