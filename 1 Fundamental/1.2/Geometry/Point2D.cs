@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+// ReSharper disable PossibleNullReferenceException
 
 namespace Geometry
 {
@@ -57,7 +58,7 @@ namespace Geometry
 
             if (double.IsNaN(x) || double.IsNaN(y))
             {
-                throw new ArgumentNullException("Coordinate cannot be NaN");
+                throw new ArgumentNullException(nameof(x), "Coordinate cannot be NaN");
             }
 
             X = x;
@@ -248,7 +249,7 @@ namespace Geometry
         private class Atan2Order : Comparer<Point2D>
         {
             private readonly Point2D _parent;
-            public Atan2Order() { }
+
             public Atan2Order(Point2D parent)
             {
                 this._parent = parent;
@@ -275,11 +276,11 @@ namespace Geometry
         /// <summary>
         /// 按照极角顺序比较。
         /// </summary>
-        private class PolorOrder : Comparer<Point2D>
+        private class PolarOrder : Comparer<Point2D>
         {
             private readonly Point2D _parent;
-            public PolorOrder() { }
-            public PolorOrder(Point2D parent)
+
+            public PolarOrder(Point2D parent)
             {
                 this._parent = parent;
             }
@@ -326,7 +327,7 @@ namespace Geometry
         private class DistanceToOrder : Comparer<Point2D>
         {
             private readonly Point2D _parent;
-            public DistanceToOrder() { }
+
             public DistanceToOrder(Point2D parent)
             {
                 this._parent = parent;
@@ -357,7 +358,7 @@ namespace Geometry
         /// <returns>以到当前点的极角为关键字的升序比较器。</returns>
         public Comparer<Point2D> Polor_Order()
         {
-            return new PolorOrder(this);
+            return new PolarOrder(this);
         }
 
         /// <summary>
@@ -398,7 +399,7 @@ namespace Geometry
                 return false;
             }
             var that = (Point2D)obj;
-            return X == that.X && Y == that.Y;
+            return Math.Abs(X - that.X) < float.Epsilon && Math.Abs(Y - that.Y) < float.Epsilon;
         }
 
         /// <summary>
