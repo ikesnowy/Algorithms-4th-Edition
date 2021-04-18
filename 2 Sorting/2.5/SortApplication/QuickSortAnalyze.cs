@@ -202,7 +202,7 @@ namespace SortApplication
         /// <param name="a">第一个元素。</param>
         /// <param name="b">第二个元素。</param>
         /// <returns>如果 <paramref name="a"/> 较小则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        new protected bool Less<T>(T a, T b) where T : IComparable<T>
+        protected new bool Less<T>(T a, T b) where T : IComparable<T>
         {
             CompareCount++;
             return a.CompareTo(b) < 0;

@@ -4,8 +4,8 @@ using SortApplication;
 // ReSharper disable PossibleNullReferenceException
 
 // 输入格式： buy 20.05 100
-var buyer = new MaxPQ<Ticket>();
-var seller = new MinPQ<Ticket>();
+var buyer = new MaxPq<Ticket>();
+var seller = new MinPq<Ticket>();
 
 var n = int.Parse(Console.ReadLine());
 for (var i = 0; i < n; i++)

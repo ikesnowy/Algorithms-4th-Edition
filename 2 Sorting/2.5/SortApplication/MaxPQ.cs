@@ -9,13 +9,13 @@ namespace SortApplication
     /// 最大堆。（数组实现）
     /// </summary>
     /// <typeparam name="Key">最大堆中保存的元素类型。</typeparam>
-    public class MaxPQ<Key> : IMaxPQ<Key>, IEnumerable<Key> where Key : IComparable<Key>
+    public class MaxPq<TKey> : IMaxPq<TKey>, IEnumerable<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 保存元素的数组。
         /// </summary>
         /// <value>保存元素的数组。</value>
-        protected Key[] pq;
+        protected TKey[] pq;
         /// <summary>
         /// 堆中的元素数量。
         /// </summary>
@@ -25,15 +25,15 @@ namespace SortApplication
         /// <summary>
         /// 默认构造函数。
         /// </summary>
-        public MaxPQ() : this(1) { }
+        public MaxPq() : this(1) { }
 
         /// <summary>
         /// 建立指定容量的最大堆。
         /// </summary>
         /// <param name="capacity">最大堆的容量。</param>
-        public MaxPQ(int capacity)
+        public MaxPq(int capacity)
         {
-            pq = new Key[capacity + 1];
+            pq = new TKey[capacity + 1];
             n = 0;
         }
 
@@ -41,10 +41,10 @@ namespace SortApplication
         /// 从已有元素建立一个最大堆。（O(n)）
         /// </summary>
         /// <param name="keys">已有元素。</param>
-        public MaxPQ(Key[] keys)
+        public MaxPq(TKey[] keys)
         {
             n = keys.Length;
-            pq = new Key[keys.Length + 1];
+            pq = new TKey[keys.Length + 1];
             for (var i = 0; i < keys.Length; i++)
                 pq[i + 1] = keys[i];
             for (var k = n / 2; k >= 1; k--)
@@ -58,7 +58,7 @@ namespace SortApplication
         /// <returns>最大的元素。</returns>
         /// <exception cref="ArgumentOutOfRangeException">当堆为空时抛出该异常。</exception>
         /// <remarks>如果希望获得但不删除最大元素，请使用 <see cref="Max"/>。</remarks>
-        public Key DelMax()
+        public TKey DelMax()
         {
             if (IsEmpty())
                 throw new ArgumentOutOfRangeException("Priority Queue Underflow");
@@ -66,7 +66,7 @@ namespace SortApplication
             var max = pq[1];
             Exch(1, n--);
             Sink(1);
-            pq[n + 1] = default(Key);
+            pq[n + 1] = default(TKey);
             if ((n > 0) && (n == pq.Length / 4))
                 Resize(pq.Length / 2);
 
@@ -78,7 +78,7 @@ namespace SortApplication
         /// 向堆中插入一个元素。
         /// </summary>
         /// <param name="v">需要插入的元素。</param>
-        public void Insert(Key v)
+        public void Insert(TKey v)
         {
             if (n == pq.Length - 1)
                 Resize(2 * pq.Length);
@@ -96,17 +96,17 @@ namespace SortApplication
         {
             if (k == n)
             {
-                pq[n--] = default(Key);
+                pq[n--] = default(TKey);
                 return;
             }
             else if (n <= 2)
             {
                 Exch(1, k);
-                pq[n--] = default(Key);
+                pq[n--] = default(TKey);
                 return;
             }
             Exch(k, n--);
-            pq[n + 1] = default(Key);
+            pq[n + 1] = default(TKey);
             Swim(k);
             Sink(k);
         }
@@ -122,7 +122,7 @@ namespace SortApplication
         /// </summary>
         /// <returns>堆中最大元素。</returns>
         /// <remarks>如果希望删除并返回最大元素，请使用 <see cref="DelMax"/>。</remarks>
-        public Key Max() => pq[1];
+        public TKey Max() => pq[1];
 
         /// <summary>
         /// 获得堆中元素的数量。
@@ -134,9 +134,9 @@ namespace SortApplication
         /// 获取堆的迭代器，元素以降序排列。
         /// </summary>
         /// <returns>最大堆的迭代器。</returns>
-        public IEnumerator<Key> GetEnumerator()
+        public IEnumerator<TKey> GetEnumerator()
         {
-            var copy = new MaxPQ<Key>(n);
+            var copy = new MaxPq<TKey>(n);
             for (var i = 1; i <= n; i++)
                 copy.Insert(pq[i]);
 
@@ -191,7 +191,7 @@ namespace SortApplication
         /// <param name="capacity">调整后的堆大小。</param>
         private void Resize(int capacity)
         {
-            var temp = new Key[capacity];
+            var temp = new TKey[capacity];
             for (var i = 1; i <= n; i++)
             {
                 temp[i] = pq[i];

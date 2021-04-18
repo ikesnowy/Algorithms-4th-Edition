@@ -9,23 +9,23 @@ namespace SortApplication
     /// 最小堆。（数组实现）
     /// </summary>
     /// <typeparam name="Key">最小堆中保存的元素类型。</typeparam>
-    public class MinPQ<Key> : IMinPQ<Key>, IEnumerable<Key> where Key : IComparable<Key>
+    public class MinPq<TKey> : IMinPq<TKey>, IEnumerable<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 相等比较器。
         /// </summary>
         /// <value>相等比较器。</value>
-        protected IEqualityComparer<Key> equalityComparer;
+        protected IEqualityComparer<TKey> equalityComparer;
         /// <summary>
         /// 排序比较器。
         /// </summary>
         /// <value>排序比较器。</value>
-        protected IComparer<Key> comparer;
+        protected IComparer<TKey> comparer;
         /// <summary>
         /// 保存元素的数组。
         /// </summary>
         /// <value>保存元素的数组。</value>
-        protected Key[] pq;
+        protected TKey[] pq;
         /// <summary>
         /// 堆中元素的数量。
         /// </summary>
@@ -35,26 +35,26 @@ namespace SortApplication
         /// <summary>
         /// 默认构造函数。
         /// </summary>
-        public MinPQ() : this(1, null, null) { }
+        public MinPq() : this(1, null, null) { }
 
         /// <summary>
         /// 以指定大小构建最小堆。
         /// </summary>
         /// <param name="capacity">最小堆大小。</param>
-        public MinPQ(int capacity) : this(capacity, null, null) { }
+        public MinPq(int capacity) : this(capacity, null, null) { }
 
         /// <summary>
         /// 根据指定比较器进行排序和相等判断。
         /// </summary>
         /// <param name="comparer">排序比较器。</param>
-        public MinPQ(IComparer<Key> comparer) : this(1, comparer, null) { }
+        public MinPq(IComparer<TKey> comparer) : this(1, comparer, null) { }
 
         /// <summary>
         /// 根据指定的比较器排序，并用指定比较器判断相等。
         /// </summary>
         /// <param name="comparer">排序比较器。</param>
         /// <param name="equality">相等比较器。</param>
-        public MinPQ(IComparer<Key> comparer, IEqualityComparer<Key> equality) : this(1, comparer, equality) { }
+        public MinPq(IComparer<TKey> comparer, IEqualityComparer<TKey> equality) : this(1, comparer, equality) { }
 
         /// <summary>
         /// 建立指定容量的最小堆。
@@ -62,11 +62,11 @@ namespace SortApplication
         /// <param name="capacity">最小堆的容量。</param>
         /// <param name="comparer">排序比较器。</param>
         /// <param name="equality">相等比较器。</param>
-        public MinPQ(int capacity, IComparer<Key> comparer, IEqualityComparer<Key> equality)
+        public MinPq(int capacity, IComparer<TKey> comparer, IEqualityComparer<TKey> equality)
         {
             equalityComparer = equality;
             this.comparer = comparer;
-            pq = new Key[capacity + 1];
+            pq = new TKey[capacity + 1];
             n = 0;
         }
 
@@ -74,10 +74,10 @@ namespace SortApplication
         /// 从已有元素建立一个最小堆。（O(n)）
         /// </summary>
         /// <param name="keys">已有元素。</param>
-        public MinPQ(Key[] keys)
+        public MinPq(TKey[] keys)
         {
             n = keys.Length;
-            pq = new Key[keys.Length + 1];
+            pq = new TKey[keys.Length + 1];
             for (var i = 0; i < keys.Length; i++)
                 pq[i + 1] = keys[i];
             for (var k = n / 2; k >= 1; k--)
@@ -90,7 +90,7 @@ namespace SortApplication
         /// </summary>
         /// <param name="key">需要查找的元素。</param>
         /// <returns>存在则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public bool Contains(Key key)
+        public bool Contains(TKey key)
         {
             for (var i = 1; i <= n; i++)
                 if (Equal(pq[i], key))
@@ -104,7 +104,7 @@ namespace SortApplication
         /// <returns>最小元素。</returns>
         /// <exception cref="ArgumentOutOfRangeException">如果堆为空则抛出该异常。</exception>
         /// <remarks>如果希望获得最小值但不删除它，请使用 <see cref="Min"/>。</remarks>
-        public Key DelMin()
+        public TKey DelMin()
         {
             if (IsEmpty())
                 throw new ArgumentOutOfRangeException("Priority Queue Underflow");
@@ -112,7 +112,7 @@ namespace SortApplication
             var min = pq[1];
             Exch(1, n--);
             Sink(1);
-            pq[n + 1] = default(Key);
+            pq[n + 1] = default(TKey);
             if ((n > 0) && (n == pq.Length / 4))
                 Resize(pq.Length / 2);
 
@@ -128,17 +128,17 @@ namespace SortApplication
         {
             if (k == n)
             {
-                pq[n--] = default(Key);
+                pq[n--] = default(TKey);
                 return;
             }
             else if (n <= 2)
             {
                 Exch(1, k);
-                pq[n--] = default(Key);
+                pq[n--] = default(TKey);
                 return;
             }
             Exch(k, n--);
-            pq[n + 1] = default(Key);
+            pq[n + 1] = default(TKey);
             Swim(k);
             Sink(k);
         }
@@ -147,7 +147,7 @@ namespace SortApplication
         /// 向堆中插入一个元素。
         /// </summary>
         /// <param name="v">需要插入的元素。</param>
-        public void Insert(Key v)
+        public void Insert(TKey v)
         {
             if (n == pq.Length - 1)
                 Resize(2 * pq.Length);
@@ -168,7 +168,7 @@ namespace SortApplication
         /// </summary>
         /// <returns>堆中最小元素。</returns>
         /// <remarks>如果希望获得并删除最小元素，请使用 <see cref="DelMin"/>。</remarks>
-        public Key Min() => pq[1];
+        public TKey Min() => pq[1];
 
         /// <summary>
         /// 获得堆中元素的数量。
@@ -180,9 +180,9 @@ namespace SortApplication
         /// 获取堆的迭代器，元素以升序排列。
         /// </summary>
         /// <returns>最小堆的迭代器。</returns>
-        public IEnumerator<Key> GetEnumerator()
+        public IEnumerator<TKey> GetEnumerator()
         {
-            var copy = new MinPQ<Key>(n);
+            var copy = new MinPq<TKey>(n);
             for (var i = 1; i <= n; i++)
                 copy.Insert(pq[i]);
 
@@ -237,7 +237,7 @@ namespace SortApplication
         /// <param name="capacity">调整后的堆大小。</param>
         private void Resize(int capacity)
         {
-            var temp = new Key[capacity];
+            var temp = new TKey[capacity];
             for (var i = 1; i <= n; i++)
             {
                 temp[i] = pq[i];
@@ -265,7 +265,7 @@ namespace SortApplication
         /// <param name="x">要判断相等的第一个元素。</param>
         /// <param name="y">要判断相等的第二个元素。</param>
         /// <returns>如果 <paramref name="x"/> 和 <paramref name="y"/> 相等则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        private bool Equal(Key x, Key y)
+        private bool Equal(TKey x, TKey y)
         {
             if (equalityComparer == null)
                 if (comparer == null)

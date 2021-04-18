@@ -13,17 +13,17 @@ namespace Geometry
         /// 以 X 坐标升序排序。
         /// </summary>
         /// <value>以 X 坐标升序排序的静态比较器。</value>
-        public readonly static Comparer<Point2D> X_Order = new XOrder();
+        public static readonly Comparer<Point2D> X_Order = new XOrder();
         /// <summary>
         /// 以 Y 坐标升序排序。
         /// </summary>
         /// <value>以 Y 坐标升序排序的静态比较器。</value>
-        public readonly static Comparer<Point2D> Y_Order = new YOrder();
+        public static readonly Comparer<Point2D> Y_Order = new YOrder();
         /// <summary>
         /// 以极半径升序排序。
         /// </summary>
         /// <value>以极半径升序排序的静态比较器。</value>
-        public readonly static Comparer<Point2D> R_Order = new ROrder();
+        public static readonly Comparer<Point2D> R_Order = new ROrder();
 
         /// <summary>
         /// 二维点的 X 坐标。

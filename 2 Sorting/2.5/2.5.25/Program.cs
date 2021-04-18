@@ -9,15 +9,15 @@ for (var i = 0; i < points.Length; i++)
 }
 
 Console.WriteLine(@"X-Order");
-Array.Sort(points, Point2D.X_Order);
+Array.Sort(points, Point2D.XOrder);
 PrintArray(points);
 
 Console.WriteLine(@"Y-Order");
-Array.Sort(points, Point2D.Y_Order);
+Array.Sort(points, Point2D.YOrder);
 PrintArray(points);
 
 Console.WriteLine(@"R-Order");
-Array.Sort(points, Point2D.R_Order);
+Array.Sort(points, Point2D.ROrder);
 PrintArray(points);
 
 var origin = new Point2D(0, 0);
@@ -26,7 +26,7 @@ Array.Sort(points, origin.DistanceTo_Order());
 PrintArray(points);
 
 Console.WriteLine(@"Polor angle to Origin");
-Array.Sort(points, origin.Polor_Order());
+Array.Sort(points, origin.Polar_Order());
 PrintArray(points);
 
 static void PrintArray(Point2D[] points)

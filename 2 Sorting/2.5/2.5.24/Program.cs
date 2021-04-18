@@ -3,7 +3,7 @@ using SortApplication;
 
 // 官方解答：https://algs4.cs.princeton.edu/25applications/StableMinPQ.java.html
 
-var pq = new MinPQStable<Wrapper<string>>();
+var pq = new MinPqStable<Wrapper<string>>();
 var text = "it was the best of times it was the worst of times it was the ";
 var texts = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 

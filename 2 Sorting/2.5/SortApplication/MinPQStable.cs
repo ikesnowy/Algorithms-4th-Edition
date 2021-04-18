@@ -8,13 +8,13 @@ namespace SortApplication
     /// 稳定的最小堆。（数组实现）
     /// </summary>
     /// <typeparam name="Key">最小堆中保存的元素类型。</typeparam>
-    public class MinPQStable<Key> : IMinPQ<Key>, IEnumerable<Key> where Key : IComparable<Key>
+    public class MinPqStable<TKey> : IMinPq<TKey>, IEnumerable<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 保存元素的数组。
         /// </summary>
         /// <value>保存元素的数组。</value>
-        protected Key[] pq;
+        protected TKey[] pq;
         /// <summary>
         /// 堆中元素的数量。
         /// </summary>
@@ -24,26 +24,26 @@ namespace SortApplication
         /// 元素的插入次序。
         /// </summary>
         /// <value>元素的插入次序。</value>
-        private long[] time;
+        private long[] _time;
         /// <summary>
         /// 元素的插入次序计数器。
         /// </summary>
         /// <value>元素的插入次序计数器。</value>
-        private long timeStamp = 1;       // 元素插入次序计数器。
+        private long _timeStamp = 1;       // 元素插入次序计数器。
 
         /// <summary>
         /// 默认构造函数。
         /// </summary>
-        public MinPQStable() : this(1) { }
+        public MinPqStable() : this(1) { }
 
         /// <summary>
         /// 建立指定容量的最小堆。
         /// </summary>
         /// <param name="capacity">最小堆的容量。</param>
-        public MinPQStable(int capacity)
+        public MinPqStable(int capacity)
         {
-            time = new long[capacity + 1];
-            pq = new Key[capacity + 1];
+            _time = new long[capacity + 1];
+            pq = new TKey[capacity + 1];
             n = 0;
         }
 
@@ -53,7 +53,7 @@ namespace SortApplication
         /// <returns>最小元素。</returns>
         /// <exception cref="ArgumentOutOfRangeException">如果堆为空则抛出该异常。</exception>
         /// <remarks>如果希望获得最小值但不删除它，请使用 <see cref="Min"/>。</remarks>
-        public Key DelMin()
+        public TKey DelMin()
         {
             if (IsEmpty())
                 throw new ArgumentOutOfRangeException("Priority Queue Underflow");
@@ -61,8 +61,8 @@ namespace SortApplication
             var min = pq[1];
             Exch(1, n--);
             Sink(1);
-            pq[n + 1] = default(Key);
-            time[n + 1] = 0;
+            pq[n + 1] = default(TKey);
+            _time[n + 1] = 0;
             if ((n > 0) && (n == pq.Length / 4))
                 Resize(pq.Length / 2);
 
@@ -74,13 +74,13 @@ namespace SortApplication
         /// 向堆中插入一个元素。
         /// </summary>
         /// <param name="v">需要插入的元素。</param>
-        public void Insert(Key v)
+        public void Insert(TKey v)
         {
             if (n == pq.Length - 1)
                 Resize(2 * pq.Length);
 
             pq[++n] = v;
-            time[n] = ++timeStamp;
+            _time[n] = ++_timeStamp;
             Swim(n);
             //Debug.Assert(IsMinHeap());
         }
@@ -96,7 +96,7 @@ namespace SortApplication
         /// </summary>
         /// <returns>堆中最小元素。</returns>
         /// <remarks>如果希望获得并删除最小元素，请使用 <see cref="DelMin"/>。</remarks>
-        public Key Min() => pq[1];
+        public TKey Min() => pq[1];
 
         /// <summary>
         /// 获得堆中元素的数量。
@@ -108,9 +108,9 @@ namespace SortApplication
         /// 获取堆的迭代器，元素以升序排列。
         /// </summary>
         /// <returns>最小堆的迭代器。</returns>
-        public IEnumerator<Key> GetEnumerator()
+        public IEnumerator<TKey> GetEnumerator()
         {
-            var copy = new MinPQStable<Key>(n);
+            var copy = new MinPqStable<TKey>(n);
             for (var i = 1; i <= n; i++)
                 copy.Insert(pq[i]);
 
@@ -165,15 +165,15 @@ namespace SortApplication
         /// <param name="capacity">调整后的堆大小。</param>
         private void Resize(int capacity)
         {
-            var temp = new Key[capacity];
+            var temp = new TKey[capacity];
             var timeTemp = new long[capacity];
             for (var i = 1; i <= n; i++)
             {
                 temp[i] = pq[i];
-                timeTemp[i] = time[i];
+                timeTemp[i] = _time[i];
             }
             pq = temp;
-            time = timeTemp;
+            _time = timeTemp;
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace SortApplication
         {
             var cmp = pq[i].CompareTo(pq[j]);
             if (cmp == 0)
-                return time[i].CompareTo(time[j]) > 0;
+                return _time[i].CompareTo(_time[j]) > 0;
             return cmp > 0;
         }
             
@@ -201,9 +201,9 @@ namespace SortApplication
             pq[i] = pq[j];
             pq[j] = swap;
 
-            var temp = time[i];
-            time[i] = time[j];
-            time[j] = temp;
+            var temp = _time[i];
+            _time[i] = _time[j];
+            _time[j] = temp;
         }
 
         /// <summary>

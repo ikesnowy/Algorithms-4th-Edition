@@ -53,7 +53,7 @@ namespace _2._5._26
             if (point.Y > _maxY)
                 _maxY = point.Y * 1.1;
 
-            _points.Sort(_startPoint.Polor_Order());
+            _points.Sort(_startPoint.Polar_Order());
             RefreashPoints();
         }
 

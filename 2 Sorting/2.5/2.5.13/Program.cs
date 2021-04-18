@@ -17,7 +17,7 @@ for (var i = 0; i < jobNum; i++)
 
 Array.Sort(jobs);
 
-var processors = new MinPQ<Processor>(processorNum);
+var processors = new MinPq<Processor>(processorNum);
 for (var i = 0; i < processorNum; i++)
 {
     processors.Insert(new Processor());
