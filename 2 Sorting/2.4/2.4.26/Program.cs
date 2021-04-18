@@ -1,51 +1,48 @@
 ﻿using System;
 using System.Diagnostics;
 using PriorityQueue;
+// ReSharper disable RedundantJumpStatement
 
-namespace _2._4._26
+var repeatTime = 1000000;
+double totalTime = 0;
+for (var i = 0; i < repeatTime; i++)
 {
-    class Program
+    var pq = new MaxPQ<char>();
+    totalTime += Test(pq);
+}
+
+Console.WriteLine("Normal MaxPQ: " + totalTime);
+
+totalTime = 0;
+for (var i = 0; i < repeatTime; i++)
+{
+    var pqNoExch = new MaxPQNoExch<char>();
+    totalTime += Test(pqNoExch);
+}
+
+Console.WriteLine("MaxPQ without Exch: " + totalTime);
+
+static long Test(IMaxPQ<char> pq)
+{
+    var sw = new Stopwatch();
+    sw.Restart();
+    var input = "P R I O * R * * I * T * Y * * * Q U E * * * U * E";
+    foreach (var c in input)
     {
-        static void Main(string[] args)
+        if (c == ' ')
         {
-            var repeatTime = 1000000;
-            double totalTime = 0;
-            for (var i = 0; i < repeatTime; i++)
-            {
-                var pq = new MaxPQ<char>();
-                totalTime += test(pq);
-            }
-            Console.WriteLine("Normal MaxPQ: " + totalTime);
-
-            totalTime = 0;
-            for (var i = 0; i < repeatTime; i++)
-            {
-                var pqNoExch = new MaxPQNoExch<char>();
-                totalTime += test(pqNoExch);
-            }
-            Console.WriteLine("MaxPQ without Exch: " + totalTime);
+            continue;
         }
-
-        static long test(IMaxPQ<char> pq)
+        else if (c == '*')
         {
-            var sw = new Stopwatch();
-            sw.Restart();
-            var input = "P R I O * R * * I * T * Y * * * Q U E * * * U * E";
-            foreach (var c in input)
-            {
-                if (c == ' ')
-                    continue;
-                else if (c == '*')
-                {
-                    pq.DelMax();
-                }
-                else
-                {
-                    pq.Insert(c);
-                }
-            }
-            sw.Stop();
-            return sw.ElapsedMilliseconds;
+            pq.DelMax();
+        }
+        else
+        {
+            pq.Insert(c);
         }
     }
+
+    sw.Stop();
+    return sw.ElapsedMilliseconds;
 }

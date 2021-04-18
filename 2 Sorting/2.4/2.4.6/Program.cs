@@ -1,51 +1,42 @@
 ﻿using System;
 using PriorityQueue;
 
-namespace _2._4._6
+// P
+// R P
+// R P I
+// R P I O
+// P O I
+// R P I O
+// P O I
+// O I
+// O I I
+// I I
+// T I I
+// I I
+// Y I I
+// I I
+// I
+// 
+// Q
+// U Q
+// U Q E
+// Q E
+// E
+// 
+// U
+// 
+// E
+
+var pq = new MaxPQ<char>();
+var input = "P R I O * R * * I * T * Y * * * Q U E * * * U * E";
+foreach (var c in input)
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // P
-            // R P
-            // R P I
-            // R P I O
-            // P O I
-            // R P I O
-            // P O I
-            // O I
-            // O I I
-            // I I
-            // T I I
-            // I I
-            // Y I I
-            // I I
-            // I
-            // 
-            // Q
-            // U Q
-            // U Q E
-            // Q E
-            // E
-            // 
-            // U
-            // 
-            // E
+    if (c == ' ')
+        continue;
+    else if (c == '*')
+        pq.DelMax();
+    else
+        pq.Insert(c);
 
-            var pq = new MaxPQ<char>();
-            var input = "P R I O * R * * I * T * Y * * * Q U E * * * U * E";
-            foreach (var c in input)
-            {
-                if (c == ' ')
-                    continue;
-                else if (c == '*')
-                    pq.DelMax();
-                else
-                    pq.Insert(c);
-
-                Console.WriteLine(pq);
-            }
-        }
-    }
+    Console.WriteLine(pq);
 }
