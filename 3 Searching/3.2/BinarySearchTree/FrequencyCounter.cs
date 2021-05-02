@@ -63,7 +63,6 @@ namespace BinarySearchTree
         /// <returns>文本文档出现频率最高的字符串。</returns>
         public static string MostFrequentlyWord(string filename, int minLength, ISt<string, int> st)
         {
-            int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
 
             var inputs = 
@@ -76,7 +75,6 @@ namespace BinarySearchTree
             {
                 if (s.Length < minLength)
                     continue;
-                words++;
                 if (st.Contains(s))
                 {
                     st.Put(s, st.Get(s) + 1);
@@ -84,7 +82,6 @@ namespace BinarySearchTree
                 else
                 {
                     st.Put(s, 1);
-                    distinct++;
                 }
             }
 
@@ -107,7 +104,6 @@ namespace BinarySearchTree
         /// <returns>文本文档出现频率最高的字符串。</returns>
         public static string MostFrequentlyWord(string filename, int counts, int minLength, ISt<string, int> st)
         {
-            int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
 
             var inputs =
@@ -123,7 +119,7 @@ namespace BinarySearchTree
                     counts++;
                     continue;
                 }
-                words++;
+
                 if (st.Contains(inputs[i]))
                 {
                     st.Put(inputs[i], st.Get(inputs[i]) + 1);
@@ -131,7 +127,6 @@ namespace BinarySearchTree
                 else
                 {
                     st.Put(inputs[i], 1);
-                    distinct++;
                 }
             }
 
@@ -162,7 +157,6 @@ namespace BinarySearchTree
             var sw = Stopwatch.StartNew();
 
             var callTime = 0;
-            int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
 
             var inputs =
@@ -175,7 +169,6 @@ namespace BinarySearchTree
             {
                 if (inputs[i].Length < minLength)
                     continue;
-                words++;
                 if (st.Contains(inputs[i]))
                 {
                     st.Put(inputs[i], st.Get(inputs[i]) + 1);
@@ -189,7 +182,6 @@ namespace BinarySearchTree
                     callTime++;
                     time.Add(sw.ElapsedMilliseconds);
                     call.Add(callTime);
-                    distinct++;
                 }
             }
 
@@ -220,7 +212,6 @@ namespace BinarySearchTree
         /// <returns>文本文档出现频率最高的字符串数组。</returns>
         public static string[] MostFrequentlyWords(string filename, int minLength, ISt<string, int> st)
         {
-            int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
 
             var inputs =
@@ -233,7 +224,6 @@ namespace BinarySearchTree
             {
                 if (s.Length < minLength)
                     continue;
-                words++;
                 if (st.Contains(s))
                 {
                     st.Put(s, st.Get(s) + 1);
@@ -241,7 +231,6 @@ namespace BinarySearchTree
                 else
                 {
                     st.Put(s, 1);
-                    distinct++;
                 }
             }
 

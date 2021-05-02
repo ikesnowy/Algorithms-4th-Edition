@@ -58,7 +58,7 @@ namespace Geometry
 
             if (double.IsNaN(x) || double.IsNaN(y))
             {
-                throw new ArgumentNullException(nameof(x), "Coordinate cannot be NaN");
+                throw new ArgumentNullException(nameof(x), @"Coordinate cannot be NaN");
             }
 
             X = x;

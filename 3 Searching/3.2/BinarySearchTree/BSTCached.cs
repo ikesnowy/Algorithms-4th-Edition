@@ -22,7 +22,7 @@ namespace BinarySearchTree
                 return _cache.Value;
             }
 
-            return Get(root, key).Value;
+            return Get(Root, key).Value;
         }
 
         /// <inheritdoc />
@@ -30,7 +30,7 @@ namespace BinarySearchTree
         {
             if (key == null)
             {
-                throw new ArgumentNullException("calls get() with a null key");
+                throw new ArgumentNullException(nameof(key), @"calls get() with a null key");
             }
 
             if (x == null)
@@ -58,7 +58,7 @@ namespace BinarySearchTree
         {
             if (key == null)
             {
-                throw new ArgumentNullException("calls Put() with a null key");
+                throw new ArgumentNullException(nameof(key), @"calls Put() with a null key");
             }
 
             if (value == null)
@@ -72,7 +72,7 @@ namespace BinarySearchTree
                 _cache.Value = value;
                 return;
             }
-            root = Put(root, key, value);
+            Root = Put(Root, key, value);
         }
 
         /// <inheritdoc />

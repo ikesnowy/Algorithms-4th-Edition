@@ -1,4 +1,5 @@
 ﻿using System;
+// ReSharper disable CognitiveComplexity
 
 namespace BinarySearchTree
 {
@@ -21,16 +22,16 @@ namespace BinarySearchTree
                 st.Put(keys[i], i);
             }
 
-            Console.WriteLine("size = " + st.Size());
-            Console.WriteLine("min = " + st.Min());
-            Console.WriteLine("max = " + st.Max());
+            Console.WriteLine($@"size = {st.Size()}");
+            Console.WriteLine($@"min = {st.Min()}");
+            Console.WriteLine($@"max = {st.Max()}");
             Console.WriteLine();
 
             Console.WriteLine(@"Testing keys()");
             Console.WriteLine(@"---------------------------");
             foreach (var key in st.Keys())
             {
-                Console.WriteLine(key + " " + st.Get(key));
+                Console.WriteLine($@"{key} {st.Get(key)}");
             }
             Console.WriteLine();
 
@@ -38,7 +39,7 @@ namespace BinarySearchTree
             Console.WriteLine(@"---------------------------");
             for (var i = 0; i < st.Size(); i++)
             {
-                Console.WriteLine(i + " " + st.Select(i));
+                Console.WriteLine($@"{i} {st.Select(i)}");
             }
             Console.WriteLine();
 
@@ -46,7 +47,7 @@ namespace BinarySearchTree
             Console.WriteLine(@"---------------------------");
             for (var i = 'A'; i <= 'Z'; i++)
             {
-                var s = i + "";
+                var s = $"{i}";
                 Console.WriteLine($@"{s} {st.Rank(s)} {st.Floor(s)} {st.Ceiling(s)}");
             }
 
@@ -58,7 +59,7 @@ namespace BinarySearchTree
             {
                 Console.Write($@"{from[i]}-{to[i]} ({st.Size(from[i], to[i])})");
                 foreach (var key in st.Keys(from[i], to[i]))
-                    Console.Write(key + " ");
+                    Console.Write($@"{key} ");
                 Console.WriteLine();
             }
             Console.WriteLine();
@@ -67,11 +68,11 @@ namespace BinarySearchTree
             {
                 st.DeleteMin();
             }
-            Console.WriteLine("After deleting the smallest " + st.Size() / 2 + " keys");
+            Console.WriteLine($@"After deleting the smallest {st.Size() / 2} keys");
             Console.WriteLine(@"---------------------------");
             foreach (var key in st.Keys())
             {
-                Console.WriteLine(key + " " + st.Get(key));
+                Console.WriteLine($@"{key} {st.Get(key)}");
             }
             Console.WriteLine();
 
@@ -83,7 +84,7 @@ namespace BinarySearchTree
             Console.WriteLine(@"---------------------------");
             foreach (var s in st.Keys())
             {
-                Console.WriteLine(s + " " + st.Get(s));
+                Console.WriteLine($@"{s} {st.Get(s)}");
             }
             Console.WriteLine();
 
@@ -95,7 +96,7 @@ namespace BinarySearchTree
             Console.WriteLine(@"---------------------------");
             foreach (var key in st.Keys())
             {
-                Console.WriteLine(key + " " + st.Get(key));
+                Console.WriteLine($@"{key} {st.Get(key)}");
             }
             Console.WriteLine();
         }

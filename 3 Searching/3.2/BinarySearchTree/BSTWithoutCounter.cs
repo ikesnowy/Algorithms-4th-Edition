@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+// ReSharper disable CognitiveComplexity
 
 namespace BinarySearchTree
 {
@@ -336,7 +337,7 @@ namespace BinarySearchTree
         public TKey Floor(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to floor is null");
+                throw new ArgumentNullException(nameof(key), @"argument to floor is null");
             if (IsEmpty())
                 throw new InvalidOperationException("calls floor with empty symbol table");
             var x = Floor(_root, key);
@@ -375,7 +376,7 @@ namespace BinarySearchTree
         public TKey Ceiling(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to ceiling is null");
+                throw new ArgumentNullException(nameof(key), @"argument to ceiling is null");
             if (IsEmpty())
                 throw new InvalidOperationException("calls ceiling with empty symbol table");
             var x = Ceiling(_root, key);
@@ -415,7 +416,7 @@ namespace BinarySearchTree
         public int Rank(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to rank() is null");
+                throw new ArgumentNullException(nameof(key), @"argument to rank() is null");
             return Rank(_root, key);
         }
 

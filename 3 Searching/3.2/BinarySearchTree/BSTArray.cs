@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+// ReSharper disable CognitiveComplexity
 
 namespace BinarySearchTree
 {
@@ -288,9 +289,9 @@ namespace BinarySearchTree
         public IEnumerable<TKey> Keys(TKey lo, TKey hi)
         {
             if (lo == null)
-                throw new ArgumentNullException("first argument to keys() is null");
+                throw new ArgumentNullException(nameof(lo), @"first argument to keys() is null");
             if (hi == null)
-                throw new ArgumentNullException("second argument to keys() is null");
+                throw new ArgumentNullException(nameof(hi), @"second argument to keys() is null");
 
             var queue = new Queue<TKey>();
             Keys(_root, queue, lo, hi);
@@ -311,19 +312,19 @@ namespace BinarySearchTree
                 return;
             }
 
-            var cmplo = lo.CompareTo(_nodes[x].Key);
-            var cmphi = hi.CompareTo(_nodes[x].Key);
-            if (cmplo < 0)
+            var cmpLo = lo.CompareTo(_nodes[x].Key);
+            var cmpHi = hi.CompareTo(_nodes[x].Key);
+            if (cmpLo < 0)
             {
                 Keys(_left[x], queue, lo, hi);
             }
 
-            if (cmplo <= 0 && cmphi >= 0)
+            if (cmpLo <= 0 && cmpHi >= 0)
             {
                 queue.Enqueue(_nodes[x].Key);
             }
 
-            if (cmphi > 0)
+            if (cmpHi > 0)
             {
                 Keys(_right[x], queue, lo, hi);
             }
@@ -395,7 +396,7 @@ namespace BinarySearchTree
         {
             if (key == null)
             {
-                throw new ArgumentNullException("argument to floor is null");
+                throw new ArgumentNullException(nameof(key), @"argument to floor is null");
             }
 
             if (IsEmpty())
@@ -451,7 +452,7 @@ namespace BinarySearchTree
         {
             if (key == null)
             {
-                throw new ArgumentNullException("argument to ceiling is null");
+                throw new ArgumentNullException(nameof(key), @"argument to ceiling is null");
             }
 
             if (IsEmpty())
@@ -503,7 +504,7 @@ namespace BinarySearchTree
         {
             if (key == null)
             {
-                throw new ArgumentNullException("argument to rank() is null");
+                throw new ArgumentNullException(nameof(key), @"argument to rank() is null");
             }
             return Rank(_root, key);
         }

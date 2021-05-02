@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+// ReSharper disable CognitiveComplexity
 
 namespace BinarySearchTree
 {
@@ -74,7 +75,7 @@ namespace BinarySearchTree
         public void Put(TKey key, TValue value)
         {
             if (key == null)
-                throw new ArgumentNullException("calls Put() with a null key");
+                throw new ArgumentNullException(nameof(key), @"calls Put() with a null key");
             if (value == null)
             {
                 Delete(key);
@@ -140,7 +141,7 @@ namespace BinarySearchTree
         /// <returns>如果存在则返回对应的值，否则返回 <c>default(TValue)</c>。</returns>
         private TValue Get(Node x, TKey key)
         {
-            if (key == null) throw new ArgumentNullException(nameof(key), "calls get() with a null key");
+            if (key == null) throw new ArgumentNullException(nameof(key), @"calls get() with a null key");
             var cur = x;
             while (cur != null)
             {
@@ -207,7 +208,7 @@ namespace BinarySearchTree
         public bool Contains(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to Contains is null!");
+                throw new ArgumentNullException(nameof(key), @"argument to Contains is null!");
             return Get(key) != null;
         }
 
@@ -244,9 +245,9 @@ namespace BinarySearchTree
         public int Size(TKey lo, TKey hi)
         {
             if (lo == null)
-                throw new ArgumentNullException("first argument to Size() is null");
+                throw new ArgumentNullException(nameof(lo), @"first argument to Size() is null");
             if (hi == null)
-                throw new ArgumentNullException("second argument to Size() is null");
+                throw new ArgumentNullException(nameof(hi), @"second argument to Size() is null");
 
             if (lo.CompareTo(hi) > 0)
                 return 0;
@@ -297,9 +298,9 @@ namespace BinarySearchTree
         public IEnumerable<TKey> Keys(TKey lo, TKey hi)
         {
             if (lo == null)
-                throw new ArgumentNullException("first argument to keys() is null");
+                throw new ArgumentNullException(nameof(lo), @"first argument to keys() is null");
             if (hi == null)
-                throw new ArgumentNullException("second argument to keys() is null");
+                throw new ArgumentNullException(nameof(hi), @"second argument to keys() is null");
 
             var queue = new Queue<TKey>();
             Keys(_root, queue, lo, hi);
@@ -313,7 +314,7 @@ namespace BinarySearchTree
         /// <param name="queue">要填充的队列。</param>
         /// <param name="lo">键的下限。</param>
         /// <param name="hi">键的上限。</param>
-        private void Keys(Node x, Queue<TKey> queue, TKey lo, TKey hi)
+        private static void Keys(Node x, Queue<TKey> queue, TKey lo, TKey hi)
         {
             var stack = new Stack<Node>();
 
@@ -406,7 +407,7 @@ namespace BinarySearchTree
         public TKey Floor(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to floor is null");
+                throw new ArgumentNullException(nameof(key), @"argument to floor is null");
             if (IsEmpty())
                 throw new InvalidOperationException("calls floor with empty symbol table");
             var x = Floor(_root, key);
@@ -455,7 +456,7 @@ namespace BinarySearchTree
         public TKey Ceiling(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to ceiling is null");
+                throw new ArgumentNullException(nameof(key), @"argument to ceiling is null");
             if (IsEmpty())
                 throw new InvalidOperationException("calls ceiling with empty symbol table");
             var x = Ceiling(_root, key);
@@ -502,7 +503,7 @@ namespace BinarySearchTree
         public int Rank(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to rank() is null");
+                throw new ArgumentNullException(nameof(key), @"argument to rank() is null");
             return Rank(_root, key);
         }
 
@@ -546,7 +547,7 @@ namespace BinarySearchTree
         public TKey Select(int k)
         {
             if (k < 0 || k >= Size())
-                throw new ArgumentException("argument to select() is invaild: " + k);
+                throw new ArgumentException("argument to select() is invalid: " + k);
             var x = Select(_root, k);
             return x.Key;
         }

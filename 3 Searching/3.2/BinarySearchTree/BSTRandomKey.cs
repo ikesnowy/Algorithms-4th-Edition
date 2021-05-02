@@ -4,7 +4,7 @@ namespace BinarySearchTree
 {
     public class BstRandomKey<TKey, TValue> : Bst<TKey, TValue> where TKey : IComparable<TKey>
     {
-        private static readonly Random Random = new();
+        private readonly Random _random = new();
 
         /// <summary>
         /// 从树中随机返回一个键。
@@ -12,8 +12,8 @@ namespace BinarySearchTree
         /// <returns>树中的某一个键值。</returns>
         public TKey RandomKey()
         {
-            var rank = Random.Next(1, Size() + 1);
-            return GetKeyWithRank(root, rank);
+            var rank = _random.Next(1, Size() + 1);
+            return GetKeyWithRank(Root, rank);
         }
 
         /// <summary>

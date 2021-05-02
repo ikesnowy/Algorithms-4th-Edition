@@ -193,7 +193,7 @@ namespace BalancedSearchTree
         public virtual bool Contains(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to Contains is null!");
+                throw new ArgumentNullException(nameof(key), @"argument to Contains is null!");
             var result = Get(key);
             if (default(TValue) != null)
             {

@@ -1,84 +1,83 @@
 ﻿using System;
 using BinarySearchTree;
 
-namespace _3._2._39
+var n = 10000;
+var trial = 100;
+for (var i = 0; i < 3; i++)
 {
-    class Program
+    var odds = new int[n];
+    var evens = new int[n];
+    var bst = new BstAnalysis<int, int>();
+    for (var j = 100; j < n; j++)
     {
-        static void Main(string[] args)
-        {
-            var n = 10000;
-            var trial = 100;
-            for (var i = 0; i < 3; i++)
-            {
-                var odds = new int[n];
-                var evens = new int[n];
-                var bst = new BstAnalysis<int, int>();
-                for (var j = 100; j < n; j++)
-                {
-                    evens[j] = j;
-                    odds[j] = j + 1;
-                }
-                Shuffle(odds);
-                foreach (var item in odds)
-                {
-                    bst.Put(item, item);
-                }
+        evens[j] = j;
+        odds[j] = j + 1;
+    }
 
-                Console.WriteLine("n:" + n);
-                // hit
-                Shuffle(odds);
-                Test(bst, odds, trial, "hit");
+    Shuffle(odds);
+    foreach (var item in odds)
+    {
+        bst.Put(item, item);
+    }
 
-                // miss
-                Shuffle(evens);
-                Test(bst, evens, trial, "miss");
+    Console.WriteLine(@"n:" + n);
+    // hit
+    Shuffle(odds);
+    Test(bst, odds, trial, "hit");
 
-                n *= 10;
-            }
-        }
+    // miss
+    Shuffle(evens);
+    Test(bst, evens, trial, "miss");
 
-        static void Test(BstAnalysis<int, int> bst, int[] testCases, int trials, string label)
-        {
-            var testRecords = new long[trials];
-            for (var j = 0; j < trials; j++)
-            {
-                bst.CompareTimes = 0;             // reset
-                bst.Get(testCases[j]);            // test
-                testRecords[j] = bst.CompareTimes; // record
-            }
+    n *= 10;
+}
 
-            var testAverage = 0d;        // 'd' for double
-            foreach (var record in testRecords)
-            {
-                testAverage += record;
-            }
+static void Test(BstAnalysis<int, int> bst, int[] testCases, int trials, string label)
+{
+    var testRecords = new long[trials];
+    for (var j = 0; j < trials; j++)
+    {
+        bst.CompareTimes = 0; // reset
+        bst.Get(testCases[j]); // test
+        testRecords[j] = bst.CompareTimes; // record
+    }
 
-            testAverage /= testRecords.Length;
+    var testAverage = 0d; // 'd' for double
+    foreach (var record in testRecords)
+    {
+        testAverage += record;
+    }
 
-            var testStandardDeviation = 0d;
-            foreach (var record in testRecords)
-            {
-                testStandardDeviation += (record - testAverage) * (record - testAverage);
-            }
+    testAverage /= testRecords.Length;
 
-            testStandardDeviation /= testRecords.Length;
-            testStandardDeviation = Math.Sqrt(testStandardDeviation);
-            // 2lnN + 2γ - 3
-            var expect = 2 * Math.Log(testCases.Length) + 2 * 0.5772156649 - 3;
-            Console.WriteLine(label + ": ActualAverage: " + testAverage + "\tExpectAverage: " + expect + "\tStandardDevitation:" + testStandardDeviation);
-        }
+    var testStandardDeviation = 0d;
+    foreach (var record in testRecords)
+    {
+        testStandardDeviation += (record - testAverage) * (record - testAverage);
+    }
 
-        static void Shuffle<T>(T[] a)
-        {
-            var random = new Random();
-            for (var i = 0; i < a.Length; i++)
-            {
-                var r = i + random.Next(a.Length - i);
-                var temp = a[i];
-                a[i] = a[r];
-                a[r] = temp;
-            }
-        }
+    testStandardDeviation /= testRecords.Length;
+    testStandardDeviation = Math.Sqrt(testStandardDeviation);
+    // 2lnN + 2γ - 3
+    var expect = 2 * Math.Log(testCases.Length) + 2 * 0.5772156649 - 3;
+    Console.WriteLine(
+        label
+        + @": ActualAverage: "
+        + testAverage
+        + @"\tExpectAverage: "
+        + expect
+        + @"\tStandardDeviation:"
+        + testStandardDeviation);
+}
+
+static void Shuffle<T>(T[] a)
+{
+    var random = new Random();
+    for (var i = 0; i < a.Length; i++)
+    {
+        var r = i + random.Next(a.Length - i);
+        var temp = a[i];
+        a[i] = a[r];
+        a[r] = temp;
     }
 }
