@@ -24,7 +24,6 @@ for (var i = 0; i < input.Length; i++)
 {
     if (input[i] == ' ')
     {
-        continue;
     }
     else if (input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/')
     {

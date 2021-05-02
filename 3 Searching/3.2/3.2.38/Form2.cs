@@ -18,7 +18,7 @@ namespace _3._2._38
             {
                 _bst.Put(key, key);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -36,7 +36,7 @@ namespace _3._2._38
             {
                 _bst.Delete(key);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

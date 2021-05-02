@@ -3,7 +3,7 @@
     /// <summary>
     /// 用两个栈模拟的队列。
     /// </summary>
-    /// <typeparam name="Item">队列中的元素。</typeparam>
+    /// <typeparam name="TItem">队列中的元素。</typeparam>
     class StackQueue<TItem>
     {
         readonly Stack<TItem> _h;// 用于保存出队元素

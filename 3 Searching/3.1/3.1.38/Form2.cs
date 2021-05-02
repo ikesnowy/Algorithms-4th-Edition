@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+// ReSharper disable PossibleLossOfFraction
 
 namespace _3._1._38
 {

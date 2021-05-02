@@ -1,11 +1,12 @@
 ﻿using System;
+// ReSharper disable CognitiveComplexity
 
 namespace PriorityQueue
 {
     /// <summary>
     /// 基于链式结构实现的最大堆。
     /// </summary>
-    /// <typeparam name="Key">优先队列中保存的数据类型。</typeparam>
+    /// <typeparam name="TKey">优先队列中保存的数据类型。</typeparam>
     public class MaxPqLinked<TKey> : IMaxPq<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>
@@ -164,7 +165,6 @@ namespace PriorityQueue
             _last = item;
             _nodesCount++;
             Swim(item);
-            return;
         }
 
         /// <summary>
@@ -210,9 +210,9 @@ namespace PriorityQueue
         /// <param name="k">需要下沉的结点。</param>
         private void Sink(TreeNode<TKey> k)
         {
-            while (k.Left != null || k.Right != null)
+            while (k?.Left != null || k?.Right != null)
             {
-                TreeNode<TKey> toExch = null;
+                TreeNode<TKey> toExch;
                 if (k.Left != null && k.Right != null)
                     toExch = Less(k.Left, k.Right) ? k.Right : k.Left;
                 else if (k.Left != null)

@@ -30,20 +30,20 @@ namespace _2._1._32
                 }
                 else
                 {
-                    ErrorLabel.Text = "请至少选择一项排序算法";
+                    ErrorLabel.Text = @"请至少选择一项排序算法";
                 }
             }
             catch (ArgumentNullException)
             {
-                ErrorLabel.Text = "输入值不能为空。";
+                ErrorLabel.Text = @"输入值不能为空。";
             }
             catch (FormatException)
             {
-                ErrorLabel.Text = "格式错误（是否输入了空值？）";
+                ErrorLabel.Text = @"格式错误（是否输入了空值？）";
             }
             catch (OverflowException)
             {
-                ErrorLabel.Text = "数据过大";
+                ErrorLabel.Text = @"数据过大";
             }
         }
     }

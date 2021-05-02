@@ -10,7 +10,6 @@ foreach (var c in input)
 {
     if (c == ' ')
     {
-        continue;
     }
     else if (c == '*')
     {

@@ -16,7 +16,7 @@ Console.WriteLine(t);
 static T Select<T>(T[] a, int k, int lo, int hi) where T : IComparable<T>
 {
     if (k > a.Length || k < 0)
-        throw new ArgumentOutOfRangeException("select out of bound");
+        throw new ArgumentOutOfRangeException(nameof(k), "select out of bound");
     if (lo >= hi)
         return a[lo];
 

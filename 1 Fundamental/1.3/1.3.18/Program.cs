@@ -2,17 +2,17 @@
 using Generics;
 
 var x = new Node<string>();
-x.item = "first";
+x.Item = "first";
 var y = new Node<string>();
-y.item = "second";
-x.next = y;
+y.Item = "second";
+x.Next = y;
 var z = new Node<string>();
-z.item = "third";
-y.next = z;
+z.Item = "third";
+y.Next = z;
 
-Console.WriteLine("x: " + x.item);
-Console.WriteLine("x.next: " + x.next.item);
-x.next = x.next.next;
+Console.WriteLine("x: " + x.Item);
+Console.WriteLine("x.next: " + x.Next.Item);
+x.Next = x.Next.Next;
 Console.WriteLine();
-Console.WriteLine("x: " + x.item);
-Console.WriteLine("x.next: " + x.next.item);
+Console.WriteLine("x: " + x.Item);
+Console.WriteLine("x.next: " + x.Next.Item);

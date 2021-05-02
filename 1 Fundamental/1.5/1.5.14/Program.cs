@@ -1,7 +1,8 @@
 ﻿using UnionFind;
+// ReSharper disable UnusedVariable
 
 // 具体实现参见 WeightedQuickUnionByHeightUF.cs
-new WeightedQuickUnionByHeightUf(10);
+var weightedQuickUnionByHeightUf = new WeightedQuickUnionByHeightUf(10);
 
 // 证明：
 // 一次 Union 操作只可能发生如下两种情况。

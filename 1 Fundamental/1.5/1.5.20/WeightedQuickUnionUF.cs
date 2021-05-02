@@ -7,18 +7,17 @@ namespace _1._5._20
     /// </summary>
     public class WeightedQuickUnionUf
     {
-        protected LinkedList<int> parent;       // 记录各个结点的父级。
-        protected LinkedList<int> size;         // 记录各个树的大小。
-        protected int count;                    // 分量数目。
+        protected LinkedList<int> Parent;       // 记录各个结点的父级。
+        protected LinkedList<int> Size;         // 记录各个树的大小。
+        protected int Count;                    // 分量数目。
 
         /// <summary>
         /// 建立使用加权 quick-union 的并查集。
         /// </summary>
-        /// <param name="n">并查集的大小。</param>
         public WeightedQuickUnionUf()
         {
-            parent = new LinkedList<int>();
-            size = new LinkedList<int>();
+            Parent = new LinkedList<int>();
+            Size = new LinkedList<int>();
         }
 
         /// <summary>
@@ -27,7 +26,7 @@ namespace _1._5._20
         /// <returns>parent 数组。</returns>
         public LinkedList<int> GetParent()
         {
-            return parent;
+            return Parent;
         }
 
         /// <summary>
@@ -36,7 +35,7 @@ namespace _1._5._20
         /// <returns>返回 size 数组。</returns>
         public LinkedList<int> GetSize()
         {
-            return size;
+            return Size;
         }
 
         /// <summary>
@@ -45,10 +44,10 @@ namespace _1._5._20
         /// <returns>新结点的下标。</returns>
         public int NewSite()
         {
-            parent.Insert(parent.Size(), parent.Size());
-            size.Insert(1, size.Size());
-            count++;
-            return parent.Size() - 1;
+            Parent.Insert(Parent.Size(), Parent.Size());
+            Size.Insert(1, Size.Size());
+            Count++;
+            return Parent.Size() - 1;
         }
 
         /// <summary>
@@ -59,9 +58,9 @@ namespace _1._5._20
         public int Find(int p)
         {
             Validate(p);
-            while (p != parent.Find(p))
+            while (p != Parent.Find(p))
             {
-                p = parent.Find(p);
+                p = Parent.Find(p);
             }
             return p;
         }
@@ -80,17 +79,17 @@ namespace _1._5._20
                 return;
             }
 
-            if (size.Find(rootP) < size.Find(rootQ))
+            if (Size.Find(rootP) < Size.Find(rootQ))
             {
-                parent.Motify(rootP, rootQ);
-                size.Motify(rootQ, size.Find(rootQ) + size.Find(rootP));
+                Parent.Motify(rootP, rootQ);
+                Size.Motify(rootQ, Size.Find(rootQ) + Size.Find(rootP));
             }
             else
             {
-                parent.Motify(rootQ, rootP);
-                size.Motify(rootP, size.Find(rootQ) + size.Find(rootP));
+                Parent.Motify(rootQ, rootP);
+                Size.Motify(rootP, Size.Find(rootQ) + Size.Find(rootP));
             }
-            count--;
+            Count--;
         }
 
         /// <summary>
@@ -99,7 +98,7 @@ namespace _1._5._20
         /// <param name="p">输入的 p 值。</param>
         protected void Validate(int p)
         {
-            var n = parent.Size();
+            var n = Parent.Size();
             if (p < 0 || p >= n)
             {
                 throw new ArgumentException("index" + p + " is not between 0 and " + (n - 1));

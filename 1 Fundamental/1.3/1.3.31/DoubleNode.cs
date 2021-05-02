@@ -9,14 +9,14 @@ namespace _1._3._31
      /// <summary>
      /// 双向链表。
      /// </summary>
-     /// <typeparam name="Item">链表中要存放的元素。</typeparam>
+     /// <typeparam name="TItem">链表中要存放的元素。</typeparam>
     public class DoubleLinkList<TItem> : IEnumerable<TItem>
     {
         private class DoubleNode<T>
         {
-            public T item;
-            public DoubleNode<T> prev;
-            public DoubleNode<T> next;
+            public T Item;
+            public DoubleNode<T> Prev;
+            public DoubleNode<T> Next;
         }
         DoubleNode<TItem> _first;
         DoubleNode<TItem> _last;
@@ -58,13 +58,13 @@ namespace _1._3._31
         {
             var node = new DoubleNode<TItem>
             {
-                item = item,
-                next = _first,
-                prev = null
+                Item = item,
+                Next = _first,
+                Prev = null
             };
             if (_first != null)
             {
-                _first.prev = node;
+                _first.Prev = node;
             }
             else
             {
@@ -82,13 +82,13 @@ namespace _1._3._31
         {
             var node = new DoubleNode<TItem>
             {
-                item = item,
-                next = null,
-                prev = _last
+                Item = item,
+                Next = null,
+                Prev = _last
             };
             if (_last != null)
             {
-                _last.next = node;
+                _last.Next = node;
             }
             else
             {
@@ -111,9 +111,9 @@ namespace _1._3._31
             var current = _first;
             for (var i = 0; i < index; i++)
             {
-                current = current.next;
+                current = current.Next;
             }
-            return current.item;
+            return current.Item;
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace _1._3._31
             var current = _first;
             for (var i = 0; i < index; i++)
             {
-                current = current.next;
+                current = current.Next;
             }
             return current;
         }
@@ -153,12 +153,12 @@ namespace _1._3._31
             var current = Find(index);
             var node = new DoubleNode<TItem>
             {
-                next = current,
-                prev = current.prev,
-                item = item
+                Next = current,
+                Prev = current.Prev,
+                Item = item
             };
-            current.prev.next = node;
-            current.prev = node;
+            current.Prev.Next = node;
+            current.Prev = node;
             _count++;
         }
 
@@ -181,12 +181,12 @@ namespace _1._3._31
             var current = Find(index);
             var node = new DoubleNode<TItem>
             {
-                prev = current,
-                next = current.next,
-                item = item
+                Prev = current,
+                Next = current.Next,
+                Item = item
             };
-            current.next.prev = node;
-            current.next = node;
+            current.Next.Prev = node;
+            current.Next = node;
             _count++;
         }
 
@@ -199,8 +199,8 @@ namespace _1._3._31
             if (IsEmpty())
                 throw new InvalidOperationException("List underflow");
 
-            var temp = _first.item;
-            _first = _first.next;
+            var temp = _first.Item;
+            _first = _first.Next;
             _count--;
             if (IsEmpty())
             {
@@ -208,7 +208,7 @@ namespace _1._3._31
             }
             else
             {
-                _first.prev = null;
+                _first.Prev = null;
             }
             return temp;
         }
@@ -222,8 +222,8 @@ namespace _1._3._31
             if (IsEmpty())
                 throw new InvalidOperationException("List underflow");
 
-            var temp = _last.item;
-            _last = _last.prev;
+            var temp = _last.Item;
+            _last = _last.Prev;
             _count--;
             if (IsEmpty())
             {
@@ -231,7 +231,7 @@ namespace _1._3._31
             }
             else
             {
-                _last.next = null;
+                _last.Next = null;
             }
             return temp;
         }
@@ -257,9 +257,9 @@ namespace _1._3._31
             }
 
             var current = Find(index);
-            var temp = current.item;
-            current.prev.next = current.next;
-            current.next.prev = current.prev;
+            var temp = current.Item;
+            current.Prev.Next = current.Next;
+            current.Next.Prev = current.Prev;
             _count--;
             return temp;
         }
@@ -295,13 +295,13 @@ namespace _1._3._31
             public DoubleLinkListEnumerator(DoubleNode<TItem> first)
             {
                 _current = new DoubleNode<TItem>();
-                _current.next = first;
-                this._first = _current;
+                _current.Next = first;
+                _first = _current;
             }
 
-            TItem IEnumerator<TItem>.Current => _current.item;
+            TItem IEnumerator<TItem>.Current => _current.Item;
 
-            object IEnumerator.Current => _current.item;
+            object IEnumerator.Current => _current.Item;
 
             void IDisposable.Dispose()
             {
@@ -311,9 +311,9 @@ namespace _1._3._31
 
             bool IEnumerator.MoveNext()
             {
-                if (_current.next == null)
+                if (_current.Next == null)
                     return false;
-                _current = _current.next;
+                _current = _current.Next;
                 return true;
             }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 
 namespace Geometry
@@ -149,7 +150,7 @@ namespace Geometry
                 return false;
             }
             var that = (Interval1D)obj;
-            return Min == that.Min && Max == that.Max;
+            return Math.Abs(Min - that.Min) < double.Epsilon * 5 && Math.Abs(Max - that.Max) < double.Epsilon * 5;
         }
 
         /// <summary>
@@ -167,6 +168,8 @@ namespace Geometry
         {
             public override int Compare(Interval1D a, Interval1D b)
             {
+                Debug.Assert(a != null, nameof(a) + " != null");
+                Debug.Assert(b != null, nameof(b) + " != null");
                 if (a.Min < b.Min)
                 {
                     return -1;
@@ -194,6 +197,8 @@ namespace Geometry
         {
             public override int Compare(Interval1D a, Interval1D b)
             {
+                Debug.Assert(a != null, nameof(a) + " != null");
+                Debug.Assert(b != null, nameof(b) + " != null");
                 if (a.Max < b.Max)
                 {
                     return -1;
@@ -221,7 +226,9 @@ namespace Geometry
         {
             public override int Compare(Interval1D a, Interval1D b)
             {
+                Debug.Assert(a != null, nameof(a) + " != null");
                 var alen = a.Length();
+                Debug.Assert(b != null, nameof(b) + " != null");
                 var blen = b.Length();
 
                 if (alen < blen)

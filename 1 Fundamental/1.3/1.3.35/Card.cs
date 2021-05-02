@@ -10,8 +10,8 @@
 
         public Card(Suit suit, int number)
         {
-            this._suit = suit;
-            this._number = number;
+            _suit = suit;
+            _number = number;
         }
 
         public override string ToString()

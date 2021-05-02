@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+// ReSharper disable CognitiveComplexity
 
 namespace SymbolTable
 {
@@ -40,6 +41,7 @@ namespace SymbolTable
         /// </summary>
         /// <param name="filename">输入文件。</param>
         /// <param name="dictionaryFile">字典文件。</param>
+        /// <param name="minLength">最小长度。</param>
         public static void LookUpDictionary(string filename, string dictionaryFile, int minLength)
         {
             // 初始化字典
@@ -128,7 +130,6 @@ namespace SymbolTable
         /// <returns>文本文档出现频率最高的字符串。</returns>
         public static string MostFrequentlyWord(string filename, int minLength, ISt<string, int> st)
         {
-            int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
 
             var inputs = 
@@ -141,7 +142,6 @@ namespace SymbolTable
             {
                 if (s.Length < minLength)
                     continue;
-                words++;
                 if (st.Contains(s))
                 {
                     st.Put(s, st.Get(s) + 1);
@@ -149,7 +149,6 @@ namespace SymbolTable
                 else
                 {
                     st.Put(s, 1);
-                    distinct++;
                 }
             }
 
@@ -172,7 +171,6 @@ namespace SymbolTable
         /// <returns>文本文档出现频率最高的字符串。</returns>
         public static string MostFrequentlyWord(string filename, int counts, int minLength, ISt<string, int> st)
         {
-            int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
 
             var inputs =
@@ -188,7 +186,7 @@ namespace SymbolTable
                     counts++;
                     continue;
                 }
-                words++;
+
                 if (st.Contains(inputs[i]))
                 {
                     st.Put(inputs[i], st.Get(inputs[i]) + 1);
@@ -196,7 +194,6 @@ namespace SymbolTable
                 else
                 {
                     st.Put(inputs[i], 1);
-                    distinct++;
                 }
             }
 
@@ -219,7 +216,6 @@ namespace SymbolTable
         /// <returns>每次 put 的代价。</returns>
         public static int[] MostFrequentlyWordAnalysis(string filename, int minLength, IStAnalysis<string, int> st)
         {
-            int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
 
             var inputs =
@@ -233,13 +229,11 @@ namespace SymbolTable
             {
                 if (inputs[i].Length < minLength)
                     continue;
-                words++;
                 if (st.Contains(inputs[i]))
                     st.Put(inputs[i], st.Get(inputs[i]) + 1);
                 else
                 {
                     st.Put(inputs[i], 1);
-                    distinct++;
                 }
                 compares.Add(st.ArrayVisit);
             }            
@@ -271,7 +265,6 @@ namespace SymbolTable
             var sw = Stopwatch.StartNew();
 
             var callTime = 0;
-            int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
 
             var inputs =
@@ -284,7 +277,6 @@ namespace SymbolTable
             {
                 if (inputs[i].Length < minLength)
                     continue;
-                words++;
                 if (st.Contains(inputs[i]))
                 {
                     st.Put(inputs[i], st.Get(inputs[i]) + 1);
@@ -298,7 +290,6 @@ namespace SymbolTable
                     callTime++;
                     time.Add(sw.ElapsedMilliseconds);
                     call.Add(callTime);
-                    distinct++;
                 }
             }
 
@@ -329,7 +320,6 @@ namespace SymbolTable
         /// <returns>文本文档出现频率最高的字符串数组。</returns>
         public static string[] MostFrequentlyWords(string filename, int minLength, ISt<string, int> st)
         {
-            int distinct = 0, words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
 
             var inputs =
@@ -342,7 +332,6 @@ namespace SymbolTable
             {
                 if (s.Length < minLength)
                     continue;
-                words++;
                 if (st.Contains(s))
                 {
                     st.Put(s, st.Get(s) + 1);
@@ -350,7 +339,6 @@ namespace SymbolTable
                 else
                 {
                     st.Put(s, 1);
-                    distinct++;
                 }
             }
 

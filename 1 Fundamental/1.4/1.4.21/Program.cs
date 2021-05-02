@@ -1,7 +1,7 @@
 ﻿using System;
 using Measurement;
 
-var split = new char[1] { '\n' };
+var split = new[] { '\n' };
 var input = TestCase.Properties.Resources._2Kints.Split(split, StringSplitOptions.RemoveEmptyEntries);
 var a = new int[input.Length];
 for (var i = 0; i < input.Length; i++)

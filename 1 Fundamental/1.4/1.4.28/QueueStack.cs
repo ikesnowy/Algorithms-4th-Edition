@@ -3,7 +3,7 @@
     /// <summary>
     /// 用一条队列模拟的栈。
     /// </summary>
-    /// <typeparam name="Item">栈中保存的元素。</typeparam>
+    /// <typeparam name="TItem">栈中保存的元素。</typeparam>
     class QueueStack<TItem>
     {
         readonly Queue<TItem> _queue;

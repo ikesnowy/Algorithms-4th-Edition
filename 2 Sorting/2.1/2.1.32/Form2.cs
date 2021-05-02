@@ -8,9 +8,8 @@ namespace _2._1._32
 {
     public partial class Form2 : Form
     {
-        readonly BaseSort _sort;
-        int _n;
-        readonly double[] _result;
+        private readonly BaseSort _sort;
+        private readonly double[] _result;
 
         /// <summary>
         /// 构造一个绘图结果窗口。
@@ -20,8 +19,7 @@ namespace _2._1._32
         public Form2(BaseSort sort, int n)
         {
             InitializeComponent();
-            this._sort = sort;
-            this._n = n;
+            _sort = sort;
             _result = Test(n);
             timer1.Interval = 1000;
             timer1.Start();

@@ -7,7 +7,7 @@ namespace _1._3._33
     /// <summary>
     /// 可自动扩容的双端队列。
     /// </summary>
-    /// <typeparam name="Item">队列中要存放的元素。</typeparam>
+    /// <typeparam name="TItem">队列中要存放的元素。</typeparam>
     public class ResizingArrayDeque<TItem> : IEnumerable<TItem>
     {
         private TItem[] _deque;
@@ -149,9 +149,9 @@ namespace _1._3._33
 
             public ResizingDequeEnumerator(TItem[] deque, int first, int count)
             {
-                this._deque = deque;
-                this._first = first;
-                this._count = count;
+                _deque = deque;
+                _first = first;
+                _count = count;
                 _current = -1;
             }
 

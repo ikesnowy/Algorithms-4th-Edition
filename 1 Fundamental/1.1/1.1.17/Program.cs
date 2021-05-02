@@ -1,4 +1,5 @@
 ﻿using System;
+// ReSharper disable FunctionRecursiveOnAllPaths
 
 Console.WriteLine($@"{ExR2(6)}"); // 抛出 StackOverflow Exception
 

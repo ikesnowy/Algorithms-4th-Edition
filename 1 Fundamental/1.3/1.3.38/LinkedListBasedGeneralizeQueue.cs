@@ -5,13 +5,13 @@ namespace _1._3._38
     /// <summary>
     /// 以链表为基础的队列。
     /// </summary>
-    /// <typeparam name="Item">队列中要保存的元素。</typeparam>
+    /// <typeparam name="TItem">队列中要保存的元素。</typeparam>
     class LinkedListBasedGeneralizeQueue<TItem>
     {
         private class Node<T>
         {
-            public T item;
-            public Node<T> next;
+            public T Item;
+            public Node<T> Next;
             public bool IsVisited;
         }
 
@@ -47,9 +47,9 @@ namespace _1._3._38
             var oldLast = _last;
             _last = new Node<TItem>
             {
-                item = item,
+                Item = item,
                 IsVisited = false,
-                next = null
+                Next = null
             };
 
             if (oldLast == null)
@@ -58,7 +58,7 @@ namespace _1._3._38
             }
             else
             {
-                oldLast.next = _last;
+                oldLast.Next = _last;
             }
             _count++;
         }
@@ -81,16 +81,16 @@ namespace _1._3._38
             var current = _first;
             for (var i = 0; i < k; i++)
             {
-                current = current.next;
+                current = current.Next;
             }
 
-            if (current.IsVisited == true)
+            if (current.IsVisited)
             {
                 throw new ArgumentException("this node had been already deleted");
             }
 
             current.IsVisited = true;
-            return current.item;
+            return current.Item;
         }
 
     }

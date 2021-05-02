@@ -8,7 +8,7 @@ namespace _2._2._18
     /// <summary>
     /// 链表类。
     /// </summary>
-    /// <typeparam name="Item">链表存放的元素类型。</typeparam>
+    /// <typeparam name="TItem">链表存放的元素类型。</typeparam>
     public class LinkedList<TItem> : IEnumerable<TItem>
     {
         private Node<TItem> _first;
@@ -30,8 +30,8 @@ namespace _2._2._18
         public void Insert(TItem item)
         {
             var n = new Node<TItem>();
-            n.item = item;
-            n.next = _first;
+            n.Item = item;
+            n.Next = _first;
             _first = n;
             _count++;
         }
@@ -54,16 +54,16 @@ namespace _2._2._18
             }
 
             var n = new Node<TItem>();
-            n.item = item;
+            n.Item = item;
 
             var front = _first;
             for (var i = 1; i < position; i++)
             {
-                front = front.next;
+                front = front.Next;
             }
 
-            n.next = front.next;
-            front.next = n;
+            n.Next = front.Next;
+            front.Next = n;
             _count++;
         }
 
@@ -82,10 +82,10 @@ namespace _2._2._18
             var current = _first;
             for (var i = 0; i < index; i++)
             {
-                current = current.next;
+                current = current.Next;
             }
 
-            return current.item;
+            return current.Item;
         }
 
         /// <summary>
@@ -101,21 +101,21 @@ namespace _2._2._18
             }
 
             var front = _first;
-            var temp = _first.item;
+            var temp = _first.Item;
             if (index == 0)
             {
-                _first = _first.next;
+                _first = _first.Next;
                 _count--;
                 return temp;
             }
 
             for (var i = 1; i < index; i++)
             {
-                front = front.next;
+                front = front.Next;
             }
 
-            temp = front.next.item;
-            front.next = front.next.next;
+            temp = front.Next.Item;
+            front.Next = front.Next.Next;
             _count--;
             return temp;
         }
@@ -130,7 +130,7 @@ namespace _2._2._18
             var mid = _count / 2;
             for (var i = 0; i < mid - 1; i++)
             {
-                middle = middle.next;
+                middle = middle.Next;
             }
             return middle;
         }
@@ -180,7 +180,7 @@ namespace _2._2._18
         /// 设置表头结点。
         /// </summary>
         /// <param name="first">新的表头结点。</param>
-        public void SetFirst(Node<TItem> first) => this._first = first;
+        public void SetFirst(Node<TItem> first) => _first = first;
 
         /// <summary>
         /// 将两个链表相连接。
@@ -190,9 +190,9 @@ namespace _2._2._18
         public static void Merge(LinkedList<TItem> a, LinkedList<TItem> b)
         {
             var pointer = a._first;
-            while (pointer.next != null)
-                pointer = pointer.next;
-            pointer.next = b._first;
+            while (pointer.Next != null)
+                pointer = pointer.Next;
+            pointer.Next = b._first;
             a._count += b._count;
             b._first = null;
             b._count = 0;
@@ -216,13 +216,13 @@ namespace _2._2._18
             public LinkedListEnumerator(Node<TItem> first)
             {
                 _current = new Node<TItem>();
-                _current.next = first;
-                this._first = _current;
+                _current.Next = first;
+                _first = _current;
             }
 
-            TItem IEnumerator<TItem>.Current => _current.item;
+            TItem IEnumerator<TItem>.Current => _current.Item;
 
-            object IEnumerator.Current => _current.item;
+            object IEnumerator.Current => _current.Item;
 
             void IDisposable.Dispose()
             {
@@ -232,9 +232,9 @@ namespace _2._2._18
 
             bool IEnumerator.MoveNext()
             {
-                if (_current.next == null)
+                if (_current.Next == null)
                     return false;
-                _current = _current.next;
+                _current = _current.Next;
                 return true;
             }
 

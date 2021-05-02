@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Quick;
+// ReSharper disable CognitiveComplexity
 
 namespace _2._3._28
 {
@@ -47,6 +48,7 @@ namespace _2._3._28
         /// <param name="a">需要排序的数组。</param>
         /// <param name="lo">排序范围的起始下标。</param>
         /// <param name="hi">排序范围的结束下标。</param>
+        /// <param name="depth">深度。</param>
         protected int Sort<T>(T[] a, int lo, int hi, int depth) where T: IComparable<T>
         {
             if (hi <= lo)                   // 别越界

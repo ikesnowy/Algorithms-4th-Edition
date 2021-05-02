@@ -7,7 +7,7 @@ namespace Generics
     /// <summary>
     /// 背包类。
     /// </summary>
-    /// <typeparam name="Item">背包中存放的元素类型。</typeparam>
+    /// <typeparam name="TItem">背包中存放的元素类型。</typeparam>
     public class Bag<TItem> : IEnumerable<TItem>
     {
         private Node<TItem> _first;
@@ -48,8 +48,8 @@ namespace Generics
         {
             var oldFirst = _first;
             _first = new Node<TItem>();
-            _first.item = item;
-            _first.next = oldFirst;
+            _first.Item = item;
+            _first.Next = oldFirst;
             _count++;
         }
 
@@ -80,9 +80,9 @@ namespace Generics
             private Node<TItem> _current;
             private Node<TItem> _first;
 
-            TItem IEnumerator<TItem>.Current => _current.item;
+            TItem IEnumerator<TItem>.Current => _current.Item;
 
-            object IEnumerator.Current => _current.item;
+            object IEnumerator.Current => _current.Item;
 
             /// <summary>
             /// 构造一个背包枚举器。
@@ -91,23 +91,22 @@ namespace Generics
             public BagEnumerator(Node<TItem> first)
             {
                 _current = new Node<TItem>();
-                _current.next = first;
-                this._first = _current;
+                _current.Next = first;
+                _first = _current;
             }
 
             void IDisposable.Dispose()
             {
                 _current = null;
                 _first = null;
-                return;
             }
 
             bool IEnumerator.MoveNext()
             {
-                if (_current.next == null)
+                if (_current.Next == null)
                     return false;
 
-                _current = _current.next;
+                _current = _current.Next;
                 return true;
             }
 

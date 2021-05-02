@@ -11,12 +11,12 @@ namespace UnionFind
         /// 记录各个结点的父级的数组。
         /// </summary>
         /// <value>记录了各个结点的父级。</value>
-        protected int[] parent;
+        protected readonly int[] Parent;
         /// <summary>
         /// 连通分量的数目。
         /// </summary>
         /// <value>连通分量的数目。</value>
-        protected int count;
+        protected int TotalCount;
         /// <summary>
         /// 各结点的深度。
         /// </summary>
@@ -31,12 +31,12 @@ namespace UnionFind
         {
             if (n < 0)
                 throw new ArgumentException();
-            count = n;
-            parent = new int[n];
+            TotalCount = n;
+            Parent = new int[n];
             _rank = new byte[n];
             for (var i = 0; i < n; i++)
             {
-                parent[i] = i;
+                Parent[i] = i;
                 _rank[i] = 0;
             }
         }
@@ -49,10 +49,10 @@ namespace UnionFind
         public virtual int Find(int p)
         {
             Validate(p);
-            while (p != parent[p])
+            while (p != Parent[p])
             {
-                parent[p] = parent[parent[p]];
-                p = parent[p];
+                Parent[p] = Parent[Parent[p]];
+                p = Parent[p];
             }
             return p;
         }
@@ -71,15 +71,15 @@ namespace UnionFind
                 return;
 
             if (_rank[rootP] < _rank[rootQ])
-                parent[rootP] = rootQ;
+                Parent[rootP] = rootQ;
             else if (_rank[rootP] > _rank[rootQ])
-                parent[rootQ] = rootP;
+                Parent[rootQ] = rootP;
             else
             {
-                parent[rootQ] = rootP;
+                Parent[rootQ] = rootP;
                 _rank[rootP]++;
             }
-            count--;
+            TotalCount--;
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace UnionFind
         /// <returns>分量的数目。</returns>
         public int Count()
         {
-            return count;
+            return TotalCount;
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace UnionFind
         /// <exception cref="ArgumentException">当 <paramref name="p"/> 不在索引范围内时抛出。</exception>
         protected void Validate(int p)
         {
-            var n = parent.Length;
+            var n = Parent.Length;
             if (p < 0 || p >= n)
             {
                 throw new ArgumentException("index" + p + " is not between 0 and " + (n - 1));

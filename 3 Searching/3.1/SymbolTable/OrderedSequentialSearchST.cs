@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace SymbolTable
 {
@@ -157,6 +158,8 @@ namespace SymbolTable
                 list.Add(pointer.Key);
                 pointer = pointer.Next;
             }
+
+            Debug.Assert(pointer != null, nameof(pointer) + " != null");
             if (pointer.Key.Equals(hi))
                 list.Add(pointer.Key);
             return list;
@@ -224,14 +227,14 @@ namespace SymbolTable
         }
 
         /// <summary>
-        /// 获得排名为 k 的键（从 0 开始）。
+        /// 获得排名为 insert 的键（从 0 开始）。
         /// </summary>
         /// <param name="k">排名</param>
-        /// <returns>获得排名为 k 的键（从 0 开始）。</returns>
+        /// <returns>获得排名为 insert 的键（从 0 开始）。</returns>
         public TKey Select(int k)
         {
             if (k >= _n)
-                throw new Exception("k must less than ST size!");
+                throw new Exception("insert must less than ST size!");
 
             var pointer = _first;
             for (var i = 0; i < k; i++)
@@ -282,20 +285,20 @@ namespace SymbolTable
         private bool Greater(TKey a, TKey b) => a.CompareTo(b) > 0;
 
         /// <summary>
-        /// 将结点 <paramref name="k"/> 插入到 <paramref name="left"/> 和 <paramref name="right"/> 之间。
+        /// 将结点 <paramref name="insert"/> 插入到 <paramref name="left"/> 和 <paramref name="right"/> 之间。
         /// </summary>
         /// <param name="left">作为前驱的结点。</param>
         /// <param name="right">作为后继的结点。</param>
         /// <param name="insert">待插入的结点。</param>
-        private void Insert(Node left, Node right, Node k)
+        private void Insert(Node left, Node right, Node insert)
         {
-            k.Prev = left;
-            k.Next = right;
+            insert.Prev = left;
+            insert.Next = right;
             if (left != null)
-                left.Next = k;
+                left.Next = insert;
 
             if (right != null)
-                right.Prev = k;
+                right.Prev = insert;
         }
     }
 }

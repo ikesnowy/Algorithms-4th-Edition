@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using Quick;
@@ -12,7 +14,7 @@ namespace _2._3._25
         /// <summary>
         /// 测试数组大小。
         /// </summary>
-        public int N = 100;
+        public readonly int N;
 
         public Form2(int n)
         {
@@ -27,7 +29,7 @@ namespace _2._3._25
         /// <param name="e"></param>
         private void Form2_Shown(object sender, EventArgs e)
         {
-            Text = "正在绘图";
+            Text = @"正在绘图";
             backgroundWorker1.RunWorkerAsync();
         }
 
@@ -43,6 +45,7 @@ namespace _2._3._25
             var timeRecord = new double[31];
             for (var i = 0; i <= 30; i++)
             {
+                Debug.Assert(worker != null, nameof(worker) + " != null");
                 worker.ReportProgress(i * 3);
                 quickSortInsertion.M = i;
                 var data = SortCompare.GetRandomArrayInt(N);
@@ -58,7 +61,7 @@ namespace _2._3._25
         /// <param name="e"></param>
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            Text = "正在绘图，已完成 " + e.ProgressPercentage + " %";
+            Text = @"正在绘图，已完成 " + e.ProgressPercentage + @" %";
         }
 
         /// <summary>
@@ -89,7 +92,7 @@ namespace _2._3._25
             // 绘制坐标系。
             graphics.DrawLine(Pens.Black, center.Left, center.Top, center.Left, center.Bottom);
             graphics.DrawLine(Pens.Black, center.Left, center.Bottom, center.Right, center.Bottom);
-            graphics.DrawString(result.Max().ToString(), Font, Brushes.Black, rect.Location);
+            graphics.DrawString(result!.Max().ToString(CultureInfo.CurrentCulture), Font, Brushes.Black, rect.Location);
             graphics.DrawString(result.Length.ToString(), Font, Brushes.Black, center.Right, center.Bottom);
             graphics.DrawString("0", Font, Brushes.Black, rect.Left, center.Bottom);
 
@@ -111,7 +114,7 @@ namespace _2._3._25
 
             graphics.Dispose();
 
-            Text = "绘图结果";
+            Text = @"绘图结果";
             var min = 0;
             for (var i = 0; i < result.Length; i++)
             {
@@ -119,7 +122,7 @@ namespace _2._3._25
                     min = i;
             }
             var report = "M " + min + "\r\ntime " + result[min];
-            MessageBox.Show(report, "最优结果");
+            MessageBox.Show(report, @"最优结果");
         }
     }
 }

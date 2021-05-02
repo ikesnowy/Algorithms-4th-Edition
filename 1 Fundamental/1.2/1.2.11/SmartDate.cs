@@ -25,7 +25,7 @@ namespace _1._2._11
             if (y < 0)
                 return false;
 
-            var isLeapYear = false;
+            var isLeapYear = IsLeapYear(y);
 
             if (m > 12 || m < 1)
                 return false;

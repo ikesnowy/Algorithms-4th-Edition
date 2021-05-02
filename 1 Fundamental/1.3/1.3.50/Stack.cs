@@ -8,13 +8,13 @@ namespace _1._3._50
     /// <summary>
     /// 链栈。
     /// </summary>
-    /// <typeparam name="Item">栈中保存的元素。</typeparam>
+    /// <typeparam name="TItem">栈中保存的元素。</typeparam>
     public class Stack<TItem> : IEnumerable<TItem>
     {
         private Node<TItem> _first;
         private int _count;
-        private int _popcount;
-        private int _pushcount;
+        private int _popCount;
+        private int _pushCount;
 
         /// <summary>
         /// 默认构造函数。
@@ -22,8 +22,8 @@ namespace _1._3._50
         public Stack()
         {
             _first = null;
-            _popcount = 0;
-            _pushcount = 0;
+            _popCount = 0;
+            _pushCount = 0;
             _count = 0;
         }
 
@@ -36,9 +36,9 @@ namespace _1._3._50
             if (s._first != null)
             {
                 _first = new Node<TItem>(s._first);
-                for (var x = _first; x.next != null; x = x.next)
+                for (var x = _first; x.Next != null; x = x.Next)
                 {
-                    x.next = new Node<TItem>(x.next);
+                    x.Next = new Node<TItem>(x.Next);
                 }
             }
         }
@@ -69,10 +69,10 @@ namespace _1._3._50
         {
             var oldFirst = _first;
             _first = new Node<TItem>();
-            _first.item = item;
-            _first.next = oldFirst;
+            _first.Item = item;
+            _first.Next = oldFirst;
             _count++;
-            _pushcount++;
+            _pushCount++;
         }
 
         /// <summary>
@@ -83,10 +83,10 @@ namespace _1._3._50
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack Underflow");
-            var item = _first.item;
-            _first = _first.next;
+            var item = _first.Item;
+            _first = _first.Next;
             _count--;
-            _popcount++;
+            _popCount++;
             return item;
         }
 
@@ -98,7 +98,7 @@ namespace _1._3._50
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack Underflow");
-            return _first.item;
+            return _first.Item;
         }
 
         /// <summary>
@@ -117,14 +117,14 @@ namespace _1._3._50
             else
             {
                 var last = s1._first;
-                while (last.next != null)
+                while (last.Next != null)
                 {
-                    last = last.next;
+                    last = last.Next;
                 }
-                last.next = s2._first;
+                last.Next = s2._first;
                 s1._count += s2._count;
             }
-            s2 = null;
+
             return s1;
         }
 
@@ -170,15 +170,15 @@ namespace _1._3._50
 
             public StackEnumerator(Stack<TItem> s)
             {
-                this._s = s;
+                _s = s;
                 _current = s._first;
-                _popcount = s._popcount;
-                _pushcount = s._pushcount;
+                _popcount = s._popCount;
+                _pushcount = s._pushCount;
             }
 
-            TItem IEnumerator<TItem>.Current => _current.item;
+            TItem IEnumerator<TItem>.Current => _current.Item;
 
-            object IEnumerator.Current => _current.item;
+            object IEnumerator.Current => _current.Item;
 
             void IDisposable.Dispose()
             {
@@ -188,13 +188,13 @@ namespace _1._3._50
 
             bool IEnumerator.MoveNext()
             {
-                if (_s._popcount != _popcount || _s._pushcount != _pushcount)
+                if (_s._popCount != _popcount || _s._pushCount != _pushcount)
                     throw new InvalidOperationException("Stack has been modified");
 
-                if (_current.next == null)
+                if (_current.Next == null)
                     return false;
 
-                _current = _current.next;
+                _current = _current.Next;
                 return true;
             }
 

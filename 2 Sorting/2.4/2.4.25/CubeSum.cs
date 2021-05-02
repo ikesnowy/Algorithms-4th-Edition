@@ -10,15 +10,15 @@ namespace _2._4._25
         /// <summary>
         /// 立方和。
         /// </summary>
-        internal readonly long sum;
+        internal readonly long Sum;
         /// <summary>
         /// 第一个数。
         /// </summary>
-        internal readonly long i;
+        internal readonly long I;
         /// <summary>
         /// 第二个数。
         /// </summary>
-        internal readonly long j;
+        internal readonly long J;
 
         /// <summary>
         /// 建立一个立方和类。
@@ -27,9 +27,9 @@ namespace _2._4._25
         /// <param name="j">立方和的第二个数。</param>
         public CubeSum(long i, long j)
         {
-            sum = i * i * i + j * j * j;
-            this.i = i;
-            this.j = j;
+            Sum = i * i * i + j * j * j;
+            this.I = i;
+            this.J = j;
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace _2._4._25
         /// <returns></returns>
         public int CompareTo(CubeSum other)
         {
-            return sum.CompareTo(other.sum);
+            return Sum.CompareTo(other.Sum);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace _2._4._25
         /// <returns></returns>
         public override string ToString()
         {
-            return sum + " = " + i + "^3 + " + j + "^3";
+            return Sum + " = " + I + "^3 + " + J + "^3";
         }
     }
 }

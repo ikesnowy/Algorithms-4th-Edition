@@ -20,14 +20,14 @@ long pairCount = 0;
 while (!pq.IsEmpty())
 {
     var s = pq.DelMin();
-    if (s.sum == prev.sum)
+    if (s.Sum == prev.Sum)
     {
-        sw.WriteLine(s + " = " + prev.i + "^3 + " + prev.j + "^3");
+        sw.WriteLine(s + " = " + prev.I + "^3 + " + prev.J + "^3");
         pairCount++;
     }
 
-    if (s.j < n)
-        pq.Insert(new CubeSum(s.i, s.j + 1));
+    if (s.J < n)
+        pq.Insert(new CubeSum(s.I, s.J + 1));
     prev = s;
 }
 

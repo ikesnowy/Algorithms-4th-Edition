@@ -92,8 +92,8 @@ namespace _1._5._11
             }
 
             // 判断较大的连通分量和较小的连通分量。
-            var larger = 0;
-            var smaller = 0;
+            int larger;
+            int smaller;
             if (_size[pId] > _size[qId])
             {
                 larger = pId;
@@ -120,7 +120,6 @@ namespace _1._5._11
 
             ArrayVisitCount += _id.Length;
             _count--;
-            return;
         }
 
         /// <summary>

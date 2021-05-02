@@ -5,7 +5,7 @@ namespace PriorityQueue
     /// <summary>
     /// 元素保持输入顺序的优先队列。（基于数组）
     /// </summary>
-    /// <typeparam name="Key">优先队列中的元素类型。</typeparam>
+    /// <typeparam name="TKey">优先队列中的元素类型。</typeparam>
     public class OrderedArrayMaxPq<TKey> : IMaxPq<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>

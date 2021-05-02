@@ -1,4 +1,5 @@
 ﻿using Generics;
+// ReSharper disable InconsistentNaming
 
 namespace _1._3._49
 {

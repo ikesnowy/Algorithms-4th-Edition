@@ -31,7 +31,6 @@ static long Test(IMaxPq<char> pq)
     {
         if (c == ' ')
         {
-            continue;
         }
         else if (c == '*')
         {

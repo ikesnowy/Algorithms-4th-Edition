@@ -31,7 +31,7 @@
         /// <returns>返回 parent 数组。</returns>
         public int[] GetParent()
         {
-            return parent;
+            return Parent;
         }
 
         /// <summary>
@@ -42,9 +42,9 @@
         public override int Find(int p)
         {
             Validate(p);
-            while (p != parent[p])
+            while (p != Parent[p])
             {
-                p = parent[p];
+                p = Parent[p];
                 ArrayVisitCount += 2;
             }
             return p;
@@ -64,9 +64,9 @@
                 return;
             }
 
-            parent[rootP] = rootQ;
+            Parent[rootP] = rootQ;
             ArrayVisitCount++;
-            count--;
+            TotalCount--;
         }
     }
 

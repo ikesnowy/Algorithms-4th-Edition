@@ -13,7 +13,7 @@ namespace _1._4._41
         /// <returns>读入的整型数组</returns>
         private static int[] ReadAllInts(string inputString)
         {
-            var split = new char[1] { '\n' };
+            var split = new[] { '\n' };
             var input = inputString.Split(split, StringSplitOptions.RemoveEmptyEntries);
             var a = new int[input.Length];
             for (var i = 0; i < a.Length; i++)
@@ -92,7 +92,6 @@ namespace _1._4._41
             {
                 times--;
             }
-            prevTime = time;
 
             return ratio / times;
         }
@@ -139,7 +138,6 @@ namespace _1._4._41
             {
                 times--;
             }
-            prevTime = time;
 
             return ratio / times;
         }

@@ -8,7 +8,7 @@ namespace PriorityQueue
     /// <summary>
     /// 包含最小元素引用的最大堆。（数组实现）
     /// </summary>
-    /// <typeparam name="Key">最大堆中保存的元素类型。</typeparam>
+    /// <typeparam name="TKey">最大堆中保存的元素类型。</typeparam>
     public class MaxPqWithMin<TKey> : IMaxPq<TKey>, IEnumerable<TKey> where TKey : class, IComparable<TKey>
     {
         /// <summary>
@@ -79,7 +79,7 @@ namespace PriorityQueue
         public TKey DelMax()
         {
             if (IsEmpty())
-                throw new ArgumentOutOfRangeException("Priority Queue Underflow");
+                throw new InvalidOperationException("Priority Queue Underflow");
 
             var max = _pq[1];
             Exch(1, _n--);

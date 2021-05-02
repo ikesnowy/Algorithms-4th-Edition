@@ -10,12 +10,12 @@
         /// 结点中存放的元素。
         /// </summary>
         /// <value>结点中存放的元素。</value>
-        public T item;
+        public T Item;
         /// <summary>
         /// 下一个结点的引用。
         /// </summary>
         /// <value>下一个结点的引用。</value>
-        public Node<T> next;
+        public Node<T> Next;
 
         /// <summary>
         /// 默认无参构造器。
@@ -28,8 +28,8 @@
         /// <param name="node">要复制的结点。</param>
         public Node(Node<T> node)
         {
-            item = node.item;
-            next = node.next;
+            Item = node.Item;
+            Next = node.Next;
         }
     }
 }

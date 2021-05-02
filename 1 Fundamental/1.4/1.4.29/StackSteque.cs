@@ -3,11 +3,11 @@
     /// <summary>
     /// 用两个栈模拟的 Steque。
     /// </summary>
-    /// <typeparam name="Item">Steque 中的元素类型。</typeparam>
+    /// <typeparam name="TItem">Steque 中的元素类型。</typeparam>
     class StackSteque<TItem>
     {
-        readonly Stack<TItem> _h;
-        readonly Stack<TItem> _;
+        private readonly Stack<TItem> _h;
+        private readonly Stack<TItem> _t;
 
         /// <summary>
         /// 初始化一个 Steque
@@ -15,7 +15,7 @@
         public StackSteque()
         {
             _h = new Stack<TItem>();
-            _ = new Stack<TItem>();
+            _t = new Stack<TItem>();
         }
 
         /// <summary>
@@ -33,9 +33,9 @@
         /// </summary>
         private void ReverseT()
         {
-            while (!_.IsEmpty())
+            while (!_t.IsEmpty())
             {
-                _h.Push(_.Pop());
+                _h.Push(_t.Pop());
             }
         }
 
@@ -46,7 +46,7 @@
         {
             while (!_h.IsEmpty())
             {
-                _.Push(_h.Pop());
+                _t.Push(_h.Pop());
             }
         }
 
@@ -67,7 +67,7 @@
         public void Enqueue(TItem item)
         {
             ReverseH();
-            _.Push(item);
+            _t.Push(item);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return _h.IsEmpty() && _.IsEmpty();
+            return _h.IsEmpty() && _t.IsEmpty();
         }
     }
 }

@@ -5,7 +5,6 @@ namespace PriorityQueue
     /// <summary>
     /// 堆排序类，提供堆排序的静态方法。
     /// </summary>
-    /// <typeparam name="T">需要排序的元素类型。</typeparam>
     public static class Heap
     {
         /// <summary>

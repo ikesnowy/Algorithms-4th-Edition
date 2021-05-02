@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+// ReSharper disable CognitiveComplexity
 
 namespace SortApplication
 {
@@ -21,6 +23,7 @@ namespace SortApplication
         {
             public bool Equals(T x, T y)
             {
+                Debug.Assert(x != null, nameof(x) + " != null");
                 return x.Equals(y);
             }
 
@@ -44,9 +47,9 @@ namespace SortApplication
 
             public int Compare(T x, T y)
             {
-                if (!_fScore.ContainsKey(x))
+                if (!_fScore.ContainsKey(x!))
                     _fScore[x] = int.MaxValue;
-                if (!_fScore.ContainsKey(y))
+                if (!_fScore.ContainsKey(y!))
                     _fScore[y] = int.MaxValue;
                 return _fScore[x].CompareTo(_fScore[y]);
             }
@@ -119,8 +122,7 @@ namespace SortApplication
         /// <summary>
         /// 倒回重建最佳路径。
         /// </summary>
-        /// <param name="status">包含所有状态的数组。</param>
-        /// <param name="from">记载了状态之间顺序的数组。</param>
+        /// <param name="comeFrom">包含所有状态的数组。</param>
         /// <param name="current">当前状态位置。</param>
         /// <returns>重建之后的最短路径。</returns>
         private T[] ReconstructPath(Dictionary<T, T> comeFrom, T current)

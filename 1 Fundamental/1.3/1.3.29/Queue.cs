@@ -8,7 +8,7 @@ namespace _1._3._29
     /// <summary>
     /// 队列类。
     /// </summary>
-    /// <typeparam name="Item">队列中存放的元素。</typeparam>
+    /// <typeparam name="TItem">队列中存放的元素。</typeparam>
     public class Queue<TItem> : IEnumerable<TItem>
     {
         private Node<TItem> _last;
@@ -49,7 +49,7 @@ namespace _1._3._29
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Queue underflow");
-            return _last.next.item;
+            return _last.Next.Item;
         }
 
         /// <summary>
@@ -60,13 +60,13 @@ namespace _1._3._29
         {
             var oldLast = _last;
             _last = new Node<TItem>();
-            _last.item = item;
-            _last.next = _last;
+            _last.Item = item;
+            _last.Next = _last;
 
             if (oldLast != null)
             {
-                _last.next = oldLast.next;
-                oldLast.next = _last;
+                _last.Next = oldLast.Next;
+                oldLast.Next = _last;
             }
             _count++;
         }
@@ -79,8 +79,8 @@ namespace _1._3._29
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Queue underflow");
-            TItem item = _last.next.item;
-            _last.next = _last.next.next;
+            TItem item = _last.Next.Item;
+            _last.Next = _last.Next.Next;
             _count--;
             if (IsEmpty())
                 _last = null;
@@ -116,13 +116,13 @@ namespace _1._3._29
             public QueueEnumerator(Node<TItem> last)
             {
                 _current = new Node<TItem>();
-                _current.next = last.next;
+                _current.Next = last.Next;
                 _first = _current;
             }
 
-            TItem IEnumerator<TItem>.Current => _current.item;
+            TItem IEnumerator<TItem>.Current => _current.Item;
 
-            object IEnumerator.Current => _current.item;
+            object IEnumerator.Current => _current.Item;
 
             void IDisposable.Dispose()
             {
@@ -132,9 +132,9 @@ namespace _1._3._29
 
             bool IEnumerator.MoveNext()
             {
-                if (_current.next == _first.next)
+                if (_current.Next == _first.Next)
                     return false;
-                _current = _current.next;
+                _current = _current.Next;
                 return true;
             }
 
@@ -147,7 +147,7 @@ namespace _1._3._29
 
     public class Node<TItem>
     {
-        public TItem item;
-        public Node<TItem> next;
+        public TItem Item;
+        public Node<TItem> Next;
     }
 }

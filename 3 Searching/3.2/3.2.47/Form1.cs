@@ -24,7 +24,7 @@ namespace _3._2._47
 
             if (lo > hi)
             {
-                label2.Text = "最大值不能小于最小值！";
+                label2.Text = @"最大值不能小于最小值！";
                 return;
             }
 
@@ -39,7 +39,7 @@ namespace _3._2._47
                 {
                     trialResult[j] = await Task.Run(() => Test(i));
                     trialAverage += trialResult[j];
-                    label2.Text = $"Testing... n={i}";
+                    label2.Text = $@"Testing... n={i}";
                 }
 
                 trialAverage /= trialCount;
@@ -57,14 +57,14 @@ namespace _3._2._47
 
             var displayAverage = new Form2
             {
-                Text = "Average"
+                Text = @"Average"
             };
             displayAverage.Show();
             displayAverage.Draw(averages);
 
             var displayStandardDeviation = new Form2
             {
-                Text = "StandardDeviation"
+                Text = @"StandardDeviation"
             };
             displayStandardDeviation.Show();
             displayStandardDeviation.Draw(standardDeviations);

@@ -3,7 +3,7 @@
     /// <summary>
     /// 用三个栈模拟的双向队列。
     /// </summary>
-    /// <typeparam name="Item">双向队列中的元素。</typeparam>
+    /// <typeparam name="TItem">双向队列中的元素。</typeparam>
     class Deque<TItem>
     {
         readonly Stack<TItem> _left;

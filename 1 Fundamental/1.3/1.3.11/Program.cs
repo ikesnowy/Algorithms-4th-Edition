@@ -1,5 +1,6 @@
 ﻿using System;
 using Generics;
+// ReSharper disable RedundantJumpStatement
 
 var stack = new Stack<int>();
 

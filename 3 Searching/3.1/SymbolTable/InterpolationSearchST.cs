@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+// ReSharper disable SuspiciousTypeConversion.Global
 
 namespace SymbolTable
 {
@@ -286,11 +287,11 @@ namespace SymbolTable
         /// 为符号表重新分配空间。
         /// </summary>
         /// <param name="capacity">重新分配的大小。</param>
-        /// <exception cref="ArgumentOutOfRangeException">当 <paramref name="capacity"/> < <see cref="_n"/> 时抛出该异常。</exception>
+        /// <exception cref="ArgumentOutOfRangeException">当 <paramref name="capacity"/> <see cref="_n"/> 时抛出该异常。</exception>
         private void Resize(int capacity)
         {
             if (capacity < _n)
-                throw new ArgumentOutOfRangeException("分配容量不能小于表中元素数量。");
+                throw new ArgumentOutOfRangeException(nameof(capacity), "分配容量不能小于表中元素数量。");
             var tempKeys = new double[capacity];
             var tempValues = new int[capacity];
             for (var i = 0; i < _n; i++)

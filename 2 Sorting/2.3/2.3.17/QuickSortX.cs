@@ -61,12 +61,18 @@ namespace _2._3._17
             var v = a[lo];
             while (true)
             {
-                while (Less(a[++i], v)) ;
-             //     if (i == hi)
-             //         break;
-                while (Less(v, a[--j])) ;
-             //     if (j == lo)
-             //         break;
+                while (Less(a[++i], v))
+                {
+                }
+
+                // if (i == hi)
+                //     break;
+                while (Less(v, a[--j]))
+                {
+                }
+
+                //     if (j == lo)
+                //         break;
                 if (i >= j)
                     break;
                 Exch(a, i, j);

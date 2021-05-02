@@ -7,7 +7,7 @@ namespace PriorityQueue
     /// <summary>
     /// 索引优先队列。
     /// </summary>
-    /// <typeparam name="Key">优先队列中包含的元素。</typeparam>
+    /// <typeparam name="TKey">优先队列中包含的元素。</typeparam>
     public class IndexMaxPq<TKey> : IEnumerable<int> where TKey : IComparable<TKey>
     {
         /// <summary>
@@ -51,7 +51,7 @@ namespace PriorityQueue
         public void ChangeKey(int i, TKey k)
         {
             if (!Contains(i))
-                throw new ArgumentNullException("队列中没有该索引");
+                throw new ArgumentNullException(nameof(i), "队列中没有该索引");
             _keys[i] = k;
             Swim(_qp[i]);
             Sink(_qp[i]);
@@ -71,7 +71,7 @@ namespace PriorityQueue
         public void Delete(int i)
         {
             if (!Contains(i))
-                throw new ArgumentOutOfRangeException("index is not in the priority queue");
+                throw new ArgumentOutOfRangeException(nameof(i), "index is not in the priority queue");
             var index = _qp[i];
             Exch(index, _n--);
             Swim(index);
@@ -87,7 +87,7 @@ namespace PriorityQueue
         public int DelMax()
         {
             if (_n == 0)
-                throw new ArgumentOutOfRangeException("Priority Queue Underflow");
+                throw new InvalidOperationException("Priority Queue Underflow");
             var max = _pq[1];
             Exch(1, _n--);
             Sink(1);
@@ -106,7 +106,7 @@ namespace PriorityQueue
         public void DecreaseKey(int i, TKey key)
         {
             if (!Contains(i))
-                throw new ArgumentOutOfRangeException("index is not in the priority queue");
+                throw new ArgumentOutOfRangeException(nameof(i), "index is not in the priority queue");
             if (_keys[i].CompareTo(key) <= 0)
                 throw new ArgumentException("Calling IncreaseKey() with given argument would not strictly increase the Key");
 
@@ -122,7 +122,7 @@ namespace PriorityQueue
         public void IncreaseKey(int i, TKey key)
         {
             if (!Contains(i))
-                throw new ArgumentOutOfRangeException("index is not in the priority queue");
+                throw new ArgumentOutOfRangeException(nameof(i), "index is not in the priority queue");
             if (_keys[i].CompareTo(key) >= 0)
                 throw new ArgumentException("Calling IncreaseKey() with given argument would not strictly increase the Key");
 
@@ -161,7 +161,7 @@ namespace PriorityQueue
         public TKey KeyOf(int i)
         {
             if (!Contains(i))
-                throw new ArgumentNullException("队列中没有该索引");
+                throw new ArgumentNullException(nameof(i), "队列中没有该索引");
             return _keys[i];
         }
 
@@ -173,7 +173,7 @@ namespace PriorityQueue
         public int MaxIndex()
         {
             if (_n == 0)
-                throw new ArgumentOutOfRangeException("Priority Queue Underflow");
+                throw new InvalidOperationException("Priority Queue Underflow");
             return _pq[1];
         }
 
@@ -185,7 +185,7 @@ namespace PriorityQueue
         public TKey MaxKey()
         {
             if (_n == 0)
-                throw new ArgumentOutOfRangeException("Priority Queue Underflow");
+                throw new InvalidOperationException("Priority Queue Underflow");
             return _keys[_pq[1]];
         }
 

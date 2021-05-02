@@ -34,7 +34,7 @@
         {
             Validate(p);
             ArrayVisitCount++;
-            return parent[p];
+            return Parent[p];
         }
 
         /// <summary>
@@ -48,7 +48,7 @@
             Validate(p);
             Validate(q);
             ArrayVisitCount += 2;
-            return parent[p] == parent[q];
+            return Parent[p] == Parent[q];
         }
 
         /// <summary>
@@ -60,8 +60,8 @@
         {
             Validate(p);
             Validate(q);
-            var pId = parent[p];
-            var qId = parent[q];
+            var pId = Parent[p];
+            var qId = Parent[q];
             ArrayVisitCount += 2;
 
             // 如果两个结点同属于一个连通分量，那么什么也不做。
@@ -70,18 +70,17 @@
                 return;
             }
 
-            for (var i = 0; i < parent.Length; i++)
+            for (var i = 0; i < Parent.Length; i++)
             {
-                if (parent[i] == pId)
+                if (Parent[i] == pId)
                 {
-                    parent[i] = qId;
+                    Parent[i] = qId;
                     ArrayVisitCount++;
                 }
             }
 
-            ArrayVisitCount += parent.Length;
-            count--;
-            return;
+            ArrayVisitCount += Parent.Length;
+            TotalCount--;
         }
 
         /// <summary>
@@ -90,7 +89,7 @@
         /// <returns>parent 数组。</returns>
         public int[] GetParent()
         {
-            return parent;
+            return Parent;
         }
     }
 }

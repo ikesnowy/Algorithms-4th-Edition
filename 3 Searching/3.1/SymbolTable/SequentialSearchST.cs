@@ -47,7 +47,7 @@ namespace SymbolTable
         public bool Contains(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to contains() can't be null!");
+                throw new ArgumentNullException(nameof(key), "argument to contains() can't be null!");
             for (var pointer = _first; pointer != null; pointer = pointer.Next)
                 if (pointer.Key.Equals(key))
                     return true;
@@ -61,7 +61,7 @@ namespace SymbolTable
         public void Delete(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("key can't be null");
+                throw new ArgumentNullException(nameof(key), @"key can't be null");
             Node before = null, target = _first;
             while (target != null && !target.Key.Equals(key))
             {
@@ -81,7 +81,7 @@ namespace SymbolTable
         private void Delete(Node before, Node target)
         {
             if (target == null)
-                throw new ArgumentNullException("target can't be null");
+                throw new ArgumentNullException(nameof(target), "target can't be null");
 
             if (before == null)
                 _first = target.Next;
@@ -98,7 +98,7 @@ namespace SymbolTable
         public TValue Get(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("key can't be null");
+                throw new ArgumentNullException(nameof(key), @"key can't be null");
             for (var pointer = _first; pointer != null; pointer = pointer.Next)
                 if (pointer.Key.Equals(key))
                     return pointer.Value;
@@ -136,7 +136,7 @@ namespace SymbolTable
         public void Put(TKey key, TValue value)
         {
             if (key == null)
-                throw new ArgumentNullException("key can't be null!");
+                throw new ArgumentNullException(nameof(key), "key can't be null!");
             if (value == null)
             {
                 Delete(key);

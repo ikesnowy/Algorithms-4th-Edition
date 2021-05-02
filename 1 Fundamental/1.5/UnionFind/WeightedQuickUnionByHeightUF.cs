@@ -37,18 +37,18 @@
 
             if (_height[rootP] < _height[rootQ])
             {
-                parent[rootP] = rootQ;
+                Parent[rootP] = rootQ;
             }
             else if (_height[rootP] > _height[rootQ])
             {
-                parent[rootQ] = rootP;
+                Parent[rootQ] = rootP;
             }
             else
             {
-                parent[rootQ] = rootP;
+                Parent[rootQ] = rootP;
                 _height[rootP]++;
             }
-            count--;
+            TotalCount--;
         }
     }
 }

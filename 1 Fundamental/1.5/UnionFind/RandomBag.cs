@@ -7,7 +7,7 @@ namespace UnionFind
     /// <summary>
     /// 随机背包。
     /// </summary>
-    /// <typeparam name="Item">背包中要存放的元素。</typeparam>
+    /// <typeparam name="TItem">背包中要存放的元素。</typeparam>
     public class RandomBag<TItem> : IEnumerable<TItem>
     {
         private TItem[] _bag;
@@ -100,11 +100,11 @@ namespace UnionFind
 
             public RandomBagEnumerator(TItem[] bag, int count)
             {
-                this._bag = bag;
+                _bag = bag;
                 _current = -1;
-                this._count = count;
+                _count = count;
                 _sequence = new int[count];
-                for (var i = 0; i < this._count; i++)
+                for (var i = 0; i < _count; i++)
                 {
                     _sequence[i] = i;
                 }

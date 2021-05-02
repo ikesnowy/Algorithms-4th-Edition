@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+// ReSharper disable CognitiveComplexity
 
 namespace Merge
 {
@@ -28,7 +29,7 @@ namespace Merge
         public override void Sort<T>(T[] a)
         {
             if (K > a.Length)
-                throw new ArgumentOutOfRangeException("数组长度不能小于 K 值！");
+                throw new ArgumentOutOfRangeException(nameof(a), @"数组长度不能小于 K 值！");
 
             var aux = new T[a.Length];
             Sort(a, aux, 0, a.Length - 1);

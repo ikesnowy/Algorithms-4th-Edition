@@ -7,20 +7,20 @@ namespace _1._3._48
     /// <summary>
     /// 双端栈。
     /// </summary>
-    /// <typeparam name="Item">栈中所包含的元素。</typeparam>
+    /// <typeparam name="TItem">栈中所包含的元素。</typeparam>
     public class DeStack<TItem> : IEnumerable<TItem>
     {
         private class DoubleNode<T>
         {
-            public T item;
-            public DoubleNode<T> next;
-            public DoubleNode<T> prev;
+            public T Item;
+            public DoubleNode<T> Next;
+            public DoubleNode<T> Prev;
         }
 
         DoubleNode<TItem> _first;
         DoubleNode<TItem> _last;
-        int _leftcount;
-        int _rightcount;
+        int _leftCount;
+        int _rightCount;
 
         /// <summary>
         /// 默认构造函数，建立一个双端栈。
@@ -29,8 +29,8 @@ namespace _1._3._48
         {
             _first = null;
             _last = null;
-            _leftcount = 0;
-            _rightcount = 0;
+            _leftCount = 0;
+            _rightCount = 0;
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace _1._3._48
         /// <returns></returns>
         public bool IsLeftEmpty()
         {
-            return _leftcount == 0;
+            return _leftCount == 0;
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace _1._3._48
         /// <returns></returns>
         public bool IsRightEmpty()
         {
-            return _rightcount == 0;
+            return _rightCount == 0;
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace _1._3._48
         /// <returns></returns>
         public int LeftSize()
         {
-            return _leftcount;
+            return _leftCount;
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace _1._3._48
         /// <returns></returns>
         public int RightSize()
         {
-            return _rightcount;
+            return _rightCount;
         }
 
         /// <summary>
@@ -78,9 +78,9 @@ namespace _1._3._48
             var oldFirst = _first;
             _first = new DoubleNode<TItem>
             {
-                item = item,
-                prev = null,
-                next = oldFirst
+                Item = item,
+                Prev = null,
+                Next = oldFirst
             };
             if (oldFirst == null)
             {
@@ -88,9 +88,9 @@ namespace _1._3._48
             }
             else
             {
-                oldFirst.prev = _first;
+                oldFirst.Prev = _first;
             }
-            _leftcount++;
+            _leftCount++;
         }
 
         /// <summary>
@@ -102,9 +102,9 @@ namespace _1._3._48
             var oldLast = _last;
             _last = new DoubleNode<TItem>
             {
-                item = item,
-                prev = oldLast,
-                next = null
+                Item = item,
+                Prev = oldLast,
+                Next = null
             };
 
             if (oldLast == null)
@@ -113,9 +113,9 @@ namespace _1._3._48
             }
             else
             {
-                oldLast.next = _last;
+                oldLast.Next = _last;
             }
-            _rightcount++;
+            _rightCount++;
         }
 
         /// <summary>
@@ -129,9 +129,9 @@ namespace _1._3._48
                 throw new InvalidOperationException();
             }
 
-            var temp = _last.item;
-            _last = _last.prev;
-            _rightcount--;
+            var temp = _last.Item;
+            _last = _last.Prev;
+            _rightCount--;
 
             if (_last == null)
             {
@@ -139,8 +139,8 @@ namespace _1._3._48
             }
             else
             {
-                _last.next.item = default(TItem);
-                _last.next = null;
+                _last.Next.Item = default(TItem);
+                _last.Next = null;
             }
             return temp;
         }
@@ -156,9 +156,9 @@ namespace _1._3._48
                 throw new InvalidOperationException();
             }
 
-            var temp = _first.item;
-            _first = _first.next;
-            _leftcount--;
+            var temp = _first.Item;
+            _first = _first.Next;
+            _leftCount--;
 
             if (_first == null)
             {
@@ -166,8 +166,8 @@ namespace _1._3._48
             }
             else
             {
-                _first.prev.item = default(TItem);
-                _first.prev = null;
+                _first.Prev.Item = default(TItem);
+                _first.Prev = null;
             }
 
             return temp;
@@ -191,14 +191,14 @@ namespace _1._3._48
             public DequeEnumerator(DoubleNode<TItem> first) 
             {
                 _current = new DoubleNode<TItem>();
-                _current.next = first;
-                _current.prev = null;
-                this._first = _current;
+                _current.Next = first;
+                _current.Prev = null;
+                _first = _current;
             }
 
-            public TItem Current => _current.item;
+            public TItem Current => _current.Item;
 
-            object IEnumerator.Current => _current.item;
+            object IEnumerator.Current => _current.Item;
 
             public void Dispose()
             {
@@ -208,9 +208,9 @@ namespace _1._3._48
 
             public bool MoveNext()
             {
-                if (_current.next == null)
+                if (_current.Next == null)
                     return false;
-                _current = _current.next;
+                _current = _current.Next;
                 return true;
             }
 

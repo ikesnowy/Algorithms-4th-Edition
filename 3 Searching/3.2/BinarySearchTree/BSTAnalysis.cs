@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 // ReSharper disable CognitiveComplexity
+// ReSharper disable UnusedMember.Local
 
 namespace BinarySearchTree
 {

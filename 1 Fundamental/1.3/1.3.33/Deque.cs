@@ -7,14 +7,14 @@ namespace _1._3._33
     /// <summary>
     /// 双端队列。
     /// </summary>
-    /// <typeparam name="Item">队列中要存放的元素。</typeparam>
+    /// <typeparam name="TItem">队列中要存放的元素。</typeparam>
     public class Deque<TItem> : IEnumerable<TItem>
     {
         private class DoubleNode<T>
         {
-            public T item;
-            public DoubleNode<T> next;
-            public DoubleNode<T> prev;
+            public T Item;
+            public DoubleNode<T> Next;
+            public DoubleNode<T> Prev;
         }
 
         DoubleNode<TItem> _first;
@@ -58,9 +58,9 @@ namespace _1._3._33
             var oldFirst = _first;
             _first = new DoubleNode<TItem>
             {
-                item = item,
-                prev = null,
-                next = oldFirst
+                Item = item,
+                Prev = null,
+                Next = oldFirst
             };
             if (oldFirst == null)
             {
@@ -68,7 +68,7 @@ namespace _1._3._33
             }
             else
             {
-                oldFirst.prev = _first;
+                oldFirst.Prev = _first;
             }
             _count++;
         }
@@ -82,9 +82,9 @@ namespace _1._3._33
             var oldLast = _last;
             _last = new DoubleNode<TItem>
             {
-                item = item,
-                prev = oldLast,
-                next = null
+                Item = item,
+                Prev = oldLast,
+                Next = null
             };
 
             if (oldLast == null)
@@ -93,7 +93,7 @@ namespace _1._3._33
             }
             else
             {
-                oldLast.next = _last;
+                oldLast.Next = _last;
             }
             _count++;
         }
@@ -109,8 +109,8 @@ namespace _1._3._33
                 throw new InvalidOperationException();
             }
 
-            var temp = _last.item;
-            _last = _last.prev;
+            var temp = _last.Item;
+            _last = _last.Prev;
             _count--;
 
             if (_last == null)
@@ -119,8 +119,8 @@ namespace _1._3._33
             }
             else
             {
-                _last.next.item = default(TItem);
-                _last.next = null;
+                _last.Next.Item = default(TItem);
+                _last.Next = null;
             }
             return temp;
         }
@@ -136,8 +136,8 @@ namespace _1._3._33
                 throw new InvalidOperationException();
             }
 
-            var temp = _first.item;
-            _first = _first.next;
+            var temp = _first.Item;
+            _first = _first.Next;
             _count--;
 
             if (_first == null)
@@ -146,8 +146,8 @@ namespace _1._3._33
             }
             else
             {
-                _first.prev.item = default(TItem);
-                _first.prev = null;
+                _first.Prev.Item = default(TItem);
+                _first.Prev = null;
             }
 
             return temp;
@@ -171,14 +171,14 @@ namespace _1._3._33
             public DequeEnumerator(DoubleNode<TItem> first) 
             {
                 _current = new DoubleNode<TItem>();
-                _current.next = first;
-                _current.prev = null;
-                this._first = _current;
+                _current.Next = first;
+                _current.Prev = null;
+                _first = _current;
             }
 
-            public TItem Current => _current.item;
+            public TItem Current => _current.Item;
 
-            object IEnumerator.Current => _current.item;
+            object IEnumerator.Current => _current.Item;
 
             public void Dispose()
             {
@@ -188,9 +188,9 @@ namespace _1._3._33
 
             public bool MoveNext()
             {
-                if (_current.next == null)
+                if (_current.Next == null)
                     return false;
-                _current = _current.next;
+                _current = _current.Next;
                 return true;
             }
 

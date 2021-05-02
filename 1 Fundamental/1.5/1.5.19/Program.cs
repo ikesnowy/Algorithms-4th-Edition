@@ -32,6 +32,8 @@ namespace _1._5._19
         /// 绘制连接图像。
         /// </summary>
         /// <param name="n">矩阵边长。</param>
+        /// <param name="log">文本框。</param>
+        /// <param name="winBox">文本框。</param>
         public static void Draw(int n, TextBox log, Log winBox)
         {
             _logBox = log;

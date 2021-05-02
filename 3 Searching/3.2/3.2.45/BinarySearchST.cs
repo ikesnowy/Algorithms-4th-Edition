@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BinarySearchTree;
+// ReSharper disable UnusedMember.Local
 
 namespace _3._2._45
 {
@@ -329,7 +330,7 @@ namespace _3._2._45
         private void Resize(int capacity)
         {
             if (capacity < _n)
-                throw new ArgumentOutOfRangeException(nameof(capacity), "分配容量不能小于表中元素数量。");
+                throw new ArgumentOutOfRangeException(nameof(capacity), @"分配容量不能小于表中元素数量。");
             var tempKeys = new TKey[capacity];
             var tempValues = new TValue[capacity];
             for (var i = 0; i < _n; i++)

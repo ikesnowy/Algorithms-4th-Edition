@@ -1,4 +1,5 @@
 ﻿using System;
+// ReSharper disable PossibleLossOfFraction
 
 namespace PriorityQueue
 {
@@ -41,7 +42,7 @@ namespace PriorityQueue
                 UnRemoveMax(strategy[i]);
             }
 
-            for (var i = 1; i <= this._n / 2; i++)
+            for (var i = 1; i <= _n / 2; i++)
                 UnFixHeap(i);
 
             var worstCase = new int[n];

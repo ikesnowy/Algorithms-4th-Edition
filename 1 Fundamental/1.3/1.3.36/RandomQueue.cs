@@ -7,7 +7,7 @@ namespace _1._3._36
     /// <summary>
     /// 随机队列。
     /// </summary>
-    /// <typeparam name="Item">队列中要保存的元素。</typeparam>
+    /// <typeparam name="TItem">队列中要保存的元素。</typeparam>
     public class RandomQueue<TItem> : IEnumerable<TItem>
     {
         private TItem[] _queue;
@@ -130,12 +130,12 @@ namespace _1._3._36
 
             public RandomQueueEnumerator(TItem[] queue, int count)
             {
-                this._count = count;
-                this._queue = queue;
+                _count = count;
+                _queue = queue;
                 _current = -1;
 
-                _sequence = new int[this._count];
-                for (var i = 0; i < this._count; i++)
+                _sequence = new int[_count];
+                for (var i = 0; i < _count; i++)
                 {
                     _sequence[i] = i;
                 }

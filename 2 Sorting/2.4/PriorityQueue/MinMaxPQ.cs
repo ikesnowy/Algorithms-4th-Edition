@@ -5,7 +5,7 @@ namespace PriorityQueue
     /// <summary>
     /// 最大-最小堆。
     /// </summary>
-    /// <typeparam name="Key">最大最小堆中保存的元素。</typeparam>
+    /// <typeparam name="TKey">最大最小堆中保存的元素。</typeparam>
     public class MinMaxPq<TKey> : IMaxPq<TKey>, IMinPq<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>
@@ -42,8 +42,9 @@ namespace PriorityQueue
             /// 工厂方法，建立两个孪生的结点。
             /// </summary>
             /// <param name="key">结点中的元素。</param>
+            /// <param name="index">索引。</param>
             /// <param name="minNode">准备放到最小堆中的结点。</param>
-            /// <param name="maxNodeB">准备放到最大堆中的结点。</param>
+            /// <param name="maxNode">准备放到最大堆中的结点。</param>
             public static void GetNodes(TKey key, int index, out MinMaxNode minNode, out MinMaxNode maxNode)
             {
                 minNode = new MinMaxNode(key, index);
@@ -69,10 +70,6 @@ namespace PriorityQueue
         private sealed class MaxPq : MaxPq<MinMaxNode>
         {
             /// <summary>
-            /// 默认无参构造函数。
-            /// </summary>
-            public MaxPq() : base() { }
-            /// <summary>
             /// 建立指定大小的最大堆。
             /// </summary>
             /// <param name="capacity">最大堆的容量。</param>
@@ -90,17 +87,17 @@ namespace PriorityQueue
             /// <param name="j">要交换的下标。</param>
             protected override void Exch(int i, int j)
             {
-                pq[i].Pair.Pair = pq[j];
-                pq[j].Pair.Pair = pq[i];
+                Pq[i].Pair.Pair = Pq[j];
+                Pq[j].Pair.Pair = Pq[i];
 
-                var swapNode = pq[i].Pair;
-                var swapKey = pq[i].Key;
+                var swapNode = Pq[i].Pair;
+                var swapKey = Pq[i].Key;
 
-                pq[i].Key = pq[j].Key;
-                pq[i].Pair = pq[j].Pair;
+                Pq[i].Key = Pq[j].Key;
+                Pq[i].Pair = Pq[j].Pair;
 
-                pq[j].Key = swapKey;
-                pq[j].Pair = swapNode;
+                Pq[j].Key = swapKey;
+                Pq[j].Pair = swapNode;
             }
         }
 
@@ -109,10 +106,6 @@ namespace PriorityQueue
         /// </summary>
         private sealed class MinPq : MinPq<MinMaxNode>
         {
-            /// <summary>
-            /// 默认无参构造函数。
-            /// </summary>
-            public MinPq() : base() { }
             /// <summary>
             /// 建立指定大小的最小堆。
             /// </summary>
@@ -131,17 +124,17 @@ namespace PriorityQueue
             /// <param name="j">要交换的下标。</param>
             protected override void Exch(int i, int j)
             {
-                pq[i].Pair.Pair = pq[j];
-                pq[j].Pair.Pair = pq[i];
+                Pq[i].Pair.Pair = Pq[j];
+                Pq[j].Pair.Pair = Pq[i];
 
-                MinMaxNode swapNode = pq[i].Pair;
-                TKey swapKey = pq[i].Key;
+                MinMaxNode swapNode = Pq[i].Pair;
+                TKey swapKey = Pq[i].Key;
 
-                pq[i].Key = pq[j].Key;
-                pq[i].Pair = pq[j].Pair;
+                Pq[i].Key = Pq[j].Key;
+                Pq[i].Pair = Pq[j].Pair;
 
-                pq[j].Key = swapKey;
-                pq[j].Pair = swapNode;
+                Pq[j].Key = swapKey;
+                Pq[j].Pair = swapNode;
             }
         }
 

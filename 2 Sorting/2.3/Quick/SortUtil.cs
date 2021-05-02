@@ -1,4 +1,5 @@
 ﻿using System;
+// ReSharper disable CognitiveComplexity
 
 namespace Quick
 {
@@ -79,7 +80,7 @@ namespace Quick
         {
             if (probabilities == null)
             {
-                throw new ArgumentNullException("Argument array is null");
+                throw new ArgumentNullException(nameof(probabilities), "Argument array is null");
             }
 
             var epsion = 1E-14;

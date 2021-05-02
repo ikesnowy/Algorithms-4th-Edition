@@ -14,12 +14,12 @@ namespace PriorityQueue
         /// 保存元素的数组。
         /// </summary>
         /// <value>保存元素的数组。</value>
-        protected TKey[] pq;
+        protected TKey[] Pq;
         /// <summary>
         /// 堆中元素的数量。
         /// </summary>
         /// <value>堆中元素的数量。</value>
-        protected int n;
+        protected int N;
 
         /// <summary>
         /// 默认构造函数。
@@ -32,8 +32,8 @@ namespace PriorityQueue
         /// <param name="capacity">最小堆的容量。</param>
         public MinPqx(int capacity)
         {
-            pq = new TKey[capacity + 1];
-            n = 0;
+            Pq = new TKey[capacity + 1];
+            N = 0;
         }
 
         /// <summary>
@@ -42,11 +42,11 @@ namespace PriorityQueue
         /// <param name="keys">已有元素。</param>
         public MinPqx(TKey[] keys)
         {
-            n = keys.Length;
-            pq = new TKey[keys.Length + 1];
+            N = keys.Length;
+            Pq = new TKey[keys.Length + 1];
             for (var i = 0; i < keys.Length; i++)
-                pq[i + 1] = keys[i];
-            for (var k = n / 2; k >= 1; k--)
+                Pq[i + 1] = keys[i];
+            for (var k = N / 2; k >= 1; k--)
                 Sink(k);
             Debug.Assert(IsMinHeap());
         }
@@ -58,14 +58,14 @@ namespace PriorityQueue
         public TKey DelMin()
         {
             if (IsEmpty())
-                throw new ArgumentOutOfRangeException("Priority Queue Underflow");
+                throw new InvalidOperationException("Priority Queue Underflow");
 
-            var min = pq[1];
-            Exch(1, n--);
+            var min = Pq[1];
+            Exch(1, N--);
             Sink(1);
-            pq[n + 1] = default(TKey);
-            if ((n > 0) && (n == pq.Length / 4))
-                Resize(pq.Length / 2);
+            Pq[N + 1] = default(TKey);
+            if ((N > 0) && (N == Pq.Length / 4))
+                Resize(Pq.Length / 2);
 
             //Debug.Assert(IsMinHeap());
             return min;
@@ -77,19 +77,19 @@ namespace PriorityQueue
         /// <param name="k">元素下标。</param>
         internal void Remove(int k)
         {
-            if (k == n)
+            if (k == N)
             {
-                pq[n--] = default(TKey);
+                Pq[N--] = default(TKey);
                 return;
             }
-            else if (n <= 2)
+            else if (N <= 2)
             {
                 Exch(1, k);
-                pq[n--] = default(TKey);
+                Pq[N--] = default(TKey);
                 return;
             }
-            Exch(k, n--);
-            pq[n + 1] = default(TKey);
+            Exch(k, N--);
+            Pq[N + 1] = default(TKey);
             Swim(k);
             Sink(k);
         }
@@ -100,11 +100,11 @@ namespace PriorityQueue
         /// <param name="v">需要插入的元素。</param>
         public void Insert(TKey v)
         {
-            if (n == pq.Length - 1)
-                Resize(2 * pq.Length);
+            if (N == Pq.Length - 1)
+                Resize(2 * Pq.Length);
 
-            pq[++n] = v;
-            Swim(n);
+            Pq[++N] = v;
+            Swim(N);
             Debug.Assert(IsMinHeap());
         }
 
@@ -112,19 +112,19 @@ namespace PriorityQueue
         /// 检查堆是否为空。
         /// </summary>
         /// <returns></returns>
-        public bool IsEmpty() => n == 0;
+        public bool IsEmpty() => N == 0;
 
         /// <summary>
         /// 获得堆中最小元素。
         /// </summary>
         /// <returns></returns>
-        public TKey Min() => pq[1];
+        public TKey Min() => Pq[1];
 
         /// <summary>
         /// 获得堆中元素的数量。
         /// </summary>
         /// <returns></returns>
-        public int Size() => n;
+        public int Size() => N;
 
         /// <summary>
         /// 获取堆的迭代器，元素以升序排列。
@@ -132,9 +132,9 @@ namespace PriorityQueue
         /// <returns></returns>
         public IEnumerator<TKey> GetEnumerator()
         {
-            var copy = new MinPq<TKey>(n);
-            for (var i = 1; i <= n; i++)
-                copy.Insert(pq[i]);
+            var copy = new MinPq<TKey>(N);
+            for (var i = 1; i <= N; i++)
+                copy.Insert(Pq[i]);
 
             while (!copy.IsEmpty())
                 yield return copy.DelMin(); // 下次迭代的时候从这里继续执行。
@@ -190,10 +190,10 @@ namespace PriorityQueue
         /// <param name="k">需要下沉的元素。</param>
         private void Sink(int k)
         {
-            while (k * 2 <= n)
+            while (k * 2 <= N)
             {
                 var j = 2 * k;
-                if (j < n && Greater(j, j + 1))
+                if (j < N && Greater(j, j + 1))
                     j++;
                 if (!Greater(k, j))
                     break;
@@ -209,11 +209,11 @@ namespace PriorityQueue
         private void Resize(int capacity)
         {
             var temp = new TKey[capacity];
-            for (var i = 1; i <= n; i++)
+            for (var i = 1; i <= N; i++)
             {
-                temp[i] = pq[i];
+                temp[i] = Pq[i];
             }
-            pq = temp;
+            Pq = temp;
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace PriorityQueue
         /// <param name="j">判断是否较小的元素。</param>
         /// <returns></returns>
         private bool Greater(int i, int j)
-            => pq[i].CompareTo(pq[j]) > 0;
+            => Pq[i].CompareTo(Pq[j]) > 0;
 
         /// <summary>
         /// 交换堆中的两个元素。
@@ -232,9 +232,9 @@ namespace PriorityQueue
         /// <param name="j">要交换的第二个元素下标。</param>
         protected virtual void Exch(int i, int j)
         {
-            var swap = pq[i];
-            pq[i] = pq[j];
-            pq[j] = swap;
+            var swap = Pq[i];
+            Pq[i] = Pq[j];
+            Pq[j] = swap;
         }
 
         /// <summary>
@@ -250,13 +250,13 @@ namespace PriorityQueue
         /// <returns></returns>
         private bool IsMinHeap(int k)
         {
-            if (k > n)
+            if (k > N)
                 return true;
             var left = 2 * k;
             var right = 2 * k + 1;
-            if (left <= n && Greater(k, left))
+            if (left <= N && Greater(k, left))
                 return false;
-            if (right <= n && Greater(k, right))
+            if (right <= N && Greater(k, right))
                 return false;
 
             return IsMinHeap(left) && IsMinHeap(right);

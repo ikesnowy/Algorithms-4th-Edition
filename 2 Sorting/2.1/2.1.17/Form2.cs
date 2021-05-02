@@ -22,7 +22,7 @@ namespace _2._1._17
             timer1.Interval = 60;
             timer1.Start();
 
-            var thread = new Thread(new ThreadStart(SelectionSort));
+            var thread = new Thread(SelectionSort);
             thread.IsBackground = true;
             thread.Start();
         }

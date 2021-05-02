@@ -6,15 +6,15 @@
     /// <typeparam name="T">结点中存放的元素类型。</typeparam>
     public class Node<T>
     {
-        public T item;
-        public Node<T> next;
+        public T Item;
+        public Node<T> Next;
 
         public Node() { }
 
         public Node(Node<T> node)
         {
-            item = node.item;
-            next = node.next;
+            Item = node.Item;
+            Next = node.Next;
         }
     }
 }

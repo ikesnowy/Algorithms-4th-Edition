@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+// ReSharper disable PossibleLossOfFraction
 
 namespace _1._2._10
 {
@@ -21,8 +22,8 @@ namespace _1._2._10
         public VisualCounter(string id, int max, int operatorTimes)
         {
             _name = id;
-            this._max = max;
-            this._operatorTimes = operatorTimes;
+            _max = max;
+            _operatorTimes = operatorTimes;
         }
 
         /// <summary>

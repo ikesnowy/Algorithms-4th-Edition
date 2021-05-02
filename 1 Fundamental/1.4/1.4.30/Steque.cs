@@ -6,7 +6,7 @@ using System.Text;
 namespace _1._4._30
 {
     // API:
-    // public class Steque<Item> : Ienumerable<Item>
+    // public class Steque<Item> : IEnumerable<Item>
     //    public Steque(); 默认构造函数。
     //    public bool IsEmpty(); 检查 Steque 是否为空。
     //    public int Size(); 返回 Steque 中的元素数量。
@@ -18,7 +18,7 @@ namespace _1._4._30
     /// <summary>
     /// Steque。
     /// </summary>
-    /// <typeparam name="Item">Steque 中保存的元素。</typeparam>
+    /// <typeparam name="TItem">Steque 中保存的元素。</typeparam>
     public class Steque<TItem> : IEnumerable<TItem>
     {
         private Node<TItem> _first;
@@ -27,8 +27,8 @@ namespace _1._4._30
 
         private class Node<T>
         {
-            public T item;
-            public Node<T> next;
+            public T Item;
+            public Node<T> Next;
         }
 
         /// <summary>
@@ -66,8 +66,8 @@ namespace _1._4._30
         {
             var oldFirst = _first;
             _first = new Node<TItem>();
-            _first.item = item;
-            _first.next = oldFirst;
+            _first.Item = item;
+            _first.Next = oldFirst;
 
             if (oldFirst == null)
             {
@@ -84,8 +84,8 @@ namespace _1._4._30
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack Underflow");
-            var item = _first.item;
-            _first = _first.next;
+            var item = _first.Item;
+            _first = _first.Next;
             _count--;
             if (_count == 0)
             {
@@ -102,12 +102,12 @@ namespace _1._4._30
         {
             var oldLast = _last;
             _last = new Node<TItem>();
-            _last.item = item;
-            _last.next = null;
+            _last.Item = item;
+            _last.Next = null;
             if (IsEmpty())
                 _first = _last;
             else
-                oldLast.next = _last;
+                oldLast.Next = _last;
             _count++;
         }
 
@@ -119,7 +119,7 @@ namespace _1._4._30
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack Underflow");
-            return _first.item;
+            return _first.Item;
         }
 
         public override string ToString()
@@ -151,13 +151,13 @@ namespace _1._4._30
             public StackEnumerator(Node<TItem> first)
             {
                 _current = new Node<TItem>();
-                _current.next = first;
-                this._first = _current;
+                _current.Next = first;
+                _first = _current;
             }
 
-            TItem IEnumerator<TItem>.Current => _current.item;
+            TItem IEnumerator<TItem>.Current => _current.Item;
 
-            object IEnumerator.Current => _current.item;
+            object IEnumerator.Current => _current.Item;
 
             void IDisposable.Dispose()
             {
@@ -167,10 +167,10 @@ namespace _1._4._30
 
             bool IEnumerator.MoveNext()
             {
-                if (_current.next == null)
+                if (_current.Next == null)
                     return false;
 
-                _current = _current.next;
+                _current = _current.Next;
                 return true;
             }
 

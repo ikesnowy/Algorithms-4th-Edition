@@ -8,7 +8,7 @@ namespace Generics
     /// <summary>
     /// 队列类（链表实现）。
     /// </summary>
-    /// <typeparam name="Item">队列存放的元素类型。</typeparam>
+    /// <typeparam name="TItem">队列存放的元素类型。</typeparam>
     public class Queue<TItem> : IEnumerable<TItem>
     {
         private Node<TItem> _first;
@@ -65,7 +65,7 @@ namespace Generics
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Queue underflow");
-            return _first.item;
+            return _first.Item;
         }
 
         /// <summary>
@@ -76,12 +76,12 @@ namespace Generics
         {
             var oldLast = _last;
             _last = new Node<TItem>();
-            _last.item = item;
-            _last.next = null;
+            _last.Item = item;
+            _last.Next = null;
             if (IsEmpty())
                 _first = _last;
             else
-                oldLast.next = _last;
+                oldLast.Next = _last;
             _count++;
         }
 
@@ -95,8 +95,8 @@ namespace Generics
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Queue underflow");
-            var item = _first.item;
-            _first = _first.next;
+            var item = _first.Item;
+            _first = _first.Next;
             _count--;
             if (IsEmpty())
                 _last = null;
@@ -119,12 +119,11 @@ namespace Generics
             }
             else
             {
-                q1._last.next = q2._first;
+                q1._last.Next = q2._first;
                 q1._last = q2._last;
                 q1._count += q2._count;
             }
 
-            q2 = null;
             return q1;
         }
 
@@ -170,13 +169,13 @@ namespace Generics
             public QueueEnumerator(Node<TItem> first)
             {
                 _current = new Node<TItem>();
-                _current.next = first;
-                this._first = _current;
+                _current.Next = first;
+                _first = _current;
             }
 
-            TItem IEnumerator<TItem>.Current => _current.item;
+            TItem IEnumerator<TItem>.Current => _current.Item;
 
-            object IEnumerator.Current => _current.item;
+            object IEnumerator.Current => _current.Item;
 
             void IDisposable.Dispose()
             {
@@ -186,9 +185,9 @@ namespace Generics
 
             bool IEnumerator.MoveNext()
             {
-                if (_current.next == null)
+                if (_current.Next == null)
                     return false;
-                _current = _current.next;
+                _current = _current.Next;
                 return true;
             }
 

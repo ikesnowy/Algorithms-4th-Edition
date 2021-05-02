@@ -24,7 +24,7 @@ namespace _3._1._9
         /// <returns>文本文档出现频率最高的字符串。</returns>
         public static string MostFrequentlyWord(string filename, int minLength, ISt<string, int> st)
         {
-            int distinct = 0, words = 0;
+            var words = 0;
             var sr = new StreamReader(File.OpenRead(filename));
 
             var inputs = 
@@ -48,7 +48,6 @@ namespace _3._1._9
                 {
                     lastPut = s;
                     st.Put(s, 1);
-                    distinct++;
                 }
             }
 

@@ -113,7 +113,7 @@ namespace _1._4._43
 
             public StackEnumerator(TItem[] items)
             {
-                this._items = items;
+                _items = items;
                 _current = -1;
             }
 

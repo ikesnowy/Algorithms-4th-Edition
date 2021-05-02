@@ -8,7 +8,7 @@ namespace Generics
     /// <summary>
     /// 栈类（链表实现）。
     /// </summary>
-    /// <typeparam name="Item">栈中存放的元素类型。</typeparam>
+    /// <typeparam name="TItem">栈中存放的元素类型。</typeparam>
     public class Stack<TItem> : IEnumerable<TItem>
     {
         private Node<TItem> _first;
@@ -32,9 +32,9 @@ namespace Generics
             if (s._first != null)
             {
                 _first = new Node<TItem>(s._first);
-                for (var x = _first; x.next != null; x = x.next)
+                for (var x = _first; x.Next != null; x = x.Next)
                 {
-                    x.next = new Node<TItem>(x.next);
+                    x.Next = new Node<TItem>(x.Next);
                 }
             }
             _count = s._count;
@@ -66,8 +66,8 @@ namespace Generics
         {
             var oldFirst = _first;
             _first = new Node<TItem>();
-            _first.item = item;
-            _first.next = oldFirst;
+            _first.Item = item;
+            _first.Next = oldFirst;
             _count++;
         }
 
@@ -81,8 +81,8 @@ namespace Generics
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack Underflow");
-            var item = _first.item;
-            _first = _first.next;
+            var item = _first.Item;
+            _first = _first.Next;
             _count--;
             return item;
         }
@@ -96,7 +96,7 @@ namespace Generics
         {
             if (IsEmpty())
                 throw new InvalidOperationException("Stack Underflow");
-            return _first.item;
+            return _first.Item;
         }
 
         /// <summary>
@@ -116,14 +116,14 @@ namespace Generics
             else
             {
                 var last = s1._first;
-                while (last.next != null)
+                while (last.Next != null)
                 {
-                    last = last.next;
+                    last = last.Next;
                 }
-                last.next = s2._first;
+                last.Next = s2._first;
                 s1._count += s2._count;
             }
-            s2 = null;
+
             return s1;
         }
 
@@ -181,13 +181,13 @@ namespace Generics
             public StackEnumerator(Node<TItem> first)
             {
                 _current = new Node<TItem>();
-                _current.next = first;
-                this._first = _current;
+                _current.Next = first;
+                _first = _current;
             }
 
-            TItem IEnumerator<TItem>.Current => _current.item;
+            TItem IEnumerator<TItem>.Current => _current.Item;
 
-            object IEnumerator.Current => _current.item;
+            object IEnumerator.Current => _current.Item;
 
             void IDisposable.Dispose()
             {
@@ -197,10 +197,10 @@ namespace Generics
 
             bool IEnumerator.MoveNext()
             {
-                if (_current.next == null)
+                if (_current.Next == null)
                     return false;
 
-                _current = _current.next;
+                _current = _current.Next;
                 return true;
             }
 

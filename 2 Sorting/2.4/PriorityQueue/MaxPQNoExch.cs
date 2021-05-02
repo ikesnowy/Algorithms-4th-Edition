@@ -8,7 +8,7 @@ namespace PriorityQueue
     /// <summary>
     /// 不使用交换的最大堆。（数组实现）
     /// </summary>
-    /// <typeparam name="Key">最大堆中保存的元素类型。</typeparam>
+    /// <typeparam name="TKey">最大堆中保存的元素类型。</typeparam>
     public class MaxPqNoExch<TKey> : IMaxPq<TKey>, IEnumerable<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>
@@ -61,7 +61,7 @@ namespace PriorityQueue
         public TKey DelMax()
         {
             if (IsEmpty())
-                throw new ArgumentOutOfRangeException("Priority Queue Underflow");
+                throw new InvalidOperationException("Priority Queue Underflow");
 
             var max = _pq[1];
             Exch(1, _n--);

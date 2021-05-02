@@ -1,4 +1,5 @@
 ﻿using System;
+// ReSharper disable UnusedMember.Local
 
 namespace SortApplication
 {

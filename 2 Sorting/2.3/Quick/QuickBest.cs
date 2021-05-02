@@ -45,7 +45,6 @@
         /// <summary>
         /// 交换数组中的两个元素。
         /// </summary>
-        /// <typeparam name="T">数组的元素类型。</typeparam>
         /// <param name="a">包含要交换元素的数组。</param>
         /// <param name="x">需要交换的第一个元素下标。</param>
         /// <param name="y">需要交换的第二个元素下标。</param>

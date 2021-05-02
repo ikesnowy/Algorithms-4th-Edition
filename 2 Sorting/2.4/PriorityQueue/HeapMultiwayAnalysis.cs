@@ -1,11 +1,11 @@
 ﻿using System;
+// ReSharper disable CognitiveComplexity
 
 namespace PriorityQueue
 {
     /// <summary>
     /// d 叉堆排序类，提供堆排序的静态方法，记录堆排序的比较次数。
     /// </summary>
-    /// <typeparam name="T">需要排序的元素类型。</typeparam>
     public static class HeapMultiwayAnalysis
     {
         /// <summary>
@@ -59,10 +59,10 @@ namespace PriorityQueue
                     if (!Less(pq, k, j))
                         break;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.WriteLine("j=" + j);
-                    throw e;
+                    throw;
                 }
 
                 Exch(pq, k, j);
@@ -84,10 +84,10 @@ namespace PriorityQueue
             {
                 return pq[a - 1].CompareTo(pq[b - 1]) < 0;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine("a=" + a + "b=" + b);
-                throw e;
+                throw;
             }
         }
 

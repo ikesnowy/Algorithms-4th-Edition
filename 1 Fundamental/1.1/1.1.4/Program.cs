@@ -1,4 +1,6 @@
 ﻿// ReSharper disable ConditionIsAlwaysTrueOrFalse
+// ReSharper disable RedundantAssignment
+#pragma warning disable 219
 var a = 1;
 var b = 2;
 var c = 0;

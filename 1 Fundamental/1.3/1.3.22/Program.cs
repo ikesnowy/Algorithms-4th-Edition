@@ -7,34 +7,34 @@ var second = new Node<string>();
 var third = new Node<string>();
 var fourth = new Node<string>();
 
-first.item = "first";
-second.item = "second";
-third.item = "third";
-fourth.item = "fourth";
+first.Item = "first";
+second.Item = "second";
+third.Item = "third";
+fourth.Item = "fourth";
 
-first.next = second;
-second.next = third;
-third.next = fourth;
-fourth.next = null;
+first.Next = second;
+second.Next = third;
+third.Next = fourth;
+fourth.Next = null;
 
 var current = first;
 while (current != null)
 {
-    Console.Write(current.item + " ");
-    current = current.next;
+    Console.Write(current.Item + " ");
+    current = current.Next;
 }
 
 var t = new Node<string>();
-t.item = "t";
+t.Item = "t";
 
-t.next = second.next;
-second.next = t;
+t.Next = second.Next;
+second.Next = t;
 
 Console.WriteLine();
 
 current = first;
 while (current != null)
 {
-    Console.Write(current.item + " ");
-    current = current.next;
+    Console.Write(current.Item + " ");
+    current = current.Next;
 }

@@ -6,7 +6,7 @@ namespace SortData
     {
         public static int[] GetUnsortedData()
         {
-            var split = new char[2] { '\n', '\r' };
+            var split = new[] { '\n', '\r' };
             var unsortedString = Properties.Resources._32Kints.Split(split, StringSplitOptions.RemoveEmptyEntries);
             var unsorted = new int[unsortedString.Length];
             for (var i = 0; i < unsortedString.Length; i++)
@@ -18,7 +18,7 @@ namespace SortData
 
         public static int[] GetSortedData()
         {
-            var split = new char[2] { '\n', '\r' };
+            var split = new[] { '\n', '\r' };
             var sortedString = Properties.Resources._32kints_sorted.Split(split, StringSplitOptions.RemoveEmptyEntries);
             var sorted = new int[sortedString.Length];
             for (var i = 0; i < sortedString.Length; i++)

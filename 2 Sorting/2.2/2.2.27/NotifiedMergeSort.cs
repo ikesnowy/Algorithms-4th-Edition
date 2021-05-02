@@ -1,5 +1,6 @@
 ﻿using System;
 using Merge;
+// ReSharper disable CognitiveComplexity
 
 namespace _2._2._27
 {

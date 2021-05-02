@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 // ReSharper disable PossibleNullReferenceException
+// ReSharper disable CognitiveComplexity
 
 namespace Geometry
 {
@@ -252,7 +253,7 @@ namespace Geometry
 
             public Atan2Order(Point2D parent)
             {
-                this._parent = parent;
+                _parent = parent;
             }
             public override int Compare(Point2D x, Point2D y)
             {
@@ -282,7 +283,7 @@ namespace Geometry
 
             public PolarOrder(Point2D parent)
             {
-                this._parent = parent;
+                _parent = parent;
             }
             public override int Compare(Point2D q1, Point2D q2)
             {
@@ -330,7 +331,7 @@ namespace Geometry
 
             public DistanceToOrder(Point2D parent)
             {
-                this._parent = parent;
+                _parent = parent;
             }
             public override int Compare(Point2D p, Point2D q)
             {
@@ -399,7 +400,7 @@ namespace Geometry
                 return false;
             }
             var that = (Point2D)obj;
-            return Math.Abs(X - that.X) < float.Epsilon && Math.Abs(Y - that.Y) < float.Epsilon;
+            return Math.Abs(X - that.X) < float.Epsilon * 5 && Math.Abs(Y - that.Y) < float.Epsilon * 5;
         }
 
         /// <summary>

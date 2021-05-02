@@ -1,4 +1,5 @@
 ﻿using System;
+// ReSharper disable CognitiveComplexity
 
 namespace _1._4._38
 {

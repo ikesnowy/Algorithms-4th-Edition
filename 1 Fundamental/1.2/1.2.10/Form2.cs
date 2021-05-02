@@ -19,7 +19,7 @@ namespace _1._2._10
         {
             if (!_counter.Increment())
             {
-                ErrorLabel.Text = "操作数不足";
+                ErrorLabel.Text = @"操作数不足";
             }
             else
             {
@@ -32,7 +32,7 @@ namespace _1._2._10
         {
             if (!_counter.Decreasement())
             {
-                ErrorLabel.Text = "操作数不足";
+                ErrorLabel.Text = @"操作数不足";
             }
             else
             {

@@ -5,7 +5,7 @@ namespace _1._3._35
     /// <summary>
     /// 随机队列。
     /// </summary>
-    /// <typeparam name="Item">队列中要存放的元素。</typeparam>
+    /// <typeparam name="TItem">队列中要存放的元素。</typeparam>
     public class RandomQueue<TItem>
     {
         private TItem[] _queue;

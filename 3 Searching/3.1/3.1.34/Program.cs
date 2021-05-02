@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using SymbolTable;
+// ReSharper disable PossibleLossOfFraction
 
 var n = 1000;
 var multiplyBy10 = 4;

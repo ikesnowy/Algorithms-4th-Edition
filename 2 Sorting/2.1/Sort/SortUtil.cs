@@ -1,4 +1,5 @@
 ﻿using System;
+// ReSharper disable CognitiveComplexity
 
 namespace Sort
 {
@@ -78,7 +79,7 @@ namespace Sort
         {
             if (probabilities == null)
             {
-                throw new ArgumentNullException("Argument array is null");
+                throw new ArgumentNullException(nameof(probabilities), "Argument array is null");
             }
 
             var epsion = 1E-14;

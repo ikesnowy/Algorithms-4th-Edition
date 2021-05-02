@@ -9,19 +9,19 @@ namespace PriorityQueue
     /// <summary>
     /// 最大堆。（数组实现）
     /// </summary>
-    /// <typeparam name="Key">最大堆中保存的元素类型。</typeparam>
+    /// <typeparam name="TKey">最大堆中保存的元素类型。</typeparam>
     public class MaxPq<TKey> : IMaxPq<TKey>, IEnumerable<TKey> where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 保存元素的数组。
         /// </summary>
         /// <value>保存元素的数组。</value>
-        protected TKey[] pq;               
+        protected TKey[] Pq;               
         /// <summary>
         /// 堆中的元素数量。
         /// </summary>
         /// <value>堆中的元素数量。</value>
-        protected int n;                  
+        protected int N;                  
 
         /// <summary>
         /// 默认构造函数。
@@ -34,8 +34,8 @@ namespace PriorityQueue
         /// <param name="capacity">最大堆的容量。</param>
         public MaxPq(int capacity)
         {
-            pq = new TKey[capacity + 1];
-            n = 0;
+            Pq = new TKey[capacity + 1];
+            N = 0;
         }
 
         /// <summary>
@@ -44,11 +44,11 @@ namespace PriorityQueue
         /// <param name="keys">已有元素。</param>
         public MaxPq(TKey[] keys)
         {
-            n = keys.Length;
-            pq = new TKey[keys.Length + 1];
+            N = keys.Length;
+            Pq = new TKey[keys.Length + 1];
             for (var i = 0; i < keys.Length; i++)
-                pq[i + 1] = keys[i];
-            for (var k = n / 2; k >= 1; k--)
+                Pq[i + 1] = keys[i];
+            for (var k = N / 2; k >= 1; k--)
                 Sink(k);
             Debug.Assert(IsMaxHeap());
         }
@@ -62,14 +62,14 @@ namespace PriorityQueue
         public TKey DelMax()
         {
             if (IsEmpty())
-                throw new ArgumentOutOfRangeException("Priority Queue Underflow");
+                throw new InvalidOperationException("Priority Queue Underflow");
 
-            var max = pq[1];
-            Exch(1, n--);
+            var max = Pq[1];
+            Exch(1, N--);
             Sink(1);
-            pq[n + 1] = default(TKey);
-            if ((n > 0) && (n == pq.Length / 4))
-                Resize(pq.Length / 2);
+            Pq[N + 1] = default(TKey);
+            if ((N > 0) && (N == Pq.Length / 4))
+                Resize(Pq.Length / 2);
 
             // Debug.Assert(IsMaxHeap());
             return max;
@@ -81,11 +81,11 @@ namespace PriorityQueue
         /// <param name="v">需要插入的元素。</param>
         public void Insert(TKey v)
         {
-            if (n == pq.Length - 1)
-                Resize(2 * pq.Length);
+            if (N == Pq.Length - 1)
+                Resize(2 * Pq.Length);
 
-            pq[++n] = v;
-            Swim(n);
+            Pq[++N] = v;
+            Swim(N);
             // Debug.Assert(IsMaxHeap());
         }
 
@@ -95,19 +95,19 @@ namespace PriorityQueue
         /// <param name="k">结点下标。</param>
         internal void Remove(int k)
         {
-            if (k == n)
+            if (k == N)
             {
-                pq[n--] = default(TKey);
+                Pq[N--] = default(TKey);
                 return;
             }
-            else if (n <= 2)
+            else if (N <= 2)
             {
                 Exch(1, k);
-                pq[n--] = default(TKey);
+                Pq[N--] = default(TKey);
                 return;
             }
-            Exch(k, n--);
-            pq[n + 1] = default(TKey);
+            Exch(k, N--);
+            Pq[N + 1] = default(TKey);
             Swim(k);
             Sink(k);
         }
@@ -116,20 +116,20 @@ namespace PriorityQueue
         /// 检查堆是否为空。
         /// </summary>
         /// <returns>当堆为空时返回 <c>true</c>，否则返回 <c>false</c>。</returns>
-        public bool IsEmpty() => n == 0;
+        public bool IsEmpty() => N == 0;
 
         /// <summary>
         /// 获得堆中最大元素。
         /// </summary>
         /// <returns>堆中最大元素。</returns>
         /// <remarks>如果希望删除并返回最大元素，请使用 <see cref="DelMax"/>。</remarks>
-        public TKey Max() => pq[1];
+        public TKey Max() => Pq[1];
 
         /// <summary>
         /// 获得堆中元素的数量。
         /// </summary>
         /// <returns>堆中元素数量。</returns>
-        public int Size() => n;
+        public int Size() => N;
 
         /// <summary>
         /// 输出最大堆中的元素，元素之间用空格分隔。
@@ -138,8 +138,8 @@ namespace PriorityQueue
         public override string ToString()
         {
             var sb = new StringBuilder();
-            for (var i = 1; i < pq.Length; i++)
-                sb.Append(pq[i] + " ");
+            for (var i = 1; i < Pq.Length; i++)
+                sb.Append(Pq[i] + " ");
             return sb.ToString();
         }
 
@@ -149,9 +149,9 @@ namespace PriorityQueue
         /// <returns>最大堆的迭代器。</returns>
         public IEnumerator<TKey> GetEnumerator()
         {
-            var copy = new MaxPq<TKey>(n);
-            for (var i = 1; i <= n; i++)
-                copy.Insert(pq[i]);
+            var copy = new MaxPq<TKey>(N);
+            for (var i = 1; i <= N; i++)
+                copy.Insert(Pq[i]);
 
             while (!copy.IsEmpty())
                 yield return copy.DelMax(); // 下次迭代的时候从这里继续执行。
@@ -186,10 +186,10 @@ namespace PriorityQueue
         /// <param name="k">需要下沉的元素。</param>
         private void Sink(int k)
         {
-            while (k * 2 <= n)
+            while (k * 2 <= N)
             {
                 var j = 2 * k;
-                if (j < n && Less(j, j + 1))
+                if (j < N && Less(j, j + 1))
                     j++;
                 if (!Less(k, j))
                     break;
@@ -205,11 +205,11 @@ namespace PriorityQueue
         private void Resize(int capacity)
         {
             var temp = new TKey[capacity];
-            for (var i = 1; i <= n; i++)
+            for (var i = 1; i <= N; i++)
             {
-                temp[i] = pq[i];
+                temp[i] = Pq[i];
             }
-            pq = temp;
+            Pq = temp;
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace PriorityQueue
         /// <param name="j">判断是否较大的元素。</param>
         /// <returns>若下标为 <paramref name="i"/> 的元素较小则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
         private bool Less(int i, int j)
-            => pq[i].CompareTo(pq[j]) < 0; 
+            => Pq[i].CompareTo(Pq[j]) < 0; 
 
         /// <summary>
         /// 交换堆中的两个元素。
@@ -228,9 +228,9 @@ namespace PriorityQueue
         /// <param name="j">要交换的第二个元素下标。</param>
         protected virtual void Exch(int i, int j)
         {
-            var swap = pq[i];
-            pq[i] = pq[j];
-            pq[j] = swap;
+            var swap = Pq[i];
+            Pq[i] = Pq[j];
+            Pq[j] = swap;
         }
 
         /// <summary>
@@ -246,13 +246,13 @@ namespace PriorityQueue
         /// <returns>如果是则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
         private bool IsMaxHeap(int k)
         {
-            if (k > n)
+            if (k > N)
                 return true;
             var left = 2 * k;
             var right = 2 * k + 1;
-            if (left <= n && Less(k, left))
+            if (left <= N && Less(k, left))
                 return false;
-            if (right <= n && Less(k, right))
+            if (right <= N && Less(k, right))
                 return false;
 
             return IsMaxHeap(left) && IsMaxHeap(right);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Merge;
+// ReSharper disable CognitiveComplexity
 
 namespace _2._2._17
 {
@@ -50,25 +51,25 @@ namespace _2._2._17
                 var lo = a.GetFirst();
                 var mid = FindBlock(lo);
 
-                if (mid.next == null)
+                if (mid.Next == null)
                     break;
 
-                while (mid.next != null)
+                while (mid.Next != null)
                 {
-                    var hi = FindBlock(mid.next);
+                    var hi = FindBlock(mid.Next);
                     if (lo == a.GetFirst())
                         a.SetFirst(Merge(lo, mid, hi));
                     else
-                        lo.next = Merge(lo.next, mid, hi);
+                        lo.Next = Merge(lo.Next, mid, hi);
 
                     // 跳到表尾
-                    if (Less(hi.item, mid.item))
+                    if (Less(hi.Item, mid.Item))
                         lo = mid;
                     else
                         lo = hi;
 
-                    if (lo.next != null)
-                        mid = FindBlock(lo.next);
+                    if (lo.Next != null)
+                        mid = FindBlock(lo.Next);
                 }
             }
         }
@@ -125,57 +126,56 @@ namespace _2._2._17
         /// <returns>新的表头。</returns>
         private Node<T> Merge<T>(Node<T> lo, Node<T> mid, Node<T> hi) where T : IComparable<T>
         {
-            var after = hi.next; // 要合并的两个块之后的元素
-            Node<T> first = null;
+            var after = hi.Next; // 要合并的两个块之后的元素
             var i = lo;          // 链表1
-            var j = mid.next;    // 链表2
+            var j = mid.Next;    // 链表2
 
             // 切割链表
-            mid.next = null;
-            hi.next = null;
+            mid.Next = null;
+            hi.Next = null;
 
-            Node<T> current = null;
+            Node<T> current;
             // 决定新的表头
-            if (Less(i.item, j.item))
+            if (Less(i.Item, j.Item))
             {
                 current = i;
-                i = i.next;
+                i = i.Next;
             }
             else
             {
                 current = j;
-                j = j.next;
+                j = j.Next;
             }
 
-            first = current;
+            var first = current;
 
             // 归并表
             while (i != null && j != null)
             {
-                if (Less(i.item, j.item))
+                if (Less(i.Item, j.Item))
                 {
-                    current.next = i;
-                    i = i.next;
-                    current = current.next;
+                    current.Next = i;
+                    i = i.Next;
+                    current = current.Next;
                 }
                 else
                 {
-                    current.next = j;
-                    j = j.next;
-                    current = current.next;
+                    current.Next = j;
+                    j = j.Next;
+                    current = current.Next;
                 }
             }
 
             if (i == null)
-                current.next = j;
+                current.Next = j;
             else
-                current.next = i;
+                current.Next = i;
 
             // 连接表尾（链表 1 的尾部或者链表 2 的尾部）
-            if (mid.next == null)
-                mid.next = after;
+            if (mid.Next == null)
+                mid.Next = after;
             else
-                hi.next = after;
+                hi.Next = after;
 
             return first;
         }
@@ -209,10 +209,10 @@ namespace _2._2._17
         private Node<T> FindBlock<T>(Node<T> lo) where T : IComparable<T>
         {
             var hi = lo;
-            while (hi.next != null)
+            while (hi.Next != null)
             {
-                if (Less(hi.item, hi.next.item) || hi.item.Equals(hi.next.item))
-                    hi = hi.next;
+                if (Less(hi.Item, hi.Next.Item) || hi.Item.Equals(hi.Next.Item))
+                    hi = hi.Next;
                 else
                     break;
             }

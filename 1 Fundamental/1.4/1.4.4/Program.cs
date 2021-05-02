@@ -1,4 +1,5 @@
-﻿static int Count(int[] a)
+﻿// ReSharper disable UnusedLocalFunctionReturnValue
+static int Count(int[] a)
 {
     // A                                                                               
     var n = a.Length;

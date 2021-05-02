@@ -12,7 +12,7 @@ namespace _1._4._43
         /// <returns>读入的整型数组</returns>
         private static int[] ReadAllInts(string inputString)
         {
-            var split = new char[1] { '\n' };
+            var split = new[] { '\n' };
             var input = inputString.Split(split, StringSplitOptions.RemoveEmptyEntries);
             var a = new int[input.Length];
             for (var i = 0; i < a.Length; i++)
@@ -69,13 +69,11 @@ namespace _1._4._43
         /// </summary>
         public static void Test()
         {
-            double linkedTime = 0;
-            double arrayTime = 0;
             Console.WriteLine(@"数据量	链栈	数组	比值	单位：毫秒");
             // 16K
             var a = ReadAllInts(TestCase.Properties.Resources._16Kints);
-            linkedTime = TimeTrialLinkedStack(a);
-            arrayTime = TimeTrialDoublingStack(a);
+            var linkedTime = TimeTrialLinkedStack(a);
+            var arrayTime = TimeTrialDoublingStack(a);
             Console.WriteLine($@"16000	{linkedTime}	{arrayTime}	{linkedTime / arrayTime}");
 
             // 32K

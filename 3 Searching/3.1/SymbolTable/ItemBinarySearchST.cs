@@ -49,11 +49,11 @@ namespace SymbolTable
         /// <param name="items">已有的键值对。</param>
         public ItemBinarySearchSt(Item<TKey, TValue>[] items)
         {
-            this._items = new Item<TKey, TValue>[items.Length];
-            Array.Copy(items, this._items, items.Length);
+            _items = new Item<TKey, TValue>[items.Length];
+            Array.Copy(items, _items, items.Length);
             _n = items.Length;
             var merge = new MergeSort();
-            merge.Sort(this._items);
+            merge.Sort(_items);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace SymbolTable
         public TKey Ceiling(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to Ceiling is null");
+                throw new ArgumentNullException(nameof(key), @"argument to Ceiling is null");
             var i = Rank(key);
             if (i == _n)
                 return default(TKey);
@@ -81,7 +81,7 @@ namespace SymbolTable
         public bool Contains(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("key can't be null");
+                throw new ArgumentNullException(nameof(key), @"key can't be null");
             return !Get(key).Equals(default(TKey));
         }
 
@@ -93,7 +93,7 @@ namespace SymbolTable
         public void Delete(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to Delete() is null");
+                throw new ArgumentNullException(nameof(key), @"argument to Delete() is null");
             if (IsEmpty())
                 return;
 
@@ -134,7 +134,7 @@ namespace SymbolTable
         public TKey Floor(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to Floor() is null");
+                throw new ArgumentNullException(nameof(key), @"argument to Floor() is null");
             var i = Rank(key);
             if (i < _n && _items[i].Key.CompareTo(key) == 0)
                 return _items[i].Key;
@@ -153,7 +153,7 @@ namespace SymbolTable
         public TValue Get(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to Get() is null");
+                throw new ArgumentNullException(nameof(key), "argument to Get() is null");
             if (IsEmpty())
                 return default(TValue);
             var rank = Rank(key);
@@ -183,9 +183,9 @@ namespace SymbolTable
         public IEnumerable<TKey> Keys(TKey lo, TKey hi)
         {
             if (lo == null)
-                throw new ArgumentNullException("first argument to Keys() is null");
+                throw new ArgumentNullException(nameof(lo), "first argument to Keys() is null");
             if (hi == null)
-                throw new ArgumentNullException("Second argument to Keys() is null");
+                throw new ArgumentNullException(nameof(hi), "Second argument to Keys() is null");
 
             var list = new List<TKey>();
             if (lo.CompareTo(hi) > 0)
@@ -230,7 +230,7 @@ namespace SymbolTable
         public void Put(TKey key, TValue value)
         {
             if (key == null)
-                throw new ArgumentNullException("first argument to Put() is null");
+                throw new ArgumentNullException(nameof(key), "first argument to Put() is null");
             if (value == null)
             {
                 Delete(key);
@@ -265,7 +265,7 @@ namespace SymbolTable
         public int Rank(TKey key)
         {
             if (key == null)
-                throw new ArgumentNullException("argument to Rank() is null");
+                throw new ArgumentNullException(nameof(key), "argument to Rank() is null");
             int lo = 0, hi = _n - 1;
             while (lo <= hi)
             {
@@ -309,9 +309,9 @@ namespace SymbolTable
         public int Size(TKey lo, TKey hi)
         {
             if (lo == null)
-                throw new ArgumentNullException("first argument to Size() is null");
+                throw new ArgumentNullException(nameof(lo), "first argument to Size() is null");
             if (hi == null)
-                throw new ArgumentNullException("second argument to Size() is null");
+                throw new ArgumentNullException(nameof(hi), "second argument to Size() is null");
 
             if (lo.CompareTo(hi) > 0)
                 return 0;
@@ -325,11 +325,11 @@ namespace SymbolTable
         /// 为符号表重新分配空间。
         /// </summary>
         /// <param name="capacity">重新分配的大小。</param>
-        /// <exception cref="ArgumentOutOfRangeException">当 <paramref name="capacity"/> < <see cref="_n"/> 时抛出该异常。</exception>
+        /// <exception cref="ArgumentOutOfRangeException">当 <paramref name="capacity"/> <see cref="_n"/> 时抛出该异常。</exception>
         private void Resize(int capacity)
         {
             if (capacity < _n)
-                throw new ArgumentOutOfRangeException("分配容量不能小于表中元素数量。");
+                throw new ArgumentOutOfRangeException(nameof(capacity), "分配容量不能小于表中元素数量。");
             var temp = new Item<TKey, TValue>[capacity];
             for (var i = 0; i < _n; i++)
             {

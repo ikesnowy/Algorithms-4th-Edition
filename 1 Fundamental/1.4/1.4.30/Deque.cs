@@ -3,11 +3,11 @@
     /// <summary>
     /// 用一个栈和一个 Steque 模拟的双向队列。
     /// </summary>
-    /// <typeparam name="Item">双向队列中保存的元素类型。</typeparam>
-    class Deque<TItem>
+    /// <typeparam name="TItem">双向队列中保存的元素类型。</typeparam>
+    internal class Deque<TItem>
     {
-        readonly Stack<TItem> _stack;  // 代表队列尾部
-        readonly Steque<TItem> _steque;// 代表队列头部
+        private readonly Stack<TItem> _stack;  // 代表队列尾部
+        private readonly Steque<TItem> _steque;// 代表队列头部
 
         /// <summary>
         /// 创建一条空的双向队列。

@@ -9,7 +9,7 @@
         /// 记录各个树大小的数组。
         /// </summary>
         /// <value>记录各个树大小的数组。</value>
-        protected int[] size;
+        protected int[] Size;
 
         /// <summary>
         /// 记录 parent 数组的访问次数的计数器。
@@ -28,10 +28,10 @@
         /// <param name="n">并查集的大小。</param>
         public WeightedQuickUnionUf(int n) : base(n)
         {
-            size = new int[n];
+            Size = new int[n];
             for (var i = 0; i < n; i++)
             {
-                size[i] = 1;
+                Size[i] = 1;
             }
             ArrayParentVisitCount = 0;
             ArraySizeVisitCount = 0;
@@ -52,7 +52,7 @@
         /// <returns>返回 size 数组。</returns>
         public int[] GetSize()
         {
-            return size;
+            return Size;
         }
 
         /// <summary>
@@ -63,9 +63,9 @@
         public override int Find(int p)
         {
             Validate(p);
-            while (p != parent[p])
+            while (p != Parent[p])
             {
-                p = parent[p];
+                p = Parent[p];
                 ArrayParentVisitCount += 2;
             }
             ArrayParentVisitCount++;
@@ -86,19 +86,19 @@
                 return;
             }
 
-            if (size[rootP] < size[rootQ])
+            if (Size[rootP] < Size[rootQ])
             {
-                parent[rootP] = rootQ;
-                size[rootQ] += size[rootP];
+                Parent[rootP] = rootQ;
+                Size[rootQ] += Size[rootP];
             }
             else
             {
-                parent[rootQ] = rootP;
-                size[rootP] += size[rootQ];
+                Parent[rootQ] = rootP;
+                Size[rootP] += Size[rootQ];
             }
             ArrayParentVisitCount++;
             ArraySizeVisitCount += 4;
-            count--;
+            TotalCount--;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace _1._3._17
 {
@@ -89,7 +90,9 @@ namespace _1._3._17
         {
             int IComparer<Transaction>.Compare(Transaction x, Transaction y)
             {
-                return x.Who.CompareTo(y.Who);
+                Debug.Assert(x != null, nameof(x) + " != null");
+                Debug.Assert(y != null, nameof(y) + " != null");
+                return string.Compare(x.Who, y.Who, StringComparison.Ordinal);
             }
         }
 
@@ -100,6 +103,8 @@ namespace _1._3._17
         {
             int IComparer<Transaction>.Compare(Transaction x, Transaction y)
             {
+                Debug.Assert(x != null, nameof(x) + " != null");
+                Debug.Assert(y != null, nameof(y) + " != null");
                 return x.When.CompareTo(y.When);
             }
         }
@@ -111,6 +116,8 @@ namespace _1._3._17
         {
             int IComparer<Transaction>.Compare(Transaction x, Transaction y)
             {
+                Debug.Assert(x != null, nameof(x) + " != null");
+                Debug.Assert(y != null, nameof(y) + " != null");
                 return x.Amount.CompareTo(y.Amount);
             }
         }
@@ -131,7 +138,7 @@ namespace _1._3._17
             var that = (Transaction)obj;
 
             return
-                (that.Amount == Amount) &&
+                (Math.Abs(that.Amount - Amount) < float.Epsilon * 5) &&
                 (that.When.Equals(When)) &&
                 (that.Who == Who);
         }
@@ -142,8 +149,7 @@ namespace _1._3._17
         /// <returns></returns>
         public override int GetHashCode()
         {
-            var hash = 1;
-            hash = 31 * hash + Who.GetHashCode();
+            var hash = 31 + Who.GetHashCode();
             hash = 31 * hash + When.GetHashCode();
             hash = 31 * hash + Amount.GetHashCode();
             return hash;

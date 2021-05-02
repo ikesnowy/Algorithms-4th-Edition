@@ -29,7 +29,7 @@ namespace _1._4._34
         public Game(int n)
         {
             var random = new Random();
-            this.N = n;
+            N = n;
             SecretNumber = random.Next(n - 1) + 1;
             LastGuess = -1;
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+// ReSharper disable CognitiveComplexity
 
 namespace Quick
 {
@@ -56,32 +57,32 @@ namespace Quick
         /// </summary>
         /// <typeparam name="T">需要排序的数组类型。</typeparam>
         /// <param name="a">需要排序的数组。</param>
-        /// <param name="samplelo">取样数组的起始下标。</param>
+        /// <param name="sampleLo">取样数组的起始下标。</param>
         /// <param name="lo">排序范围的起始下标。</param>
         /// <param name="hi">排序范围的结束下标。</param>
         /// <param name="samplehi">取样数组的终止下标。</param>
-        private void Sort<T>(T[] a, int samplelo, int lo, int hi, int samplehi) where T : IComparable<T>
+        private void Sort<T>(T[] a, int sampleLo, int lo, int hi, int samplehi) where T : IComparable<T>
         {
             if (hi <= lo)                   // 别越界
                 return;
 
             var j = Partition(a, lo, hi);
             // 将前部的有序取样数组取半，后半部分放在枢轴前面。
-            if (lo - samplelo > 1)
+            if (lo - sampleLo > 1)
             {
                 // p 应该始终指向有序部分的最后一项
                 // v 应该始终指向有序部分的前面一项
                 int p = lo - 1, v = j - 1;
-                for (var i = 0; i < (lo - samplelo) / 2; i++)
+                for (var i = 0; i < (lo - sampleLo) / 2; i++)
                 {
                     Exch(a, p--, v--);
                 }
-                Sort(a, samplelo, p, v, j - 1);
+                Sort(a, sampleLo, p, v, j - 1);
             }
             else
             {
                 // 取样数组已经用完，退化为普通 Quicksort
-                base.Sort(a, samplelo, j - 1);
+                base.Sort(a, sampleLo, j - 1);
             }
 
             // 将尾部有序取样数组取半，前半部分放在枢轴后面。

@@ -29,7 +29,7 @@ for (var i = 0; i < mSteps; i++)
 
         timeIgnore /= trialTimes;
         timeInsertion /= trialTimes;
-        if (arraySize < 10000000)
+        if (array < 10000000)
             Console.WriteLine(
                 ignore.M
                 + "\t"

@@ -6,13 +6,13 @@ namespace _1._3._40
     /// <summary>
     /// 前移编码队列。
     /// </summary>
-    /// <typeparam name="Item">需要前移编码的元素类型。</typeparam>
+    /// <typeparam name="TItem">需要前移编码的元素类型。</typeparam>
     class MoveToFront<TItem>
     {
         private class Node<T>
         {
-            public T item;
-            public Node<T> next;
+            public T Item;
+            public Node<T> Next;
         }
 
         private Node<TItem> _first;
@@ -49,13 +49,13 @@ namespace _1._3._40
             }
 
             var current = _first;
-            while (current.next != null)
+            while (current.Next != null)
             {
-                if (current.next.item.Equals(item))
+                if (current.Next.Item.Equals(item))
                 {
                     return current;
                 }
-                current = current.next;
+                current = current.Next;
             }
             return null;
         }
@@ -71,18 +71,18 @@ namespace _1._3._40
             {
                 temp = new Node<TItem>
                 {
-                    item = item,
-                    next = _first
+                    Item = item,
+                    Next = _first
                 };
 
                 _first = temp;
                 _count++;
             }
-            else if (temp != null && _count != 1)
+            else if (_count != 1)
             {
-                var target = temp.next;
-                temp.next = temp.next.next;
-                target.next = _first;
+                var target = temp.Next;
+                temp.Next = temp.Next.Next;
+                target.Next = _first;
                 _first = target;
             }
         }
@@ -98,7 +98,7 @@ namespace _1._3._40
                 throw new InvalidOperationException();
             }
 
-            return _first.item;
+            return _first.Item;
         }
 
         public override string ToString()
@@ -107,9 +107,9 @@ namespace _1._3._40
             var current = _first;
             while (current != null)
             {
-                s.Append(current.item.ToString());
+                s.Append(current.Item.ToString());
                 s.Append(" ");
-                current = current.next;
+                current = current.Next;
             }
 
             return s.ToString();

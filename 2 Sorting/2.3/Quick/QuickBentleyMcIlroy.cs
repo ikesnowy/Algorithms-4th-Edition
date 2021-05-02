@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+// ReSharper disable CognitiveComplexity
 
 namespace Quick
 {
@@ -69,7 +70,10 @@ namespace Quick
             var v = a[lo];
             while (true)
             {
-                while (Less(a[++i], v)) ;
+                while (Less(a[++i], v))
+                {
+                }
+
                 while (Less(v, a[--j]))
                     if (j == lo)
                         break;

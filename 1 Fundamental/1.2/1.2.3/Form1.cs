@@ -24,19 +24,19 @@ namespace _1._2._3
 
                 if (max > 1 || max < 0)
                 {
-                    ErrorLabel.Text = "Max 应大于等于 0 且小于 1";
+                    ErrorLabel.Text = @"Max 应大于等于 0 且小于 1";
                     return;
                 }
 
                 if (min > 1 || min < 0)
                 {
-                    ErrorLabel.Text = "Min 应大于等于 0 且小于 1";
+                    ErrorLabel.Text = @"Min 应大于等于 0 且小于 1";
                     return;
                 }
 
                 if (min >= max)
                 {
-                    ErrorLabel.Text = "Min 应小于 Max。";
+                    ErrorLabel.Text = @"Min 应小于 Max。";
                     return;
                 }
 
@@ -44,15 +44,15 @@ namespace _1._2._3
             }
             catch (ArgumentNullException)
             {
-                ErrorLabel.Text = "输入值不能为空。";
+                ErrorLabel.Text = @"输入值不能为空。";
             }
             catch (FormatException)
             {
-                ErrorLabel.Text = "格式错误，确保输入的是大于零的数字。";
+                ErrorLabel.Text = @"格式错误，确保输入的是大于零的数字。";
             }
             catch (OverflowException)
             {
-                ErrorLabel.Text = "数据过大。";
+                ErrorLabel.Text = @"数据过大。";
             }
         }
         

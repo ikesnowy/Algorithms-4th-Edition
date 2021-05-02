@@ -11,9 +11,7 @@ namespace _2._1._33
     {
         readonly List<double> _resultList;
         readonly List<float> _resultYList;
-        readonly Rectangle _clientRect;
         readonly Rectangle _drawRect;
-
         readonly BaseSort _sort;
         readonly int _n;
 
@@ -27,10 +25,10 @@ namespace _2._1._33
             InitializeComponent();
             _resultList = new List<double>();
             _resultYList = new List<float>();
-            _clientRect = ClientRectangle;
-            _drawRect = new Rectangle(_clientRect.X + 10, _clientRect.Y + 10, _clientRect.Width - 10, _clientRect.Height - 10);
-            this._sort = sort;
-            this._n = n;
+            var clientRect = ClientRectangle;
+            _drawRect = new Rectangle(clientRect.X + 10, clientRect.Y + 10, clientRect.Width - 10, clientRect.Height - 10);
+            _sort = sort;
+            _n = n;
             timer1.Interval = 500;
             timer1.Start();
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+// ReSharper disable CognitiveComplexity
 
 namespace _2._3._15
 {
@@ -177,8 +178,9 @@ namespace _2._3._15
         /// 交换两个元素。
         /// </summary>
         /// <typeparam name="T">元素类型。</typeparam>
-        /// <param name="a">需要交换的第一个元素。</param>
-        /// <param name="b">需要交换的第二个元素。</param>
+        /// <param name="a">需要交换的数组。</param>
+        /// <param name="lo">需要交换的第一个元素。</param>
+        /// <param name="hi">需要交换的第二个元素。</param>
         private void Exch<T>(T[] a, int lo, int hi)
         {
             var t = a[lo];

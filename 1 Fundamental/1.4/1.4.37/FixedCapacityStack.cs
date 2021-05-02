@@ -87,7 +87,7 @@ namespace _1._4._37
             public ReverseEnmerator(TItem[] a)
             {
                 _current = a.Length;
-                this._a = a;
+                _a = a;
             }
 
             TItem IEnumerator<TItem>.Current => _a[_current];

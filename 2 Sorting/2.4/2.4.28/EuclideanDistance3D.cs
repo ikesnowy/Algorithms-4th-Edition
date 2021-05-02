@@ -18,9 +18,9 @@ namespace _2._4._28
         /// <param name="z">z 轴坐标。</param>
         public EuclideanDistance3D(int x, int y, int z)
         {
-            this._x = x;
-            this._y = y;
-            this._z = z;
+            _x = x;
+            _y = y;
+            _z = z;
             _distance = Math.Sqrt(x * x + y * y + z * z);
         }
 

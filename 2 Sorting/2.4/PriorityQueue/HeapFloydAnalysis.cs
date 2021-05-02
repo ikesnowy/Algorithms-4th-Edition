@@ -5,7 +5,6 @@ namespace PriorityQueue
     /// <summary>
     /// 堆排序类，提供 Floyd 优化的堆排序的静态方法，同时记录比较次数。
     /// </summary>
-    /// <typeparam name="T">需要排序的元素类型。</typeparam>
     public static class HeapFloydAnalysis
     {
         private static long _compareCount;
@@ -75,6 +74,7 @@ namespace PriorityQueue
         /// <summary>
         /// 使元素上浮。
         /// </summary>
+        /// <param name="pq">优先队列。</param>
         /// <param name="k">需要上浮的元素。</param>
         private static void Swim<T>(T[] pq, int k) where T : IComparable<T>
         {

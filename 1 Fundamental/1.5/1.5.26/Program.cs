@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Drawing;
 using UnionFind;
+// ReSharper disable PossibleLossOfFraction
 
 namespace _1._5._26
 {
@@ -100,7 +101,7 @@ namespace _1._5._26
             for (var i = 0; i < cost.Length; i++)
             {
                 grayPoints[i] = new PointF(center.Left + unitX * (i + 1), center.Bottom - (cost[i] * unitY));
-                redPoints[i] = new PointF(center.Left + unitX * (i + 1), center.Bottom - ((total[i] / (i + 1)) * unitY));
+                redPoints[i] = new PointF(center.Left + unitX * (i + 1), center.Bottom - total[i] / (i + 1) * unitY);
             }
 
             // 绘制点。

@@ -111,21 +111,21 @@ namespace PriorityQueue
         public TKey DelMedian()
         {
             if (IsEmpty())
-                throw new ArgumentOutOfRangeException("MedianPQ underflow!");
-            var median = this._median;
+                throw new InvalidOperationException("MedianPQ underflow!");
+            var median = _median;
 
             if (_n == 1)
             {
                 _n--;
-                this._median = default(TKey);
+                _median = default(TKey);
                 return median;
             }
 
             // 从较大的一侧堆中取元素作为新的中位数。
             if (_minPq.Size() > _maxPq.Size())
-                this._median = _minPq.DelMin();
+                _median = _minPq.DelMin();
             else
-                this._median = _maxPq.DelMax();
+                _median = _maxPq.DelMax();
 
             _n--;
             return median;

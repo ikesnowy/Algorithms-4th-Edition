@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 // ReSharper disable PossibleNullReferenceException
+// ReSharper disable CognitiveComplexity
 
 namespace SortApplication
 {
@@ -389,7 +390,7 @@ namespace SortApplication
                 return false;
             }
             var that = (Point2D)obj;
-            return Math.Abs(X - that.X) < float.Epsilon && Math.Abs(Y - that.Y) < float.Epsilon;
+            return Math.Abs(X - that.X) < float.Epsilon * 5 && Math.Abs(Y - that.Y) < float.Epsilon * 5;
         }
 
         /// <summary>

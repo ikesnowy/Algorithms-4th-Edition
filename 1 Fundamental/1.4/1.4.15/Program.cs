@@ -1,5 +1,6 @@
 ﻿using System;
 using Measurement;
+using TestCase.Properties;
 
 // 由于数组已经排序（从小到大），负数在左侧，正数在右侧。
 // TwoSumFaster
@@ -11,8 +12,8 @@ using Measurement;
 // ThreeSumFaster
 // 对于数组中的每一个数 a，ThreeSum 问题就等于求剩余数组中所有和为 -a 的 TwoSum 问题。
 // 只要在 TwoSumFaster 外层再套一个循环即可。
-var split = new char[1] { '\n' };
-var testCases = TestCase.Properties.Resources._1Kints.Split(split, StringSplitOptions.RemoveEmptyEntries);
+var split = new[] { '\n' };
+var testCases = Resources._1Kints.Split(split, StringSplitOptions.RemoveEmptyEntries);
 var a = new int[testCases.Length];
 for (var i = 0; i < testCases.Length; i++)
 {

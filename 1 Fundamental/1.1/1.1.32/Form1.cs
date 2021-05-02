@@ -16,7 +16,7 @@ namespace _1._1._32
             //新建一个文件选取窗口
             var openfiledialog = new OpenFileDialog();
             //设置要读取的文件类型
-            openfiledialog.Filter = "文本文档(*.txt)|*.txt";
+            openfiledialog.Filter = @"文本文档(*.txt)|*.txt";
             //设置初始位置为“我的文档”
             openfiledialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             //不允许多选
@@ -57,7 +57,7 @@ namespace _1._1._32
                     var n = int.Parse(InputN.Text);
                     if (n <= 0)
                     {
-                        ErrorLabel.Text = "N 必须大于 0";
+                        ErrorLabel.Text = @"N 必须大于 0";
                         return;
                     }
                     var l = double.Parse(InputL.Text);
@@ -66,11 +66,11 @@ namespace _1._1._32
                 }
                 catch (FormatException fex)
                 {
-                    ErrorLabel.Text = "格式有误（是否漏填了某项？）" + fex.Message;
+                    ErrorLabel.Text = @"格式有误（是否漏填了某项？）" + fex.Message;
                 }
                 catch (OverflowException oex)
                 {
-                    ErrorLabel.Text = "数据过大（输入的内容太多）" + oex.Message;
+                    ErrorLabel.Text = @"数据过大（输入的内容太多）" + oex.Message;
                 }
             }
             catch (Exception ex)

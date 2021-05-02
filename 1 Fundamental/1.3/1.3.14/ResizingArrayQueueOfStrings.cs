@@ -7,7 +7,7 @@ namespace _1._3._14
     /// <summary>
     /// 可变长度的队列。
     /// </summary>
-    /// <typeparam name="Item">队列中要存放的元素。</typeparam>
+    /// <typeparam name="TItem">队列中要存放的元素。</typeparam>
     class ResizingArrayQueueOfStrings<TItem> : IEnumerable<TItem>
     {
         private TItem[] _q;
@@ -105,9 +105,9 @@ namespace _1._3._14
             public QueueEnumerator(TItem[] q, int first, int last)
             {
                 _current = first - 1;
-                this._first = first;
-                this._last = last;
-                this._q = q;
+                _first = first;
+                _last = last;
+                _q = q;
             }
 
             TItem IEnumerator<TItem>.Current => _q[_current];
