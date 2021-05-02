@@ -122,7 +122,7 @@ namespace _2._5._32
             if (spaceIndex - 3 < 0)
                 return null;
 
-            var up = new SearchNode()
+            var up = new SearchNode
             {
                 Status = new int[current.Status.Length],
                 Steps = current.Steps + 1
@@ -145,7 +145,7 @@ namespace _2._5._32
             if (spaceIndex + 3 >= current.Status.Length)
                 return null;
 
-            var down = new SearchNode()
+            var down = new SearchNode
             {
                 Status = new int[current.Status.Length],
                 Steps = current.Steps + 1

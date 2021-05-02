@@ -183,7 +183,7 @@ namespace SymbolTable
         {
             Delete(key);
 
-            var temp = new Node()
+            var temp = new Node
             {
                 Key = key,
                 Value = value,

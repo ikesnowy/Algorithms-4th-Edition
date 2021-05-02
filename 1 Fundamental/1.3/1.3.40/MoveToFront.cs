@@ -69,7 +69,7 @@ namespace _1._3._40
             var temp = Find(item);
             if (temp == null)
             {
-                temp = new Node<TItem>()
+                temp = new Node<TItem>
                 {
                     item = item,
                     next = _first

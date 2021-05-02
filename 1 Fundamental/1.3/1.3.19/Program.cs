@@ -1,9 +1,9 @@
 ﻿using System;
 using Generics;
 
-var first = new Node<string>() { item = "first" };
-var second = new Node<string>() { item = "second" };
-var third = new Node<string>() { item = "third" };
+var first = new Node<string> { item = "first" };
+var second = new Node<string> { item = "second" };
+var third = new Node<string> { item = "third" };
 
 first.next = second;
 second.next = third;

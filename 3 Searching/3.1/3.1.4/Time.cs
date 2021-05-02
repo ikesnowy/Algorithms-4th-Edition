@@ -8,9 +8,9 @@ namespace _3._1._4
     /// </summary>
     public class Time : IComparable<Time>
     {
-        public int Hour { get; set; }
-        public int Minute { get; set; }
-        public int Second { get; set; }
+        public int Hour { get; init; }
+        public int Minute { get; init; }
+        public int Second { get; init; }
 
         public Time() : this(0, 0, 0) { }
 
@@ -53,9 +53,9 @@ namespace _3._1._4
         {
             var sb = new StringBuilder();
             sb.Append(Hour < 10 ? "0" + Hour : Hour.ToString());
-            sb.Append(":");
+            sb.Append(':');
             sb.Append(Minute < 10 ? "0" + Minute : Minute.ToString());
-            sb.Append(":");
+            sb.Append(':');
             sb.Append(Second < 10 ? "0" + Second : Second.ToString());
             return sb.ToString();
         }

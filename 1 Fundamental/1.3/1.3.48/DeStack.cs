@@ -76,7 +76,7 @@ namespace _1._3._48
         public void PushLeft(TItem item)
         {
             var oldFirst = _first;
-            _first = new DoubleNode<TItem>()
+            _first = new DoubleNode<TItem>
             {
                 item = item,
                 prev = null,
@@ -100,7 +100,7 @@ namespace _1._3._48
         public void PushRight(TItem item)
         {
             var oldLast = _last;
-            _last = new DoubleNode<TItem>()
+            _last = new DoubleNode<TItem>
             {
                 item = item,
                 prev = oldLast,

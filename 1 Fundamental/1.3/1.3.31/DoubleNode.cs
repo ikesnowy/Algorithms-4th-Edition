@@ -56,7 +56,7 @@ namespace _1._3._31
         /// <param name="item">要插入的元素。</param>
         public void InsertFront(TItem item)
         {
-            var node = new DoubleNode<TItem>()
+            var node = new DoubleNode<TItem>
             {
                 item = item,
                 next = _first,
@@ -80,7 +80,7 @@ namespace _1._3._31
         /// <param name="item">要插入表尾的元素。</param>
         public void InsertRear(TItem item)
         {
-            var node = new DoubleNode<TItem>()
+            var node = new DoubleNode<TItem>
             {
                 item = item,
                 next = null,
@@ -151,7 +151,7 @@ namespace _1._3._31
                 throw new IndexOutOfRangeException();
 
             var current = Find(index);
-            var node = new DoubleNode<TItem>()
+            var node = new DoubleNode<TItem>
             {
                 next = current,
                 prev = current.prev,
@@ -179,7 +179,7 @@ namespace _1._3._31
                 throw new IndexOutOfRangeException();
 
             var current = Find(index);
-            var node = new DoubleNode<TItem>()
+            var node = new DoubleNode<TItem>
             {
                 prev = current,
                 next = current.next,

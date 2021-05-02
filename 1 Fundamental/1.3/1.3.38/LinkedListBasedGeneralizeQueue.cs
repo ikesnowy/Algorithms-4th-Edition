@@ -45,7 +45,7 @@ namespace _1._3._38
         public void Insert(TItem item)
         {
             var oldLast = _last;
-            _last = new Node<TItem>()
+            _last = new Node<TItem>
             {
                 item = item,
                 IsVisited = false,
