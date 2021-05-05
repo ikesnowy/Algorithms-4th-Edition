@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+
 // ReSharper disable CognitiveComplexity
 
 namespace BalancedSearchTree
@@ -137,10 +138,9 @@ namespace BalancedSearchTree
             var cmp = key.CompareTo(x.Key);
             if (cmp < 0)
                 return Get(x.Left, key);
-            else if (cmp > 0)
+            if (cmp > 0)
                 return Get(x.Right, key);
-            else
-                return x;
+            return x;
         }
 
         /// <summary>
@@ -244,8 +244,7 @@ namespace BalancedSearchTree
                 return 0;
             if (Contains(hi))
                 return Rank(hi) - Rank(lo) + 1;
-            else
-                return Rank(hi) - Rank(lo);
+            return Rank(hi) - Rank(lo);
         }
 
         /// <summary>
@@ -379,8 +378,7 @@ namespace BalancedSearchTree
             var x = Floor(Root, key);
             if (x == null)
                 return default;
-            else
-                return x.Key;
+            return x.Key;
         }
 
         /// <summary>
@@ -396,13 +394,12 @@ namespace BalancedSearchTree
             var cmp = key.CompareTo(x.Key);
             if (cmp == 0)
                 return x;
-            else if (cmp < 0)
+            if (cmp < 0)
                 return Floor(x.Left, key);
             var t = Floor(x.Right, key);
             if (t != null)
                 return t;
-            else
-                return x;
+            return x;
         }
 
         /// <summary>
@@ -470,10 +467,9 @@ namespace BalancedSearchTree
             var cmp = key.CompareTo(x.Key);
             if (cmp < 0)
                 return Rank(x.Left, key);
-            else if (cmp > 0)
+            if (cmp > 0)
                 return 1 + Size(x.Left) + Rank(x.Right, key);
-            else
-                return Size(x.Left);
+            return Size(x.Left);
         }
 
         /// <summary>
@@ -502,10 +498,9 @@ namespace BalancedSearchTree
             var t = Size(x.Left);
             if (t > k)
                 return Select(x.Left, k);
-            else if (t < k)
+            if (t < k)
                 return Select(x.Right, k - t - 1);
-            else
-                return x;
+            return x;
         }
 
         /// <summary>

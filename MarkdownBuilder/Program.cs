@@ -18,7 +18,7 @@ sb.AppendLine("# 写在前面")
     .AppendLine("### 习题&题解")
     .AppendLine();
 
-for (int i = 1; i <= questionNum; i++)
+for (var i = 1; i <= questionNum; i++)
 {
     sb.AppendLine(section + "." + i)
         .AppendLine()

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BalancedSearchTree
 {
@@ -8,6 +9,7 @@ namespace BalancedSearchTree
     /// <typeparam name="TKey">键类型。</typeparam>
     /// <typeparam name="TValue">值类型。</typeparam>
     public interface ISt<TKey, TValue>
+        where TKey : IComparable<TKey>
     {
         /// <summary>
         /// 向符号表插入键值对。
